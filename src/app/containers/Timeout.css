@@ -1,0 +1,33 @@
+.sweet-alert {
+  display:none;
+  font-family: Lato !important;
+  border:2px solid #222;
+  text-shadow: 1px 1px 1px #bbb;
+  padding:10px !important;
+  fieldset {
+    text-align:center !important;
+    padding-left:40px !important;
+    padding-right:40px !important;
+  }
+  input[type=text] {
+    margin-top:15px !important;
+    -webkit-text-security: disc !important;
+    -moz-text-security: disc !important;
+    text-security: disc !important;
+    font-size:1em !important;
+    color:#000;
+    text-align:center;
+  }
+  h2 {
+    font-size: 1.6em !important;
+    margin-top:10px !important;
+    margin-bottom:10px !important;
+  }
+  button {
+    margin-top:10px !important;
+  }
+}
+
+#timeout-root {
+  z-index: 10000000;
+}

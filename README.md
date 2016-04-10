@@ -1,7 +1,5 @@
 # [redux-webpack-boilerplate](https://npmjs.com/packages/redux-webpack-boilerplate)
 
-Redux middleware, reducer, and actions for idle state monitoring in the browser.
-
 `npm i -S redux-webpack-boilerplate`
 
 

@@ -1,0 +1,8 @@
+﻿.handheld
+{
+    display: block;
+}
+.largescreen 
+{
+    display: none;
+}

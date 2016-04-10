@@ -1,0 +1,37 @@
+﻿BODY
+{
+    PADDING-RIGHT: 0px;
+    PADDING-LEFT: 0px;
+    BACKGROUND: url(/Clients/Tix/Images/gfx_pageBkg_gradient.jpg) #FFFFFF repeat-x;
+    PADDING-BOTTOM: 0px;
+    MARGIN: 0px;
+    FONT: x-small/1.5em Verdana, sans-serif;
+    COLOR: #000;
+    PADDING-TOP: 0px;
+    voice-family: inherit
+}    
+.footerText
+{
+    FONT: 10pt/1.8em Verdana, sans-serif;
+    COLOR: #444444
+}
+.footerText A
+{
+    COLOR: #000000;
+    TEXT-DECORATION: none
+}
+.footerText A:link
+{
+    COLOR: #000000;
+    TEXT-DECORATION: none
+}
+.footerText A:visited
+{
+    COLOR: #000000;
+    TEXT-DECORATION: none
+}
+.footerText A:hover
+{
+    COLOR: #440000;
+    TEXT-DECORATION: underline
+}

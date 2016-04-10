@@ -1,0 +1,23 @@
+{
+  "name": "musical",
+  "flags": {
+    "dev": true,
+    "prod": false,
+    "minify": false
+  },
+  "fs": {
+    "ETC_ROOT": "../etc",
+    "BIN_ROOT": "../bin",
+    "LOG_ROOT": "../log"
+  },
+  "bindings": {
+    "cdn": [
+      [
+        "http",
+        {
+          "port": 1337
+        }
+      ]
+    ]
+  }
+}
