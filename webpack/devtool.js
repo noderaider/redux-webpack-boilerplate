@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.getDevTool = getDevTool;
 
-var _config = require('../config.server');
+var _configServer = require('../config.server.js');
 
 function getDevTool(name) {
   if (process.env.NODE_ENV === 'hot') return '#eval';

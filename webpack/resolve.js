@@ -6,21 +6,21 @@ Object.defineProperty(exports, "__esModule", {
 exports.getResolve = getResolve;
 exports.getResolveLoader = getResolveLoader;
 
-var _config = require('../config.server');
+var _configServer = require('../config.server.js');
 
 var _alias = require('./alias');
 
 function getResolve(name) {
-        return { root: [_config.__rootname],
+        return { root: [_configServer.__rootname],
                 alias: (0, _alias.getAlias)(name),
-                fallback: (0, _config.resolveRoot)('node_modules'),
+                fallback: (0, _configServer.resolveRoot)('node_modules'),
                 extensions: ['', '.jsx', '.js', '.json']
         };
 }
 
 function getResolveLoader(name) {
-        return { root: (0, _config.resolveRoot)('node_modules'),
-                fallback: (0, _config.resolveRoot)('node_modules'),
+        return { root: (0, _configServer.resolveRoot)('node_modules'),
+                fallback: (0, _configServer.resolveRoot)('node_modules'),
                 extensions: ['', '.jsx', '.js', '.json']
         };
 }
