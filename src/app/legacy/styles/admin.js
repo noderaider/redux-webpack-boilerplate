@@ -1,8 +1,0 @@
-import './bootstrap/bootstrap.css'
-import './bootstrap/bootstrap-tix.css'
-import './jquery-ui/themes/tix/jquery-ui.css'
-import './cluetip/jquery.cluetip.css'
-import './dcmegamenu.css'
-import './skins/tix.css'
-import './AdminCommon.css'
-import './Tooltip.css'
