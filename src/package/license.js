@@ -1,1 +1,1 @@
-"MIT"
+export default ({ license = 'MIT' }) => license

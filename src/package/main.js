@@ -1,1 +1,1 @@
-export default "lib/index.js"
+export default 'lib/index.js'

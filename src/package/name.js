@@ -1,1 +1,1 @@
-export default "redux-webpack-boilerplate"
+export default 'redux-webpack-boilerplate'
