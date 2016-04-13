@@ -1,0 +1,45 @@
+{
+  "coverage": "33.33%",
+  "expectCount": 6,
+  "actualCount": 2,
+  "files": {
+    "lib/route/api.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "lib/route/index.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "lib/server.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        39
+      ]
+    },
+    "lib/cors.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        4
+      ]
+    },
+    "lib/index.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        8
+      ]
+    },
+    "lib/proxy.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        16
+      ]
+    }
+  }
+}
