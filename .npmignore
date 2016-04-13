@@ -1,8 +1,7 @@
 # Source files
-client/
-src/
-test/
-vagrant/
+/src/
+/test/
+/vagrant/
 
 .babelrc
 .eslintrc
