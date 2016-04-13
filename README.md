@@ -2,6 +2,7 @@
 
 `npm i -S redux-webpack-boilerplate`
 
+##### This is in final rounds of development. Come back in a day or two.
 
 ### Features
 
