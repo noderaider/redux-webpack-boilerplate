@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">lib/proxy.js | redux-idle-monitor API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/cchamberlain/redux-webpack-boilerplate" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getCors">getCors</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-proxy">proxy</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getServerMap">getServerMap</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-configureServer">configureServer</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">route</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-configureApi">configureApi</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-configureRouter">configureRouter</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">lib/proxy.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/***
+ * Proxy Module
+ * Responsible for reading proxy config and setting up proxies.
+ * @module server/proxy
+ */
+import httpProxy from &apos;http-proxy&apos;
+import http from &apos;http&apos;
+import https from &apos;https&apos;
+import { createServerLogger } from &apos;../config.server&apos;
+//import { getCors } from &apos;./cors&apos;
+import { server as serverConfig } from &apos;../config.server&apos;
+
+const log = createServerLogger(&apos;proxy&apos;)
+const proxyListen = ({ name, fromPort, toHost, toPort }) =&gt; `proxy ${name} directing from :${fromPort} to ${toHost}:${toPort}`
+
+export default function proxy() {
+  const cdnBindings = new Map(serverConfig.bindings.cdn)
+  const hasHttp = cdnBindings.has(&apos;http&apos;)
+  const hasHttps = cdnBindings.has(&apos;https&apos;)
+  //const cors = getCors()
+  const proxyConfigs = Array.isArray(serverConfig.proxies) ? serverConfig.proxies : [ serverConfig.proxies ]
+
+  /*** Iterate proxy configs and start routing */
+  proxyConfigs.forEach(config =&gt; {
+    const options = getProxyOptions(config)
+    const proxyServer = httpProxy.createProxyServer(options)
+    const listenMessage = proxyListen(config)
+
+    proxyServer.on(&apos;error&apos;, (err, req, res) =&gt; {
+      log.error(err, &apos;error proxying request&apos;)
+      res.end()
+    })
+
+    proxyServer.on(&apos;proxyReq&apos;, (proxyReq, req, res, options) =&gt; {
+      // This event fires on proxy requests
+    })
+
+    //proxyServer.on(&apos;proxyRes&apos;, (proxyRes, req, res) =&gt; cors.handle(req, res))
+
+    createProxyServer(http.createServer(onProxy))
+
+
+    const createProxyServer = server =&gt; {
+      if (config.allowWebSockets)
+        server.on(&apos;upgrade&apos;, (req, socket, head) =&gt; server.ws(req, socket, head))
+      server.listen(config.fromPort, () =&gt; log.info(listenMessage))
+    }
+
+    const onProxy = (req, res) =&gt; {
+      //if(!cors.isOk(req))
+        //return cors.handleFailure(req, res)
+
+      if(config.stub &amp;&amp; config.stub[req.method])
+        return proxyStub(req, res)
+
+      if(req.method === &apos;OPTIONS&apos;)
+        //return cors.handlePreflight(req, res)
+
+      if (config.latency)
+        setTimeout(() =&gt; proxyServer.web(req, res), config.latency)
+      else
+        proxyServer.web(req, res)
+    }
+
+    const proxyStub = (req, res) =&gt; {
+      var stub = config.stub[req.method]
+      res.writeHead(200, stub.headers)
+      if (stub.headers[&apos;content-length&apos;] === 0) res.end()
+      else res.end(JSON.stringify(stub.body))
+    }
+  })
+}
+
+const getProxyOptions = config =&gt; {
+  var opts =  { target: config.target || `${config.toScheme}://${config.toHost}:config.toPort`
+              , xfwd: true
+              }
+  opts.secure = config.secure
+  return opts
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.6)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

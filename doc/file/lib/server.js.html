@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">lib/server.js | redux-idle-monitor API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/cchamberlain/redux-webpack-boilerplate" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getCors">getCors</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-proxy">proxy</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getServerMap">getServerMap</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-configureServer">configureServer</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">route</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-configureApi">configureApi</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-configureRouter">configureRouter</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">lib/server.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import express from &apos;express&apos;
+import path from &apos;path&apos;
+import { createServerLogger } from &apos;../config.server&apos;
+import Renderer from &apos;./renderers/Renderer&apos;
+import merge from &apos;lodash.merge&apos;
+import http from &apos;http&apos;
+import https from &apos;https&apos;
+//import proxy from &apos;./proxy&apos;
+import route from &apos;./route&apos;
+import { assert } from &apos;chai&apos;
+import { server } from &apos;../config.server&apos;
+
+const log = createServerLogger(&apos;Server&apos;)
+
+const startHttp = (instance, { port }) =&gt; new Promise((resolve, reject) =&gt; {
+  http.createServer(instance).listen(port, err =&gt; err ? reject(err) : resolve(`STARTED @ http://:::${port}`))
+})
+const startHttps = (instance, { port }, opts) =&gt; new Promise((resolve, reject) =&gt; {
+  https.createServer(opts, instance).listen(port, err =&gt; err ? reject(err) : resolve(`STARTED @ https://:::${port}`))
+})
+
+const onFatal = err =&gt; {
+  log.fatal(err, &apos;A fatal error occurred starting the server.&apos;)
+  setTimeout(() =&gt; process.exit(1), 4000)
+}
+
+const startServer = (app, { scheme, binding }) =&gt; {
+  assert.ok(binding, &apos;bindings must be specified&apos;)
+  assert.typeOf(binding.port, &apos;number&apos;, &apos;binding port must be a valid port number&apos;)
+  return startHttp(app, binding)
+    .then(message =&gt; log.info({ binding }, message))
+    .catch(onFatal)
+}
+
+const getCdnBinding = () =&gt; new Map(server.bindings.cdn)
+
+/** Which config name to use when hot reloading */
+const hotConfigName = &apos;app&apos;
+const configureServer = ({ paths }) =&gt; {
+  let serverMap = new Map()
+  for(let [scheme, binding] of getCdnBinding().entries()) {
+    let app = Object.assign(express(), { settings: server, locals: paths })
+
+    /** Enable proxying */
+    app.set(&apos;trust proxy&apos;, true)
+    if (process.env.NODE_ENV === &apos;hot&apos;) {
+      let webpackConfig = require(&apos;../webpack.config&apos;)
+      let hotConfig = Array.isArray(webpackConfig) ? webpackConfig.filter(x =&gt; x.name === hotConfigName)[0] : webpackConfig
+      let compiler = require(&apos;webpack&apos;)(hotConfig)
+      app.use(require(&apos;webpack-dev-middleware&apos;)(compiler, { noInfo: true
+                                                          , publicPath: hotConfig.output.publicPath
+                                                          //, quiet: false
+                                                          //, headers: { &apos;Access-Control-Allow-Origin&apos;: &apos;*&apos; }
+                                                          //, stats: { colors: true }
+                                                          }))
+      app.use(require(&apos;webpack-hot-middleware&apos;)(compiler))
+    }
+
+    app.use(route(app))
+
+    let environment = { NODE_ENV: process.env.NODE_ENV }
+    log.info(environment, `ENVIRONMENT =&gt; ${JSON.stringify(environment)}`)
+
+    serverMap.set(scheme, { app
+                          , start: () =&gt; startServer(app, { scheme, binding })
+                          })
+  }
+  //proxy()
+  return serverMap
+}
+
+export default configureServer
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.6)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

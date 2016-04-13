@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">lib/route/index.js | redux-idle-monitor API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/cchamberlain/redux-webpack-boilerplate" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getCors">getCors</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-proxy">proxy</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getServerMap">getServerMap</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-configureServer">configureServer</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">route</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-configureApi">configureApi</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-configureRouter">configureRouter</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">lib/route/index.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import express from &apos;express&apos;
+import { join } from &apos;path&apos;
+import favicon from &apos;serve-favicon&apos;
+import { createServerLogger, server } from &apos;../../config.server&apos;
+//import { getCors } from &apos;../cors&apos;
+import configureApi from &apos;./api&apos;
+import { assert } from &apos;chai&apos;
+
+const log = createServerLogger(&apos;routes&apos;)
+//const cors = getCors()
+
+const gzipExtensionFilter = /^(js|css|html|json|ico|eot|otf|ttf)$/
+
+const contentTypeMap =  { &apos;js&apos;: &apos;text/javascript&apos;
+                        , &apos;json&apos;: &apos;application/json&apos;
+                        , &apos;css&apos;: &apos;text/css&apos;
+                        , &apos;html&apos;: &apos;text/html&apos;
+                        , &apos;xml&apos;: &apos;text/xml&apos;
+                        , &apos;ico&apos;: &apos;image/x-icon&apos;
+                        , &apos;woff&apos;: &apos;application/x-font-woff&apos;
+                        , &apos;woff2&apos;: &apos;application/font-woff2&apos;
+                        , &apos;ttf&apos;: &apos;application/x-font-ttf&apos;
+                        , &apos;otf&apos;: &apos;application/x-font-otf&apos;
+                        , &apos;eot&apos;: &apos;application/vnd.ms-fontobject&apos;
+                        , &apos;svg&apos;: &apos;image/svg+xml&apos;
+                        , &apos;png&apos;: &apos;image/png&apos;
+                        , &apos;jpg&apos;: &apos;image/jpeg&apos;
+                        , &apos;jpeg&apos;: &apos;image/jpeg&apos;
+                        , &apos;gif&apos;: &apos;image/gif&apos;
+                        , &apos;tiff&apos;: &apos;image/tiff&apos;
+                        }
+
+
+const getDefaultHeaders = extension =&gt; {
+  let contentType = contentTypeMap[extension]
+  return contentType ? { &apos;Content-Type&apos;: contentType } : {}
+}
+
+const resolveAssetPath = ({ assetType, assetSubType }) =&gt; assetSubType ? `${assetType}/${assetSubType}` : assetType
+
+const serveResource = ({ assetType, assetSubType, assetName }) =&gt; {
+  const { flags } = server
+  let extension = assetName.slice((assetName.lastIndexOf(&apos;.&apos;) - 1 &gt;&gt;&gt; 0) + 2)
+  if(assetType === &apos;static&apos; &amp;&amp; !extension) {
+    let path = `/static/html/${assetName}.html`
+    let headers = getDefaultHeaders(&apos;html&apos;)
+    log.debug(`serving gzipped resource =&gt; path[${path}], headers[${JSON.stringify(headers)}]`)
+    return { path, headers }
+  } else {
+    let assetPath = resolveAssetPath({ assetType, assetSubType })
+    let headers = getDefaultHeaders(extension)
+    if(flags.minify &amp;&amp; gzipExtensionFilter.test(extension)) {
+      let path = `/${assetPath}/gz/${assetName}`
+      headers[&apos;Content-Encoding&apos;] = &apos;gzip&apos;
+      log.debug(`serving gzipped resource =&gt; path[${path}], headers[${JSON.stringify(headers)}]`)
+      return { path, headers }
+    } else {
+      let path = `/${assetPath}/${assetName}`
+      log.debug(`serving resource =&gt; path[${path}], headers[${JSON.stringify(headers)}]`)
+      return { path, headers }
+    }
+  }
+}
+
+const configureDynamic = assetType =&gt; {
+  assert.ok(assetType, &apos;route dynamic thunk must specify assetType&apos;)
+  const routeDynamic = (req, res, next) =&gt; {
+    //cors.handle(req, res)
+
+    let assetSubType = req.params.assetSubType
+    let assetName = req.params.assetName
+    log.debug(`SERVING STATIC ASSET =&gt; TYPE[${assetType}], NAME[${assetName}]`)
+
+    if(!assetType || !assetName)
+      throw new Error(`routeDynamic requires an assetType and assetName =&gt; assetType:[${assetType}], assetName:[${assetName}]`)
+    let { path, headers } = serveResource({ assetType, assetSubType, assetName })
+    switch(assetType) {
+      case &apos;assets&apos;:
+      case &apos;static&apos;:
+      case &apos;img&apos;:
+        res.sendFile(join(req.app.locals.PUBLIC_ROOT, path), { headers })
+        break;
+      case &apos;images&apos;:
+        res.sendFile(join(req.app.locals.STATIC_ROOT, path), { headers })
+        break;
+      default:
+        next()
+    }
+  }
+  let dynamicRouter = express.Router()
+  dynamicRouter.get(&apos;/:assetSubType/:assetName&apos;, routeDynamic)
+  dynamicRouter.get(&apos;/:assetName&apos;, routeDynamic)
+  return dynamicRouter
+}
+
+
+/**
+ * Routes Module
+ * Exposes routes for the application.
+ * @module server/lib/routes
+ */
+const configureRouter = app =&gt; {
+  const { PUBLIC_ROOT
+        , STATIC_ROOT
+        , APP_ROOT
+        , LEGACY_STYLES_ROOT
+        , LEGACY_IMAGES_ROOT
+        , NODE_MODULES_ROOT
+        } = app.locals
+
+
+  let staticFilename = () =&gt; `${process.env.NODE_ENV === &apos;hot&apos; ? &apos;hot&apos; : &apos;index&apos;}.html`
+  let staticPath = join(STATIC_ROOT, &apos;html&apos;, staticFilename())
+  const serveIdentity = (req, res) =&gt; {
+    //cors.handle(req, res)
+    log.trace(&apos;serving static =&gt; %s&apos;, staticPath)
+    res.sendFile(staticPath)
+  }
+
+  let router = express.Router()
+  router.use(favicon(join(STATIC_ROOT, &apos;favicon.ico&apos;)))
+  router.all(&apos;/api/*&apos;, configureApi())
+
+  router.use(&apos;/assets&apos;, configureDynamic(&apos;assets&apos;))
+  router.use(&apos;/images&apos;, configureDynamic(&apos;images&apos;))
+  router.use(&apos;/img&apos;, configureDynamic(&apos;img&apos;))
+  router.use(&apos;/static&apos;, configureDynamic(&apos;static&apos;))
+  router.use(&apos;/&apos;, serveIdentity)
+  return router
+}
+
+export default configureRouter
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.6)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
