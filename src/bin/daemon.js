@@ -1,7 +1,8 @@
 #! /usr/bin/env node
+
+import name from '../lib/package/name'
 import pm2 from 'pm2'
 
-const name = '@tixinc/js'
 const script = 'bin/run.js'
 const max_memory_restart = '100M'
 //const exec_mode = 'cluster'

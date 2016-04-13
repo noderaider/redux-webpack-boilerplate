@@ -1,18 +1,20 @@
+import { appKey } from 'config'
+
 export const saveGlobalStore = store => {
-  window.tix = window.tix || {}
-  window.tix._store = store
+  window[appKey] = window[appKey] || {}
+  window[appKey]._store = store
 }
 
 export const resolveGlobalStore = (pollFrequencyMS = 100) => {
   return new Promise((resolve, reject) => {
     try {
-      window.tix = window.tix || {}
-      if(window.tix._store)
-        return resolve(window.tix._store)
+      window[appKey] = window[appKey] || {}
+      if(window[appKey]._store)
+        return resolve(window[appKey]._store)
       let interval = setInterval(() => {
-        if(window.tix._store) {
+        if(window[appKey]._store) {
           clearInterval(interval)
-          resolve(window.tix._store)
+          resolve(window[appKey]._store)
         }
       }, 100)
     } catch(err) {
