@@ -5,6 +5,5 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.getTarget = getTarget;
 function getTarget(name) {
-  if (name === 'lambda') return 'node';
   return 'web';
 }
