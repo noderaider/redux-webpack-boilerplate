@@ -83,7 +83,7 @@ function tooltip(state = initialTooltip, action = {}) {
   return state
 }
 
-const initialTheme = 'solarized'
+const initialTheme = 'solarized-dark'
 function theme(state = initialTheme, action = {}) {
   const { type, payload, error } = action
   if(error || !payload)

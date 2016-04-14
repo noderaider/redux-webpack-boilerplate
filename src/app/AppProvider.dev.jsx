@@ -4,7 +4,7 @@ import React, { Component, PropTypes } from 'react'
 import { Provider } from 'react-redux'
 import DevTools from './containers/DevTools'
 
-export default class App extends Component {
+export default class AppProvider extends Component {
   render() {
     return (
       <Provider store={this.props.store}>

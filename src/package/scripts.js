@@ -17,6 +17,8 @@ export default ({}) => Object.assign({}, ...[ build('webpack', resource => `babe
                                               , 'build-prod': 'NODE_ENV=production npm run build-app && npm run build-lib-prod && npm run build-bin'
                                               , 'build-dev': 'NODE_ENV=development npm run build-app && npm run build-lib-dev && npm run build-bin'
                                               , 'build-hot': 'NODE_ENV=hot npm run build-app && npm run build-lib-dev && npm run build-bin'
+                                              , 'start-hot': 'NODE_ENV=hot npm run build-hot && node bin/run'
+                                              , 'start': 'NODE_ENV=production npm run build-prod && node bin/run'
 
                                               , 'build': 'npm run build-app && npm run build-bin && npm run build-lib'
                                               , 'watch': 'npm run watch-build'

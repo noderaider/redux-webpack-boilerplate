@@ -1,12 +1,13 @@
 import React, { Component, PropTypes } from 'react'
 import { Navbar, Nav, NavbarBrand, NavItem } from 'react-bootstrap'
+import { appKey } from 'config'
 
 import './TopBar.css'
 
 const bgClasses = { info: 'green-bg', warn: 'yellow-bg', error: 'red-bg' }
 
 const TopBarBrand = props => (
-  <NavbarBrand><img src="/img/logo-40.png" alt="Brand" /></NavbarBrand>
+  <NavbarBrand><img src="/images/gear_0.gif" alt="Brand" />{appKey}</NavbarBrand>
 )
 
 const TopBarMenuButton = props => props.menuEnabled ?  (
@@ -27,7 +28,7 @@ export default class TopBar extends Component {
       <Navbar fixedTop inverse>
         <Nav>
           <TopBarMenuButton menuEnabled={this.props.menuEnabled} onToggleMenu={this.props.onToggleMenu} />
-          <NavItem className="pull-left" href="/management">
+          <NavItem className="pull-left" href="/">
             <TopBarBrand />
           </NavItem>
         </Nav>

@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from 'app/App'
-import Musical from 'app/containers/Musical'
+import AppProvider from 'app/AppProvider'
+import App from 'app/containers/App'
 import { name } from 'config-client'
 
 import { printTimings } from './global/performance'
@@ -18,7 +18,7 @@ const style = { height: '100%'}
 injectConfigIntoGlobal()
 resolveGlobalStore()
   .then(store => {
-    const children = <App store={store}><Musical /></App>
+    const children = <AppProvider store={store}><App /></AppProvider>
     const element = new RootElement('app', style, { style, children })
     element.render().then(() => {
       window[name].loading.dispose()

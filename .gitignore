@@ -1,3 +1,9 @@
+.repackagerc
+/bin/
+/lib/
+/public/
+/webpack/
+
 # Logs
 logs
 *.log

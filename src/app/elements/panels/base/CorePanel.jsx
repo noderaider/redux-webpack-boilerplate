@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react'
 import { Grid, Row, Col, Well } from 'react-bootstrap'
 import classNames from 'classnames'
 import contextTypes from 'app/context'
-import NoShim from 'elements/filters/NoShim'
 import FA, { faSizeOptions, faDefaultProps } from 'elements/visual/FA'
 
 export const panelPropTypes = { children: PropTypes.any.isRequired
@@ -67,7 +66,7 @@ class CorePanel extends Component {
               <div style={{ ...headerDefaultStyle, ...headerStyle }}>
                 <h2 className="pull-left" style={titleDefaultStyle}>{title}</h2>
                 <div className="pull-right" style={iconStyle}>
-                  <NoShim><FA name={iconName} loadingName={iconLoadingName} size={iconSize} color={accentColor} isLoading={isLoading} /></NoShim>
+                  <FA name={iconName} loadingName={iconLoadingName} size={iconSize} color={accentColor} isLoading={isLoading} />
                 </div>
               </div>
               <div style={{ ...contentDefaultStyle, ...contentStyle }}>

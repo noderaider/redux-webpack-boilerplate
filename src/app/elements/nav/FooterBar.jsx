@@ -1,13 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 import { Navbar, Nav, NavBrand, NavItem, CollapsibleNav, Well, Grid, Row, Col, Panel, Button, ButtonGroup } from 'react-bootstrap'
 import Label from 'elements/forms/controls/Label'
-import bindAll from 'lodash.bindall'
 import classNames from 'classnames'
 import Identity from 'controls/Identity'
 
-import PrivacyPolicyMicro from 'elements/micro/PrivacyPolicyMicro'
-import TermsOfUseMicro from 'elements/micro/TermsOfUseMicro'
-import AllRightsReservedMicro from 'elements/micro/AllRightsReservedMicro'
 import DevMicro from 'elements/micro/DevMicro'
 import HotMicro from 'elements/micro/HotMicro'
 
@@ -25,12 +21,6 @@ const AttributesBar = props => (
   </div>
 )
 
-const LegalBar = props => (
-  <div style={inlineStyle}>
-    <PrivacyPolicyMicro />
-    <TermsOfUseMicro />
-  </div>
-)
 
 export default class FooterBar extends Component {
   static propTypes =  { showCopyright: PropTypes.bool.isRequired
@@ -53,7 +43,6 @@ export default class FooterBar extends Component {
             {showAttributes ? <AttributesBar /> : null}
           </Col>
           <Col className="FooterBarRight" xs={6}>
-            {showLegal ? <LegalBar /> : null}
           </Col>
         </Row>
         <Row>
@@ -61,7 +50,6 @@ export default class FooterBar extends Component {
             <Identity />
           </Col>
           <Col className="FooterBarRight" xs={6}>
-            {showCopyright ? <AllRightsReservedMicro /> : null}
           </Col>
         </Row>
       </div>

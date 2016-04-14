@@ -30,13 +30,13 @@
     var target = document.getElementById('foo')
     var spinner = new Spinner(opts).spin(target)
  */
-let defaults =  { lines: 14             // The number of lines to draw
+let defaults =  { lines: 8             // The number of lines to draw
                 , length: 12             // The length of each line
-                , width: 8              // The line thickness
-                , radius: 20            // The radius of the inner circle
+                , width: 10              // The line thickness
+                , radius: 25            // The radius of the inner circle
                 , scale: 1.0            // Scales overall size of the spinner
                 , corners: 1            // Roundness (0..1)
-                , color: '#f2c73d'      // #rgb or #rrggbb
+                , color: '#839496'      // #rgb or #rrggbb
                 , opacity: 1/4          // Opacity of the lines
                 , rotate: 0             // Rotation offset
                 , direction: 1          // 1: clockwise, -1: counterclockwise

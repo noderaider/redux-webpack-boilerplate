@@ -1,6 +1,5 @@
 import { createAction } from 'redux-actions'
 import { apiAction, isExpired, decodeToken } from './api'
-import { setSessionTimeouts } from './timeout'
 import { saveState, loadState, removeState } from 'services/state'
 import { goToPath } from 'services/location'
 import { clientId } from 'config-client'
