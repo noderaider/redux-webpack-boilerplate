@@ -6,6 +6,7 @@ export const configServerPath = resolveRoot('./config-server.json')
 export const configPath = resolveRoot('./config.client.js')
 
 export const libFolder = resolveRoot('./src/lib')
+export const packageFolder = resolveRoot('./src/package')
 export const appFolder = resolveRoot('./src/app')
 export const binFolder = resolveRoot('./src/bin')
 
@@ -22,6 +23,7 @@ export const legacyFolder = resolve(appFolder, 'legacy')
 export function getAlias(name) {
   return  { 'config-client': configClientPath
           , 'config': configPath
+          , 'package': packageFolder
           , 'app': appFolder
           , 'chai': 'assertive-chai'
           , 'vendor': vendorFolder

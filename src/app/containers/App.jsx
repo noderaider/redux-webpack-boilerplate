@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom'
 import Immutable from 'immutable'
 import { connect } from 'react-redux'
+import IdleMonitor from 'react-redux-idle-monitor'
+
 import classNames from 'classnames'
 
 import  { refreshIdentity
@@ -61,6 +63,7 @@ class App extends Component {
           <ErrorPanel />
         ) : null}
         <FooterBar />
+        <IdleMonitor showStatus={true} />
       </div>
     )
   }

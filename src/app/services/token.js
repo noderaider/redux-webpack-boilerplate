@@ -4,10 +4,11 @@
  * @module client/core/jwt
  */
 
-import noop from 'lodash.noop'
 import jwtSimple from 'jwt-simple'
 import { state } from 'config-client'
 import { saveState, loadState, removeState } from 'services/state'
+
+const noop = () => {}
 
 export function saveTokens(tokens) {
   if(!(tokens && tokens.access && tokens.refresh))

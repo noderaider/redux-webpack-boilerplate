@@ -1,7 +1,7 @@
 import cookie from 'react-cookie'
-import noop from 'lodash.noop'
 import { state } from 'config-client'
 
+const noop = () => {}
 const keyNames = Object.keys(state.meta)
 const separator = ':'
 const stateSerializers =  { json: state => JSON.stringify(state)

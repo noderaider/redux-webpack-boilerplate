@@ -1,15 +1,12 @@
 import { combineReducers } from 'redux'
-//import { identity } from './identity'
-//import { api } from './api'
-//import { timeout } from './timeout'
-//import { autocomplete } from './autocomplete'
-//import { validation } from './validation'
 import { visual } from './visual'
 import errors from './errors'
 import { reducer as form } from 'redux-form'
+import { reducer as idle } from 'state/components/redux-idle-monitor'
 
 const rootReducer = combineReducers({ visual
                                     , errors
                                     , form
+                                    , idle
                                     })
 export default rootReducer

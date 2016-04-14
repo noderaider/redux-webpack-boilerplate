@@ -13,10 +13,6 @@ var _path = require('path');
 
 var _bunyan = require('bunyan');
 
-var _lodash = require('lodash.noop');
-
-var _lodash2 = _interopRequireDefault(_lodash);
-
 var _config = require('./config.client');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

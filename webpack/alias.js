@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
         value: true
 });
-exports.legacyFolder = exports.externalFolder = exports.vendorFolder = exports.imagesFolder = exports.stylesFolder = exports.servicesFolder = exports.stateFolder = exports.elementsFolder = exports.controlsFolder = exports.binFolder = exports.appFolder = exports.libFolder = exports.configPath = exports.configServerPath = exports.configClientPath = undefined;
+exports.legacyFolder = exports.externalFolder = exports.vendorFolder = exports.imagesFolder = exports.stylesFolder = exports.servicesFolder = exports.stateFolder = exports.elementsFolder = exports.controlsFolder = exports.binFolder = exports.appFolder = exports.packageFolder = exports.libFolder = exports.configPath = exports.configServerPath = exports.configClientPath = undefined;
 exports.getAlias = getAlias;
 
 var _configServer = require('../config.server.js');
@@ -15,6 +15,7 @@ var configServerPath = exports.configServerPath = (0, _configServer.resolveRoot)
 var configPath = exports.configPath = (0, _configServer.resolveRoot)('./config.client.js');
 
 var libFolder = exports.libFolder = (0, _configServer.resolveRoot)('./src/lib');
+var packageFolder = exports.packageFolder = (0, _configServer.resolveRoot)('./src/package');
 var appFolder = exports.appFolder = (0, _configServer.resolveRoot)('./src/app');
 var binFolder = exports.binFolder = (0, _configServer.resolveRoot)('./src/bin');
 
@@ -31,6 +32,7 @@ var legacyFolder = exports.legacyFolder = (0, _path.resolve)(appFolder, 'legacy'
 function getAlias(name) {
         return { 'config-client': configClientPath,
                 'config': configPath,
+                'package': packageFolder,
                 'app': appFolder,
                 'chai': 'assertive-chai',
                 'vendor': vendorFolder,

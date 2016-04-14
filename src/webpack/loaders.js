@@ -1,4 +1,3 @@
-import noop from 'lodash.noop'
 import { server, resolveRoot } from '../config.server.js'
 //import { extractText } from './plugins'
 
