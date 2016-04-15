@@ -124,10 +124,10 @@ const configureDynamic = assetType =&gt; {
       case &apos;static&apos;:
       case &apos;img&apos;:
         res.sendFile(join(req.app.locals.PUBLIC_ROOT, path), { headers })
-        break;
+        break
       case &apos;images&apos;:
         res.sendFile(join(req.app.locals.STATIC_ROOT, path), { headers })
-        break;
+        break
       default:
         next()
     }
@@ -163,7 +163,7 @@ const configureRouter = app =&gt; {
   }
 
   let router = express.Router()
-  router.use(favicon(join(STATIC_ROOT, &apos;favicon.ico&apos;)))
+  router.use(favicon(join(STATIC_ROOT, &apos;images/nintendo.ico&apos;)))
   router.all(&apos;/api/*&apos;, configureApi())
 
   router.use(&apos;/assets&apos;, configureDynamic(&apos;assets&apos;))
