@@ -1,20 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom'
-import Immutable from 'immutable'
 import { connect } from 'react-redux'
 import IdleMonitor from 'react-redux-idle-monitor'
 
-import classNames from 'classnames'
-
-import  { refreshIdentity
-        , hydrateTokens
-        } from 'state/actions/identity'
-
-import  { setVisibility
-        , toggleVisibility
-        } from 'state/actions/visual'
-
-import { Grid, Well, Row, Col, Label } from 'react-bootstrap'
 import { client, createClientLogger } from 'config'
 import TopBar from 'elements/nav/TopBar'
 import FooterBar from 'elements/nav/FooterBar'
@@ -23,7 +11,6 @@ import PageStyle from 'app/elements/visual/PageStyle'
 import ThemePanel from 'elements/panels/ThemePanel'
 import ErrorPanel from 'elements/panels/ErrorPanel'
 
-import { loadState, saveState } from 'services/state'
 import contextTypes from 'app/context'
 import getTheme from 'app/theme'
 const defaultTheme = 'solarized-dark'
@@ -39,6 +26,14 @@ const gridProps = { xs: 12, xsOffset: 0
 class App extends Component {
   static propTypes = { dispatch: PropTypes.func.isRequired };
   static childContextTypes = contextTypes;
+  componentWillMount() {
+    const { dispatch, visual } = this.props
+    const { style } = getTheme(visual.theme || defaultTheme)
+    const { backgroundColor, margin, padding } = style.body
+    document.body.style.backgroundColor = backgroundColor
+    document.body.style.margin = margin
+    document.body.style.padding = padding
+  }
   getChildContext() {
     return  { gridProps
             , theme: getTheme(this.props.visual.theme || defaultTheme)
@@ -48,21 +43,22 @@ class App extends Component {
     return true
   }
   render(){
-    const { dispatch, identity, api, visual, errors } = this.props
-    const { visibility } = visual
+    const { dispatch, visual, errors } = this.props
     const { style } = getTheme(visual.theme || defaultTheme)
 
     const hasErrors = errors.get('api').size > 0 || errors.get('identity').size > 0
 
     return (
-      <div style={style.app}>
-        <TopBar />
-        <div style={style.body} className="body-content container">
+      <div>
+        <div style={style.app}>
+          <TopBar />
+          <div style={style.content} className="body-content container">
+          </div>
+          {(hasErrors && !__PROD__) ? (
+            <ErrorPanel />
+          ) : null}
+          <FooterBar />
         </div>
-        {(hasErrors && !__PROD__) ? (
-          <ErrorPanel />
-        ) : null}
-        <FooterBar />
         <IdleMonitor showStatus={true} />
       </div>
     )
@@ -70,11 +66,8 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
-  const { identity, api, visual, autocomplete, errors } = state
-  return  { identity
-          , api
-          , visual
-          , autocomplete
+  const { visual, errors } = state
+  return  { visual
           , errors
           }
 }

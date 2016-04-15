@@ -1,4 +1,9 @@
 'use strict';
 
-var make = require('./webpack/make');
-module.exports = make('app');
+var _make = require('./webpack/make');
+
+var _make2 = _interopRequireDefault(_make);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+module.exports = (0, _make2.default)('app');

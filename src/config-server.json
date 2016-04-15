@@ -1,9 +1,13 @@
 {
-  "name": "boilerplate",
+  "appName": "boilerplate",
+  "environment": "debug",
   "flags": {
     "dev": true,
     "prod": false,
     "minify": false
+  },
+  "cors": {
+    "origins": [ "https?://.*{{HOSTNAME}}" ]
   },
   "fs": {
     "ETC_ROOT": "../etc",

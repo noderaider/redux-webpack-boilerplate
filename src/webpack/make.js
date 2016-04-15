@@ -8,7 +8,7 @@ import { getExternals } from './externals'
 import { getPlugins } from './plugins'
 import { getPostcss } from './postcss'
 
-function make(name) {
+export default function make(name) {
   if(typeof name !== 'string')
     throw new Error('Name is required.')
   let target = getTarget(name)
@@ -31,6 +31,3 @@ function make(name) {
           , postcss: getPostcss(name)
           }
 }
-
-module.exports = make
-module.exports['default'] = make

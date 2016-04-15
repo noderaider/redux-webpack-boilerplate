@@ -1,3 +1,4 @@
+import config, { appName } from 'config-client'
 import { assert } from 'chai'
 
 /** Gets the offset MS between now and an window.performance.timing (defaults to navigationStart) */
@@ -75,5 +76,5 @@ const perf =  { timing
               , printTimings
               }
 export default perf
-window[name] = window[name] || {}
-window[name].performance = window[name].performance || perf
+window[appName] = window[appName] || {}
+window[appName].performance = window[appName].performance || perf

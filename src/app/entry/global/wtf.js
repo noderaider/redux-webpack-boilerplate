@@ -1,7 +1,8 @@
+import config, { appName } from 'config-client'
 import { diagnose } from 'services/diagnostics'
 
 export const injectWTFIntoGlobal = () => {
-  window[name] = window[name] || {}
+  window[appName] = window[appName] || {}
   let diagnostics = { wtf: () => diagnose() }
-  Object.assign(window[name], diagnostics)
+  Object.assign(window[appName], diagnostics)
 }

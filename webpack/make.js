@@ -1,5 +1,10 @@
 'use strict';
 
+Object.defineProperty(exports, "__esModule", {
+          value: true
+});
+exports.default = make;
+
 var _devtool = require('./devtool');
 
 var _target = require('./target');
@@ -40,6 +45,3 @@ function make(name) {
                     postcss: (0, _postcss.getPostcss)(name)
           };
 }
-
-module.exports = make;
-module.exports['default'] = make;

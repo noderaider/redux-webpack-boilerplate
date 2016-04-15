@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import AppProvider from 'app/AppProvider'
 import App from 'app/containers/App'
-import { name } from 'config-client'
+import { appName } from 'config-client'
 
 import { printTimings } from './global/performance'
 
@@ -21,7 +21,7 @@ resolveGlobalStore()
     const children = <AppProvider store={store}><App /></AppProvider>
     const element = new RootElement('app', style, { style, children })
     element.render().then(() => {
-      window[name].loading.dispose()
+      window[appName].loading.dispose()
       printTimings()
     })
   })

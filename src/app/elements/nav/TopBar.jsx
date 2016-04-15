@@ -1,40 +1,38 @@
 import React, { Component, PropTypes } from 'react'
-import { Navbar, Nav, NavbarBrand, NavItem } from 'react-bootstrap'
-import { appKey } from 'config'
+import FA from 'app/elements/visual/FA'
+import { appName } from 'config'
+import name from 'package/name'
 
 import './TopBar.css'
 
-const bgClasses = { info: 'green-bg', warn: 'yellow-bg', error: 'red-bg' }
 
-const TopBarBrand = props => (
-  <NavbarBrand><img src="/images/gear_0.gif" alt="Brand" />{appKey}</NavbarBrand>
-)
-
-const TopBarMenuButton = props => props.menuEnabled ?  (
-    <NavItem onClick={props.onToggleMenu} className="hamburger pull-left">
-      <span className="icon-bar"></span>
-      <span className="icon-bar"></span>
-      <span className="icon-bar"></span>
-    </NavItem>
-    ) : (
-    <span id="no-menu" />
-  )
+import contextTypes from 'app/context'
 
 export default class TopBar extends Component {
-  static propTypes =  { toggleMenu: React.PropTypes.func
-                      };
+  static contextTypes = contextTypes;
   render() {
-    return (<div>
-      <Navbar fixedTop inverse>
-        <Nav>
-          <TopBarMenuButton menuEnabled={this.props.menuEnabled} onToggleMenu={this.props.onToggleMenu} />
-          <NavItem className="pull-left" href="/">
-            <TopBarBrand />
-          </NavItem>
-        </Nav>
-        <Nav pullRight>
-        </Nav>
-      </Navbar>
-    </div>)
+    const { palette, color, brand, style } = this.context.theme
+    const { wrapper, hamburger, title, anchor, banner, settings, settingsImage } = style.header
+
+    return (
+      <header style={wrapper} id="topbar">
+        <button style={hamburger}>
+          <FA name="bars" size="lg" />
+        </button>
+        <span style={title}>
+          <a href="/" style={anchor}>{appName}</a>
+        </span>
+        <span style={banner}>
+          <a href={`https://nodei.co/npm/${name}/`}>
+            <img src={`https://nodei.co/npm/${name}.png?mini=true`} />
+          </a>
+        </span>
+        <span style={settings}>
+          <a href="/settings" style={anchor}>
+            <FA name="cog" size="2x"/>
+          </a>
+        </span>
+      </header>
+    )
   }
 }

@@ -11,11 +11,7 @@ export default class Renderer {
       html = html.replace('STYLE_URL', props.styleUrl)
     this.html = html
   }
-  render = callback => {
-    callback(this.html)
-  }
+  render = callback => callback(this.html);
 }
 
-if(module.hot) {
-  module.hot.accept()
-}
+if(module.hot) module.hot.accept()

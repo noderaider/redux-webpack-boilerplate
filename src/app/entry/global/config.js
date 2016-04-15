@@ -1,6 +1,6 @@
-import config, { name } from 'config-client'
+import config, { appName } from 'config-client'
 
 export const injectConfigIntoGlobal = () => {
-  window[name] = window[name] || {}
-  window[name].config = window[name].config || config
+  window[appName] = window[appName] || {}
+  window[appName].config = window[appName].config || config
 }
