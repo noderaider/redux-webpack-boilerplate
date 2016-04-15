@@ -1,9 +1,7 @@
 # [redux-webpack-boilerplate](https://npmjs.com/packages/redux-webpack-boilerplate)
 
 
-[![NPM](https://nodei.co/npm/redux-webpack-boilerplate.png?stars=true&downloadRank=true)](https://nodei.co/npm/redux-webpack-boilerplate/)
-
-[![NPM](https://nodei.co/npm-dl/redux-webpack-boilerplate.png?months=1)](https://nodei.co/npm/redux-webpack-boilerplate/)
+[![NPM](https://nodei.co/npm/redux-webpack-boilerplate.png?stars=true&downloads=true)](https://nodei.co/npm/redux-webpack-boilerplate/)
 
 `npm i -S redux-webpack-boilerplate`
 
