@@ -1,5 +1,6 @@
-export default ({}) => Object.assign({}, ...[ build('webpack', resource => `babel src/config.client.js -o config.client.js && babel src/config.server.js -o config.server.js && babel src/${resource}.config.js -o ${resource}.config.js && babel src/${resource}.static.config.js -o ${resource}.static.config.js && babel src/${resource} -d ${resource}`, ['copy-config-client', 'copy-config-server', 'build-config-client', 'build-config-server'])
-                                            , build('public', resource => `ncp src/${resource} ${resource} && webpack --config webpack.static.config.js --progress --profile --colors`, ['build-webpack'])
+export default ({}) => Object.assign({}, ...[ build('package', resource => `babel src/${resource} -d ${resource}`)
+                                            , build('webpack', resource => `babel src/config.client.js -o config.client.js && babel src/config.server.js -o config.server.js && babel src/${resource}.config.js -o ${resource}.config.js && babel src/${resource}.static.config.js -o ${resource}.static.config.js && babel src/${resource} -d ${resource}`, ['copy-config-client', 'copy-config-server', 'build-package', 'build-config-client', 'build-config-server'])
+                                            , build('public', resource => `ncp src/${resource} ${resource} && webpack --config webpack.static.config.js --progress --profile --colors`, ['build-webpack', 'build-package'])
                                             , buildWebpack('app', 'webpack.config.js', ['build-public'])
                                             , buildBabel('bin')
                                             , buildBabel('lib')

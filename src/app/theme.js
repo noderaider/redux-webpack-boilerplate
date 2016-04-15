@@ -87,10 +87,19 @@ const buildTheme = (name, palette, inverted=false) => {
                             , backgroundColor: color.primary
                             , color: color.secondary
                             }
-                    , body: { width: '100%'
-                            , backgroundColor: p['base3']
+                    , body: { backgroundColor: p['base2']
+                            , border: `1px solid ${color.secondary}`
+                            , width: '90%'
                             , float: 'left'
-                            , paddingBottom: 50
+                            , borderRadius: 5
+                            , paddingTop: 10
+                            , paddingBottom: 10
+                            , paddingLeft: '2%'
+                            , paddingRight: '2%'
+                            , marginTop: 5
+                            , marginBottom: 20
+                            , marginLeft: '3%'
+                            , marginRight: '3%'
                             }
                     , panel:  { backgroundColor: brand.default
                               , borderColor: color.tertiary

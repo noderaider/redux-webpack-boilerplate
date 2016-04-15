@@ -62,7 +62,7 @@ export const idleStatusDelay = idleStatus => (dispatch, getState) => {
     case IDLESTATUS_STONE_AGE_GONE:
     case IDLESTATUS_EXTINCT:
     default:
-      return 1000
+      return 4000
   }
 }
 

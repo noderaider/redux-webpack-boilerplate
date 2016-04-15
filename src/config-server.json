@@ -1,5 +1,6 @@
 {
-  "name": "boilerplate",
+  "appName": "boilerplate",
+  "environment": "debug",
   "flags": {
     "dev": true,
     "prod": false,

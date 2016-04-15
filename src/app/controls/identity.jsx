@@ -35,8 +35,10 @@ class Identity extends Component {
     return (
       <div>
         <FingerprintMicro fingerprint={fingerprint} />
+        {/*
         <AccessTokenMicro accessToken={accessToken} />
         <RefreshTokenMicro refreshToken={refreshToken} />
+      */}
         <ThemeMicro theme={theme} />
       </div>
     )

@@ -1,4 +1,7 @@
-{ "name": "boilerplate",
+{ "appName": "boilerplate",
+  "environment": "debug",
+  "hostname": "localhost",
+  "port": 1337,
   "state": {
     "meta": {
       "tokens": {

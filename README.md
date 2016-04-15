@@ -1,9 +1,8 @@
 # [redux-webpack-boilerplate](https://npmjs.com/packages/redux-webpack-boilerplate)
 
 
-[![NPM](https://nodei.co/npm/redux-webpack-boilerplate.png?stars=true&downloadRank=true)](https://nodei.co/npm/redux-webpack-boilerplate/)
+[![NPM](https://nodei.co/npm/redux-webpack-boilerplate.png?stars=true&downloads=true)](https://nodei.co/npm/redux-webpack-boilerplate/)
 
-[![NPM](https://nodei.co/npm-dl/redux-webpack-boilerplate.png?months=1)](https://nodei.co/npm/redux-webpack-boilerplate/)
 
 `npm i -S redux-webpack-boilerplate`
 
@@ -19,3 +18,4 @@
 * Only common and useful redux patterns setup.
 * Documents itself with (ESDoc)[https://esdoc.org/] and pushes to projects GitHub pages on release.
 * package.json scripts separated and pre-compiled to achieve Windows and OSX support for environment variables.
+* Preconfigured with redux-idle-monitor and griddle redux extensions.

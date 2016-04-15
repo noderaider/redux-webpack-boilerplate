@@ -47,7 +47,12 @@ class App extends Component {
   shouldComponentUpdate(nextProps, nextState) {
     return true
   }
-  render(){
+  componentWillMount() {
+    const { visual } = this.props
+    const { style } = getTheme(visual.theme || defaultTheme)
+    document.body.style.backgroundColor = style.app.backgroundColor
+  }
+  render() {
     const { dispatch, identity, api, visual, errors } = this.props
     const { visibility } = visual
     const { style } = getTheme(visual.theme || defaultTheme)
@@ -58,6 +63,11 @@ class App extends Component {
       <div style={style.app}>
         <TopBar />
         <div style={style.body} className="body-content container">
+          <div>
+            <ul>
+              <li>In src/package/name, modify the name to match that of your project.</li>
+            </ul>
+          </div>
         </div>
         {(hasErrors && !__PROD__) ? (
           <ErrorPanel />
