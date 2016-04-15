@@ -18,6 +18,12 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "redux-webpack-boilerplate/lib/stream.js~devstream",
+    "variable/index.html#static-variable-devStream",
+    "<span>devStream</span> <span class=\"search-result-import-path\">redux-webpack-boilerplate/lib/stream.js</span>",
+    "variable"
+  ],
+  [
     "redux-webpack-boilerplate/lib/cors.js~getcors",
     "function/index.html#static-function-getCors",
     "<span>getCors</span> <span class=\"search-result-import-path\">redux-webpack-boilerplate/lib/cors.js</span>",
@@ -34,6 +40,12 @@ window.esdocSearchIndex = [
     "function/index.html#static-function-proxy",
     "<span>proxy</span> <span class=\"search-result-import-path\">redux-webpack-boilerplate/lib/proxy.js</span>",
     "function"
+  ],
+  [
+    "redux-webpack-boilerplate/lib/stream.js~voidstream",
+    "variable/index.html#static-variable-voidStream",
+    "<span>voidStream</span> <span class=\"search-result-import-path\">redux-webpack-boilerplate/lib/stream.js</span>",
+    "variable"
   ],
   [
     "builtinexternal/ecmascriptexternal.js~array",
@@ -399,6 +411,12 @@ window.esdocSearchIndex = [
     "lib/server.js",
     "file/lib/server.js.html",
     "lib/server.js",
+    "file"
+  ],
+  [
+    "lib/stream.js",
+    "file/lib/stream.js.html",
+    "lib/stream.js",
     "file"
   ]
 ]

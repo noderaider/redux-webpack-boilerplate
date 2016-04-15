@@ -10,7 +10,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import { createServerLogger, server as serverConfig } from '../config.server'\r\nconst logger = createServerLogger('cors')\r\n\r\nexport function getCors() {\r\n  let originPatterns = Array.isArray(serverConfig.cors.originPatterns) ? serverConfig.cors.originPatterns : [serverConfig.cors.originPatterns]\r\n  originPatterns = originPatterns.map(pattern => {\r\n    return new RegExp(pattern)\r\n  })\r\n\r\n  function isOk(req) {\r\n    if(!req.headers.origin) {\r\n      return true\r\n    }\r\n    return originPatterns.some(originTest)\r\n    function originTest(pattern) {\r\n      if(pattern.test(req.headers.origin)) {\r\n        logger.trace('origin [%s] matches pattern [%s]', req.headers.origin, pattern)\r\n        return true\r\n      } else {\r\n        return false\r\n      }\r\n    }\r\n  }\r\n\r\n  const originDoesNotMatch = origin => `Origin [${origin}] did not match acceptable patterns. Request has been rejected.`\r\n  const originDoesNotExist = 'Origin did not exist. Request has been rejected.'\r\n\r\n  const failureStatus = { code: 403\r\n                        , message: '403 Forbidden'\r\n                        }\r\n\r\n  function getError(req) {\r\n    return req.headers.origin ? { message: originDoesNotMatch(req.headers.origin)\r\n                                , code: 10\r\n                                }\r\n                              : { message: originDoesNotExist\r\n                                , code: 11\r\n                                }\r\n\r\n  }\r\n\r\n  function getOptionsHeaders(req) {\r\n    return  { 'Access-Control-Allow-Origin': req.headers.origin\r\n            , 'Access-Control-Max-Age': 604800 // Specifies how long the preflight response can be cached in seconds\r\n            , 'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE'\r\n            , 'Access-Control-Allow-Headers': 'Content-Type, Authorization'\r\n            , 'Access-Control-Allow-Credentials': true\r\n            }\r\n  }\r\n\r\n  function handle(req, res) {\r\n    if(isOk(req)) {\r\n      if(req.headers.origin) {\r\n        logger.trace('proxy +origin [%s], method [%s]', req.headers.host, req.method)\r\n      } else {\r\n        logger.trace('proxy +host [%s], method [%s]', req.headers.host, req.method)\r\n      }\r\n      res.setHeader('Access-Control-Allow-Origin', req.headers.origin || req.headers.host)\r\n      res.setHeader('Access-Control-Allow-Credentials', true)\r\n    } else {\r\n      if(req.headers.origin) {\r\n        logger.error('proxy -origin [%s], method [%s]', req.headers.host, req.method)\r\n      } else {\r\n        logger.warn('proxy -host [%s], method [%s]', req.headers.host, req.method)\r\n      }\r\n    }\r\n  }\r\n\r\n  function handlePreflight(req, res) {\r\n    res.writeHead(200, getOptionsHeaders(req))\r\n    res.end()\r\n  }\r\n\r\n  function handleFailure(req, res) {\r\n    res.writeHead(failureStatus.code)\r\n    res.end (JSON.stringify({ message: failureStatus.message\r\n                            , errors: [ getError(req) ]\r\n                            }))\r\n  }\r\n\r\n  return  { isOk : isOk\r\n          , failureStatus: failureStatus\r\n          , getError: getError\r\n          , getOptionsHeaders: getOptionsHeaders\r\n          , handle: handle\r\n          , handlePreflight: handlePreflight\r\n          , handleFailure: handleFailure\r\n          }\r\n}\r\n"
+    "content": "import { createServerLogger, server as serverConfig, origins } from '../config.server'\r\nimport { devStream } from './stream'\r\n\r\nconst logger = createServerLogger('cors')\r\n\r\nconst logOriginPass = (origin, pattern) => logger.trace(`PASS: origin [${origin}] matches pattern [${pattern}].`)\r\nconst logOriginFail = (origin) => logger.trace(`FAIL: origin [${origin}] does not match any patterns.`)\r\nconst logOriginDNE = () => logger.trace('DNE: origin header does not exist.')\r\n\r\nconst corsValidator = patterns => {\r\n  return req => (typeof req.headers.origin === 'string'\r\n                ? patterns.filter(x => x.test(req.headers.origin))\r\n                          .map(devStream(x => logOriginPass(req.headers.origin, x))).length > 0\r\n                : true\r\n                )\r\n}\r\n\r\nexport function getCors() {\r\n  const isOriginOk = corsValidator(origins.map(x => new RegExp(x)))\r\n\r\n  const failureStatus = { code: 403\r\n                        , message: '403 Forbidden'\r\n                        }\r\n\r\n  const getError = req => req.headers.origin  ? ({ message: logOriginFail(req.headers.origin), code: 10 })\r\n                                              : ({ message: logOriginDNE(), code: 11 })\r\n\r\n  const getOptionsHeaders = req => ({ 'Access-Control-Allow-Origin': req.headers.origin\r\n                                    , 'Access-Control-Max-Age': 604800 // Specifies how long the preflight response can be cached in seconds\r\n                                    , 'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE'\r\n                                    , 'Access-Control-Allow-Headers': 'Content-Type, Authorization'\r\n                                    , 'Access-Control-Allow-Credentials': true\r\n                                    })\r\n\r\n  const handle = (req, res) => {\r\n    const resolvedOrigin = req.headers.origin || req.headers.host\r\n    if(!isOriginOk(req))\r\n      return req.headers.origin ? logger.error(`proxy -origin [${resolvedOrigin}], method [${req.method}]`) : logger.warn('proxy -host [%s], method [%s]', req.headers.host, req.method)\r\n    logger.trace(`proxy +${req.headers.origin ? 'origin' : 'host'} [${resolvedOrigin}], method [${req.method}]`)\r\n    res.setHeader('Access-Control-Allow-Origin', resolvedOrigin)\r\n    res.setHeader('Access-Control-Allow-Credentials', true)\r\n  }\r\n\r\n  const handlePreflight = (req, res) => {\r\n    res.writeHead(200, getOptionsHeaders(req))\r\n    res.end()\r\n  }\r\n\r\n  const handleFailure = (req, res) => {\r\n    res.writeHead(failureStatus.code)\r\n    res.end (JSON.stringify({ message: failureStatus.message\r\n                            , errors: [ getError(req) ]\r\n                            }))\r\n  }\r\n\r\n  return  { isOriginOk : isOriginOk\r\n          , failureStatus: failureStatus\r\n          , getError: getError\r\n          , getOptionsHeaders: getOptionsHeaders\r\n          , handle: handle\r\n          , handlePreflight: handlePreflight\r\n          , handleFailure: handleFailure\r\n          }\r\n}\r\n"
   },
   {
     "__docId__": 1,
@@ -25,7 +25,7 @@
     "importPath": "redux-webpack-boilerplate/lib/cors.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 2,
+    "lineNumber": 4,
     "undocument": true,
     "type": {
       "types": [
@@ -35,6 +35,90 @@
   },
   {
     "__docId__": 2,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "logOriginPass",
+    "memberof": "lib/cors.js",
+    "longname": "lib/cors.js~logOriginPass",
+    "access": null,
+    "export": false,
+    "importPath": "redux-webpack-boilerplate/lib/cors.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 3,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "logOriginFail",
+    "memberof": "lib/cors.js",
+    "longname": "lib/cors.js~logOriginFail",
+    "access": null,
+    "export": false,
+    "importPath": "redux-webpack-boilerplate/lib/cors.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 7,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 4,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "logOriginDNE",
+    "memberof": "lib/cors.js",
+    "longname": "lib/cors.js~logOriginDNE",
+    "access": null,
+    "export": false,
+    "importPath": "redux-webpack-boilerplate/lib/cors.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 8,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 5,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "corsValidator",
+    "memberof": "lib/cors.js",
+    "longname": "lib/cors.js~corsValidator",
+    "access": null,
+    "export": false,
+    "importPath": "redux-webpack-boilerplate/lib/cors.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 6,
     "kind": "function",
     "static": true,
     "variation": null,
@@ -46,7 +130,7 @@
     "importPath": "redux-webpack-boilerplate/lib/cors.js",
     "importStyle": "{getCors}",
     "description": null,
-    "lineNumber": 4,
+    "lineNumber": 18,
     "undocument": true,
     "params": [],
     "return": {
@@ -57,7 +141,7 @@
     "generator": false
   },
   {
-    "__docId__": 3,
+    "__docId__": 7,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -70,7 +154,7 @@
     "content": "import configureServer from './server'\r\nimport express from 'express'\r\nimport { createLogger } from 'bunyan'\r\nimport { server } from '../config.server'\r\n\r\nconst log = createLogger({ name: 'lib', level: 'debug' })\r\n\r\nexport const getServerMap = paths => configureServer({ paths })\r\n"
   },
   {
-    "__docId__": 4,
+    "__docId__": 8,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -91,7 +175,7 @@
     }
   },
   {
-    "__docId__": 5,
+    "__docId__": 9,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -112,7 +196,7 @@
     }
   },
   {
-    "__docId__": 6,
+    "__docId__": 10,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -125,7 +209,7 @@
     "content": "/***\r\n * Proxy Module\r\n * Responsible for reading proxy config and setting up proxies.\r\n * @module server/proxy\r\n */\r\nimport httpProxy from 'http-proxy'\r\nimport http from 'http'\r\nimport https from 'https'\r\nimport { createServerLogger } from '../config.server'\r\n//import { getCors } from './cors'\r\nimport { server as serverConfig } from '../config.server'\r\n\r\nconst log = createServerLogger('proxy')\r\nconst proxyListen = ({ name, fromPort, toHost, toPort }) => `proxy ${name} directing from :${fromPort} to ${toHost}:${toPort}`\r\n\r\nexport default function proxy() {\r\n  const cdnBindings = new Map(serverConfig.bindings.cdn)\r\n  const hasHttp = cdnBindings.has('http')\r\n  const hasHttps = cdnBindings.has('https')\r\n  //const cors = getCors()\r\n  const proxyConfigs = Array.isArray(serverConfig.proxies) ? serverConfig.proxies : [ serverConfig.proxies ]\r\n\r\n  /*** Iterate proxy configs and start routing */\r\n  proxyConfigs.forEach(config => {\r\n    const options = getProxyOptions(config)\r\n    const proxyServer = httpProxy.createProxyServer(options)\r\n    const listenMessage = proxyListen(config)\r\n\r\n    proxyServer.on('error', (err, req, res) => {\r\n      log.error(err, 'error proxying request')\r\n      res.end()\r\n    })\r\n\r\n    proxyServer.on('proxyReq', (proxyReq, req, res, options) => {\r\n      // This event fires on proxy requests\r\n    })\r\n\r\n    //proxyServer.on('proxyRes', (proxyRes, req, res) => cors.handle(req, res))\r\n\r\n    createProxyServer(http.createServer(onProxy))\r\n\r\n\r\n    const createProxyServer = server => {\r\n      if (config.allowWebSockets)\r\n        server.on('upgrade', (req, socket, head) => server.ws(req, socket, head))\r\n      server.listen(config.fromPort, () => log.info(listenMessage))\r\n    }\r\n\r\n    const onProxy = (req, res) => {\r\n      //if(!cors.isOk(req))\r\n        //return cors.handleFailure(req, res)\r\n\r\n      if(config.stub && config.stub[req.method])\r\n        return proxyStub(req, res)\r\n\r\n      if(req.method === 'OPTIONS')\r\n        //return cors.handlePreflight(req, res)\r\n\r\n      if (config.latency)\r\n        setTimeout(() => proxyServer.web(req, res), config.latency)\r\n      else\r\n        proxyServer.web(req, res)\r\n    }\r\n\r\n    const proxyStub = (req, res) => {\r\n      var stub = config.stub[req.method]\r\n      res.writeHead(200, stub.headers)\r\n      if (stub.headers['content-length'] === 0) res.end()\r\n      else res.end(JSON.stringify(stub.body))\r\n    }\r\n  })\r\n}\r\n\r\nconst getProxyOptions = config => {\r\n  var opts =  { target: config.target || `${config.toScheme}://${config.toHost}:config.toPort`\r\n              , xfwd: true\r\n              }\r\n  opts.secure = config.secure\r\n  return opts\r\n}\r\n"
   },
   {
-    "__docId__": 7,
+    "__docId__": 11,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -146,7 +230,7 @@
     }
   },
   {
-    "__docId__": 8,
+    "__docId__": 12,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -167,7 +251,7 @@
     }
   },
   {
-    "__docId__": 9,
+    "__docId__": 13,
     "kind": "function",
     "static": true,
     "variation": null,
@@ -185,7 +269,7 @@
     "generator": false
   },
   {
-    "__docId__": 10,
+    "__docId__": 14,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -206,7 +290,7 @@
     }
   },
   {
-    "__docId__": 11,
+    "__docId__": 15,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -219,7 +303,7 @@
     "content": "import express from 'express'\r\nimport fs from 'fs'\r\nimport { client as staticConfig, createServerLogger } from '../../config.server'\r\n//import { getCors } from '../cors'\r\nconst log = createServerLogger('api')\r\n\r\n\r\nconst requireQ = path => {\r\n  return new Promise((resolve, reject) => {\r\n    fs.readFile(path, 'utf8', (err, data) => {\r\n      if (err)\r\n        return reject(err)\r\n      resolve(JSON.parse(data))\r\n    })\r\n  })\r\n}\r\n\r\n\r\n/**\r\n * API Module\r\n * Exposes apis for the application.\r\n * @module server/lib/api\r\n */\r\n\r\nconst configureApi = () => {\r\n  let router = express.Router()\r\n  //const cors = getCors()\r\n  staticConfig.STATIC = true\r\n\r\n  //CORS middleware\r\n  const allowCrossDomain = (req, res, next) => {\r\n    //if(req.method === 'OPTIONS') {\r\n      //cors.handlePreflight(req, res)\r\n    //} else {\r\n      //cors.handle(req, res)\r\n      next()\r\n    //}\r\n  }\r\n\r\n  router.use(allowCrossDomain)\r\n  router.get('/env', (req, res) => res.json({ NODE_ENV: process.env.NODE_ENV }))\r\n  router.get('/client-config', (req, res) => {\r\n    requireQ(router.locals.CLIENT_CONFIG_PATH)\r\n      .then(clientConfig => {\r\n        if (req.query.pretty === '' || req.query.pretty)\r\n          return res.send(`<html><head><title>app client config</title></head><body><pre>${JSON.stringify(clientConfig, null, 4)}</pre></body></html>`)\r\n        res.json(clientConfig)\r\n      }, err => {\r\n        log.error(err, 'error occurred during client-config')\r\n        res.json(staticConfig)\r\n      })\r\n  })\r\n  return router\r\n}\r\n\r\nexport default configureApi\r\n"
   },
   {
-    "__docId__": 12,
+    "__docId__": 16,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -240,7 +324,7 @@
     }
   },
   {
-    "__docId__": 13,
+    "__docId__": 17,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -261,7 +345,7 @@
     }
   },
   {
-    "__docId__": 14,
+    "__docId__": 18,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -287,7 +371,7 @@
     }
   },
   {
-    "__docId__": 15,
+    "__docId__": 19,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -300,7 +384,7 @@
     "content": "import express from 'express'\r\nimport { join } from 'path'\r\nimport favicon from 'serve-favicon'\r\nimport { createServerLogger, server } from '../../config.server'\r\n//import { getCors } from '../cors'\r\nimport configureApi from './api'\r\nimport { assert } from 'chai'\r\n\r\nconst log = createServerLogger('routes')\r\n//const cors = getCors()\r\n\r\nconst gzipExtensionFilter = /^(js|css|html|json|ico|eot|otf|ttf)$/\r\n\r\nconst contentTypeMap =  { 'js': 'text/javascript'\r\n                        , 'json': 'application/json'\r\n                        , 'css': 'text/css'\r\n                        , 'html': 'text/html'\r\n                        , 'xml': 'text/xml'\r\n                        , 'ico': 'image/x-icon'\r\n                        , 'woff': 'application/x-font-woff'\r\n                        , 'woff2': 'application/font-woff2'\r\n                        , 'ttf': 'application/x-font-ttf'\r\n                        , 'otf': 'application/x-font-otf'\r\n                        , 'eot': 'application/vnd.ms-fontobject'\r\n                        , 'svg': 'image/svg+xml'\r\n                        , 'png': 'image/png'\r\n                        , 'jpg': 'image/jpeg'\r\n                        , 'jpeg': 'image/jpeg'\r\n                        , 'gif': 'image/gif'\r\n                        , 'tiff': 'image/tiff'\r\n                        }\r\n\r\n\r\nconst getDefaultHeaders = extension => {\r\n  let contentType = contentTypeMap[extension]\r\n  return contentType ? { 'Content-Type': contentType } : {}\r\n}\r\n\r\nconst resolveAssetPath = ({ assetType, assetSubType }) => assetSubType ? `${assetType}/${assetSubType}` : assetType\r\n\r\nconst serveResource = ({ assetType, assetSubType, assetName }) => {\r\n  const { flags } = server\r\n  let extension = assetName.slice((assetName.lastIndexOf('.') - 1 >>> 0) + 2)\r\n  if(assetType === 'static' && !extension) {\r\n    let path = `/static/html/${assetName}.html`\r\n    let headers = getDefaultHeaders('html')\r\n    log.debug(`serving gzipped resource => path[${path}], headers[${JSON.stringify(headers)}]`)\r\n    return { path, headers }\r\n  } else {\r\n    let assetPath = resolveAssetPath({ assetType, assetSubType })\r\n    let headers = getDefaultHeaders(extension)\r\n    if(flags.minify && gzipExtensionFilter.test(extension)) {\r\n      let path = `/${assetPath}/gz/${assetName}`\r\n      headers['Content-Encoding'] = 'gzip'\r\n      log.debug(`serving gzipped resource => path[${path}], headers[${JSON.stringify(headers)}]`)\r\n      return { path, headers }\r\n    } else {\r\n      let path = `/${assetPath}/${assetName}`\r\n      log.debug(`serving resource => path[${path}], headers[${JSON.stringify(headers)}]`)\r\n      return { path, headers }\r\n    }\r\n  }\r\n}\r\n\r\nconst configureDynamic = assetType => {\r\n  assert.ok(assetType, 'route dynamic thunk must specify assetType')\r\n  const routeDynamic = (req, res, next) => {\r\n    //cors.handle(req, res)\r\n\r\n    let assetSubType = req.params.assetSubType\r\n    let assetName = req.params.assetName\r\n    log.debug(`SERVING STATIC ASSET => TYPE[${assetType}], NAME[${assetName}]`)\r\n\r\n    if(!assetType || !assetName)\r\n      throw new Error(`routeDynamic requires an assetType and assetName => assetType:[${assetType}], assetName:[${assetName}]`)\r\n    let { path, headers } = serveResource({ assetType, assetSubType, assetName })\r\n    switch(assetType) {\r\n      case 'assets':\r\n      case 'static':\r\n      case 'img':\r\n        res.sendFile(join(req.app.locals.PUBLIC_ROOT, path), { headers })\r\n        break\r\n      case 'images':\r\n        res.sendFile(join(req.app.locals.STATIC_ROOT, path), { headers })\r\n        break\r\n      default:\r\n        next()\r\n    }\r\n  }\r\n  let dynamicRouter = express.Router()\r\n  dynamicRouter.get('/:assetSubType/:assetName', routeDynamic)\r\n  dynamicRouter.get('/:assetName', routeDynamic)\r\n  return dynamicRouter\r\n}\r\n\r\n\r\n/**\r\n * Routes Module\r\n * Exposes routes for the application.\r\n * @module server/lib/routes\r\n */\r\nconst configureRouter = app => {\r\n  const { PUBLIC_ROOT\r\n        , STATIC_ROOT\r\n        , APP_ROOT\r\n        , LEGACY_STYLES_ROOT\r\n        , LEGACY_IMAGES_ROOT\r\n        , NODE_MODULES_ROOT\r\n        } = app.locals\r\n\r\n\r\n  let staticFilename = () => `${process.env.NODE_ENV === 'hot' ? 'hot' : 'index'}.html`\r\n  let staticPath = join(STATIC_ROOT, 'html', staticFilename())\r\n  const serveIdentity = (req, res) => {\r\n    //cors.handle(req, res)\r\n    log.trace('serving static => %s', staticPath)\r\n    res.sendFile(staticPath)\r\n  }\r\n\r\n  let router = express.Router()\r\n  router.use(favicon(join(STATIC_ROOT, 'images/nintendo.ico')))\r\n  router.all('/api/*', configureApi())\r\n\r\n  router.use('/assets', configureDynamic('assets'))\r\n  router.use('/images', configureDynamic('images'))\r\n  router.use('/img', configureDynamic('img'))\r\n  router.use('/static', configureDynamic('static'))\r\n  router.use('/', serveIdentity)\r\n  return router\r\n}\r\n\r\nexport default configureRouter\r\n"
   },
   {
-    "__docId__": 16,
+    "__docId__": 20,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -321,7 +405,7 @@
     }
   },
   {
-    "__docId__": 17,
+    "__docId__": 21,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -342,7 +426,7 @@
     }
   },
   {
-    "__docId__": 18,
+    "__docId__": 22,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -363,7 +447,7 @@
     }
   },
   {
-    "__docId__": 19,
+    "__docId__": 23,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -384,7 +468,7 @@
     }
   },
   {
-    "__docId__": 20,
+    "__docId__": 24,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -405,7 +489,7 @@
     }
   },
   {
-    "__docId__": 21,
+    "__docId__": 25,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -426,7 +510,7 @@
     }
   },
   {
-    "__docId__": 22,
+    "__docId__": 26,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -447,7 +531,7 @@
     }
   },
   {
-    "__docId__": 23,
+    "__docId__": 27,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -473,7 +557,7 @@
     }
   },
   {
-    "__docId__": 24,
+    "__docId__": 28,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -486,7 +570,7 @@
     "content": "import express from 'express'\r\nimport path from 'path'\r\nimport { createServerLogger } from '../config.server'\r\nimport Renderer from './renderers/Renderer'\r\nimport merge from 'lodash.merge'\r\nimport http from 'http'\r\nimport https from 'https'\r\n//import proxy from './proxy'\r\nimport route from './route'\r\nimport { assert } from 'chai'\r\nimport { server } from '../config.server'\r\n\r\nconst log = createServerLogger('Server')\r\n\r\nconst startHttp = (instance, { port }) => new Promise((resolve, reject) => {\r\n  http.createServer(instance).listen(port, err => err ? reject(err) : resolve(`STARTED @ http://:::${port}`))\r\n})\r\nconst startHttps = (instance, { port }, opts) => new Promise((resolve, reject) => {\r\n  https.createServer(opts, instance).listen(port, err => err ? reject(err) : resolve(`STARTED @ https://:::${port}`))\r\n})\r\n\r\nconst onFatal = err => {\r\n  log.fatal(err, 'A fatal error occurred starting the server.')\r\n  setTimeout(() => process.exit(1), 4000)\r\n}\r\n\r\nconst startServer = (app, { scheme, binding }) => {\r\n  assert.ok(binding, 'bindings must be specified')\r\n  assert.typeOf(binding.port, 'number', 'binding port must be a valid port number')\r\n  return startHttp(app, binding)\r\n    .then(message => log.info({ binding }, message))\r\n    .catch(onFatal)\r\n}\r\n\r\nconst getCdnBinding = () => new Map(server.bindings.cdn)\r\n\r\n/** Which config name to use when hot reloading */\r\nconst hotConfigName = 'app'\r\nconst configureServer = ({ paths }) => {\r\n  let serverMap = new Map()\r\n  for(let [scheme, binding] of getCdnBinding().entries()) {\r\n    let app = Object.assign(express(), { settings: server, locals: paths })\r\n\r\n    /** Enable proxying */\r\n    app.set('trust proxy', true)\r\n    if (process.env.NODE_ENV === 'hot') {\r\n      let webpackConfig = require('../webpack.config')\r\n      let hotConfig = Array.isArray(webpackConfig) ? webpackConfig.filter(x => x.name === hotConfigName)[0] : webpackConfig\r\n      let compiler = require('webpack')(hotConfig)\r\n      app.use(require('webpack-dev-middleware')(compiler, { noInfo: true\r\n                                                          , publicPath: hotConfig.output.publicPath\r\n                                                          //, quiet: false\r\n                                                          //, headers: { 'Access-Control-Allow-Origin': '*' }\r\n                                                          //, stats: { colors: true }\r\n                                                          }))\r\n      app.use(require('webpack-hot-middleware')(compiler))\r\n    }\r\n\r\n    app.use(route(app))\r\n\r\n    let environment = { NODE_ENV: process.env.NODE_ENV }\r\n    log.info(environment, `ENVIRONMENT => ${JSON.stringify(environment)}`)\r\n\r\n    serverMap.set(scheme, { app\r\n                          , start: () => startServer(app, { scheme, binding })\r\n                          })\r\n  }\r\n  //proxy()\r\n  return serverMap\r\n}\r\n\r\nexport default configureServer\r\n"
   },
   {
-    "__docId__": 25,
+    "__docId__": 29,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -507,7 +591,7 @@
     }
   },
   {
-    "__docId__": 26,
+    "__docId__": 30,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -528,7 +612,7 @@
     }
   },
   {
-    "__docId__": 27,
+    "__docId__": 31,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -549,7 +633,7 @@
     }
   },
   {
-    "__docId__": 28,
+    "__docId__": 32,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -570,7 +654,7 @@
     }
   },
   {
-    "__docId__": 29,
+    "__docId__": 33,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -591,7 +675,7 @@
     }
   },
   {
-    "__docId__": 30,
+    "__docId__": 34,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -612,7 +696,7 @@
     }
   },
   {
-    "__docId__": 31,
+    "__docId__": 35,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -632,7 +716,7 @@
     }
   },
   {
-    "__docId__": 32,
+    "__docId__": 36,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -653,7 +737,60 @@
     }
   },
   {
-    "__docId__": 34,
+    "__docId__": 37,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "lib/stream.js",
+    "memberof": null,
+    "longname": "lib/stream.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "\r\n/** MAP ON TO CALL A FUNCTION ONLY IN DEV AND PASS THROUGH, DOES NOT MUTATE THE INPUT */\r\nexport const devStream = devFn => x => voidStream(() => process.env.NODE_ENV === 'production' ? {} : devFn(x))\r\n\r\n/** MAP ON TO CALL A VOID FUNCTION AND PASS THROUGH */\r\nexport const voidStream = voidFn => data => {\r\n  voidFn(data)\r\n  return data\r\n}\r\n"
+  },
+  {
+    "__docId__": 38,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "devStream",
+    "memberof": "lib/stream.js",
+    "longname": "lib/stream.js~devStream",
+    "access": null,
+    "export": true,
+    "importPath": "redux-webpack-boilerplate/lib/stream.js",
+    "importStyle": "{devStream}",
+    "description": "MAP ON TO CALL A FUNCTION ONLY IN DEV AND PASS THROUGH, DOES NOT MUTATE THE INPUT",
+    "lineNumber": 3,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 39,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "voidStream",
+    "memberof": "lib/stream.js",
+    "longname": "lib/stream.js~voidStream",
+    "access": null,
+    "export": true,
+    "importPath": "redux-webpack-boilerplate/lib/stream.js",
+    "importStyle": "{voidStream}",
+    "description": "MAP ON TO CALL A VOID FUNCTION AND PASS THROUGH",
+    "lineNumber": 6,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 41,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -666,7 +803,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 35,
+    "__docId__": 42,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -679,7 +816,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 36,
+    "__docId__": 43,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -692,7 +829,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 37,
+    "__docId__": 44,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -705,7 +842,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 38,
+    "__docId__": 45,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -718,7 +855,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 39,
+    "__docId__": 46,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -731,7 +868,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 40,
+    "__docId__": 47,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -744,7 +881,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 41,
+    "__docId__": 48,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -757,7 +894,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 42,
+    "__docId__": 49,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -770,7 +907,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 43,
+    "__docId__": 50,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -783,7 +920,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 44,
+    "__docId__": 51,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -796,7 +933,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 45,
+    "__docId__": 52,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -809,7 +946,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 46,
+    "__docId__": 53,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -822,7 +959,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 47,
+    "__docId__": 54,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -835,7 +972,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 48,
+    "__docId__": 55,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -848,7 +985,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 49,
+    "__docId__": 56,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -861,7 +998,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 50,
+    "__docId__": 57,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -874,7 +1011,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 51,
+    "__docId__": 58,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -887,7 +1024,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 52,
+    "__docId__": 59,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -900,7 +1037,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 53,
+    "__docId__": 60,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -913,7 +1050,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 54,
+    "__docId__": 61,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -926,7 +1063,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 55,
+    "__docId__": 62,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -939,7 +1076,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 56,
+    "__docId__": 63,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -952,7 +1089,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 57,
+    "__docId__": 64,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -965,7 +1102,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 58,
+    "__docId__": 65,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -978,7 +1115,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 59,
+    "__docId__": 66,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -991,7 +1128,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 60,
+    "__docId__": 67,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -1004,7 +1141,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 61,
+    "__docId__": 68,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -1017,7 +1154,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 62,
+    "__docId__": 69,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -1030,7 +1167,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 63,
+    "__docId__": 70,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -1043,7 +1180,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 64,
+    "__docId__": 71,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -1056,7 +1193,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 65,
+    "__docId__": 72,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -1069,7 +1206,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 66,
+    "__docId__": 73,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -1082,7 +1219,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 67,
+    "__docId__": 74,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -1095,7 +1232,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 68,
+    "__docId__": 75,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -1108,7 +1245,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 69,
+    "__docId__": 76,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -1121,7 +1258,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 70,
+    "__docId__": 77,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -1134,7 +1271,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 71,
+    "__docId__": 78,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -1147,7 +1284,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 72,
+    "__docId__": 79,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -1160,7 +1297,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 73,
+    "__docId__": 80,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -1173,7 +1310,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 74,
+    "__docId__": 81,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -1186,7 +1323,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 75,
+    "__docId__": 82,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -1199,7 +1336,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 76,
+    "__docId__": 83,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -1212,7 +1349,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 77,
+    "__docId__": 84,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -1225,7 +1362,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 78,
+    "__docId__": 85,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -1238,7 +1375,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 79,
+    "__docId__": 86,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -1251,7 +1388,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 80,
+    "__docId__": 87,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -1264,7 +1401,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 82,
+    "__docId__": 89,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -1277,7 +1414,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 83,
+    "__docId__": 90,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -1290,7 +1427,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 84,
+    "__docId__": 91,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -1303,7 +1440,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 85,
+    "__docId__": 92,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -1316,7 +1453,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 86,
+    "__docId__": 93,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -1329,7 +1466,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 87,
+    "__docId__": 94,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -1342,7 +1479,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 88,
+    "__docId__": 95,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -1355,7 +1492,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 89,
+    "__docId__": 96,
     "kind": "external",
     "static": true,
     "variation": null,
