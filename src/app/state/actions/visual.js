@@ -10,7 +10,7 @@ import  { TOGGLE_VISIBILITY
         } from '../constants'
 import { createAction } from 'redux-actions'
 
-export const setText = createAction(SET_TEXT, (id, text) => ({ id, text }))
+export const setText = createAction(SET_TEXT)
 
 export const toggleVisibility = createAction(TOGGLE_VISIBILITY, (componentID, value = true, options = [false, true]) => ({ componentID, value, options }))
 export const setVisibility = createAction(SET_VISIBILITY, (componentID, value, options = [false, true]) => ({ componentID, value, options }))

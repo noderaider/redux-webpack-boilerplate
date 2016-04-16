@@ -95,7 +95,7 @@ const buildTheme = (name, palette, inverted=false) => {
                                 , backgroundColor: p['base2']
                                 , float: 'left'
                                 , marginTop: 10
-                                , marginBottom: 10
+                                , marginBottom: 30
                                 , paddingTop: 20
                                 , paddingBottom: 20
                                 , borderRadius: 5
@@ -183,9 +183,23 @@ const buildTheme = (name, palette, inverted=false) => {
                               , display: 'inline'
                               , cursor: 'default'
                               }
+                    , ul: { marginLeft: '15%'
+                          , marginRight: '15%'
+                          , paddingTop: 10
+                          , paddingBottom: 10
+                          , lineHeight: 2
+                          }
+                    , paragraph:  {
+                                  //, margin: 15
+                                  padding: 10
+                                  }
+                    , form: {
+                            //, margin: 15
+                            padding: 10
+                            }
                     , input:  { color: p['base03']
                               , backgroundColor: p['base3']
-                              , fontSize: '1.3em'
+                              , fontSize: '1.1em'
                               , padding: 15
                               , minWidth: 300
                               , borderColor: color.tertiary

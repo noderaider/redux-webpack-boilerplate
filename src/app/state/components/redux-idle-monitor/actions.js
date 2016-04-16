@@ -75,7 +75,7 @@ export const idleStatusDelay = idleStatus => (dispatch, getState) => {
     case IDLESTATUS_STONE_AGE_GONE:
       return 400
     case IDLESTATUS_EXTINCT:
-      return 200
+      return 300
     default:
       return 3000
   }
@@ -83,12 +83,12 @@ export const idleStatusDelay = idleStatus => (dispatch, getState) => {
 
 
 export const activeStatusAction = (dispatch, getState) =>  {
-  dispatch(setText('subtitle', 'ACTIVE'))
+  dispatch(setText({ subtitle: 'ACTIVE' }))
   setColor(solarized.background[0])
 }
 
 export const idleStatusAction = idleStatus => (dispatch, getState) => {
-  dispatch(setText('subtitle', idleStatus.replace(/_/g, ' ')))
+  dispatch(setText({ subtitle: idleStatus.replace(/_/g, ' ') }))
   switch(idleStatus) {
     case IDLESTATUS_NOT_VERY_ACTIVE:
       return setColor(solarized.random())

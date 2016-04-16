@@ -45,7 +45,7 @@ class App extends Component {
     return true
   }
   render(){
-    const { dispatch, theme, title, subtitle, errors } = this.props
+    const { dispatch, theme, title, subtitle, username, organization, email, full, packageName, errors } = this.props
     const { style } = theme
 
     const hasErrors = errors.get('api').size > 0 || errors.get('identity').size > 0
@@ -53,9 +53,27 @@ class App extends Component {
     return (
       <div>
         <div style={style.app}>
-          <TopBar title={title} subtitle={subtitle} />
+          <TopBar title={title} subtitle={subtitle} username={username} email={email} packageName={packageName} />
           <div style={style.content} className="body-content container">
             <PageForm />
+            <ul style={style.ul}>
+              <li>Fork <a href="https://github.com/cchamberlain/redux-webpack-boilerplate">redux-webpack-boilerplate</a></li>
+              <li><code>git clone https://github.com/{username}/redux-webpack-boilerplate</code></li>
+              <li>Set title to <b>{title}</b> in src/config-client.json</li>
+              <li>Set subtitle to <b>{title}</b> in src/config-client.json</li>
+              <li>Create .repackagerc file in project root (for building package.json)<pre><code>{
+`{ "username": "${username}"
+, "organization": "${organization}"
+, "email": "${email}"
+, "full": "${full}"
+}`}</code></pre></li>
+              <li><code>npm -g repackage</code></li>
+              <li><code>repackage</code></li>
+              <li>Set package name to <b>{packageName}</b> in src/package/name.js</li>
+              <li><code>repackage</code> again</li>
+              <li><code>npm i</code></li>
+              <li><code>npm run start-hot</code></li>
+            </ul>
           </div>
           {(hasErrors && !__PROD__) ? (
             <ErrorPanel />
@@ -73,6 +91,11 @@ function mapStateToProps(state) {
   return  { theme: getTheme(visual.theme || defaultTheme)
           , title: visual.text.get('title')
           , subtitle: visual.text.get('subtitle')
+          , username: visual.text.get('username')
+          , organization: visual.text.get('organization')
+          , email: visual.text.get('email')
+          , full: visual.text.get('full')
+          , packageName: visual.text.get('packageName')
           , errors
           }
 }

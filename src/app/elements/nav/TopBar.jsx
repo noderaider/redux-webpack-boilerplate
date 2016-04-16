@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import FA from 'app/elements/visual/FA'
 import { appName } from 'config'
-import name from 'package/name'
 
 import './TopBar.css'
 
@@ -11,7 +10,7 @@ import contextTypes from 'app/context'
 export default class TopBar extends Component {
   static contextTypes = contextTypes;
   render() {
-    const { title, subtitle } = this.props
+    const { title, subtitle, packageName } = this.props
     const { palette, color, brand, style } = this.context.theme
     const { header } = style
 
@@ -24,8 +23,8 @@ export default class TopBar extends Component {
           <a href="/" style={header.anchor}>{title}{subtitle ? <span style={header.subtitle}>{subtitle}</span> : null}</a>
         </span>
         <span style={header.banner}>
-          <a href={`https://nodei.co/npm/${name}/`}>
-            <img src={`https://nodei.co/npm/${name}.png?mini=true`} />
+          <a href={`https://nodei.co/npm/${packageName}/`}>
+            <img src={`https://nodei.co/npm/${packageName}.png?mini=true`} />
           </a>
         </span>
         <span style={header.settings}>

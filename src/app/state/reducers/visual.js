@@ -25,11 +25,9 @@ function text(state = initialText, action = {}) {
     return state
   switch(type) {
     case SET_TEXT:
-      const { id, text } = payload
-      return state.set(id, text)
+      return state.merge(payload)
     case REDUX_FORM_CHANGE:
       const { field, value, form } = action
-      console.warn('set', { field, value, form})
       if(form !== 'page')
         return state
       return state.set(field, value)

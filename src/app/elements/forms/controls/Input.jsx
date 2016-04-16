@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 //import Placeholders from 'vendor/placeholders'
 import contextTypes from 'app/context'
 
-function noop() {}
+const noop = () => {}
 
 class Input extends Component {
   static propTypes =  { type: PropTypes.oneOf(['text', 'password', 'email', 'button', 'submit']).isRequired
@@ -26,19 +26,7 @@ class Input extends Component {
   static contextTypes = contextTypes;
   render() {
     const { style } = this.context.theme
-    return <input style={style.input} {...this.props} ref={x => this.input=x} />
-  }
-  componentDidMount() {
-    /*
-    if(this.input && this.props.placeholder)
-      Placeholders.enable(this.input)
-    */
-  }
-  componentWillUnmount() {
-    /*
-    if(this.input && this.props.placeholder)
-      Placeholders.disable(this.input)
-    */
+    return <input {...this.props} style={{ ...style.input, ...this.props.style }} ref={x => this.input=x} />
   }
 }
 
