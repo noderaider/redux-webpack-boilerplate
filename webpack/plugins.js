@@ -9,8 +9,16 @@ var _webpack = require('webpack');
 
 var _configServer = require('../config.server.js');
 
-//import CompressionPlugin from 'compression-webpack-plugin'
-//import ExtractTextPlugin from 'extract-text-webpack-plugin'
+var _compressionWebpackPlugin = require('compression-webpack-plugin');
+
+var _compressionWebpackPlugin2 = _interopRequireDefault(_compressionWebpackPlugin);
+
+var _extractTextWebpackPlugin = require('extract-text-webpack-plugin');
+
+var _extractTextWebpackPlugin2 = _interopRequireDefault(_extractTextWebpackPlugin);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var CommonsChunkPlugin = _webpack.optimize.CommonsChunkPlugin;
 var UglifyJsPlugin = _webpack.optimize.UglifyJsPlugin;
 var OccurenceOrderPlugin = _webpack.optimize.OccurenceOrderPlugin;
@@ -31,15 +39,15 @@ var getDefinePlugin = function getDefinePlugin(name) {
 };
 
 var extractText = exports.extractText = function extractText(loaders, options) {
-  return null;
-}; // ExtractTextPlugin.extract('style-loader', loaders, options)
+  return _extractTextWebpackPlugin2.default.extract('style-loader', loaders, options);
+};
 
 var getPlugins = exports.getPlugins = function getPlugins(name) {
   var plugins = [getDefinePlugin(name), new OccurenceOrderPlugin()];
   if (name === 'app') {
     console.warn('VENDOR COMMONS CHUNK');
     //plugins.push(new CommonsChunkPlugin('vendor', 'vendor.js'))
-    //plugins.push(new CommonsChunkPlugin('commons', 'commons.js'))
+    plugins.push(new CommonsChunkPlugin('commons', 'commons.js'));
     if (process.env.NODE_ENV !== 'hot') {
       console.warn('APP COMMONS CHUNK');
       //      plugins.push(new CommonsChunkPlugin('commons.js'))
@@ -48,7 +56,7 @@ var getPlugins = exports.getPlugins = function getPlugins(name) {
                                       , chunks: ['app', 'timeout', 'vendor.js']
                                       , minChunks: 2
                                       }))*/
-      //plugins.push(new ExtractTextPlugin(`[name].css`, { allChunks: true, disable: false }))
+      plugins.push(new _extractTextWebpackPlugin2.default('[name].css', { allChunks: true, disable: false }));
     }
   }
 
