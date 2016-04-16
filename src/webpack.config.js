@@ -1,2 +1,2 @@
-var make = require('./webpack/make')
+import make from './webpack/make'
 module.exports = make('app')

@@ -25,9 +25,16 @@ const invertColors = theme => ( { ...theme
                                 , base07: theme.base00
                                 } )
 
+
+const nonColors = ['author', 'scheme', 'base07', 'base06', 'base05', 'base04', 'base02', 'base01', 'base00']
+const filterColors = scheme => Object.keys(scheme).filter(x => !nonColors.includes(x)).reduce((colors, key) => Object.assign(colors, { [key]: scheme[key] }), {})
+
 //** TODO: NPM MODULE */
 const palettize = theme => invertTheme => {
   const scheme = invertTheme ? invertColors(themes[theme]) : themes[theme]
+  console.warn('CALLING PALETTIZE', scheme)
+  let colors = filterColors(scheme)
+  console.warn(colors)
   const basePalette = Object.keys(paletteMap).reduce((palette, key) => {
     palette[key] = paletteMap[key].map(x => scheme[x])
     return palette
@@ -35,13 +42,15 @@ const palettize = theme => invertTheme => {
   return  {...basePalette
           , bool: condition => condition ? scheme['base0B'] : scheme['base08']
           , random: () => {
-              let paletteKeys = Object.keys(basePalette)
+              let paletteKeys = Object.keys(colors)
+              return colors[paletteKeys[Math.floor(paletteKeys.length * Math.random())]]
+              /*
               let paletteIndex = Math.floor(paletteKeys.length * Math.random())
               let paletteKey = paletteKeys[paletteIndex]
-
               let paletteSlice = basePalette[paletteKey]
               let paletteSliceIndex = Math.floor(paletteSlice.length * Math.random())
               return paletteSlice[paletteSliceIndex]
+              */
             }
           }
 }
@@ -62,7 +71,7 @@ export const idleStatusDelay = idleStatus => (dispatch, getState) => {
     case IDLESTATUS_STONE_AGE_GONE:
     case IDLESTATUS_EXTINCT:
     default:
-      return 4000
+      return 3000
   }
 }
 

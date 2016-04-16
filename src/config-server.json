@@ -6,6 +6,9 @@
     "prod": false,
     "minify": false
   },
+  "cors": {
+    "origins": [ "https?://.*{{HOSTNAME}}" ]
+  },
   "fs": {
     "ETC_ROOT": "../etc",
     "BIN_ROOT": "../bin",

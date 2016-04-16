@@ -36,6 +36,8 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-proxy">proxy</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getServerMap">getServerMap</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-configureServer">configureServer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-devStream">devStream</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-voidStream">voidStream</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">route</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-configureApi">configureApi</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-configureRouter">configureRouter</a></span></span></li>
 </ul>
@@ -43,87 +45,62 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">lib/cors.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { createServerLogger, server as serverConfig } from &apos;../config.server&apos;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { createServerLogger, server as serverConfig, origins } from &apos;../config.server&apos;
+import { devStream } from &apos;./stream&apos;
+
 const logger = createServerLogger(&apos;cors&apos;)
 
+const logOriginPass = (origin, pattern) =&gt; logger.trace(`PASS: origin [${origin}] matches pattern [${pattern}].`)
+const logOriginFail = (origin) =&gt; logger.trace(`FAIL: origin [${origin}] does not match any patterns.`)
+const logOriginDNE = () =&gt; logger.trace(&apos;DNE: origin header does not exist.&apos;)
+
+const corsValidator = patterns =&gt; {
+  return req =&gt; (typeof req.headers.origin === &apos;string&apos;
+                ? patterns.filter(x =&gt; x.test(req.headers.origin))
+                          .map(devStream(x =&gt; logOriginPass(req.headers.origin, x))).length &gt; 0
+                : true
+                )
+}
+
 export function getCors() {
-  let originPatterns = Array.isArray(serverConfig.cors.originPatterns) ? serverConfig.cors.originPatterns : [serverConfig.cors.originPatterns]
-  originPatterns = originPatterns.map(pattern =&gt; {
-    return new RegExp(pattern)
-  })
-
-  function isOk(req) {
-    if(!req.headers.origin) {
-      return true
-    }
-    return originPatterns.some(originTest)
-    function originTest(pattern) {
-      if(pattern.test(req.headers.origin)) {
-        logger.trace(&apos;origin [%s] matches pattern [%s]&apos;, req.headers.origin, pattern)
-        return true
-      } else {
-        return false
-      }
-    }
-  }
-
-  const originDoesNotMatch = origin =&gt; `Origin [${origin}] did not match acceptable patterns. Request has been rejected.`
-  const originDoesNotExist = &apos;Origin did not exist. Request has been rejected.&apos;
+  const isOriginOk = corsValidator(origins.map(x =&gt; new RegExp(x)))
 
   const failureStatus = { code: 403
                         , message: &apos;403 Forbidden&apos;
                         }
 
-  function getError(req) {
-    return req.headers.origin ? { message: originDoesNotMatch(req.headers.origin)
-                                , code: 10
-                                }
-                              : { message: originDoesNotExist
-                                , code: 11
-                                }
+  const getError = req =&gt; req.headers.origin  ? ({ message: logOriginFail(req.headers.origin), code: 10 })
+                                              : ({ message: logOriginDNE(), code: 11 })
 
+  const getOptionsHeaders = req =&gt; ({ &apos;Access-Control-Allow-Origin&apos;: req.headers.origin
+                                    , &apos;Access-Control-Max-Age&apos;: 604800 // Specifies how long the preflight response can be cached in seconds
+                                    , &apos;Access-Control-Allow-Methods&apos;: &apos;GET, PUT, POST, DELETE&apos;
+                                    , &apos;Access-Control-Allow-Headers&apos;: &apos;Content-Type, Authorization&apos;
+                                    , &apos;Access-Control-Allow-Credentials&apos;: true
+                                    })
+
+  const handle = (req, res) =&gt; {
+    const resolvedOrigin = req.headers.origin || req.headers.host
+    if(!isOriginOk(req))
+      return req.headers.origin ? logger.error(`proxy -origin [${resolvedOrigin}], method [${req.method}]`) : logger.warn(&apos;proxy -host [%s], method [%s]&apos;, req.headers.host, req.method)
+    logger.trace(`proxy +${req.headers.origin ? &apos;origin&apos; : &apos;host&apos;} [${resolvedOrigin}], method [${req.method}]`)
+    res.setHeader(&apos;Access-Control-Allow-Origin&apos;, resolvedOrigin)
+    res.setHeader(&apos;Access-Control-Allow-Credentials&apos;, true)
   }
 
-  function getOptionsHeaders(req) {
-    return  { &apos;Access-Control-Allow-Origin&apos;: req.headers.origin
-            , &apos;Access-Control-Max-Age&apos;: 604800 // Specifies how long the preflight response can be cached in seconds
-            , &apos;Access-Control-Allow-Methods&apos;: &apos;GET, PUT, POST, DELETE&apos;
-            , &apos;Access-Control-Allow-Headers&apos;: &apos;Content-Type, Authorization&apos;
-            , &apos;Access-Control-Allow-Credentials&apos;: true
-            }
-  }
-
-  function handle(req, res) {
-    if(isOk(req)) {
-      if(req.headers.origin) {
-        logger.trace(&apos;proxy +origin [%s], method [%s]&apos;, req.headers.host, req.method)
-      } else {
-        logger.trace(&apos;proxy +host [%s], method [%s]&apos;, req.headers.host, req.method)
-      }
-      res.setHeader(&apos;Access-Control-Allow-Origin&apos;, req.headers.origin || req.headers.host)
-      res.setHeader(&apos;Access-Control-Allow-Credentials&apos;, true)
-    } else {
-      if(req.headers.origin) {
-        logger.error(&apos;proxy -origin [%s], method [%s]&apos;, req.headers.host, req.method)
-      } else {
-        logger.warn(&apos;proxy -host [%s], method [%s]&apos;, req.headers.host, req.method)
-      }
-    }
-  }
-
-  function handlePreflight(req, res) {
+  const handlePreflight = (req, res) =&gt; {
     res.writeHead(200, getOptionsHeaders(req))
     res.end()
   }
 
-  function handleFailure(req, res) {
+  const handleFailure = (req, res) =&gt; {
     res.writeHead(failureStatus.code)
     res.end (JSON.stringify({ message: failureStatus.message
                             , errors: [ getError(req) ]
                             }))
   }
 
-  return  { isOk : isOk
+  return  { isOriginOk : isOriginOk
           , failureStatus: failureStatus
           , getError: getError
           , getOptionsHeaders: getOptionsHeaders

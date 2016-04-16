@@ -1,26 +1,38 @@
 import React, { Component, PropTypes } from 'react'
-import { Navbar, Nav, NavbarBrand, NavItem } from 'react-bootstrap'
+import FA from 'app/elements/visual/FA'
+import { appName } from 'config'
 import name from 'package/name'
 
 import './TopBar.css'
 
+
+import contextTypes from 'app/context'
+
 export default class TopBar extends Component {
-  static propTypes =  { toggleMenu: React.PropTypes.func
-                      };
+  static contextTypes = contextTypes;
   render() {
-    return (<div>
-      <div>
-        <div style={{float: 'left', marginLeft: '3%'}}>
-          <a href="/" style={{ textDecoration: 'none'}}>
-            <h2 style={{marginTop: 8, paddingTop: 0, color: '#fff', textDecoration: 'none', textShadow: '1px 1px 2px black' }}>{name}</h2>
+    const { palette, color, brand, style } = this.context.theme
+    const { wrapper, hamburger, title, anchor, banner, settings, settingsImage } = style.header
+
+    return (
+      <header style={wrapper} id="topbar">
+        <button style={hamburger}>
+          <FA name="bars" size="lg" />
+        </button>
+        <span style={title}>
+          <a href="/" style={anchor}>{appName}</a>
+        </span>
+        <span style={banner}>
+          <a href={`https://nodei.co/npm/${name}/`}>
+            <img src={`https://nodei.co/npm/${name}.png?mini=true`} />
           </a>
-        </div>
-        <div>
-          <div style={{float: 'right', marginRight: '3%', marginTop: 5}}>
-            <img style={{float: 'right', width: 40 }} src="/images/gear_0.gif" alt="Brand" />
-          </div>
-        </div>
-      </div>
-    </div>)
+        </span>
+        <span style={settings}>
+          <a href="/settings" style={anchor}>
+            <FA name="cog" size="2x"/>
+          </a>
+        </span>
+      </header>
+    )
   }
 }

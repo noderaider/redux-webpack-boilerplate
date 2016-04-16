@@ -38,7 +38,7 @@ class Identity extends Component {
         {/*
         <AccessTokenMicro accessToken={accessToken} />
         <RefreshTokenMicro refreshToken={refreshToken} />
-      */}
+        */}
         <ThemeMicro theme={theme} />
       </div>
     )

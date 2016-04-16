@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { name, dom } from 'config-client'
+import { appName, dom } from 'config-client'
 import { addTiming } from '../global/performance'
 import { createLogger } from 'bunyan'
 import { assert } from 'chai'
@@ -63,7 +63,7 @@ export default class RootElement {
     this._name = elementName
     this._containerStyle = containerStyle
     this._props = props
-    this._triggerEvent = event => addTiming(`${name}${event}`)
+    this._triggerEvent = event => addTiming(`${appName}${event}`)
     this._triggerEvent('Ctor')
   }
   render = props => {
@@ -76,15 +76,15 @@ export default class RootElement {
       })
   };
   get reference() {
-    window[name] = window[name] || {}
-    return window[name][this._name]
+    window[appName] = window[appName] || {}
+    return window[appName][this._name]
   }
   set reference(element) {
-    window[name] = window[name] || {}
-    window[name][this._name] = element
+    window[appName] = window[appName] || {}
+    window[appName][this._name] = element
   }
   get id() {
-    return `${name}-${this._name}`
+    return `${appName}-${this._name}`
   }
   dispose = () => {
     this._triggerEvent('Dispose')

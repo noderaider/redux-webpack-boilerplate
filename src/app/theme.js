@@ -65,13 +65,13 @@ const buildTheme = (name, palette, inverted=false) => {
 
   const color = { primary: p['base3']
                 , secondary: p['base00']
-                , tertiary: p['base1']
-                , accent: p['yellow']
+                , tertiary: p['base2']
+                , accent: p['blue']
                 , emphasized: p['base01']
                 }
 
   const brand = { default: p['base2']
-                , primary: p['yellow']
+                , primary: p['green']
                 , info: p['cyan']
                 , success: p['green']
                 , warning: p['orange']
@@ -82,25 +82,48 @@ const buildTheme = (name, palette, inverted=false) => {
           , palette: p
           , color
           , brand
-          , style:  { app:  { width: '100%'
+          , style:  { app:  { width: '80%'
                             , height: '100%'
-                            , backgroundColor: color.primary
                             , color: color.secondary
+                            , marginLeft: '10%'
                             }
-                    , body: { backgroundColor: p['base2']
-                            , border: `1px solid ${color.secondary}`
-                            , width: '90%'
-                            , float: 'left'
-                            , borderRadius: 5
-                            , paddingTop: 10
-                            , paddingBottom: 10
-                            , paddingLeft: '2%'
-                            , paddingRight: '2%'
-                            , marginTop: 5
-                            , marginBottom: 20
-                            , marginLeft: '3%'
-                            , marginRight: '3%'
+                    , body: { backgroundColor: p['base3']
+                            , padding: 0
+                            , margin: 0
                             }
+                    , content:  { width: '100%'
+                                , backgroundColor: p['base2']
+                                , float: 'left'
+                                , paddingBottom: 50
+                                , borderRadius: 5
+                                , border: `1px solid ${p['base0']}`
+                                }
+                    , header: { wrapper:  { display: 'flex'
+                                          , flexDirection: 'row'
+                                          , flex: '1 0 300px'
+                                          , justifyContent: 'space-between'
+                                          , alignItems: 'center'
+                                          , marginTop: 10
+                                          , marginBottom: 10
+                                          }
+                              , hamburger:  { backgroundColor: p['base2']
+                                            , borderRadius: 4
+                                            , border: `1px solid ${p['base3']}`
+                                            , height: 32
+                                            , width: 32
+                                            , cursor: 'pointer'
+                                            }
+                              , title:  { fontSize: '1.8em'
+                                        , fontFamily: 'Lato'
+                                        , fontWeight: 'bold'
+                                        , marginLeft: 20
+                                        , marginRight: 'auto'
+                                        }
+                              , anchor: { color: color.accent, textDecoration: 'none' }
+                              , banner: { marginRight: 20, marginTop: 3 }
+                              , settings: { }
+                              , settingsImage: { height: 45, textShadow: '-1px -1px 0 #000' }
+                              }
                     , panel:  { backgroundColor: brand.default
                               , borderColor: color.tertiary
                               , borderStyle: 'solid'
