@@ -29,7 +29,7 @@ export default ({}) => Object.assign({}, ...[ build('package', resource => `babe
                                               , 'release': 'npm version patch && npm publish'
                                               , 'postrelease': 'npm run release-doc'
                                               , 'prerelease-doc': 'npm run doc'
-                                              , 'release-doc': 'git subtree push --prefix doc origin gh-pages'
+                                              , 'release-doc': 'git subtree push --prefix public origin gh-pages'
                                               , 'postrelease-doc': 'git commit -am "doc-release" && git push --follow-tags'
                                               , 'test': 'karma start'
                                               }

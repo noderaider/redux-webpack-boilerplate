@@ -200,7 +200,7 @@ const buildTheme = (name, palette, inverted=false) => {
                     , input:  { color: p['base03']
                               , backgroundColor: p['base3']
                               , fontSize: '1.1em'
-                              , padding: 15
+                              , padding: 10
                               , minWidth: 300
                               , borderColor: color.tertiary
                               , borderRadius: 4
