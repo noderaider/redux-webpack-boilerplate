@@ -11,24 +11,25 @@ import contextTypes from 'app/context'
 export default class TopBar extends Component {
   static contextTypes = contextTypes;
   render() {
+    const { title, subtitle } = this.props
     const { palette, color, brand, style } = this.context.theme
-    const { wrapper, hamburger, title, anchor, banner, settings, settingsImage } = style.header
+    const { header } = style
 
     return (
-      <header style={wrapper} id="topbar">
-        <button style={hamburger}>
+      <header style={header.wrapper} id="topbar">
+        <button style={header.hamburger}>
           <FA name="bars" size="lg" />
         </button>
-        <span style={title}>
-          <a href="/" style={anchor}>{appName}</a>
+        <span style={header.title}>
+          <a href="/" style={header.anchor}>{title}{subtitle ? <span style={header.subtitle}>{subtitle}</span> : null}</a>
         </span>
-        <span style={banner}>
+        <span style={header.banner}>
           <a href={`https://nodei.co/npm/${name}/`}>
             <img src={`https://nodei.co/npm/${name}.png?mini=true`} />
           </a>
         </span>
-        <span style={settings}>
-          <a href="/settings" style={anchor}>
+        <span style={header.settings}>
+          <a href="/settings" style={header.anchor}>
             <FA name="cog" size="2x"/>
           </a>
         </span>

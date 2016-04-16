@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import { Navbar, Nav, NavBrand, NavItem, CollapsibleNav, Well, Grid, Row, Col, Panel, Button, ButtonGroup } from 'react-bootstrap'
 import Label from 'elements/forms/controls/Label'
 import classNames from 'classnames'
 import Identity from 'controls/Identity'
@@ -35,23 +34,25 @@ export default class FooterBar extends Component {
   static contextTypes = contextTypes;
   render() {
     const { showAttributes, showLegal, showCopyright } = this.props
+    const { palette, color, brand, style } = this.context.theme
+    const { footer } = style
 
     return (
-      <div id="FooterBar">
-        <Row>
-          <Col className="FooterBarLeft" xs={6}>
-            {showAttributes ? <AttributesBar /> : null}
-          </Col>
-          <Col className="FooterBarRight" xs={6}>
-          </Col>
-        </Row>
-        <Row>
-          <Col className="FooterBarLeft" xs={6}>
+      <div style={footer.wrapper}>
+        <div style={footer.left}>
+          <div style={footer.row}>
+          </div>
+          <div style={footer.row}>
             <Identity />
-          </Col>
-          <Col className="FooterBarRight" xs={6}>
-          </Col>
-        </Row>
+          </div>
+        </div>
+        <div style={footer.right}>
+          <div style={footer.row}>
+          </div>
+          <div style={footer.row}>
+            <AttributesBar />
+          </div>
+        </div>
       </div>
     )
   }

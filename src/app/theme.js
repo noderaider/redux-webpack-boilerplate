@@ -94,7 +94,10 @@ const buildTheme = (name, palette, inverted=false) => {
                     , content:  { width: '100%'
                                 , backgroundColor: p['base2']
                                 , float: 'left'
-                                , paddingBottom: 50
+                                , marginTop: 10
+                                , marginBottom: 10
+                                , paddingTop: 20
+                                , paddingBottom: 20
                                 , borderRadius: 5
                                 , border: `1px solid ${p['base0']}`
                                 }
@@ -119,10 +122,34 @@ const buildTheme = (name, palette, inverted=false) => {
                                         , marginLeft: 20
                                         , marginRight: 'auto'
                                         }
+                              , subtitle: { fontSize: 9, marginLeft: 10, marginTop: 0, paddingTop: 0 }
                               , anchor: { color: color.accent, textDecoration: 'none' }
                               , banner: { marginRight: 20, marginTop: 3 }
                               , settings: { }
                               , settingsImage: { height: 45, textShadow: '-1px -1px 0 #000' }
+                              }
+                    , footer: { wrapper:  { display: 'flex'
+                                          , flexDirection: 'row'
+                                          , flex: '0 1 10px'
+                                          , flexWrap: 'nowrap'
+                                          , justifyContent: 'space-between'
+                                          , alignItems: 'flex-end'
+                                          , position: 'fixed'
+                                          , bottom: 5
+                                          , width: '80%'
+                                          }
+                              , left: { display: 'flex'
+                                      , flexDirection: 'column'
+                                      }
+                              , right: { display: 'flex'
+                                      , flexDirection: 'column'
+                                      }
+                              , row:  { display: 'flex'
+                                      , flexDirection: 'row'
+                                      , justifyContent: 'space-between'
+                                      , flexWrap: 'nowrap'
+                                      }
+                              , anchor: { color: color.accent, textDecoration: 'none' }
                               }
                     , panel:  { backgroundColor: brand.default
                               , borderColor: color.tertiary
@@ -158,7 +185,11 @@ const buildTheme = (name, palette, inverted=false) => {
                               }
                     , input:  { color: p['base03']
                               , backgroundColor: p['base3']
+                              , fontSize: '1.3em'
+                              , padding: 15
+                              , minWidth: 300
                               , borderColor: color.tertiary
+                              , borderRadius: 4
                               , borderWidth: 1
                               , borderStyle: 'solid'
                               }

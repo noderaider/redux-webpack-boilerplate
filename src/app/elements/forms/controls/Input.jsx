@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import bindAll from 'lodash.bindall'
 //import Placeholders from 'vendor/placeholders'
 import contextTypes from 'app/context'
 

@@ -6,8 +6,11 @@ import  { TOGGLE_VISIBILITY
         , UPDATE_TEXT
         , REGISTER_TOOLTIP
         , DISPOSE_TOOLTIP
+        , SET_TEXT
         } from '../constants'
 import { createAction } from 'redux-actions'
+
+export const setText = createAction(SET_TEXT, (id, text) => ({ id, text }))
 
 export const toggleVisibility = createAction(TOGGLE_VISIBILITY, (componentID, value = true, options = [false, true]) => ({ componentID, value, options }))
 export const setVisibility = createAction(SET_VISIBILITY, (componentID, value, options = [false, true]) => ({ componentID, value, options }))
@@ -20,3 +23,4 @@ export const updateText = createAction(UPDATE_TEXT, (componentID, maxCount, text
 
 export const registerTooltip = createAction(REGISTER_TOOLTIP, (componentID, props) => ({ componentID, props }))
 export const disposeTooltip = createAction(DISPOSE_TOOLTIP, componentID => ({ componentID }))
+

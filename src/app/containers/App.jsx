@@ -11,6 +11,8 @@ import PageStyle from 'app/elements/visual/PageStyle'
 import ThemePanel from 'elements/panels/ThemePanel'
 import ErrorPanel from 'elements/panels/ErrorPanel'
 
+import PageForm from 'app/elements/forms/PageForm'
+
 import contextTypes from 'app/context'
 import getTheme from 'app/theme'
 const defaultTheme = 'solarized-dark'
@@ -27,8 +29,8 @@ class App extends Component {
   static propTypes = { dispatch: PropTypes.func.isRequired };
   static childContextTypes = contextTypes;
   componentWillMount() {
-    const { dispatch, visual } = this.props
-    const { style } = getTheme(visual.theme || defaultTheme)
+    const { dispatch, theme } = this.props
+    const { style } = theme
     const { backgroundColor, margin, padding } = style.body
     document.body.style.backgroundColor = backgroundColor
     document.body.style.margin = margin
@@ -36,26 +38,24 @@ class App extends Component {
   }
   getChildContext() {
     return  { gridProps
-            , theme: getTheme(this.props.visual.theme || defaultTheme)
+            , theme: this.props.theme
             }
   }
   shouldComponentUpdate(nextProps, nextState) {
     return true
   }
   render(){
-    const { dispatch, visual, errors } = this.props
-    const { style } = getTheme(visual.theme || defaultTheme)
+    const { dispatch, theme, title, subtitle, errors } = this.props
+    const { style } = theme
 
     const hasErrors = errors.get('api').size > 0 || errors.get('identity').size > 0
 
     return (
       <div>
         <div style={style.app}>
-          <TopBar />
+          <TopBar title={title} subtitle={subtitle} />
           <div style={style.content} className="body-content container">
-            <ul>
-              <li>In src/package/name, modify the name to match that of your project.</li>
-            </ul>
+            <PageForm />
           </div>
           {(hasErrors && !__PROD__) ? (
             <ErrorPanel />
@@ -70,7 +70,9 @@ class App extends Component {
 
 function mapStateToProps(state) {
   const { visual, errors } = state
-  return  { visual
+  return  { theme: getTheme(visual.theme || defaultTheme)
+          , title: visual.text.get('title')
+          , subtitle: visual.text.get('subtitle')
           , errors
           }
 }

@@ -3,6 +3,9 @@ import thunkMiddleware from 'redux-thunk'
 import createLogger from 'redux-logger'
 import { middleware as idleMiddleware } from 'state/components/redux-idle-monitor'
 
+import { appName } from 'config'
+
+import { setText } from 'state/actions/visual'
 import { actions as idleActions } from 'state/components/redux-idle-monitor'
 
 import rootReducer from '../reducers'
@@ -17,6 +20,8 @@ const composeStore = compose( applyMiddleware(thunkMiddleware, idleMiddleware, l
 
 export default function configureStore() {
   const store = composeStore(rootReducer)
+  store.dispatch(setText('title', appName))
+  store.dispatch(setText('subtitle', 'active'))
   store.dispatch(idleActions.start())
   if(module.hot)
     module.hot.accept('../reducers', () => store.replaceReducer(require('../reducers').default))

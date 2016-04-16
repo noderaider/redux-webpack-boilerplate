@@ -1,4 +1,5 @@
-import  { IDLESTATUS_NOT_GODLY_FAST
+import { setText } from 'state/actions/visual'
+import  { IDLESTATUS_NOT_VERY_ACTIVE
         , IDLESTATUS_GONE_FOR_LIKE_A_SECOND
         , IDLESTATUS_LAZY_TYPER
         , IDLESTATUS_ARE_YOU_STILL_THERE
@@ -29,29 +30,25 @@ const invertColors = theme => ( { ...theme
 const nonColors = ['author', 'scheme', 'base07', 'base06', 'base05', 'base04', 'base02', 'base01', 'base00']
 const filterColors = scheme => Object.keys(scheme).filter(x => !nonColors.includes(x)).reduce((colors, key) => Object.assign(colors, { [key]: scheme[key] }), {})
 
+const getRandomColor = colors => {
+  let paletteKeys = Object.keys(colors)
+  let selectedIndex = Math.floor(paletteKeys.length * Math.random())
+  return colors[paletteKeys[selectedIndex]]
+}
 //** TODO: NPM MODULE */
 const palettize = theme => invertTheme => {
   const scheme = invertTheme ? invertColors(themes[theme]) : themes[theme]
-  console.warn('CALLING PALETTIZE', scheme)
   let colors = filterColors(scheme)
-  console.warn(colors)
   const basePalette = Object.keys(paletteMap).reduce((palette, key) => {
     palette[key] = paletteMap[key].map(x => scheme[x])
     return palette
   }, {})
   return  {...basePalette
           , bool: condition => condition ? scheme['base0B'] : scheme['base08']
-          , random: () => {
-              let paletteKeys = Object.keys(colors)
-              return colors[paletteKeys[Math.floor(paletteKeys.length * Math.random())]]
-              /*
-              let paletteIndex = Math.floor(paletteKeys.length * Math.random())
-              let paletteKey = paletteKeys[paletteIndex]
-              let paletteSlice = basePalette[paletteKey]
-              let paletteSliceIndex = Math.floor(paletteSlice.length * Math.random())
-              return paletteSlice[paletteSliceIndex]
-              */
-            }
+          , get colors() { return colors }
+          , random: () => getRandomColor(colors)
+          , get red() { return scheme['base08'] }
+          , get green() { return scheme['base0B'] }
           }
 }
 
@@ -61,26 +58,39 @@ const solarized = palettize('solarized')(false)
 
 export const idleStatusDelay = idleStatus => (dispatch, getState) => {
   switch(idleStatus) {
-    case IDLESTATUS_NOT_GODLY_FAST:
+    case IDLESTATUS_NOT_VERY_ACTIVE:
+      return 5000
     case IDLESTATUS_GONE_FOR_LIKE_A_SECOND:
+      return 4000
     case IDLESTATUS_LAZY_TYPER:
+      return 3000
     case IDLESTATUS_ARE_YOU_STILL_THERE:
+      return 2000
     case IDLESTATUS_GONE:
+      return 1000
     case IDLESTATUS_THEY_DONT_CARE_ABOUT_YOU:
+      return 800
     case IDLESTATUS_THEY_ARE_NEVER_COMING_BACK:
+      return 600
     case IDLESTATUS_STONE_AGE_GONE:
+      return 400
     case IDLESTATUS_EXTINCT:
+      return 200
     default:
       return 3000
   }
 }
 
 
-export const activeStatusAction = (dispatch, getState) => setColor(solarized.background[0])
+export const activeStatusAction = (dispatch, getState) =>  {
+  dispatch(setText('subtitle', 'ACTIVE'))
+  setColor(solarized.background[0])
+}
 
 export const idleStatusAction = idleStatus => (dispatch, getState) => {
+  dispatch(setText('subtitle', idleStatus.replace(/_/g, ' ')))
   switch(idleStatus) {
-    case IDLESTATUS_NOT_GODLY_FAST:
+    case IDLESTATUS_NOT_VERY_ACTIVE:
       return setColor(solarized.random())
     case IDLESTATUS_GONE_FOR_LIKE_A_SECOND:
       return setColor(solarized.random())
@@ -97,7 +107,7 @@ export const idleStatusAction = idleStatus => (dispatch, getState) => {
     case IDLESTATUS_STONE_AGE_GONE:
       return setColor(solarized.random())
     case IDLESTATUS_EXTINCT:
-      return setColor(solarized.random())
+      return setColor(solarized.red)
   }
 }
 
