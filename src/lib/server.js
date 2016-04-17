@@ -47,6 +47,7 @@ const configureServer = ({ paths }) => {
       let webpackConfig = require('../webpack.config')
       let hotConfig = Array.isArray(webpackConfig) ? webpackConfig.filter(x => x.name === hotConfigName)[0] : webpackConfig
       let compiler = require('webpack')(hotConfig)
+      console.warn('hotConfig public path', hotConfig.output.publicPath)
       app.use(require('webpack-dev-middleware')(compiler, { noInfo: true
                                                           , publicPath: hotConfig.output.publicPath
                                                           //, quiet: false
