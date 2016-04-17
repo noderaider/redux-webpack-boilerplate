@@ -3,8 +3,14 @@
 
 [![NPM](https://nodei.co/npm/redux-webpack-boilerplate.png?stars=true&downloads=true)](https://nodei.co/npm/redux-webpack-boilerplate/)
 
-
 `npm i -S redux-webpack-boilerplate`
+
+
+See a working demo in a real project at [redux-webpack-boilerplate](https://cchamberlain.github.io/redux-webpack-boilerplate)
+
+
+![redux-webpack-boilerplate](/src/public/images/boilerplate.png)
+
 
 ### Features
 
@@ -19,3 +25,5 @@
 * Preconfigured with redux-idle-monitor and griddle redux extensions.
 * Preconfigured with redux-form.
 * Easy startup with `npm run start-hot`
+
+
