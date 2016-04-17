@@ -9843,8 +9843,6 @@ webpackJsonp([1],[
 	  };
 	}();
 
-	var _class, _temp;
-
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -9917,7 +9915,7 @@ webpackJsonp([1],[
 	  stopColor: _react.PropTypes.string.isRequired
 	});
 
-	var IdleMonitor = (_temp = _class = function (_Component) {
+	var IdleMonitor = function (_Component) {
 	  _inherits(IdleMonitor, _Component);
 
 	  function IdleMonitor() {
@@ -9938,7 +9936,9 @@ webpackJsonp([1],[
 	  }]);
 
 	  return IdleMonitor;
-	}(_react.Component), _class.propTypes = { showStatus: _react.PropTypes.bool.isRequired,
+	}(_react.Component);
+
+	IdleMonitor.propTypes = { showStatus: _react.PropTypes.bool.isRequired,
 	  showControls: _react.PropTypes.bool.isRequired,
 	  title: _react.PropTypes.string.isRequired,
 	  theme: _react.PropTypes.string.isRequired,
@@ -9952,7 +9952,8 @@ webpackJsonp([1],[
 	  isDetectionRunning: _react.PropTypes.bool.isRequired,
 	  lastActive: _react.PropTypes.number.isRequired,
 	  lastEvent: _react.PropTypes.object.isRequired
-	}, _class.defaultProps = { showStatus: true,
+	};
+	IdleMonitor.defaultProps = { showStatus: true,
 	  showControls: true,
 	  title: 'IDLEMONITOR',
 	  theme: 'solarized',
@@ -9963,7 +9964,7 @@ webpackJsonp([1],[
 	    content: ['base04', 'base02', 'base05'],
 	    accent: ['base0D', 'base0E', 'base0C']
 	  }
-	}, _temp);
+	};
 	var mapIdleStateToProps = exports.mapIdleStateToProps = function mapIdleStateToProps(state, ownProps) {
 	  var _bisectState = bisectState(state);
 
