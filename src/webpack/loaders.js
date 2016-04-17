@@ -50,7 +50,7 @@ const babelLoader = `babel?${JSON.stringify(babelQuery)}`
 
 export const getJsxLoader = name => {
   return  { test: /\.jsx?$/
-          , loaders: [ process.env.NODE_ENV === 'hot' ? 'babel' : babelLoader]
+          , loaders: [ 'babel' ] //process.env.NODE_ENV === 'hot' ? 'babel' : babelLoader]
           , exclude:  [ /node_modules/
                       , /tinymce.*\.js$/
                       , /jquery-.*\.js$/]

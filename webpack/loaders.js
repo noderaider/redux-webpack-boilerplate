@@ -56,7 +56,7 @@ var babelLoader = 'babel?' + JSON.stringify(babelQuery);
 
 var getJsxLoader = exports.getJsxLoader = function getJsxLoader(name) {
   return { test: /\.jsx?$/,
-    loaders: [process.env.NODE_ENV === 'hot' ? 'babel' : babelLoader],
-    exclude: [/node_modules/, /tinymce.*\.js$/, /jquery-.*\.js$/]
+    loaders: ['babel'] //process.env.NODE_ENV === 'hot' ? 'babel' : babelLoader]
+    , exclude: [/node_modules/, /tinymce.*\.js$/, /jquery-.*\.js$/]
   };
 };
