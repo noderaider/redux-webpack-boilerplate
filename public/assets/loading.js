@@ -1,3094 +1,332 @@
 webpackJsonp([2],{
 
 /***/ 0:
+/*!*********************!*\
+  !*** multi loading ***!
+  \*********************/
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	__webpack_require__(919);
-
-	var _performance = __webpack_require__(108);
-
-	var _performance2 = _interopRequireDefault(_performance);
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _Spinner = __webpack_require__(396);
-
-	var _Spinner2 = _interopRequireDefault(_Spinner);
-
-	var _elements = __webpack_require__(174);
-
-	var _elements2 = _interopRequireDefault(_elements);
-
-	var _bunyan = __webpack_require__(122);
-
-	var _globalStore = __webpack_require__(177);
-
-	var _configureStore = __webpack_require__(421);
-
-	var _configureStore2 = _interopRequireDefault(_configureStore);
-
-	var _chai = __webpack_require__(12);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	_performance2.default.addTiming('loadingStart');
-
-	/** STUFF HERE IS RUN SYNCHRONOUSLY IN HEAD OR TOP OF BODY, NO WEB FORMS YET */
-	(0, _elements.blockBody)();
-
-	var Loading = function (_Component) {
-	  _inherits(Loading, _Component);
-
-	  function Loading() {
-	    _classCallCheck(this, Loading);
-
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Loading).apply(this, arguments));
-	  }
-
-	  _createClass(Loading, [{
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
-
-	      return _react2.default.createElement('div', { ref: function ref(x) {
-	          return _this2.__element = x;
-	        } });
-	    }
-	  }, {
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      this.spinner = new _Spinner2.default();
-	      this.spinner.spin(this.__element);
-	      (0, _elements.unblockBody)();
-	      (0, _globalStore.saveGlobalStore)((0, _configureStore2.default)());
-	    }
-	  }]);
-
-	  return Loading;
-	}(_react.Component);
-
-	var loading = new _elements2.default('loading', { backgroundColor: 'rgb(240, 240, 240)', position: 'fixed', zIndex: 99999, width: '100%', height: '100%', left: 0, top: 0 }, { children: _react2.default.createElement(Loading, null) });
-	loading.render().then(function () {});
+	eval("__webpack_require__(/*! webpack-hot-middleware/client */357);\nmodule.exports = __webpack_require__(/*! ../src/app/entry/loading */438);\n\n\n/*****************\n ** WEBPACK FOOTER\n ** multi loading\n ** module id = 0\n ** module chunks = 2\n **/\n//# sourceURL=webpack:///multi_loading?");
 
 /***/ },
 
-/***/ 78:
+/***/ 83:
+/*!*******************************************************************************!*\
+  !*** C:/Users/cchamberlain/cchamberlain/redux-idle-monitor/lib/blueprints.js ***!
+  \*******************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.nextIdleStatusBlueprint = exports.publicBlueprints = exports.activityDetectionBlueprint = exports.activityBlueprint = exports.resetBlueprint = exports.stopBlueprint = exports.startBlueprint = undefined;
-
-	var _chai = __webpack_require__(12);
-
-	var _reduxBlueprint = __webpack_require__(379);
-
-	var _constants = __webpack_require__(22);
-
-	var startBlueprint = exports.startBlueprint = (0, _reduxBlueprint.createBlueprint)(_constants.START_BLUEPRINT);
-	var stopBlueprint = exports.stopBlueprint = (0, _reduxBlueprint.createBlueprint)(_constants.STOP_BLUEPRINT);
-	var resetBlueprint = exports.resetBlueprint = (0, _reduxBlueprint.createBlueprint)(_constants.RESET_BLUEPRINT);
-
-	var activityBlueprint = exports.activityBlueprint = (0, _reduxBlueprint.createBlueprint)(_constants.ACTIVITY_BLUEPRINT, function (_ref) {
-	  var x = _ref.x;
-	  var y = _ref.y;
-	  var type = _ref.type;
-	  var isTransition = _ref.isTransition;
-	  return { activeStatus: _constants.IDLESTATUS_ACTIVE, lastActive: +new Date(), lastEvent: { x: x, y: y, type: type }, isTransition: isTransition };
-	});
-	var activityDetectionBlueprint = exports.activityDetectionBlueprint = (0, _reduxBlueprint.createBlueprint)(_constants.ACTIVITY_DETECTION_BLUEPRINT, function (isDetectionRunning) {
-	  return { isDetectionRunning: isDetectionRunning };
-	});
-
-	var publicBlueprints = exports.publicBlueprints = { start: startBlueprint, stop: stopBlueprint, reset: resetBlueprint };
-
-	var nextIdleStatusBlueprint = exports.nextIdleStatusBlueprint = (0, _reduxBlueprint.createBlueprint)(_constants.NEXT_IDLE_STATUS_BLUEPRINT, function (nextIdleStatus) {
-	  _chai.assert.ok(nextIdleStatus, 'nextIdleStatus must be defined');
-	  return { nextIdleStatus: nextIdleStatus };
-	});
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.nextIdleStatusBlueprint = exports.publicBlueprints = exports.activityDetectionBlueprint = exports.activityBlueprint = exports.resetBlueprint = exports.stopBlueprint = exports.startBlueprint = undefined;\n\nvar _chai = __webpack_require__(/*! chai */ 16);\n\nvar _reduxBlueprint = __webpack_require__(/*! redux-blueprint */ 400);\n\nvar _constants = __webpack_require__(/*! ./constants */ 27);\n\nvar startBlueprint = exports.startBlueprint = (0, _reduxBlueprint.createBlueprint)(_constants.START_BLUEPRINT);\nvar stopBlueprint = exports.stopBlueprint = (0, _reduxBlueprint.createBlueprint)(_constants.STOP_BLUEPRINT);\nvar resetBlueprint = exports.resetBlueprint = (0, _reduxBlueprint.createBlueprint)(_constants.RESET_BLUEPRINT);\n\nvar activityBlueprint = exports.activityBlueprint = (0, _reduxBlueprint.createBlueprint)(_constants.ACTIVITY_BLUEPRINT, function (_ref) {\n  var x = _ref.x;\n  var y = _ref.y;\n  var type = _ref.type;\n  var isTransition = _ref.isTransition;\n  return { activeStatus: _constants.IDLESTATUS_ACTIVE, lastActive: +new Date(), lastEvent: { x: x, y: y, type: type }, isTransition: isTransition };\n});\nvar activityDetectionBlueprint = exports.activityDetectionBlueprint = (0, _reduxBlueprint.createBlueprint)(_constants.ACTIVITY_DETECTION_BLUEPRINT, function (isDetectionRunning) {\n  return { isDetectionRunning: isDetectionRunning };\n});\n\nvar publicBlueprints = exports.publicBlueprints = { start: startBlueprint, stop: stopBlueprint, reset: resetBlueprint };\n\nvar nextIdleStatusBlueprint = exports.nextIdleStatusBlueprint = (0, _reduxBlueprint.createBlueprint)(_constants.NEXT_IDLE_STATUS_BLUEPRINT, function (nextIdleStatus) {\n  _chai.assert.ok(nextIdleStatus, 'nextIdleStatus must be defined');\n  return { nextIdleStatus: nextIdleStatus };\n});\n\n/*****************\n ** WEBPACK FOOTER\n ** C:/Users/cchamberlain/cchamberlain/redux-idle-monitor/lib/blueprints.js\n ** module id = 83\n ** module chunks = 2\n **/\n//# sourceURL=webpack:///C:/Users/cchamberlain/cchamberlain/redux-idle-monitor/lib/blueprints.js?");
 
 /***/ },
 
-/***/ 106:
+/***/ 112:
+/*!****************************************************************************!*\
+  !*** C:/Users/cchamberlain/cchamberlain/redux-idle-monitor/lib/context.js ***!
+  \****************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = createContext;
-
-	var _chai = __webpack_require__(12);
-
-	var _constants = __webpack_require__(22);
-
-	var _defaults = __webpack_require__(386);
-
-	var _context = __webpack_require__(382);
-
-	var _context2 = _interopRequireDefault(_context);
-
-	var _log = __webpack_require__(168);
-
-	function _interopRequireDefault(obj) {
-	  return obj && obj.__esModule ? obj : { default: obj };
-	}
-
-	var noop = function noop() {};
-
-	var validateContext = function validateContext(libContext, appContext) {
-	  _chai.assert.ok(libContext, 'must pass opts to validate');
-	  _chai.assert.ok(appContext, 'must pass opts to validate');
-
-	  var libName = libContext.libName;
-	  var appName = libContext.appName;
-	  var activeEvents = appContext.activeEvents;
-	  var thresholds = appContext.thresholds;
-
-	  _chai.assert.ok(libName, 'libName must exist');
-	  (0, _chai.assert)(typeof libName === 'string', 'libName option must be a string');
-	  (0, _chai.assert)(libName.length > 0, 'libName option must not be empty');
-	  _chai.assert.ok(appName, 'appName must exist');
-	  (0, _chai.assert)(typeof appName === 'string', 'appName option must be a string');
-	  (0, _chai.assert)(appName.length > 0, 'appName option must not be empty');
-	  _chai.assert.ok(activeEvents, 'active events must exist');
-	  _chai.assert.ok(thresholds, 'thresholds must exist');
-	  _chai.assert.ok(thresholds.mouse, 'thresholds.mouse must exist');
-	  (0, _chai.assert)(typeof thresholds.mouse === 'number', 'thresholds.mouse must be a number corresponding to pixels');
-	  (0, _chai.assert)(typeof thresholds.phaseOffMS === 'number', 'thresholds.phaseOffMS must be a number corresponding to minimum milliseconds between updates to redux');
-	  (0, _chai.assert)(typeof thresholds.phaseOnMS === 'number', 'thresholds.phaseOnMS must be a number corresponding to minimum milliseconds between updates to redux');
-	};
-
-	var configureInitialState = function configureInitialState(libContext) {
-	  return function (appContext) {
-	    return { idleStatus: _constants.IDLESTATUS_ACTIVE,
-	      isRunning: false,
-	      isDetectionRunning: false,
-	      isIdle: false,
-	      lastActive: +new Date(),
-	      lastEvent: { x: -1, y: -1, type: null }
-	    };
-	  };
-	};
-
-	function createContext() {
-	  var _ref = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-
-	  var appName = _ref.appName;
-	  var IDLE_STATUSES = _ref.IDLE_STATUSES;
-	  var idleStatusDelay = _ref.idleStatusDelay;
-	  var activeStatusAction = _ref.activeStatusAction;
-	  var idleStatusAction = _ref.idleStatusAction;
-	  var _ref$activeEvents = _ref.activeEvents;
-	  var activeEvents = _ref$activeEvents === undefined ? (0, _defaults.getActiveEvents)() : _ref$activeEvents;
-	  var _ref$useFastStore = _ref.useFastStore;
-	  var useFastStore = _ref$useFastStore === undefined ? (0, _defaults.getUseFastState)() : _ref$useFastStore;
-	  var _ref$useLocalStore = _ref.useLocalStore;
-	  var useLocalStore = _ref$useLocalStore === undefined ? (0, _defaults.getUseLocalState)() : _ref$useLocalStore;
-	  var _ref$useWebRTCState = _ref.useWebRTCState;
-	  var useWebRTCState = _ref$useWebRTCState === undefined ? (0, _defaults.getUseWebRTCState)() : _ref$useWebRTCState;
-	  var _ref$useWebSocketsSta = _ref.useWebSocketsState;
-	  var useWebSocketsState = _ref$useWebSocketsSta === undefined ? (0, _defaults.getUseWebSocketsState)() : _ref$useWebSocketsSta;
-	  var _ref$thresholds = _ref.thresholds;
-	  var thresholds = _ref$thresholds === undefined ? (0, _defaults.getThresholds)() : _ref$thresholds;
-	  var _ref$level = _ref.level;
-	  var level = _ref$level === undefined ? (0, _defaults.getLevel)() : _ref$level;
-
-	  var libName = _constants.ROOT_STATE_KEY;
-	  var libOpts = { libName: libName, validateContext: validateContext, configureAppContext: function configureAppContext(libContext) {
-	      return function (appOpts) {
-	        return appOpts;
-	      };
-	    }, configureInitialState: configureInitialState };
-	  var appOpts = { appName: appName, IDLE_STATUSES: IDLE_STATUSES, idleStatusDelay: idleStatusDelay, activeStatusAction: activeStatusAction, idleStatusAction: idleStatusAction, activeEvents: activeEvents, useFastStore: useFastStore, useLocalStore: useLocalStore, useWebRTCState: useWebRTCState, useWebSocketsState: useWebSocketsState, thresholds: thresholds, level: level };
-	  return (0, _context2.default)(libOpts)(appOpts);
-	}
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = createContext;\n\nvar _chai = __webpack_require__(/*! chai */ 16);\n\nvar _constants = __webpack_require__(/*! ./constants */ 27);\n\nvar _defaults = __webpack_require__(/*! ./defaults */ 409);\n\nvar _context = __webpack_require__(/*! redux-addons/lib/context */ 405);\n\nvar _context2 = _interopRequireDefault(_context);\n\nvar _log = __webpack_require__(/*! redux-addons/lib/log */ 184);\n\nfunction _interopRequireDefault(obj) {\n  return obj && obj.__esModule ? obj : { default: obj };\n}\n\nvar noop = function noop() {};\n\nvar validateContext = function validateContext(libContext, appContext) {\n  _chai.assert.ok(libContext, 'must pass opts to validate');\n  _chai.assert.ok(appContext, 'must pass opts to validate');\n\n  var libName = libContext.libName;\n  var appName = libContext.appName;\n  var activeEvents = appContext.activeEvents;\n  var thresholds = appContext.thresholds;\n\n  _chai.assert.ok(libName, 'libName must exist');\n  (0, _chai.assert)(typeof libName === 'string', 'libName option must be a string');\n  (0, _chai.assert)(libName.length > 0, 'libName option must not be empty');\n  _chai.assert.ok(appName, 'appName must exist');\n  (0, _chai.assert)(typeof appName === 'string', 'appName option must be a string');\n  (0, _chai.assert)(appName.length > 0, 'appName option must not be empty');\n  _chai.assert.ok(activeEvents, 'active events must exist');\n  _chai.assert.ok(thresholds, 'thresholds must exist');\n  _chai.assert.ok(thresholds.mouse, 'thresholds.mouse must exist');\n  (0, _chai.assert)(typeof thresholds.mouse === 'number', 'thresholds.mouse must be a number corresponding to pixels');\n  (0, _chai.assert)(typeof thresholds.phaseOffMS === 'number', 'thresholds.phaseOffMS must be a number corresponding to minimum milliseconds between updates to redux');\n  (0, _chai.assert)(typeof thresholds.phaseOnMS === 'number', 'thresholds.phaseOnMS must be a number corresponding to minimum milliseconds between updates to redux');\n};\n\nvar configureInitialState = function configureInitialState(libContext) {\n  return function (appContext) {\n    return { idleStatus: _constants.IDLESTATUS_ACTIVE,\n      isRunning: false,\n      isDetectionRunning: false,\n      isIdle: false,\n      lastActive: +new Date(),\n      lastEvent: { x: -1, y: -1, type: null }\n    };\n  };\n};\n\nfunction createContext() {\n  var _ref = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];\n\n  var appName = _ref.appName;\n  var IDLE_STATUSES = _ref.IDLE_STATUSES;\n  var idleStatusDelay = _ref.idleStatusDelay;\n  var activeStatusAction = _ref.activeStatusAction;\n  var idleStatusAction = _ref.idleStatusAction;\n  var _ref$activeEvents = _ref.activeEvents;\n  var activeEvents = _ref$activeEvents === undefined ? (0, _defaults.getActiveEvents)() : _ref$activeEvents;\n  var _ref$useFastStore = _ref.useFastStore;\n  var useFastStore = _ref$useFastStore === undefined ? (0, _defaults.getUseFastState)() : _ref$useFastStore;\n  var _ref$useLocalStore = _ref.useLocalStore;\n  var useLocalStore = _ref$useLocalStore === undefined ? (0, _defaults.getUseLocalState)() : _ref$useLocalStore;\n  var _ref$useWebRTCState = _ref.useWebRTCState;\n  var useWebRTCState = _ref$useWebRTCState === undefined ? (0, _defaults.getUseWebRTCState)() : _ref$useWebRTCState;\n  var _ref$useWebSocketsSta = _ref.useWebSocketsState;\n  var useWebSocketsState = _ref$useWebSocketsSta === undefined ? (0, _defaults.getUseWebSocketsState)() : _ref$useWebSocketsSta;\n  var _ref$thresholds = _ref.thresholds;\n  var thresholds = _ref$thresholds === undefined ? (0, _defaults.getThresholds)() : _ref$thresholds;\n  var _ref$level = _ref.level;\n  var level = _ref$level === undefined ? (0, _defaults.getLevel)() : _ref$level;\n\n  var libName = _constants.ROOT_STATE_KEY;\n  var libOpts = { libName: libName, validateContext: validateContext, configureAppContext: function configureAppContext(libContext) {\n      return function (appOpts) {\n        return appOpts;\n      };\n    }, configureInitialState: configureInitialState };\n  var appOpts = { appName: appName, IDLE_STATUSES: IDLE_STATUSES, idleStatusDelay: idleStatusDelay, activeStatusAction: activeStatusAction, idleStatusAction: idleStatusAction, activeEvents: activeEvents, useFastStore: useFastStore, useLocalStore: useLocalStore, useWebRTCState: useWebRTCState, useWebSocketsState: useWebSocketsState, thresholds: thresholds, level: level };\n  return (0, _context2.default)(libOpts)(appOpts);\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** C:/Users/cchamberlain/cchamberlain/redux-idle-monitor/lib/context.js\n ** module id = 112\n ** module chunks = 2\n **/\n//# sourceURL=webpack:///C:/Users/cchamberlain/cchamberlain/redux-idle-monitor/lib/context.js?");
 
 /***/ },
 
-/***/ 168:
+/***/ 115:
+/*!******************************************!*\
+  !*** ../src/app/state/reducers/index.js ***!
+  \******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var noop = function noop() {};
-
-	var createLogger = exports.createLogger = function createLogger(_ref) {
-	  var libName = _ref.libName;
-	  var level = _ref.level;
-
-	  var _formatMessage = function _formatMessage(_ref2) {
-	    var level = _ref2.level;
-	    var message = _ref2.message;
-	    var obj = _ref2.obj;
-
-	    if (!message && typeof obj === 'string') {
-	      message = obj;
-	      obj = noop();
-	    }
-	    return _formatLog(obj ? level + ': \'' + message + '\' => ' + JSON.stringify(obj) : level + ': \'' + message + '\'');
-	  };
-
-	  var _formatLog = function _formatLog(message) {
-	    return libName + ' | ' + message;
-	  };
-
-	  return  false ? { trace: function trace(obj, message) {
-	      return level === 'trace' ? console.trace(_formatMessage({ level: 'trace', message: message, obj: obj })) : noop();
-	    },
-	    debug: function debug(obj, message) {
-	      return ['trace', 'debug'].includes(level) ? console.log(_formatMessage({ level: 'debug', message: message, obj: obj })) : noop();
-	    },
-	    info: function info(obj, message) {
-	      return ['trace', 'debug', 'info'].includes(level) ? console.info(_formatMessage({ level: 'info', message: message, obj: obj })) : noop();
-	    },
-	    warn: function warn(obj, message) {
-	      return ['trace', 'debug', 'info', 'warn'].includes(level) ? console.warn(_formatMessage({ level: 'warn', message: message, obj: obj })) : noop();
-	    },
-	    error: function error(obj, message) {
-	      return ['trace', 'debug', 'info', 'warn', 'error'].includes(level) ? console.error(_formatMessage({ level: 'error', message: message, obj: obj })) : noop();
-	    }
-	  } : { trace: noop, debug: noop, info: noop, warn: noop, error: noop };
-	};
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };\n\nvar _redux = __webpack_require__(/*! redux */ 81);\n\nvar _visual = __webpack_require__(/*! ./visual */ 443);\n\nvar _errors = __webpack_require__(/*! ./errors */ 442);\n\nvar _errors2 = _interopRequireDefault(_errors);\n\nvar _reduxIdleMonitor = __webpack_require__(/*! state/components/redux-idle-monitor */ 192);\n\nvar _reduxForm = __webpack_require__(/*! redux-form */ 179);\n\nvar _constants = __webpack_require__(/*! ../constants */ 67);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }\n\nvar form = _reduxForm.reducer.plugin({ page: function page(state, action) {\n    // <------ 'login' is name of form given to reduxForm()\n    var type = action.type;\n    var payload = action.payload;\n    var error = action.error;\n\n    switch (type) {\n      case _constants.SET_TEXT:\n        var key = payload.key;\n        var text = payload.text;\n\n        if (!['title', 'subtitle'].includes(key)) return state;\n        return _extends({}, state, _defineProperty({}, key, { value: text }));\n      default:\n        return state;\n    }\n  }\n});\n\nvar rootReducer = (0, _redux.combineReducers)({ visual: _visual.visual,\n  errors: _errors2.default,\n  idle: _reduxIdleMonitor.reducer,\n  form: form\n});\nexports.default = rootReducer;\n\n/*****************\n ** WEBPACK FOOTER\n ** ../src/app/state/reducers/index.js\n ** module id = 115\n ** module chunks = 2\n **/\n//# sourceURL=webpack:///../src/app/state/reducers/index.js?");
 
 /***/ },
 
-/***/ 169:
+/***/ 137:
+/*!*************************************************************************!*\
+  !*** ../~/css-loader!../~/postcss-loader!../src/app/styles/loading.css ***!
+  \*************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.configureStartDetection = undefined;
-
-	var _chai = __webpack_require__(12);
-
-	var _constants = __webpack_require__(22);
-
-	var _blueprints = __webpack_require__(78);
-
-	var STOP_TYPES = ['pointermove', 'MSPointerMove'];
-	var FILTER_TYPES = ['mousemove'];
-
-	/** Detects whether the activity should trigger a redux update */
-	var _shouldActivityUpdate = function _shouldActivityUpdate(_ref) {
-	  var log = _ref.log;
-	  var thresholds = _ref.thresholds;
-	  return function (stores) {
-	    return function (_ref2) {
-	      var type = _ref2.type;
-	      var pageX = _ref2.pageX;
-	      var pageY = _ref2.pageY;
-
-	      if (STOP_TYPES.includes(type)) return false;
-	      if (!FILTER_TYPES.includes(type)) return true;
-
-	      var _stores$selectFirst = stores.selectFirst('lib');
-
-	      var getState = _stores$selectFirst.getState;
-
-	      /** If last event was not the same event type, trigger an update. */
-
-	      var _getState = getState();
-
-	      var lastActive = _getState.lastActive;
-	      var lastEvent = _getState.lastEvent;
-
-	      if (lastEvent.type !== type) return true;
-
-	      /** If last mouse events coordinates were not within mouse threshold, trigger an update. */
-	      var x = lastEvent.x;
-	      var y = lastEvent.y;
-
-	      if (pageX && pageY && x && y && Math.abs(pageX - x) < thresholds.mouse && Math.abs(pageY - y) < thresholds.mouse) return false;
-	      return true;
-	    };
-	  };
-	};
-
-	var isRunning = function isRunning(stores) {
-	  var state = stores.lib.getState();
-	  return state.isDetectionRunning;
-	};
-
-	var configureStartDetection = exports.configureStartDetection = function configureStartDetection(_ref3) {
-	  var log = _ref3.log;
-	  var activeEvents = _ref3.activeEvents;
-	  var thresholds = _ref3.thresholds;
-	  var translateBlueprints = _ref3.translateBlueprints;
-	  return function (stores) {
-	    return function (dispatch, getState) {
-	      var _translateBlueprints = translateBlueprints({ activity: _blueprints.activityBlueprint,
-	        activityDetection: _blueprints.activityDetectionBlueprint
-	      });
-
-	      var activity = _translateBlueprints.activity;
-	      var activityDetection = _translateBlueprints.activityDetection;
-
-	      /** One of the event listeners triggered an activity occurrence event. This gets spammed */
-
-	      var onActivity = function onActivity(e) {
-	        if (!_shouldActivityUpdate({ log: log, thresholds: thresholds })(stores)(e)) return;
-
-	        var _stores$lib$getState = stores.lib.getState();
-
-	        var idleStatus = _stores$lib$getState.idleStatus;
-
-	        var isTransition = idleStatus !== _constants.IDLESTATUS_ACTIVE;
-
-	        var _stores$selectFirst2 = stores.selectFirst('lib');
-
-	        var dispatch = _stores$selectFirst2.dispatch;
-
-	        dispatch(activity({ x: e.pageX, y: e.pageY, type: e.type, isTransition: isTransition }));
-	      };
-
-	      log.warn('activity detection starting...');
-	      if (_constants.IS_DEV) _chai.assert.ok(!isRunning(stores), 'activity detection is already running');
-	      activeEvents.forEach(function (x) {
-	        return document.addEventListener(x, onActivity);
-	      });
-	      dispatch(activityDetection(true));
-
-	      /** RETURNS DISPATCHABLE DETECTION TERMINATOR */
-	      return function (dispatch, getState) {
-	        log.info('activity detection terminating...');
-	        if (_constants.IS_DEV) (0, _chai.assert)(isRunning(stores), 'activity detection is not running');
-	        activeEvents.forEach(function (x) {
-	          return document.removeEventListener(x, onActivity);
-	        });
-	        dispatch(activityDetection(false));
-	      };
-	    };
-	  };
-	};
+	eval("exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 41)();\n// imports\n\n\n// module\nexports.push([module.id, \"body {\\r\\n  background-color:rgb(224,224,224);\\r\\n}\\r\\n#loading-container {\\r\\n   width:100%;\\r\\n   text-align:center;\\r\\n}\\r\\n#loading-text {\\r\\n  border:1px solid black;\\r\\n}\\r\\n\", \"\"]);\n\n// exports\n\n\n/*****************\n ** WEBPACK FOOTER\n ** ../~/css-loader!../~/postcss-loader!../src/app/styles/loading.css\n ** module id = 137\n ** module chunks = 2\n **/\n//# sourceURL=webpack:///../src/app/styles/loading.css?../~/css-loader!../~/postcss-loader");
 
 /***/ },
 
-/***/ 170:
+/***/ 184:
+/*!******************************************************************!*\
+  !*** C:/Users/cchamberlain/cchamberlain/redux-addons/lib/log.js ***!
+  \******************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.configureStoreMultiplexer = undefined;
-
-	var _chai = __webpack_require__(12);
-
-	var _reduxMux = __webpack_require__(171);
-
-	var _redux = __webpack_require__(76);
-
-	var _constants = __webpack_require__(22);
-
-	var _store = __webpack_require__(383);
-
-	var configureStoreMultiplexer = exports.configureStoreMultiplexer = function configureStoreMultiplexer(_ref) {
-	  var useFastStore = _ref.useFastStore;
-	  var useLocalStore = _ref.useLocalStore;
-	  return function (store) {
-	    var libStore = (0, _reduxMux.bisectStore)(_constants.ROOT_STATE_KEY)(store);
-	    var storesMapping = [['lib', libStore]];
-
-	    var createInitialFastState = function createInitialFastState() {
-	      return { lastActive: +new Date(), lastEvent: { x: -1, y: -1 } };
-	    };
-	    var createFastReducer = function createFastReducer() {
-	      return (0, _store.createMergingReducer)(_constants.ACTIVITY);
-	    };
-	    if (useFastStore) storesMapping.push(['fast', (0, _redux.createStore)(createFastReducer(), createInitialFastState())]);
-
-	    var createInitialLocalState = function createInitialLocalState() {
-	      return { lastActive: +new Date() };
-	    };
-	    var createLocalReducer = function createLocalReducer() {
-	      return (0, _store.configureReducer)(function (action) {
-	        lastActive: action.payload.lastActive;
-	      }, false)(_constants.ACTIVITY);
-	    };
-	    if (useLocalStore) storesMapping.push(['local', (0, _store.createLocalStore)(createLocalReducer(), createInitialLocalState())]);
-
-	    return (0, _reduxMux.createStoreMultiplexer)(storesMapping);
-	  };
-	};
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nvar noop = function noop() {};\n\nvar createLogger = exports.createLogger = function createLogger(_ref) {\n  var libName = _ref.libName;\n  var level = _ref.level;\n\n  var _formatMessage = function _formatMessage(_ref2) {\n    var level = _ref2.level;\n    var message = _ref2.message;\n    var obj = _ref2.obj;\n\n    if (!message && typeof obj === 'string') {\n      message = obj;\n      obj = noop();\n    }\n    return _formatLog(obj ? level + ': \\'' + message + '\\' => ' + JSON.stringify(obj) : level + ': \\'' + message + '\\'');\n  };\n\n  var _formatLog = function _formatLog(message) {\n    return libName + ' | ' + message;\n  };\n\n  return  true ? { trace: function trace(obj, message) {\n      return level === 'trace' ? console.trace(_formatMessage({ level: 'trace', message: message, obj: obj })) : noop();\n    },\n    debug: function debug(obj, message) {\n      return ['trace', 'debug'].includes(level) ? console.log(_formatMessage({ level: 'debug', message: message, obj: obj })) : noop();\n    },\n    info: function info(obj, message) {\n      return ['trace', 'debug', 'info'].includes(level) ? console.info(_formatMessage({ level: 'info', message: message, obj: obj })) : noop();\n    },\n    warn: function warn(obj, message) {\n      return ['trace', 'debug', 'info', 'warn'].includes(level) ? console.warn(_formatMessage({ level: 'warn', message: message, obj: obj })) : noop();\n    },\n    error: function error(obj, message) {\n      return ['trace', 'debug', 'info', 'warn', 'error'].includes(level) ? console.error(_formatMessage({ level: 'error', message: message, obj: obj })) : noop();\n    }\n  } : { trace: noop, debug: noop, info: noop, warn: noop, error: noop };\n};\n\n/*****************\n ** WEBPACK FOOTER\n ** C:/Users/cchamberlain/cchamberlain/redux-addons/lib/log.js\n ** module id = 184\n ** module chunks = 2\n **/\n//# sourceURL=webpack:///C:/Users/cchamberlain/cchamberlain/redux-addons/lib/log.js?");
 
 /***/ },
 
-/***/ 171:
+/***/ 185:
+/*!******************************************************************************!*\
+  !*** C:/Users/cchamberlain/cchamberlain/redux-idle-monitor/lib/detection.js ***!
+  \******************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.selectState = exports.bisectStore = exports.createStoreMultiplexer = undefined;
-
-	var _extends = Object.assign || function (target) {
-	  for (var i = 1; i < arguments.length; i++) {
-	    var source = arguments[i];for (var key in source) {
-	      if (Object.prototype.hasOwnProperty.call(source, key)) {
-	        target[key] = source[key];
-	      }
-	    }
-	  }return target;
-	};
-
-	var _slicedToArray = function () {
-	  function sliceIterator(arr, i) {
-	    var _arr = [];var _n = true;var _d = false;var _e = undefined;try {
-	      for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
-	        _arr.push(_s.value);if (i && _arr.length === i) break;
-	      }
-	    } catch (err) {
-	      _d = true;_e = err;
-	    } finally {
-	      try {
-	        if (!_n && _i["return"]) _i["return"]();
-	      } finally {
-	        if (_d) throw _e;
-	      }
-	    }return _arr;
-	  }return function (arr, i) {
-	    if (Array.isArray(arr)) {
-	      return arr;
-	    } else if (Symbol.iterator in Object(arr)) {
-	      return sliceIterator(arr, i);
-	    } else {
-	      throw new TypeError("Invalid attempt to destructure non-iterable instance");
-	    }
-	  };
-	}();
-
-	var _chai = __webpack_require__(12);
-
-	/**
-	 * Takes in an ordered mapping of names to stores and reduces to a redux store compatible interface that can dispatch and getState to all stores or specific ones.
-	 * @example <caption>Creates a store multiplexer that can dispatch and getState on all stores at once.</caption>
-	 * let stores = createStoreMultiplexer([['app', appStore], ['fast', fastStore], ['session', sessionStore], ['local', localStore]])
-	 * stores.dispatch('SOME_ACTION')
-	 * let { app, fast, session, local } = stores.getState()
-	 * @example <caption>Each store can still be individually called with dispatched and getState</caption>
-	 * stores.app.dispatch('ACTION_FOR_APP_STORE_ONLY')
-	 * let appState = stores.app.getState()
-	 * @param  {Array} storeMapping  The mapping of store names to store references.
-	 * @return {Object}              An object that can dispatch and getState to all stores or each individually with some useful helpers.
-	 */
-	var createStoreMultiplexer = exports.createStoreMultiplexer = function createStoreMultiplexer(storeMapping) {
-	  _chai.assert.ok(storeMapping, 'storeMapping is required');
-	  (0, _chai.assert)(Array.isArray(storeMapping), 'storeMapping must be an array');
-	  (0, _chai.assert)(storeMapping.every(function (x) {
-	    return Array.isArray(x) && x.length === 2;
-	  }), 'storeMapping must be an array of [<name>, <store>] arrays');
-
-	  var storeMap = new Map(storeMapping);
-	  var mapReduceStores = function mapReduceStores(operation) {
-	    var result = {};
-	    var _iteratorNormalCompletion = true;
-	    var _didIteratorError = false;
-	    var _iteratorError = undefined;
-
-	    try {
-	      for (var _iterator = storeMap.entries()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-	        var _step$value = _slicedToArray(_step.value, 2);
-
-	        var name = _step$value[0];
-	        var store = _step$value[1];
-
-	        result[name] = operation(store);
-	      }
-	    } catch (err) {
-	      _didIteratorError = true;
-	      _iteratorError = err;
-	    } finally {
-	      try {
-	        if (!_iteratorNormalCompletion && _iterator.return) {
-	          _iterator.return();
-	        }
-	      } finally {
-	        if (_didIteratorError) {
-	          throw _iteratorError;
-	        }
-	      }
-	    }
-
-	    return result;
-	  };
-
-	  var storesLiteral = storeMapping.reduce(function (prev, _ref) {
-	    var _ref2 = _slicedToArray(_ref, 2);
-
-	    var name = _ref2[0];
-	    var store = _ref2[1];
-
-	    prev[name] = store;
-	    return prev;
-	  }, {});
-
-	  var dispatch = function dispatch(action) {
-	    return mapReduceStores(function (store) {
-	      return store.dispatch(action);
-	    });
-	  };
-	  var getState = function getState() {
-	    return mapReduceStores(function (store) {
-	      return store.getState();
-	    });
-	  };
-	  var selectFirst = function selectFirst() {
-	    for (var _len = arguments.length, names = Array(_len), _key = 0; _key < _len; _key++) {
-	      names[_key] = arguments[_key];
-	    }
-
-	    var _iteratorNormalCompletion2 = true;
-	    var _didIteratorError2 = false;
-	    var _iteratorError2 = undefined;
-
-	    try {
-	      for (var _iterator2 = names[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-	        var name = _step2.value;
-
-	        if (storeMap.has(name)) return storeMap.get(name);
-	      }
-	    } catch (err) {
-	      _didIteratorError2 = true;
-	      _iteratorError2 = err;
-	    } finally {
-	      try {
-	        if (!_iteratorNormalCompletion2 && _iterator2.return) {
-	          _iterator2.return();
-	        }
-	      } finally {
-	        if (_didIteratorError2) {
-	          throw _iteratorError2;
-	        }
-	      }
-	    }
-
-	    throw new Error('None of the requested stores exist in storeMapping | configured => ' + JSON.stringify(storeMapping.map(function (x) {
-	      return x[0];
-	    })) + ' requested => ' + JSON.stringify(names));
-	  };
-	  var select = function select() {
-	    for (var _len2 = arguments.length, names = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-	      names[_key2] = arguments[_key2];
-	    }
-
-	    return names.filter(function (x) {
-	      return storeMap.has(x);
-	    }).map(function (x) {
-	      return storeMap.get(x);
-	    });
-	  };
-	  return _extends({}, storesLiteral, { dispatch: dispatch,
-	    getState: getState,
-	    selectFirst: selectFirst,
-	    select: select
-	  });
-	};
-
-	/**
-	 * Returns object implementing redux store interface whose getState method selects a sub tree of the overall state.
-	 * Useful for library components that embed state in a subnode of consumer apps redux state
-	 * @param  {Object}    store      A store to bisect
-	 * @param  {...String} selectKeys The selection path to use with getState
-	 * @return {Object}               A sub store implementing redux store interface
-	 */
-	var bisectStore = exports.bisectStore = function bisectStore() {
-	  for (var _len3 = arguments.length, selectKeys = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
-	    selectKeys[_key3] = arguments[_key3];
-	  }
-
-	  return function (store) {
-	    _chai.assert.ok(store, 'store must exist');
-	    _chai.assert.ok(store.dispatch, 'store must define dispatch');
-	    _chai.assert.ok(store.getState, 'store must define getState');
-	    (0, _chai.assert)(selectKeys.length > 0, 'must define one or more keys to select on');
-
-	    return { dispatch: function dispatch(action) {
-	        return store.dispatch(action);
-	      },
-	      subscribe: function subscribe(listener) {
-	        return store.subscribe(listener);
-	      },
-	      getState: function getState() {
-	        return selectState(selectKeys, store.getState());
-	      }
-	    };
-	  };
-	};
-
-	/** Selects a sub state from a state tree by path. */
-	var selectState = exports.selectState = function selectState(selectKeys, state, defaultValue) {
-	  (0, _chai.assert)(Array.isArray(selectKeys), 'selectKeys must be an array.');
-	  (0, _chai.assert)(selectKeys.length > 0, 'must specify a selection path');
-	  _chai.assert.ok(state, 'state is required');
-	  var result = state;
-	  var _iteratorNormalCompletion3 = true;
-	  var _didIteratorError3 = false;
-	  var _iteratorError3 = undefined;
-
-	  try {
-	    for (var _iterator3 = selectKeys[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-	      var selectKey = _step3.value;
-
-	      result = state[selectKey];
-	      if (!result) break;
-	    }
-	  } catch (err) {
-	    _didIteratorError3 = true;
-	    _iteratorError3 = err;
-	  } finally {
-	    try {
-	      if (!_iteratorNormalCompletion3 && _iterator3.return) {
-	        _iterator3.return();
-	      }
-	    } finally {
-	      if (_didIteratorError3) {
-	        throw _iteratorError3;
-	      }
-	    }
-	  }
-
-	  return result || defaultValue;
-	};
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.configureStartDetection = undefined;\n\nvar _chai = __webpack_require__(/*! chai */ 16);\n\nvar _constants = __webpack_require__(/*! ./constants */ 27);\n\nvar _blueprints = __webpack_require__(/*! ./blueprints */ 83);\n\nvar STOP_TYPES = ['pointermove', 'MSPointerMove'];\nvar FILTER_TYPES = ['mousemove'];\n\n/** Detects whether the activity should trigger a redux update */\nvar _shouldActivityUpdate = function _shouldActivityUpdate(_ref) {\n  var log = _ref.log;\n  var thresholds = _ref.thresholds;\n  return function (stores) {\n    return function (_ref2) {\n      var type = _ref2.type;\n      var pageX = _ref2.pageX;\n      var pageY = _ref2.pageY;\n\n      if (STOP_TYPES.includes(type)) return false;\n      if (!FILTER_TYPES.includes(type)) return true;\n\n      var _stores$selectFirst = stores.selectFirst('lib');\n\n      var getState = _stores$selectFirst.getState;\n\n      /** If last event was not the same event type, trigger an update. */\n\n      var _getState = getState();\n\n      var lastActive = _getState.lastActive;\n      var lastEvent = _getState.lastEvent;\n\n      if (lastEvent.type !== type) return true;\n\n      /** If last mouse events coordinates were not within mouse threshold, trigger an update. */\n      var x = lastEvent.x;\n      var y = lastEvent.y;\n\n      if (pageX && pageY && x && y && Math.abs(pageX - x) < thresholds.mouse && Math.abs(pageY - y) < thresholds.mouse) return false;\n      return true;\n    };\n  };\n};\n\nvar isRunning = function isRunning(stores) {\n  var state = stores.lib.getState();\n  return state.isDetectionRunning;\n};\n\nvar configureStartDetection = exports.configureStartDetection = function configureStartDetection(_ref3) {\n  var log = _ref3.log;\n  var activeEvents = _ref3.activeEvents;\n  var thresholds = _ref3.thresholds;\n  var translateBlueprints = _ref3.translateBlueprints;\n  return function (stores) {\n    return function (dispatch, getState) {\n      var _translateBlueprints = translateBlueprints({ activity: _blueprints.activityBlueprint,\n        activityDetection: _blueprints.activityDetectionBlueprint\n      });\n\n      var activity = _translateBlueprints.activity;\n      var activityDetection = _translateBlueprints.activityDetection;\n\n      /** One of the event listeners triggered an activity occurrence event. This gets spammed */\n\n      var onActivity = function onActivity(e) {\n        if (!_shouldActivityUpdate({ log: log, thresholds: thresholds })(stores)(e)) return;\n\n        var _stores$lib$getState = stores.lib.getState();\n\n        var idleStatus = _stores$lib$getState.idleStatus;\n\n        var isTransition = idleStatus !== _constants.IDLESTATUS_ACTIVE;\n\n        var _stores$selectFirst2 = stores.selectFirst('lib');\n\n        var dispatch = _stores$selectFirst2.dispatch;\n\n        dispatch(activity({ x: e.pageX, y: e.pageY, type: e.type, isTransition: isTransition }));\n      };\n\n      log.warn('activity detection starting...');\n      if (_constants.IS_DEV) _chai.assert.ok(!isRunning(stores), 'activity detection is already running');\n      activeEvents.forEach(function (x) {\n        return document.addEventListener(x, onActivity);\n      });\n      dispatch(activityDetection(true));\n\n      /** RETURNS DISPATCHABLE DETECTION TERMINATOR */\n      return function (dispatch, getState) {\n        log.info('activity detection terminating...');\n        if (_constants.IS_DEV) (0, _chai.assert)(isRunning(stores), 'activity detection is not running');\n        activeEvents.forEach(function (x) {\n          return document.removeEventListener(x, onActivity);\n        });\n        dispatch(activityDetection(false));\n      };\n    };\n  };\n};\n\n/*****************\n ** WEBPACK FOOTER\n ** C:/Users/cchamberlain/cchamberlain/redux-idle-monitor/lib/detection.js\n ** module id = 185\n ** module chunks = 2\n **/\n//# sourceURL=webpack:///C:/Users/cchamberlain/cchamberlain/redux-idle-monitor/lib/detection.js?");
 
 /***/ },
 
-/***/ 175:
+/***/ 186:
+/*!********************************************************************************!*\
+  !*** C:/Users/cchamberlain/cchamberlain/redux-idle-monitor/lib/multiplexer.js ***!
+  \********************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.configureStoreMultiplexer = undefined;\n\nvar _chai = __webpack_require__(/*! chai */ 16);\n\nvar _reduxMux = __webpack_require__(/*! redux-mux */ 187);\n\nvar _redux = __webpack_require__(/*! redux */ 81);\n\nvar _constants = __webpack_require__(/*! ./constants */ 27);\n\nvar _store = __webpack_require__(/*! redux-addons/lib/store */ 406);\n\nvar configureStoreMultiplexer = exports.configureStoreMultiplexer = function configureStoreMultiplexer(_ref) {\n  var useFastStore = _ref.useFastStore;\n  var useLocalStore = _ref.useLocalStore;\n  return function (store) {\n    var libStore = (0, _reduxMux.bisectStore)(_constants.ROOT_STATE_KEY)(store);\n    var storesMapping = [['lib', libStore]];\n\n    var createInitialFastState = function createInitialFastState() {\n      return { lastActive: +new Date(), lastEvent: { x: -1, y: -1 } };\n    };\n    var createFastReducer = function createFastReducer() {\n      return (0, _store.createMergingReducer)(_constants.ACTIVITY);\n    };\n    if (useFastStore) storesMapping.push(['fast', (0, _redux.createStore)(createFastReducer(), createInitialFastState())]);\n\n    var createInitialLocalState = function createInitialLocalState() {\n      return { lastActive: +new Date() };\n    };\n    var createLocalReducer = function createLocalReducer() {\n      return (0, _store.configureReducer)(function (action) {\n        lastActive: action.payload.lastActive;\n      }, false)(_constants.ACTIVITY);\n    };\n    if (useLocalStore) storesMapping.push(['local', (0, _store.createLocalStore)(createLocalReducer(), createInitialLocalState())]);\n\n    return (0, _reduxMux.createStoreMultiplexer)(storesMapping);\n  };\n};\n\n/*****************\n ** WEBPACK FOOTER\n ** C:/Users/cchamberlain/cchamberlain/redux-idle-monitor/lib/multiplexer.js\n ** module id = 186\n ** module chunks = 2\n **/\n//# sourceURL=webpack:///C:/Users/cchamberlain/cchamberlain/redux-idle-monitor/lib/multiplexer.js?");
+
+/***/ },
+
+/***/ 187:
+/*!*****************************************************************!*\
+  !*** C:/Users/cchamberlain/cchamberlain/redux-mux/lib/index.js ***!
+  \*****************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.selectState = exports.bisectStore = exports.createStoreMultiplexer = undefined;\n\nvar _extends = Object.assign || function (target) {\n  for (var i = 1; i < arguments.length; i++) {\n    var source = arguments[i];for (var key in source) {\n      if (Object.prototype.hasOwnProperty.call(source, key)) {\n        target[key] = source[key];\n      }\n    }\n  }return target;\n};\n\nvar _slicedToArray = function () {\n  function sliceIterator(arr, i) {\n    var _arr = [];var _n = true;var _d = false;var _e = undefined;try {\n      for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {\n        _arr.push(_s.value);if (i && _arr.length === i) break;\n      }\n    } catch (err) {\n      _d = true;_e = err;\n    } finally {\n      try {\n        if (!_n && _i[\"return\"]) _i[\"return\"]();\n      } finally {\n        if (_d) throw _e;\n      }\n    }return _arr;\n  }return function (arr, i) {\n    if (Array.isArray(arr)) {\n      return arr;\n    } else if (Symbol.iterator in Object(arr)) {\n      return sliceIterator(arr, i);\n    } else {\n      throw new TypeError(\"Invalid attempt to destructure non-iterable instance\");\n    }\n  };\n}();\n\nvar _chai = __webpack_require__(/*! chai */ 16);\n\n/**\r\n * Takes in an ordered mapping of names to stores and reduces to a redux store compatible interface that can dispatch and getState to all stores or specific ones.\r\n * @example <caption>Creates a store multiplexer that can dispatch and getState on all stores at once.</caption>\r\n * let stores = createStoreMultiplexer([['app', appStore], ['fast', fastStore], ['session', sessionStore], ['local', localStore]])\r\n * stores.dispatch('SOME_ACTION')\r\n * let { app, fast, session, local } = stores.getState()\r\n * @example <caption>Each store can still be individually called with dispatched and getState</caption>\r\n * stores.app.dispatch('ACTION_FOR_APP_STORE_ONLY')\r\n * let appState = stores.app.getState()\r\n * @param  {Array} storeMapping  The mapping of store names to store references.\r\n * @return {Object}              An object that can dispatch and getState to all stores or each individually with some useful helpers.\r\n */\nvar createStoreMultiplexer = exports.createStoreMultiplexer = function createStoreMultiplexer(storeMapping) {\n  _chai.assert.ok(storeMapping, 'storeMapping is required');\n  (0, _chai.assert)(Array.isArray(storeMapping), 'storeMapping must be an array');\n  (0, _chai.assert)(storeMapping.every(function (x) {\n    return Array.isArray(x) && x.length === 2;\n  }), 'storeMapping must be an array of [<name>, <store>] arrays');\n\n  var storeMap = new Map(storeMapping);\n  var mapReduceStores = function mapReduceStores(operation) {\n    var result = {};\n    var _iteratorNormalCompletion = true;\n    var _didIteratorError = false;\n    var _iteratorError = undefined;\n\n    try {\n      for (var _iterator = storeMap.entries()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {\n        var _step$value = _slicedToArray(_step.value, 2);\n\n        var name = _step$value[0];\n        var store = _step$value[1];\n\n        result[name] = operation(store);\n      }\n    } catch (err) {\n      _didIteratorError = true;\n      _iteratorError = err;\n    } finally {\n      try {\n        if (!_iteratorNormalCompletion && _iterator.return) {\n          _iterator.return();\n        }\n      } finally {\n        if (_didIteratorError) {\n          throw _iteratorError;\n        }\n      }\n    }\n\n    return result;\n  };\n\n  var storesLiteral = storeMapping.reduce(function (prev, _ref) {\n    var _ref2 = _slicedToArray(_ref, 2);\n\n    var name = _ref2[0];\n    var store = _ref2[1];\n\n    prev[name] = store;\n    return prev;\n  }, {});\n\n  var dispatch = function dispatch(action) {\n    return mapReduceStores(function (store) {\n      return store.dispatch(action);\n    });\n  };\n  var getState = function getState() {\n    return mapReduceStores(function (store) {\n      return store.getState();\n    });\n  };\n  var selectFirst = function selectFirst() {\n    for (var _len = arguments.length, names = Array(_len), _key = 0; _key < _len; _key++) {\n      names[_key] = arguments[_key];\n    }\n\n    var _iteratorNormalCompletion2 = true;\n    var _didIteratorError2 = false;\n    var _iteratorError2 = undefined;\n\n    try {\n      for (var _iterator2 = names[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {\n        var name = _step2.value;\n\n        if (storeMap.has(name)) return storeMap.get(name);\n      }\n    } catch (err) {\n      _didIteratorError2 = true;\n      _iteratorError2 = err;\n    } finally {\n      try {\n        if (!_iteratorNormalCompletion2 && _iterator2.return) {\n          _iterator2.return();\n        }\n      } finally {\n        if (_didIteratorError2) {\n          throw _iteratorError2;\n        }\n      }\n    }\n\n    throw new Error('None of the requested stores exist in storeMapping | configured => ' + JSON.stringify(storeMapping.map(function (x) {\n      return x[0];\n    })) + ' requested => ' + JSON.stringify(names));\n  };\n  var select = function select() {\n    for (var _len2 = arguments.length, names = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {\n      names[_key2] = arguments[_key2];\n    }\n\n    return names.filter(function (x) {\n      return storeMap.has(x);\n    }).map(function (x) {\n      return storeMap.get(x);\n    });\n  };\n  return _extends({}, storesLiteral, { dispatch: dispatch,\n    getState: getState,\n    selectFirst: selectFirst,\n    select: select\n  });\n};\n\n/**\r\n * Returns object implementing redux store interface whose getState method selects a sub tree of the overall state.\r\n * Useful for library components that embed state in a subnode of consumer apps redux state\r\n * @param  {Object}    store      A store to bisect\r\n * @param  {...String} selectKeys The selection path to use with getState\r\n * @return {Object}               A sub store implementing redux store interface\r\n */\nvar bisectStore = exports.bisectStore = function bisectStore() {\n  for (var _len3 = arguments.length, selectKeys = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {\n    selectKeys[_key3] = arguments[_key3];\n  }\n\n  return function (store) {\n    _chai.assert.ok(store, 'store must exist');\n    _chai.assert.ok(store.dispatch, 'store must define dispatch');\n    _chai.assert.ok(store.getState, 'store must define getState');\n    (0, _chai.assert)(selectKeys.length > 0, 'must define one or more keys to select on');\n\n    return { dispatch: function dispatch(action) {\n        return store.dispatch(action);\n      },\n      subscribe: function subscribe(listener) {\n        return store.subscribe(listener);\n      },\n      getState: function getState() {\n        return selectState(selectKeys, store.getState());\n      }\n    };\n  };\n};\n\n/** Selects a sub state from a state tree by path. */\nvar selectState = exports.selectState = function selectState(selectKeys, state, defaultValue) {\n  (0, _chai.assert)(Array.isArray(selectKeys), 'selectKeys must be an array.');\n  (0, _chai.assert)(selectKeys.length > 0, 'must specify a selection path');\n  _chai.assert.ok(state, 'state is required');\n  var result = state;\n  var _iteratorNormalCompletion3 = true;\n  var _didIteratorError3 = false;\n  var _iteratorError3 = undefined;\n\n  try {\n    for (var _iterator3 = selectKeys[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {\n      var selectKey = _step3.value;\n\n      result = state[selectKey];\n      if (!result) break;\n    }\n  } catch (err) {\n    _didIteratorError3 = true;\n    _iteratorError3 = err;\n  } finally {\n    try {\n      if (!_iteratorNormalCompletion3 && _iterator3.return) {\n        _iterator3.return();\n      }\n    } finally {\n      if (_didIteratorError3) {\n        throw _iteratorError3;\n      }\n    }\n  }\n\n  return result || defaultValue;\n};\n\n/*****************\n ** WEBPACK FOOTER\n ** C:/Users/cchamberlain/cchamberlain/redux-mux/lib/index.js\n ** module id = 187\n ** module chunks = 2\n **/\n//# sourceURL=webpack:///C:/Users/cchamberlain/cchamberlain/redux-mux/lib/index.js?");
+
+/***/ },
+
+/***/ 191:
+/*!*******************************************************************!*\
+  !*** ../src/app/state/components/redux-idle-monitor/constants.js ***!
+  \*******************************************************************/
 /***/ function(module, exports) {
 
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	                              value: true
-	});
-	var IDLESTATUS_NOT_VERY_ACTIVE = exports.IDLESTATUS_NOT_VERY_ACTIVE = 'NOT_VERY_ACTIVE';
-	var IDLESTATUS_GONE_FOR_LIKE_A_SECOND = exports.IDLESTATUS_GONE_FOR_LIKE_A_SECOND = 'GONE_FOR_LIKE_A_SECOND';
-	var IDLESTATUS_LAZY_TYPER = exports.IDLESTATUS_LAZY_TYPER = 'LAZY_TYPER';
-	var IDLESTATUS_ARE_YOU_STILL_THERE = exports.IDLESTATUS_ARE_YOU_STILL_THERE = 'ARE_YOU_STILL_THERE';
-	var IDLESTATUS_GONE = exports.IDLESTATUS_GONE = 'GONE';
-	var IDLESTATUS_THEY_DONT_CARE_ABOUT_YOU = exports.IDLESTATUS_THEY_DONT_CARE_ABOUT_YOU = 'THEY_DONT_CARE_ABOUT_YOU';
-	var IDLESTATUS_THEY_ARE_NEVER_COMING_BACK = exports.IDLESTATUS_THEY_ARE_NEVER_COMING_BACK = 'THEY_ARE_NEVER_COMING_BACK';
-	var IDLESTATUS_STONE_AGE_GONE = exports.IDLESTATUS_STONE_AGE_GONE = 'STONE_AGE_GONE';
-	var IDLESTATUS_EXTINCT = exports.IDLESTATUS_EXTINCT = 'EXTINCT';
-
-	var IDLE_STATUSES = exports.IDLE_STATUSES = [IDLESTATUS_NOT_VERY_ACTIVE, IDLESTATUS_GONE_FOR_LIKE_A_SECOND, IDLESTATUS_LAZY_TYPER, IDLESTATUS_ARE_YOU_STILL_THERE, IDLESTATUS_GONE, IDLESTATUS_THEY_DONT_CARE_ABOUT_YOU, IDLESTATUS_THEY_ARE_NEVER_COMING_BACK, IDLESTATUS_STONE_AGE_GONE, IDLESTATUS_EXTINCT];
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n                              value: true\n});\nvar IDLESTATUS_NOT_VERY_ACTIVE = exports.IDLESTATUS_NOT_VERY_ACTIVE = 'NOT_VERY_ACTIVE';\nvar IDLESTATUS_GONE_FOR_LIKE_A_SECOND = exports.IDLESTATUS_GONE_FOR_LIKE_A_SECOND = 'GONE_FOR_LIKE_A_SECOND';\nvar IDLESTATUS_LAZY_TYPER = exports.IDLESTATUS_LAZY_TYPER = 'LAZY_TYPER';\nvar IDLESTATUS_ARE_YOU_STILL_THERE = exports.IDLESTATUS_ARE_YOU_STILL_THERE = 'ARE_YOU_STILL_THERE';\nvar IDLESTATUS_GONE = exports.IDLESTATUS_GONE = 'GONE';\nvar IDLESTATUS_THEY_DONT_CARE_ABOUT_YOU = exports.IDLESTATUS_THEY_DONT_CARE_ABOUT_YOU = 'THEY_DONT_CARE_ABOUT_YOU';\nvar IDLESTATUS_THEY_ARE_NEVER_COMING_BACK = exports.IDLESTATUS_THEY_ARE_NEVER_COMING_BACK = 'THEY_ARE_NEVER_COMING_BACK';\nvar IDLESTATUS_STONE_AGE_GONE = exports.IDLESTATUS_STONE_AGE_GONE = 'STONE_AGE_GONE';\nvar IDLESTATUS_EXTINCT = exports.IDLESTATUS_EXTINCT = 'EXTINCT';\n\nvar IDLE_STATUSES = exports.IDLE_STATUSES = [IDLESTATUS_NOT_VERY_ACTIVE, IDLESTATUS_GONE_FOR_LIKE_A_SECOND, IDLESTATUS_LAZY_TYPER, IDLESTATUS_ARE_YOU_STILL_THERE, IDLESTATUS_GONE, IDLESTATUS_THEY_DONT_CARE_ABOUT_YOU, IDLESTATUS_THEY_ARE_NEVER_COMING_BACK, IDLESTATUS_STONE_AGE_GONE, IDLESTATUS_EXTINCT];\n\n/*****************\n ** WEBPACK FOOTER\n ** ../src/app/state/components/redux-idle-monitor/constants.js\n ** module id = 191\n ** module chunks = 2\n **/\n//# sourceURL=webpack:///../src/app/state/components/redux-idle-monitor/constants.js?");
 
 /***/ },
 
-/***/ 176:
+/***/ 192:
+/*!***************************************************************!*\
+  !*** ../src/app/state/components/redux-idle-monitor/index.js ***!
+  \***************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.middleware = exports.actions = exports.reducer = undefined;
-
-	var _reduxIdleMonitor = __webpack_require__(387);
-
-	var _reduxIdleMonitor2 = _interopRequireDefault(_reduxIdleMonitor);
-
-	var _name = __webpack_require__(179);
-
-	var _name2 = _interopRequireDefault(_name);
-
-	var _constants = __webpack_require__(175);
-
-	var _actions = __webpack_require__(416);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var opts = { appName: _name2.default, IDLE_STATUSES: _constants.IDLE_STATUSES, idleStatusDelay: _actions.idleStatusDelay, activeStatusAction: _actions.activeStatusAction, idleStatusAction: _actions.idleStatusAction };
-
-	var _configure = (0, _reduxIdleMonitor2.default)(opts);
-
-	var reducer = _configure.reducer;
-	var actions = _configure.actions;
-	var middleware = _configure.middleware;
-	exports.reducer = reducer;
-	exports.actions = actions;
-	exports.middleware = middleware;
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.middleware = exports.actions = exports.reducer = undefined;\n\nvar _reduxIdleMonitor = __webpack_require__(/*! redux-idle-monitor */ 410);\n\nvar _reduxIdleMonitor2 = _interopRequireDefault(_reduxIdleMonitor);\n\nvar _name = __webpack_require__(/*! package/name */ 195);\n\nvar _name2 = _interopRequireDefault(_name);\n\nvar _constants = __webpack_require__(/*! ./constants */ 191);\n\nvar _actions = __webpack_require__(/*! ./actions */ 441);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar opts = { appName: _name2.default, IDLE_STATUSES: _constants.IDLE_STATUSES, idleStatusDelay: _actions.idleStatusDelay, activeStatusAction: _actions.activeStatusAction, idleStatusAction: _actions.idleStatusAction };\n\nvar _configure = (0, _reduxIdleMonitor2.default)(opts);\n\nvar reducer = _configure.reducer;\nvar actions = _configure.actions;\nvar middleware = _configure.middleware;\nexports.reducer = reducer;\nexports.actions = actions;\nexports.middleware = middleware;\n\n/*****************\n ** WEBPACK FOOTER\n ** ../src/app/state/components/redux-idle-monitor/index.js\n ** module id = 192\n ** module chunks = 2\n **/\n//# sourceURL=webpack:///../src/app/state/components/redux-idle-monitor/index.js?");
 
 /***/ },
 
-/***/ 179:
+/***/ 195:
+/*!******************************!*\
+  !*** ../src/package/name.js ***!
+  \******************************/
 /***/ function(module, exports) {
 
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = 'redux-webpack-boilerplate';
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = 'redux-webpack-boilerplate';\n\n/*****************\n ** WEBPACK FOOTER\n ** ../src/package/name.js\n ** module id = 195\n ** module chunks = 2\n **/\n//# sourceURL=webpack:///../src/package/name.js?");
 
 /***/ },
 
-/***/ 378:
+/***/ 399:
+/*!**************************************************************************************!*\
+  !*** C:/Users/cchamberlain/cchamberlain/redux-addons/~/redux-blueprint/lib/index.js ***!
+  \**************************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.translateBlueprintsWith = exports.translateBlueprintTypesWith = exports.createBlueprint = undefined;
-
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
-
-	var _chai = __webpack_require__(12);
-
-	var _reduxActions = __webpack_require__(75);
-
-	/**
-	 * Creates an action blueprint. Allows delayed assignment of action type which is useful for library designers requiring namespaced action types.
-	 * @example <caption>Create an action blueprint then translate it to get its action creator at a later time.</caption>
-	 * const createActionType = blueprintType => `SOME_REDUX_LIB_${blueprintType}`
-	 * let blueprint = createBlueprint('MOUSE_EVENT', (x, y) => ({x, y}), eventType => ({ eventType }))
-	 * let actionCreator = blueprint(createActionType)
-	 * @param  {String}   blueprintType  The name of the action (will be constructed at later time to get action type.)
-	 * @param  {Function} payloadCreator Function that accepts action args and returns a FSA action payload.
-	 * @param  {Function} metaCreator    Function that accepts action args and returns a FSA meta payload.
-	 * @return {Function}                An action blueprint function that accepts an action type creator function as param to return an action creator.
-	 */
-	var createBlueprint = exports.createBlueprint = function createBlueprint(blueprintType) {
-	  var payloadCreator = arguments.length <= 1 || arguments[1] === undefined ? function (args) {
-	    return args;
-	  } : arguments[1];
-	  var metaCreator = arguments.length <= 2 || arguments[2] === undefined ? function (args) {
-	    return args;
-	  } : arguments[2];
-	  return function (translateBlueprintType) {
-	    return (0, _reduxActions.createAction)(translateBlueprintType(blueprintType), function (args) {
-	      return payloadCreator(args);
-	    }, function (args) {
-	      return metaCreator(args);
-	    });
-	  };
-	};
-
-	/**
-	 * Creates a translator that turns blueprint types into action types.
-	 * @param  {Function} translateBlueprintType  Function that accepts an action name and returns an action type.
-	 * @return {blueprintTypeTranslator}          Function that accepts array or object of blueprint type values and returns action types.
-	 */
-	var translateBlueprintTypesWith = exports.translateBlueprintTypesWith = function translateBlueprintTypesWith(translateBlueprintType) {
-	  return function (blueprintTypes) {
-	    _chai.assert.ok(blueprintTypes, 'blueprint types are required');
-	    if (Array.isArray(blueprintTypes)) return blueprintTypes.map(function (x) {
-	      return translateBlueprintType(x);
-	    });
-	    (0, _chai.assert)((typeof blueprintTypes === 'undefined' ? 'undefined' : _typeof(blueprintTypes)) === 'object', 'blueprint types must be array or object');
-	    return Object.keys(blueprintTypes).reduce(function (actionTypes, x) {
-	      actionTypes[x] = translateBlueprintType(blueprintTypes[x]);
-	      return actionTypes;
-	    }, {});
-	  };
-	};
-
-	/**
-	 * Creates a translator that turns blueprints into redux-actions FSA actionCreators
-	 * @example <caption>Creates a function that can translate an array or object literal with blueprint values to actions.</caption>
-	 * const translateBlueprintType = blueprintType => `SOME_REDUX_LIB_${blueprintType}`
-	 * const translateBlueprints = translateBlueprintsWith(translateBlueprintType)
-	 * let startBlueprint = createBlueprint('START')
-	 * let endBlueprint = createBlueprint('END')
-	 * let { startAction, endAction } = translateBlueprints({ startAction: startBlueprint, endAction: endBlueprint })
-	 * dispatch(startAction())
-	 * @param  {Function} translateBlueprintType  Function that accepts an action name and returns an action type.
-	 * @return {blueprintTranslator}              Function that accepts array or object of blueprint values and returns redux-actions FSA actionCreators.
-	 */
-	var translateBlueprintsWith = exports.translateBlueprintsWith = function translateBlueprintsWith(translateBlueprintType) {
-	  return function (blueprints) {
-	    _chai.assert.ok(blueprints, 'blueprints are required');
-	    if (Array.isArray(blueprints)) return blueprints.map(function (x) {
-	      return blueprint(translateBlueprintType);
-	    });
-	    (0, _chai.assert)((typeof blueprints === 'undefined' ? 'undefined' : _typeof(blueprints)) === 'object', 'blueprints must be array or object');
-	    return Object.keys(blueprints).reduce(function (actionCreators, x) {
-	      actionCreators[x] = blueprints[x](translateBlueprintType);
-	      return actionCreators;
-	    }, {});
-	  };
-	};
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.translateBlueprintsWith = exports.translateBlueprintTypesWith = exports.createBlueprint = undefined;\n\nvar _typeof = typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol ? \"symbol\" : typeof obj; };\n\nvar _chai = __webpack_require__(/*! chai */ 16);\n\nvar _reduxActions = __webpack_require__(/*! redux-actions */ 80);\n\n/**\r\n * Creates an action blueprint. Allows delayed assignment of action type which is useful for library designers requiring namespaced action types.\r\n * @example <caption>Create an action blueprint then translate it to get its action creator at a later time.</caption>\r\n * const createActionType = blueprintType => `SOME_REDUX_LIB_${blueprintType}`\r\n * let blueprint = createBlueprint('MOUSE_EVENT', (x, y) => ({x, y}), eventType => ({ eventType }))\r\n * let actionCreator = blueprint(createActionType)\r\n * @param  {String}   blueprintType  The name of the action (will be constructed at later time to get action type.)\r\n * @param  {Function} payloadCreator Function that accepts action args and returns a FSA action payload.\r\n * @param  {Function} metaCreator    Function that accepts action args and returns a FSA meta payload.\r\n * @return {Function}                An action blueprint function that accepts an action type creator function as param to return an action creator.\r\n */\nvar createBlueprint = exports.createBlueprint = function createBlueprint(blueprintType) {\n  var payloadCreator = arguments.length <= 1 || arguments[1] === undefined ? function (args) {\n    return args;\n  } : arguments[1];\n  var metaCreator = arguments.length <= 2 || arguments[2] === undefined ? function (args) {\n    return args;\n  } : arguments[2];\n  return function (translateBlueprintType) {\n    return (0, _reduxActions.createAction)(translateBlueprintType(blueprintType), function (args) {\n      return payloadCreator(args);\n    }, function (args) {\n      return metaCreator(args);\n    });\n  };\n};\n\n/**\r\n * Creates a translator that turns blueprint types into action types.\r\n * @param  {Function} translateBlueprintType  Function that accepts an action name and returns an action type.\r\n * @return {blueprintTypeTranslator}          Function that accepts array or object of blueprint type values and returns action types.\r\n */\nvar translateBlueprintTypesWith = exports.translateBlueprintTypesWith = function translateBlueprintTypesWith(translateBlueprintType) {\n  return function (blueprintTypes) {\n    _chai.assert.ok(blueprintTypes, 'blueprint types are required');\n    if (Array.isArray(blueprintTypes)) return blueprintTypes.map(function (x) {\n      return translateBlueprintType(x);\n    });\n    (0, _chai.assert)((typeof blueprintTypes === 'undefined' ? 'undefined' : _typeof(blueprintTypes)) === 'object', 'blueprint types must be array or object');\n    return Object.keys(blueprintTypes).reduce(function (actionTypes, x) {\n      actionTypes[x] = translateBlueprintType(blueprintTypes[x]);\n      return actionTypes;\n    }, {});\n  };\n};\n\n/**\r\n * Creates a translator that turns blueprints into redux-actions FSA actionCreators\r\n * @example <caption>Creates a function that can translate an array or object literal with blueprint values to actions.</caption>\r\n * const translateBlueprintType = blueprintType => `SOME_REDUX_LIB_${blueprintType}`\r\n * const translateBlueprints = translateBlueprintsWith(translateBlueprintType)\r\n * let startBlueprint = createBlueprint('START')\r\n * let endBlueprint = createBlueprint('END')\r\n * let { startAction, endAction } = translateBlueprints({ startAction: startBlueprint, endAction: endBlueprint })\r\n * dispatch(startAction())\r\n * @param  {Function} translateBlueprintType  Function that accepts an action name and returns an action type.\r\n * @return {blueprintTranslator}              Function that accepts array or object of blueprint values and returns redux-actions FSA actionCreators.\r\n */\nvar translateBlueprintsWith = exports.translateBlueprintsWith = function translateBlueprintsWith(translateBlueprintType) {\n  return function (blueprints) {\n    _chai.assert.ok(blueprints, 'blueprints are required');\n    if (Array.isArray(blueprints)) return blueprints.map(function (x) {\n      return blueprint(translateBlueprintType);\n    });\n    (0, _chai.assert)((typeof blueprints === 'undefined' ? 'undefined' : _typeof(blueprints)) === 'object', 'blueprints must be array or object');\n    return Object.keys(blueprints).reduce(function (actionCreators, x) {\n      actionCreators[x] = blueprints[x](translateBlueprintType);\n      return actionCreators;\n    }, {});\n  };\n};\n\n/*****************\n ** WEBPACK FOOTER\n ** C:/Users/cchamberlain/cchamberlain/redux-addons/~/redux-blueprint/lib/index.js\n ** module id = 399\n ** module chunks = 2\n **/\n//# sourceURL=webpack:///C:/Users/cchamberlain/cchamberlain/redux-addons/~/redux-blueprint/lib/index.js?");
 
 /***/ },
 
-/***/ 379:
+/***/ 400:
+/*!********************************************************************************************!*\
+  !*** C:/Users/cchamberlain/cchamberlain/redux-idle-monitor/~/redux-blueprint/lib/index.js ***!
+  \********************************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.translateBlueprintsWith = exports.translateBlueprintTypesWith = exports.createBlueprint = undefined;
-
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
-
-	var _chai = __webpack_require__(12);
-
-	var _reduxActions = __webpack_require__(75);
-
-	/**
-	 * Creates an action blueprint. Allows delayed assignment of action type which is useful for library designers requiring namespaced action types.
-	 * @example <caption>Create an action blueprint then translate it to get its action creator at a later time.</caption>
-	 * const createActionType = blueprintType => `SOME_REDUX_LIB_${blueprintType}`
-	 * let blueprint = createBlueprint('MOUSE_EVENT', (x, y) => ({x, y}), eventType => ({ eventType }))
-	 * let actionCreator = blueprint(createActionType)
-	 * @param  {String}   blueprintType  The name of the action (will be constructed at later time to get action type.)
-	 * @param  {Function} payloadCreator Function that accepts action args and returns a FSA action payload.
-	 * @param  {Function} metaCreator    Function that accepts action args and returns a FSA meta payload.
-	 * @return {Function}                An action blueprint function that accepts an action type creator function as param to return an action creator.
-	 */
-	var createBlueprint = exports.createBlueprint = function createBlueprint(blueprintType) {
-	  var payloadCreator = arguments.length <= 1 || arguments[1] === undefined ? function (args) {
-	    return args;
-	  } : arguments[1];
-	  var metaCreator = arguments.length <= 2 || arguments[2] === undefined ? function (args) {
-	    return args;
-	  } : arguments[2];
-	  return function (translateBlueprintType) {
-	    return (0, _reduxActions.createAction)(translateBlueprintType(blueprintType), function (args) {
-	      return payloadCreator(args);
-	    }, function (args) {
-	      return metaCreator(args);
-	    });
-	  };
-	};
-
-	/**
-	 * Creates a translator that turns blueprint types into action types.
-	 * @param  {Function} translateBlueprintType  Function that accepts an action name and returns an action type.
-	 * @return {blueprintTypeTranslator}          Function that accepts array or object of blueprint type values and returns action types.
-	 */
-	var translateBlueprintTypesWith = exports.translateBlueprintTypesWith = function translateBlueprintTypesWith(translateBlueprintType) {
-	  return function (blueprintTypes) {
-	    _chai.assert.ok(blueprintTypes, 'blueprint types are required');
-	    if (Array.isArray(blueprintTypes)) return blueprintTypes.map(function (x) {
-	      return translateBlueprintType(x);
-	    });
-	    (0, _chai.assert)((typeof blueprintTypes === 'undefined' ? 'undefined' : _typeof(blueprintTypes)) === 'object', 'blueprint types must be array or object');
-	    return Object.keys(blueprintTypes).reduce(function (actionTypes, x) {
-	      actionTypes[x] = translateBlueprintType(blueprintTypes[x]);
-	      return actionTypes;
-	    }, {});
-	  };
-	};
-
-	/**
-	 * Creates a translator that turns blueprints into redux-actions FSA actionCreators
-	 * @example <caption>Creates a function that can translate an array or object literal with blueprint values to actions.</caption>
-	 * const translateBlueprintType = blueprintType => `SOME_REDUX_LIB_${blueprintType}`
-	 * const translateBlueprints = translateBlueprintsWith(translateBlueprintType)
-	 * let startBlueprint = createBlueprint('START')
-	 * let endBlueprint = createBlueprint('END')
-	 * let { startAction, endAction } = translateBlueprints({ startAction: startBlueprint, endAction: endBlueprint })
-	 * dispatch(startAction())
-	 * @param  {Function} translateBlueprintType  Function that accepts an action name and returns an action type.
-	 * @return {blueprintTranslator}              Function that accepts array or object of blueprint values and returns redux-actions FSA actionCreators.
-	 */
-	var translateBlueprintsWith = exports.translateBlueprintsWith = function translateBlueprintsWith(translateBlueprintType) {
-	  return function (blueprints) {
-	    _chai.assert.ok(blueprints, 'blueprints are required');
-	    if (Array.isArray(blueprints)) return blueprints.map(function (x) {
-	      return blueprint(translateBlueprintType);
-	    });
-	    (0, _chai.assert)((typeof blueprints === 'undefined' ? 'undefined' : _typeof(blueprints)) === 'object', 'blueprints must be array or object');
-	    return Object.keys(blueprints).reduce(function (actionCreators, x) {
-	      actionCreators[x] = blueprints[x](translateBlueprintType);
-	      return actionCreators;
-	    }, {});
-	  };
-	};
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.translateBlueprintsWith = exports.translateBlueprintTypesWith = exports.createBlueprint = undefined;\n\nvar _typeof = typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol ? \"symbol\" : typeof obj; };\n\nvar _chai = __webpack_require__(/*! chai */ 16);\n\nvar _reduxActions = __webpack_require__(/*! redux-actions */ 80);\n\n/**\r\n * Creates an action blueprint. Allows delayed assignment of action type which is useful for library designers requiring namespaced action types.\r\n * @example <caption>Create an action blueprint then translate it to get its action creator at a later time.</caption>\r\n * const createActionType = blueprintType => `SOME_REDUX_LIB_${blueprintType}`\r\n * let blueprint = createBlueprint('MOUSE_EVENT', (x, y) => ({x, y}), eventType => ({ eventType }))\r\n * let actionCreator = blueprint(createActionType)\r\n * @param  {String}   blueprintType  The name of the action (will be constructed at later time to get action type.)\r\n * @param  {Function} payloadCreator Function that accepts action args and returns a FSA action payload.\r\n * @param  {Function} metaCreator    Function that accepts action args and returns a FSA meta payload.\r\n * @return {Function}                An action blueprint function that accepts an action type creator function as param to return an action creator.\r\n */\nvar createBlueprint = exports.createBlueprint = function createBlueprint(blueprintType) {\n  var payloadCreator = arguments.length <= 1 || arguments[1] === undefined ? function (args) {\n    return args;\n  } : arguments[1];\n  var metaCreator = arguments.length <= 2 || arguments[2] === undefined ? function (args) {\n    return args;\n  } : arguments[2];\n  return function (translateBlueprintType) {\n    return (0, _reduxActions.createAction)(translateBlueprintType(blueprintType), function (args) {\n      return payloadCreator(args);\n    }, function (args) {\n      return metaCreator(args);\n    });\n  };\n};\n\n/**\r\n * Creates a translator that turns blueprint types into action types.\r\n * @param  {Function} translateBlueprintType  Function that accepts an action name and returns an action type.\r\n * @return {blueprintTypeTranslator}          Function that accepts array or object of blueprint type values and returns action types.\r\n */\nvar translateBlueprintTypesWith = exports.translateBlueprintTypesWith = function translateBlueprintTypesWith(translateBlueprintType) {\n  return function (blueprintTypes) {\n    _chai.assert.ok(blueprintTypes, 'blueprint types are required');\n    if (Array.isArray(blueprintTypes)) return blueprintTypes.map(function (x) {\n      return translateBlueprintType(x);\n    });\n    (0, _chai.assert)((typeof blueprintTypes === 'undefined' ? 'undefined' : _typeof(blueprintTypes)) === 'object', 'blueprint types must be array or object');\n    return Object.keys(blueprintTypes).reduce(function (actionTypes, x) {\n      actionTypes[x] = translateBlueprintType(blueprintTypes[x]);\n      return actionTypes;\n    }, {});\n  };\n};\n\n/**\r\n * Creates a translator that turns blueprints into redux-actions FSA actionCreators\r\n * @example <caption>Creates a function that can translate an array or object literal with blueprint values to actions.</caption>\r\n * const translateBlueprintType = blueprintType => `SOME_REDUX_LIB_${blueprintType}`\r\n * const translateBlueprints = translateBlueprintsWith(translateBlueprintType)\r\n * let startBlueprint = createBlueprint('START')\r\n * let endBlueprint = createBlueprint('END')\r\n * let { startAction, endAction } = translateBlueprints({ startAction: startBlueprint, endAction: endBlueprint })\r\n * dispatch(startAction())\r\n * @param  {Function} translateBlueprintType  Function that accepts an action name and returns an action type.\r\n * @return {blueprintTranslator}              Function that accepts array or object of blueprint values and returns redux-actions FSA actionCreators.\r\n */\nvar translateBlueprintsWith = exports.translateBlueprintsWith = function translateBlueprintsWith(translateBlueprintType) {\n  return function (blueprints) {\n    _chai.assert.ok(blueprints, 'blueprints are required');\n    if (Array.isArray(blueprints)) return blueprints.map(function (x) {\n      return blueprint(translateBlueprintType);\n    });\n    (0, _chai.assert)((typeof blueprints === 'undefined' ? 'undefined' : _typeof(blueprints)) === 'object', 'blueprints must be array or object');\n    return Object.keys(blueprints).reduce(function (actionCreators, x) {\n      actionCreators[x] = blueprints[x](translateBlueprintType);\n      return actionCreators;\n    }, {});\n  };\n};\n\n/*****************\n ** WEBPACK FOOTER\n ** C:/Users/cchamberlain/cchamberlain/redux-idle-monitor/~/redux-blueprint/lib/index.js\n ** module id = 400\n ** module chunks = 2\n **/\n//# sourceURL=webpack:///C:/Users/cchamberlain/cchamberlain/redux-idle-monitor/~/redux-blueprint/lib/index.js?");
 
 /***/ },
 
-/***/ 382:
+/***/ 405:
+/*!**********************************************************************!*\
+  !*** C:/Users/cchamberlain/cchamberlain/redux-addons/lib/context.js ***!
+  \**********************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = configureContext;
-
-	var _chai = __webpack_require__(12);
-
-	var _validate = __webpack_require__(384);
-
-	var _log = __webpack_require__(168);
-
-	var _reduxBlueprint = __webpack_require__(378);
-
-	/**
-	 * @typedef {Object} LibOpts
-	 * @property {string} libName the name of the library.
-	 * @property {function(context: LibContext): AppValidator} createValidator
-	 */
-
-	/**
-	 * @typedef {function(opts: AppOpts)} AppValidator
-	 */
-
-	/**
-	 * @typedef {Object} AppOpts
-	 * @property {string} appName the name of the application.
-	 */
-
-	/**
-	 * @typedef {Object} LibContext
-	 * @property {string} libName the name of the library.
-	 * @property {string} appName the name of the application.
-	 * @property {string} actionNames the names of the defined actions (ordered).
-	 */
-
-	/**
-	 * @typedef {LibAction[]} LibActions
-	 */
-
-	/**
-	 * @typedef {Array} LibAction
-	 */
-
-	/**
-	 * @typedef {Object} LibContext
-	 * @property {string[]} actionNames the names of all the actions (ordered).
-	 */
-
-	/**
-	 * @typedef CreateContext
-	 * @type {function(appOpts: AppOpts): AppContext }
-	 */
-
-	var noop = function noop() {};
-	var cleanActionName = function cleanActionName(name) {
-	  return name.toUpperCase().replace(/-+\s+/, '_');
-	};
-
-	/** Validates library creators options */
-	var validateLibOpts = function validateLibOpts(libOptsRaw) {
-	  _chai.assert.ok(libOptsRaw, 'libOpts definition is required');
-	  var libName = libOptsRaw.libName;
-	  var validateContext = libOptsRaw.validateContext;
-	  var configureAppContext = libOptsRaw.configureAppContext;
-	  var configureInitialState = libOptsRaw.configureInitialState;
-
-	  (0, _chai.assert)(typeof libName === 'string', 'libName must be a string');
-	  (0, _chai.assert)(libName.length > 0, 'libName must not be empty');
-
-	  _chai.assert.ok(validateContext, 'validateContext must exist');
-	  (0, _chai.assert)(typeof validateContext === 'function', 'validateContext must be a function');
-
-	  _chai.assert.ok(configureAppContext, 'configureAppContext must exist');
-	  (0, _chai.assert)(typeof configureAppContext === 'function', 'configureAppContext must be a function');
-
-	  _chai.assert.ok(configureInitialState, 'configureInitialState must exist');
-	  (0, _chai.assert)(typeof configureInitialState === 'function', 'configureInitialState must be a function');
-	};
-
-	/** Validates library consumers options */
-	var validateAppOpts = function validateAppOpts(appOptsRaw) {
-	  _chai.assert.ok(appOptsRaw, 'appOpts are required');
-	  var appName = appOptsRaw.appName;
-
-	  (0, _chai.assert)(typeof appName === 'string', 'appName opt must be a string');
-	  (0, _chai.assert)(appName.length > 0, 'appName opt must not be empty');
-	};
-	var isDev = ("production") !== 'production';
-
-	/*
-	import configureContext from 'redux-addons/context'
-	const context = configureContext(libOpts)(appOpts)
-	const {  } = context
-	 */
-	function configureContext(libOpts) {
-	  if (isDev) validateLibOpts(libOpts);
-	  var libName = libOpts.libName;
-	  var validateContext = libOpts.validateContext;
-	  var configureAppContext = libOpts.configureAppContext;
-	  var configureInitialState = libOpts.configureInitialState;
-
-	  return function (appOpts) {
-	    if (isDev) validateAppOpts(appOpts);
-	    var appName = appOpts.appName;
-	    var level = appOpts.level;
-
-	    var translateBlueprintType = function translateBlueprintType(blueprintType) {
-	      return cleanActionName(libName) + '_' + cleanActionName(appName) + '_' + cleanActionName(blueprintType);
-	    };
-	    var translateBlueprintTypes = (0, _reduxBlueprint.translateBlueprintTypesWith)(translateBlueprintType);
-	    var translateBlueprints = (0, _reduxBlueprint.translateBlueprintsWith)(translateBlueprintType);
-
-	    var libContext = { log: (0, _log.createLogger)({ libName: libName, level: level }),
-	      libName: libName,
-	      appName: appName,
-	      translateBlueprintTypes: translateBlueprintTypes,
-	      translateBlueprints: translateBlueprints
-	    };
-
-	    var appContext = configureAppContext(libContext)(appOpts);
-	    if (isDev) validateContext(libContext, appContext);
-
-	    return Object.assign(appContext, libContext, { get initialState() {
-	        return configureInitialState(libContext)(appContext);
-	      }
-	    });
-	  };
-	}
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = configureContext;\n\nvar _chai = __webpack_require__(/*! chai */ 16);\n\nvar _validate = __webpack_require__(/*! ./validate */ 407);\n\nvar _log = __webpack_require__(/*! ./log */ 184);\n\nvar _reduxBlueprint = __webpack_require__(/*! redux-blueprint */ 399);\n\n/**\r\n * @typedef {Object} LibOpts\r\n * @property {string} libName the name of the library.\r\n * @property {function(context: LibContext): AppValidator} createValidator\r\n */\n\n/**\r\n * @typedef {function(opts: AppOpts)} AppValidator\r\n */\n\n/**\r\n * @typedef {Object} AppOpts\r\n * @property {string} appName the name of the application.\r\n */\n\n/**\r\n * @typedef {Object} LibContext\r\n * @property {string} libName the name of the library.\r\n * @property {string} appName the name of the application.\r\n * @property {string} actionNames the names of the defined actions (ordered).\r\n */\n\n/**\r\n * @typedef {LibAction[]} LibActions\r\n */\n\n/**\r\n * @typedef {Array} LibAction\r\n */\n\n/**\r\n * @typedef {Object} LibContext\r\n * @property {string[]} actionNames the names of all the actions (ordered).\r\n */\n\n/**\r\n * @typedef CreateContext\r\n * @type {function(appOpts: AppOpts): AppContext }\r\n */\n\nvar noop = function noop() {};\nvar cleanActionName = function cleanActionName(name) {\n  return name.toUpperCase().replace(/-+\\s+/, '_');\n};\n\n/** Validates library creators options */\nvar validateLibOpts = function validateLibOpts(libOptsRaw) {\n  _chai.assert.ok(libOptsRaw, 'libOpts definition is required');\n  var libName = libOptsRaw.libName;\n  var validateContext = libOptsRaw.validateContext;\n  var configureAppContext = libOptsRaw.configureAppContext;\n  var configureInitialState = libOptsRaw.configureInitialState;\n\n  (0, _chai.assert)(typeof libName === 'string', 'libName must be a string');\n  (0, _chai.assert)(libName.length > 0, 'libName must not be empty');\n\n  _chai.assert.ok(validateContext, 'validateContext must exist');\n  (0, _chai.assert)(typeof validateContext === 'function', 'validateContext must be a function');\n\n  _chai.assert.ok(configureAppContext, 'configureAppContext must exist');\n  (0, _chai.assert)(typeof configureAppContext === 'function', 'configureAppContext must be a function');\n\n  _chai.assert.ok(configureInitialState, 'configureInitialState must exist');\n  (0, _chai.assert)(typeof configureInitialState === 'function', 'configureInitialState must be a function');\n};\n\n/** Validates library consumers options */\nvar validateAppOpts = function validateAppOpts(appOptsRaw) {\n  _chai.assert.ok(appOptsRaw, 'appOpts are required');\n  var appName = appOptsRaw.appName;\n\n  (0, _chai.assert)(typeof appName === 'string', 'appName opt must be a string');\n  (0, _chai.assert)(appName.length > 0, 'appName opt must not be empty');\n};\nvar isDev = (\"hot\") !== 'production';\n\n/*\r\nimport configureContext from 'redux-addons/context'\r\nconst context = configureContext(libOpts)(appOpts)\r\nconst {  } = context\r\n */\nfunction configureContext(libOpts) {\n  if (isDev) validateLibOpts(libOpts);\n  var libName = libOpts.libName;\n  var validateContext = libOpts.validateContext;\n  var configureAppContext = libOpts.configureAppContext;\n  var configureInitialState = libOpts.configureInitialState;\n\n  return function (appOpts) {\n    if (isDev) validateAppOpts(appOpts);\n    var appName = appOpts.appName;\n    var level = appOpts.level;\n\n    var translateBlueprintType = function translateBlueprintType(blueprintType) {\n      return cleanActionName(libName) + '_' + cleanActionName(appName) + '_' + cleanActionName(blueprintType);\n    };\n    var translateBlueprintTypes = (0, _reduxBlueprint.translateBlueprintTypesWith)(translateBlueprintType);\n    var translateBlueprints = (0, _reduxBlueprint.translateBlueprintsWith)(translateBlueprintType);\n\n    var libContext = { log: (0, _log.createLogger)({ libName: libName, level: level }),\n      libName: libName,\n      appName: appName,\n      translateBlueprintTypes: translateBlueprintTypes,\n      translateBlueprints: translateBlueprints\n    };\n\n    var appContext = configureAppContext(libContext)(appOpts);\n    if (isDev) validateContext(libContext, appContext);\n\n    return Object.assign(appContext, libContext, { get initialState() {\n        return configureInitialState(libContext)(appContext);\n      }\n    });\n  };\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** C:/Users/cchamberlain/cchamberlain/redux-addons/lib/context.js\n ** module id = 405\n ** module chunks = 2\n **/\n//# sourceURL=webpack:///C:/Users/cchamberlain/cchamberlain/redux-addons/lib/context.js?");
 
 /***/ },
 
-/***/ 383:
+/***/ 406:
+/*!********************************************************************!*\
+  !*** C:/Users/cchamberlain/cchamberlain/redux-addons/lib/store.js ***!
+  \********************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.createActionMultiplexer = exports.createMergingReducer = exports.configureReducer = exports.createJSONLocalStore = exports.createLocalStore = exports.createJSONSessionStore = exports.createSessionStore = exports.configureLocalStore = exports.configureSessionStore = exports.configureBrowserStore = exports.configureBrowserStateAccessor = exports.configureLocalStateAccessor = exports.configureSessionStateAccessor = exports.createNoopStore = exports.toConstCase = undefined;
-
-	var _slicedToArray = function () {
-	  function sliceIterator(arr, i) {
-	    var _arr = [];var _n = true;var _d = false;var _e = undefined;try {
-	      for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
-	        _arr.push(_s.value);if (i && _arr.length === i) break;
-	      }
-	    } catch (err) {
-	      _d = true;_e = err;
-	    } finally {
-	      try {
-	        if (!_n && _i["return"]) _i["return"]();
-	      } finally {
-	        if (_d) throw _e;
-	      }
-	    }return _arr;
-	  }return function (arr, i) {
-	    if (Array.isArray(arr)) {
-	      return arr;
-	    } else if (Symbol.iterator in Object(arr)) {
-	      return sliceIterator(arr, i);
-	    } else {
-	      throw new TypeError("Invalid attempt to destructure non-iterable instance");
-	    }
-	  };
-	}();
-
-	var _typeof = typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol" ? function (obj) {
-	  return typeof obj === "undefined" ? "undefined" : _typeof2(obj);
-	} : function (obj) {
-	  return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof2(obj);
-	};
-
-	var _chai = __webpack_require__(12);
-
-	var _reduxActions = __webpack_require__(75);
-
-	var noop = function noop() {};
-
-	/** Formats a string as CONST_CASE */
-	var toConstCase = exports.toConstCase = function toConstCase(value) {
-	  return value.replace(/[- ]/, '_').toUpperCase();
-	};
-
-	/**
-	 * Creates a store with all functions returning noop
-	 * @return {Object}     Noop store object with noop dispatch, getState, subscribe, and replaceReducer functions.
-	 */
-	var createNoopStore = exports.createNoopStore = function createNoopStore() {
-	  return { dispatch: noop, subscribe: noop, getState: noop, replaceReducer: noop };
-	};
-
-	var configureSessionStateAccessor = exports.configureSessionStateAccessor = function configureSessionStateAccessor(opts) {
-	  return configureBrowserStateAccessor(sessionStorage, opts);
-	};
-	var configureLocalStateAccessor = exports.configureLocalStateAccessor = function configureLocalStateAccessor(opts) {
-	  return configureBrowserStateAccessor(localStorage, opts);
-	};
-
-	/**
-	 * Configures an accessor object with getState and setState functions for interacting with browser storage.
-	 * @param  {Object}   browserStorage    The storage medium to use (sessionStorage / localStorage).
-	 * @param  {String}   options.prefix    The prefix to use for state keys.
-	 * @param  {Boolean}  options.useJSON   Enables serializing to a single JSON string and uses a single storage key.
-	 * @param  {Function} options.formatKey The formatter to use for storage keys.
-	 * @return {Function}                   Thunk taking initialState and returning initialized getState and setState functions.
-	 */
-	var configureBrowserStateAccessor = exports.configureBrowserStateAccessor = function configureBrowserStateAccessor(browserStorage) {
-	  var _ref = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
-
-	  var _ref$prefix = _ref.prefix;
-	  var prefix = _ref$prefix === undefined ? 'REDUX_BROWSER' : _ref$prefix;
-	  var _ref$useJSON = _ref.useJSON;
-	  var useJSON = _ref$useJSON === undefined ? false : _ref$useJSON;
-	  var _ref$formatKey = _ref.formatKey;
-	  var formatKey = _ref$formatKey === undefined ? function (prefix) {
-	    var key = arguments.length <= 1 || arguments[1] === undefined ? 'STATE' : arguments[1];
-	    return toConstCase(prefix) + '_' + toConstCase(key);
-	  } : _ref$formatKey;
-
-	  _chai.assert.ok(browserStorage, 'browserStorage is required (localStorage or sessionStorage)');
-	  (0, _chai.assert)((typeof browserStorage === 'undefined' ? 'undefined' : _typeof(browserStorage)) === 'object', 'browserStorage must be an object');
-	  (0, _chai.assert)(typeof browserStorage.setItem === 'function', 'browserStorage have same setter interface as localStorage / sessionStorage');
-	  (0, _chai.assert)(typeof browserStorage.getItem === 'function', 'browserStorage have same getter interface as localStorage / sessionStorage');
-
-	  var stateName = formatKey(prefix);
-
-	  /** Will create the stateAccessor and initialize it with initialState */
-	  return function (initialState) {
-	    _chai.assert.ok(initialState, 'initialState is required.');
-	    (0, _chai.assert)((typeof initialState === 'undefined' ? 'undefined' : _typeof(initialState)) === 'object', 'initialState must be an object.');
-	    var keyMap = useJSON ? noop() : new Map(Object.keys(initialState).map(function (x) {
-	      return [x, formatKey(prefix, x)];
-	    }));
-	    var setState = useJSON ? function (newState) {
-	      /** Serialize to a single JSON string and serialize that. */
-	      browserStorage.setItem(stateName, JSON.stringify(newState));
-	    } : function (newState) {
-	      /** Set individual storage keys. */
-	      var _iteratorNormalCompletion = true;
-	      var _didIteratorError = false;
-	      var _iteratorError = undefined;
-
-	      try {
-	        for (var _iterator = keyMap.entries()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-	          var _step$value = _slicedToArray(_step.value, 2);
-
-	          var key = _step$value[0];
-	          var storageKey = _step$value[1];
-
-	          browserStorage.setItem(storageKey, newState[key]);
-	        }
-	      } catch (err) {
-	        _didIteratorError = true;
-	        _iteratorError = err;
-	      } finally {
-	        try {
-	          if (!_iteratorNormalCompletion && _iterator.return) {
-	            _iterator.return();
-	          }
-	        } finally {
-	          if (_didIteratorError) {
-	            throw _iteratorError;
-	          }
-	        }
-	      }
-	    };
-
-	    var getState = useJSON ? function () {
-	      var serializedState = browserStorage.getItem(stateName);
-	      if (serializedState) return JSON.parse(serializedState);
-	    } : function () {
-	      var newState = {};
-	      var _iteratorNormalCompletion2 = true;
-	      var _didIteratorError2 = false;
-	      var _iteratorError2 = undefined;
-
-	      try {
-	        for (var _iterator2 = keyMap.entries()[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-	          var _step2$value = _slicedToArray(_step2.value, 2);
-
-	          var key = _step2$value[0];
-	          var storageKey = _step2$value[1];
-
-	          newState[key] = browserStorage.getItem(storageKey);
-	        }
-	      } catch (err) {
-	        _didIteratorError2 = true;
-	        _iteratorError2 = err;
-	      } finally {
-	        try {
-	          if (!_iteratorNormalCompletion2 && _iterator2.return) {
-	            _iterator2.return();
-	          }
-	        } finally {
-	          if (_didIteratorError2) {
-	            throw _iteratorError2;
-	          }
-	        }
-	      }
-
-	      return newState;
-	    };
-	    setState(initialState);
-	    return { setState: setState, getState: getState };
-	  };
-	};
-
-	/** Asserts that createBrowserStore options are valid. */
-	var assertBrowserStore = function assertBrowserStore(reducer, initialState, createBrowserStateAccessor) {
-	  _chai.assert.ok(reducer, 'reducer is required');
-	  (0, _chai.assert)(typeof reducer === 'function', 'reducer must be a function');
-	  _chai.assert.ok(initialState, 'initialState is required');
-	  (0, _chai.assert)((typeof initialState === 'undefined' ? 'undefined' : _typeof(initialState)) === 'object', 'initialState must be an object');
-	  _chai.assert.ok(createBrowserStateAccessor, 'createBrowserStateAccessor is required');
-	  (0, _chai.assert)(typeof createBrowserStateAccessor === 'function', 'createBrowserStateAccessor must be a function');
-	};
-
-	/**
-	 * Works the same as createStore but uses browserStorage as persistence medium.
-	 * @param  {!function}  localReducer - The reducer to create new state to be persisted.
-	 * @param  {!Object}    initialState - Initial state to create in local storage (REQUIRED).
-	 * @param  {String}     prefix - The local storage namespace to use.
-	 * @return {Object}     Local store object with dispatch, getState, subscribe, and replaceReducer functions.
-	 */
-	var configureBrowserStore = exports.configureBrowserStore = function configureBrowserStore(createBrowserStateAccessor) {
-	  return function (reducer, initialState) {
-	    if (false) assertBrowserStore(reducer, initialState, createBrowserStateAccessor);
-
-	    var _createBrowserStateAc = createBrowserStateAccessor(initialState);
-
-	    var getState = _createBrowserStateAc.getState;
-	    var setState = _createBrowserStateAc.setState;
-
-	    var currentReducer = reducer;
-	    var listeners = [];
-	    var isDispatching = false;
-	    var subscribe = function subscribe(listener) {
-	      listeners.push(listener);
-	      return function () {
-	        var index = listeners.indexOf(listener);
-	        listeners.splice(index, 1);
-	      };
-	    };
-	    var dispatch = function dispatch(action) {
-	      if (isDispatching) throw new Error('Browser reducers may not dispatch actions.');
-	      try {
-	        isDispatching = true;
-	        setState(currentReducer(getState(), action));
-	      } finally {
-	        isDispatching = false;
-	      }
-	      listeners.slice().forEach(function (listener) {
-	        return listener();
-	      });
-	      return action;
-	    };
-	    var replaceReducer = function replaceReducer(nextReducer) {
-	      currentReducer = nextReducer;
-	      dispatch({ type: '@@redux-browser/INIT' });
-	    };
-	    dispatch({ type: '@@redux-browser/INIT' });
-	    return { dispatch: dispatch, subscribe: subscribe, getState: getState, replaceReducer: replaceReducer };
-	  };
-	};
-
-	/** Configures a createSessionStore thunk that returns the same interface as redux createStore */
-	var configureSessionStore = exports.configureSessionStore = function configureSessionStore(opts) {
-	  var createSessionStateAccessor = configureSessionStateAccessor(opts);
-	  return configureBrowserStore(createSessionStateAccessor);
-	};
-
-	/** Configures a createLocalStore thunk that returns the same interface as redux createStore */
-	var configureLocalStore = exports.configureLocalStore = function configureLocalStore(opts) {
-	  var createLocalStateAccessor = configureLocalStateAccessor(opts);
-	  return configureBrowserStore(createLocalStateAccessor);
-	};
-
-	/**
-	 * Creates sessionStorage interfacing component that implements redux store interface.
-	 * Uses one sessionStorage key per state node. Only supports primitive state keys.
-	 */
-	var createSessionStore = exports.createSessionStore = function createSessionStore(reducer, initialState) {
-	  return configureSessionStore({ useJSON: false })(reducer, initialState);
-	};
-
-	/**
-	 * Creates sessionStorage interfacing component that implements redux store interface.
-	 * Serializes / Deserializes state object to and from JSON. Supports nested structures.
-	 */
-	var createJSONSessionStore = exports.createJSONSessionStore = function createJSONSessionStore(reducer, initialState) {
-	  return configureSessionStore({ useJSON: true })(reducer, initialState);
-	};
-
-	/**
-	 * Creates localStorage interfacing component that implements redux store interface.
-	 * Uses one localStorage key per state node. Only supports primitive state keys.
-	 */
-	var createLocalStore = exports.createLocalStore = function createLocalStore(reducer, initialState) {
-	  return configureLocalStore({ useJSON: false })(reducer, initialState);
-	};
-
-	/**
-	 * Creates localStorage interfacing component that implements redux store interface.
-	 * Serializes / Deserializes state object to and from JSON. Supports nested structures.
-	 */
-	var createJSONLocalStore = exports.createJSONLocalStore = function createJSONLocalStore(reducer, initialState) {
-	  return configureLocalStore({ useJSON: true })(reducer, initialState);
-	};
-
-	/**
-	 * Configures a reducer that reduces action to a state, then optionally merges with previous state for subscribed action types.
-	 * @param  {function} actionReducer Map the action to the object that will be merged to state.
-	 * @param {bool}     mergeState    Defines whether the reducer results should be merged with the previous state.
-	 * @return {Object}                 New state object.
-	 */
-	var configureReducer = exports.configureReducer = function configureReducer(actionReducer) {
-	  var mergeState = arguments.length <= 1 || arguments[1] === undefined ? true : arguments[1];
-	  return function () {
-	    for (var _len = arguments.length, subscribeTypes = Array(_len), _key = 0; _key < _len; _key++) {
-	      subscribeTypes[_key] = arguments[_key];
-	    }
-
-	    return function (state, action) {
-	      if (subscribeTypes.includes(action.type)) {
-	        console.warn('autoconfigured reducer subscribe type match => ' + action.type + ' in ' + JSON.stringify(subscribeTypes));
-	        return mergeState ? Object.assign({}, state, actionReducer(action)) : actionReducer(action);
-	      }
-	      return state;
-	    };
-	  };
-	};
-
-	/**
-	 * Creates a reducer that merged payload with state for matching subscribe types.
-	 * @param  {String[]} subscribeTypes   Action types to subscribe reducer to.
-	 */
-	var createMergingReducer = exports.createMergingReducer = configureReducer(function (action) {
-	  return action.payload;
-	}, true);
-
-	//actionDefinitionMapping === [actionName, actionDefinition]
-	// actionDefinition === { type, payloadCreactor, ?metaCreator }
-
-	//payloadCreator === (actionArgs => payload)
-	//metaCreator === (actionArgs => meta)
-	//const action = createAction(ACTION_TYPE, payloadCreator, metaCreator)(actionArgs)
-
-	var creatorOverride = function creatorOverride(props) {
-	  return function (creator) {
-	    return function (args) {
-	      return Object.assign({}, creator(args), props);
-	    };
-	  };
-	};
-
-	var delayOverride = function delayOverride(delay) {
-	  return overrideCreator({ delay: delay });
-	};
-
-	// TODO: MOVE THIS TO ACTIONS
-	var createActionMultiplexer = exports.createActionMultiplexer = function createActionMultiplexer(actionMapping) {
-	  _chai.assert.ok(actionMapping, 'actionMapping is required');
-	  (0, _chai.assert)(Array.isArray(actionMapping), 'actionMapping must be an array');
-	  (0, _chai.assert)(actionMapping.every(function (x) {
-	    return Array.isArray(x) && x.length === 2;
-	  }), 'actionMapping must be an array of [<name>, <store>] arrays');
-
-	  var actionMap = new Map(actionMapping);
-
-	  var translators = { delay: function delay(_delay) {
-	      return function (args) {
-	        return Object.assign({}, args, { delay: _delay });
-	      };
-	    }
-	  };
-
-	  var translateCreator = function translateCreator(creator) {
-	    return function (translate) {
-	      return function (args) {
-	        return translate(typeof creator === 'function' ? creator(args) : creator, args);
-	      };
-	    };
-	  };
-
-	  var identityTranslator = function identityTranslator(identity) {
-	    return identity;
-	  };
-
-	  var selectActionCreator = function selectActionCreator(actionName) {
-	    var _ref2 = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
-
-	    var _ref2$translatePayloa = _ref2.translatePayload;
-	    var translatePayload = _ref2$translatePayloa === undefined ? identityTranslator : _ref2$translatePayloa;
-	    var _ref2$translateMeta = _ref2.translateMeta;
-	    var translateMeta = _ref2$translateMeta === undefined ? identityTranslator : _ref2$translateMeta;
-
-	    var actionDefinition = actionMap.get(actionName);
-	    _chai.assert.ok(actionDefinition, 'action definition for actionName ' + actionName + ' must be configured in createActionMultiplexer');
-	    var type = actionDefinition.type;
-	    var payloadCreator = actionDefinition.payloadCreator;
-	    var metaCreator = actionDefinition.metaCreator;
-
-	    _chai.assert.ok(type, 'action type must be defined for actionName => ' + actionName);
-	    (0, _chai.assert)(typeof type === 'string', 'action type must be string for actionName => ' + actionName);
-	    return (0, _reduxActions.createAction)(type, translateCreator(payloadCreator)(translatePayload), translateCreator(metaCreator)(translateMeta));
-	  };
-
-	  var selectDelayedActionCreator = function selectDelayedActionCreator(actionName, delay) {
-	    return selectActionCreator(actionName, { translateMeta: translators.delay(delay) });
-	  };
-
-	  var selectAction = function selectAction(actionName, args) {
-	    return selectActionCreator(actionName)(args);
-	  };
-
-	  return { selectActionCreator: selectActionCreator, selectDelayedActionCreator: selectDelayedActionCreator, selectAction: selectAction };
-	};
+	eval("'use strict';\n\nvar _typeof2 = typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol ? \"symbol\" : typeof obj; };\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.createActionMultiplexer = exports.createMergingReducer = exports.configureReducer = exports.createJSONLocalStore = exports.createLocalStore = exports.createJSONSessionStore = exports.createSessionStore = exports.configureLocalStore = exports.configureSessionStore = exports.configureBrowserStore = exports.configureBrowserStateAccessor = exports.configureLocalStateAccessor = exports.configureSessionStateAccessor = exports.createNoopStore = exports.toConstCase = undefined;\n\nvar _slicedToArray = function () {\n  function sliceIterator(arr, i) {\n    var _arr = [];var _n = true;var _d = false;var _e = undefined;try {\n      for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {\n        _arr.push(_s.value);if (i && _arr.length === i) break;\n      }\n    } catch (err) {\n      _d = true;_e = err;\n    } finally {\n      try {\n        if (!_n && _i[\"return\"]) _i[\"return\"]();\n      } finally {\n        if (_d) throw _e;\n      }\n    }return _arr;\n  }return function (arr, i) {\n    if (Array.isArray(arr)) {\n      return arr;\n    } else if (Symbol.iterator in Object(arr)) {\n      return sliceIterator(arr, i);\n    } else {\n      throw new TypeError(\"Invalid attempt to destructure non-iterable instance\");\n    }\n  };\n}();\n\nvar _typeof = typeof Symbol === \"function\" && _typeof2(Symbol.iterator) === \"symbol\" ? function (obj) {\n  return typeof obj === \"undefined\" ? \"undefined\" : _typeof2(obj);\n} : function (obj) {\n  return obj && typeof Symbol === \"function\" && obj.constructor === Symbol ? \"symbol\" : typeof obj === \"undefined\" ? \"undefined\" : _typeof2(obj);\n};\n\nvar _chai = __webpack_require__(/*! chai */ 16);\n\nvar _reduxActions = __webpack_require__(/*! redux-actions */ 80);\n\nvar noop = function noop() {};\n\n/** Formats a string as CONST_CASE */\nvar toConstCase = exports.toConstCase = function toConstCase(value) {\n  return value.replace(/[- ]/, '_').toUpperCase();\n};\n\n/**\r\n * Creates a store with all functions returning noop\r\n * @return {Object}     Noop store object with noop dispatch, getState, subscribe, and replaceReducer functions.\r\n */\nvar createNoopStore = exports.createNoopStore = function createNoopStore() {\n  return { dispatch: noop, subscribe: noop, getState: noop, replaceReducer: noop };\n};\n\nvar configureSessionStateAccessor = exports.configureSessionStateAccessor = function configureSessionStateAccessor(opts) {\n  return configureBrowserStateAccessor(sessionStorage, opts);\n};\nvar configureLocalStateAccessor = exports.configureLocalStateAccessor = function configureLocalStateAccessor(opts) {\n  return configureBrowserStateAccessor(localStorage, opts);\n};\n\n/**\r\n * Configures an accessor object with getState and setState functions for interacting with browser storage.\r\n * @param  {Object}   browserStorage    The storage medium to use (sessionStorage / localStorage).\r\n * @param  {String}   options.prefix    The prefix to use for state keys.\r\n * @param  {Boolean}  options.useJSON   Enables serializing to a single JSON string and uses a single storage key.\r\n * @param  {Function} options.formatKey The formatter to use for storage keys.\r\n * @return {Function}                   Thunk taking initialState and returning initialized getState and setState functions.\r\n */\nvar configureBrowserStateAccessor = exports.configureBrowserStateAccessor = function configureBrowserStateAccessor(browserStorage) {\n  var _ref = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];\n\n  var _ref$prefix = _ref.prefix;\n  var prefix = _ref$prefix === undefined ? 'REDUX_BROWSER' : _ref$prefix;\n  var _ref$useJSON = _ref.useJSON;\n  var useJSON = _ref$useJSON === undefined ? false : _ref$useJSON;\n  var _ref$formatKey = _ref.formatKey;\n  var formatKey = _ref$formatKey === undefined ? function (prefix) {\n    var key = arguments.length <= 1 || arguments[1] === undefined ? 'STATE' : arguments[1];\n    return toConstCase(prefix) + '_' + toConstCase(key);\n  } : _ref$formatKey;\n\n  _chai.assert.ok(browserStorage, 'browserStorage is required (localStorage or sessionStorage)');\n  (0, _chai.assert)((typeof browserStorage === 'undefined' ? 'undefined' : _typeof(browserStorage)) === 'object', 'browserStorage must be an object');\n  (0, _chai.assert)(typeof browserStorage.setItem === 'function', 'browserStorage have same setter interface as localStorage / sessionStorage');\n  (0, _chai.assert)(typeof browserStorage.getItem === 'function', 'browserStorage have same getter interface as localStorage / sessionStorage');\n\n  var stateName = formatKey(prefix);\n\n  /** Will create the stateAccessor and initialize it with initialState */\n  return function (initialState) {\n    _chai.assert.ok(initialState, 'initialState is required.');\n    (0, _chai.assert)((typeof initialState === 'undefined' ? 'undefined' : _typeof(initialState)) === 'object', 'initialState must be an object.');\n    var keyMap = useJSON ? noop() : new Map(Object.keys(initialState).map(function (x) {\n      return [x, formatKey(prefix, x)];\n    }));\n    var setState = useJSON ? function (newState) {\n      /** Serialize to a single JSON string and serialize that. */\n      browserStorage.setItem(stateName, JSON.stringify(newState));\n    } : function (newState) {\n      /** Set individual storage keys. */\n      var _iteratorNormalCompletion = true;\n      var _didIteratorError = false;\n      var _iteratorError = undefined;\n\n      try {\n        for (var _iterator = keyMap.entries()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {\n          var _step$value = _slicedToArray(_step.value, 2);\n\n          var key = _step$value[0];\n          var storageKey = _step$value[1];\n\n          browserStorage.setItem(storageKey, newState[key]);\n        }\n      } catch (err) {\n        _didIteratorError = true;\n        _iteratorError = err;\n      } finally {\n        try {\n          if (!_iteratorNormalCompletion && _iterator.return) {\n            _iterator.return();\n          }\n        } finally {\n          if (_didIteratorError) {\n            throw _iteratorError;\n          }\n        }\n      }\n    };\n\n    var getState = useJSON ? function () {\n      var serializedState = browserStorage.getItem(stateName);\n      if (serializedState) return JSON.parse(serializedState);\n    } : function () {\n      var newState = {};\n      var _iteratorNormalCompletion2 = true;\n      var _didIteratorError2 = false;\n      var _iteratorError2 = undefined;\n\n      try {\n        for (var _iterator2 = keyMap.entries()[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {\n          var _step2$value = _slicedToArray(_step2.value, 2);\n\n          var key = _step2$value[0];\n          var storageKey = _step2$value[1];\n\n          newState[key] = browserStorage.getItem(storageKey);\n        }\n      } catch (err) {\n        _didIteratorError2 = true;\n        _iteratorError2 = err;\n      } finally {\n        try {\n          if (!_iteratorNormalCompletion2 && _iterator2.return) {\n            _iterator2.return();\n          }\n        } finally {\n          if (_didIteratorError2) {\n            throw _iteratorError2;\n          }\n        }\n      }\n\n      return newState;\n    };\n    setState(initialState);\n    return { setState: setState, getState: getState };\n  };\n};\n\n/** Asserts that createBrowserStore options are valid. */\nvar assertBrowserStore = function assertBrowserStore(reducer, initialState, createBrowserStateAccessor) {\n  _chai.assert.ok(reducer, 'reducer is required');\n  (0, _chai.assert)(typeof reducer === 'function', 'reducer must be a function');\n  _chai.assert.ok(initialState, 'initialState is required');\n  (0, _chai.assert)((typeof initialState === 'undefined' ? 'undefined' : _typeof(initialState)) === 'object', 'initialState must be an object');\n  _chai.assert.ok(createBrowserStateAccessor, 'createBrowserStateAccessor is required');\n  (0, _chai.assert)(typeof createBrowserStateAccessor === 'function', 'createBrowserStateAccessor must be a function');\n};\n\n/**\r\n * Works the same as createStore but uses browserStorage as persistence medium.\r\n * @param  {!function}  localReducer - The reducer to create new state to be persisted.\r\n * @param  {!Object}    initialState - Initial state to create in local storage (REQUIRED).\r\n * @param  {String}     prefix - The local storage namespace to use.\r\n * @return {Object}     Local store object with dispatch, getState, subscribe, and replaceReducer functions.\r\n */\nvar configureBrowserStore = exports.configureBrowserStore = function configureBrowserStore(createBrowserStateAccessor) {\n  return function (reducer, initialState) {\n    if (true) assertBrowserStore(reducer, initialState, createBrowserStateAccessor);\n\n    var _createBrowserStateAc = createBrowserStateAccessor(initialState);\n\n    var getState = _createBrowserStateAc.getState;\n    var setState = _createBrowserStateAc.setState;\n\n    var currentReducer = reducer;\n    var listeners = [];\n    var isDispatching = false;\n    var subscribe = function subscribe(listener) {\n      listeners.push(listener);\n      return function () {\n        var index = listeners.indexOf(listener);\n        listeners.splice(index, 1);\n      };\n    };\n    var dispatch = function dispatch(action) {\n      if (isDispatching) throw new Error('Browser reducers may not dispatch actions.');\n      try {\n        isDispatching = true;\n        setState(currentReducer(getState(), action));\n      } finally {\n        isDispatching = false;\n      }\n      listeners.slice().forEach(function (listener) {\n        return listener();\n      });\n      return action;\n    };\n    var replaceReducer = function replaceReducer(nextReducer) {\n      currentReducer = nextReducer;\n      dispatch({ type: '@@redux-browser/INIT' });\n    };\n    dispatch({ type: '@@redux-browser/INIT' });\n    return { dispatch: dispatch, subscribe: subscribe, getState: getState, replaceReducer: replaceReducer };\n  };\n};\n\n/** Configures a createSessionStore thunk that returns the same interface as redux createStore */\nvar configureSessionStore = exports.configureSessionStore = function configureSessionStore(opts) {\n  var createSessionStateAccessor = configureSessionStateAccessor(opts);\n  return configureBrowserStore(createSessionStateAccessor);\n};\n\n/** Configures a createLocalStore thunk that returns the same interface as redux createStore */\nvar configureLocalStore = exports.configureLocalStore = function configureLocalStore(opts) {\n  var createLocalStateAccessor = configureLocalStateAccessor(opts);\n  return configureBrowserStore(createLocalStateAccessor);\n};\n\n/**\r\n * Creates sessionStorage interfacing component that implements redux store interface.\r\n * Uses one sessionStorage key per state node. Only supports primitive state keys.\r\n */\nvar createSessionStore = exports.createSessionStore = function createSessionStore(reducer, initialState) {\n  return configureSessionStore({ useJSON: false })(reducer, initialState);\n};\n\n/**\r\n * Creates sessionStorage interfacing component that implements redux store interface.\r\n * Serializes / Deserializes state object to and from JSON. Supports nested structures.\r\n */\nvar createJSONSessionStore = exports.createJSONSessionStore = function createJSONSessionStore(reducer, initialState) {\n  return configureSessionStore({ useJSON: true })(reducer, initialState);\n};\n\n/**\r\n * Creates localStorage interfacing component that implements redux store interface.\r\n * Uses one localStorage key per state node. Only supports primitive state keys.\r\n */\nvar createLocalStore = exports.createLocalStore = function createLocalStore(reducer, initialState) {\n  return configureLocalStore({ useJSON: false })(reducer, initialState);\n};\n\n/**\r\n * Creates localStorage interfacing component that implements redux store interface.\r\n * Serializes / Deserializes state object to and from JSON. Supports nested structures.\r\n */\nvar createJSONLocalStore = exports.createJSONLocalStore = function createJSONLocalStore(reducer, initialState) {\n  return configureLocalStore({ useJSON: true })(reducer, initialState);\n};\n\n/**\r\n * Configures a reducer that reduces action to a state, then optionally merges with previous state for subscribed action types.\r\n * @param  {function} actionReducer Map the action to the object that will be merged to state.\r\n * @param {bool}     mergeState    Defines whether the reducer results should be merged with the previous state.\r\n * @return {Object}                 New state object.\r\n */\nvar configureReducer = exports.configureReducer = function configureReducer(actionReducer) {\n  var mergeState = arguments.length <= 1 || arguments[1] === undefined ? true : arguments[1];\n  return function () {\n    for (var _len = arguments.length, subscribeTypes = Array(_len), _key = 0; _key < _len; _key++) {\n      subscribeTypes[_key] = arguments[_key];\n    }\n\n    return function (state, action) {\n      if (subscribeTypes.includes(action.type)) {\n        console.warn('autoconfigured reducer subscribe type match => ' + action.type + ' in ' + JSON.stringify(subscribeTypes));\n        return mergeState ? Object.assign({}, state, actionReducer(action)) : actionReducer(action);\n      }\n      return state;\n    };\n  };\n};\n\n/**\r\n * Creates a reducer that merged payload with state for matching subscribe types.\r\n * @param  {String[]} subscribeTypes   Action types to subscribe reducer to.\r\n */\nvar createMergingReducer = exports.createMergingReducer = configureReducer(function (action) {\n  return action.payload;\n}, true);\n\n//actionDefinitionMapping === [actionName, actionDefinition]\n// actionDefinition === { type, payloadCreactor, ?metaCreator }\n\n//payloadCreator === (actionArgs => payload)\n//metaCreator === (actionArgs => meta)\n//const action = createAction(ACTION_TYPE, payloadCreator, metaCreator)(actionArgs)\n\nvar creatorOverride = function creatorOverride(props) {\n  return function (creator) {\n    return function (args) {\n      return Object.assign({}, creator(args), props);\n    };\n  };\n};\n\nvar delayOverride = function delayOverride(delay) {\n  return overrideCreator({ delay: delay });\n};\n\n// TODO: MOVE THIS TO ACTIONS\nvar createActionMultiplexer = exports.createActionMultiplexer = function createActionMultiplexer(actionMapping) {\n  _chai.assert.ok(actionMapping, 'actionMapping is required');\n  (0, _chai.assert)(Array.isArray(actionMapping), 'actionMapping must be an array');\n  (0, _chai.assert)(actionMapping.every(function (x) {\n    return Array.isArray(x) && x.length === 2;\n  }), 'actionMapping must be an array of [<name>, <store>] arrays');\n\n  var actionMap = new Map(actionMapping);\n\n  var translators = { delay: function delay(_delay) {\n      return function (args) {\n        return Object.assign({}, args, { delay: _delay });\n      };\n    }\n  };\n\n  var translateCreator = function translateCreator(creator) {\n    return function (translate) {\n      return function (args) {\n        return translate(typeof creator === 'function' ? creator(args) : creator, args);\n      };\n    };\n  };\n\n  var identityTranslator = function identityTranslator(identity) {\n    return identity;\n  };\n\n  var selectActionCreator = function selectActionCreator(actionName) {\n    var _ref2 = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];\n\n    var _ref2$translatePayloa = _ref2.translatePayload;\n    var translatePayload = _ref2$translatePayloa === undefined ? identityTranslator : _ref2$translatePayloa;\n    var _ref2$translateMeta = _ref2.translateMeta;\n    var translateMeta = _ref2$translateMeta === undefined ? identityTranslator : _ref2$translateMeta;\n\n    var actionDefinition = actionMap.get(actionName);\n    _chai.assert.ok(actionDefinition, 'action definition for actionName ' + actionName + ' must be configured in createActionMultiplexer');\n    var type = actionDefinition.type;\n    var payloadCreator = actionDefinition.payloadCreator;\n    var metaCreator = actionDefinition.metaCreator;\n\n    _chai.assert.ok(type, 'action type must be defined for actionName => ' + actionName);\n    (0, _chai.assert)(typeof type === 'string', 'action type must be string for actionName => ' + actionName);\n    return (0, _reduxActions.createAction)(type, translateCreator(payloadCreator)(translatePayload), translateCreator(metaCreator)(translateMeta));\n  };\n\n  var selectDelayedActionCreator = function selectDelayedActionCreator(actionName, delay) {\n    return selectActionCreator(actionName, { translateMeta: translators.delay(delay) });\n  };\n\n  var selectAction = function selectAction(actionName, args) {\n    return selectActionCreator(actionName)(args);\n  };\n\n  return { selectActionCreator: selectActionCreator, selectDelayedActionCreator: selectDelayedActionCreator, selectAction: selectAction };\n};\n\n/*****************\n ** WEBPACK FOOTER\n ** C:/Users/cchamberlain/cchamberlain/redux-addons/lib/store.js\n ** module id = 406\n ** module chunks = 2\n **/\n//# sourceURL=webpack:///C:/Users/cchamberlain/cchamberlain/redux-addons/lib/store.js?");
 
 /***/ },
 
-/***/ 384:
+/***/ 407:
+/*!***********************************************************************!*\
+  !*** C:/Users/cchamberlain/cchamberlain/redux-addons/lib/validate.js ***!
+  \***********************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.validateOpts = undefined;
-
-	var _typeof = typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol" ? function (obj) {
-	  return typeof obj === "undefined" ? "undefined" : _typeof2(obj);
-	} : function (obj) {
-	  return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof2(obj);
-	};
-
-	var _chai = __webpack_require__(12);
-
-	var validateOpts = exports.validateOpts = function validateOpts(opts) {
-	  var actions = opts.actions;
-	  var activeEvents = opts.activeEvents;
-	  var useFastStore = opts.useFastStore;
-	  var useLocalStore = opts.useLocalStore;
-	  var thresholds = opts.thresholds;
-
-	  _chai.assert.ok(actions, 'actions must exist');
-	  (0, _chai.assert)(Array.isArray(actions), 'actions must be an array');
-	  (0, _chai.assert)(actions.every(function (x) {
-	    return Array.isArray(x);
-	  }), 'actions must be an array of an array');
-	  (0, _chai.assert)(actions.every(function (x) {
-	    return x.length === 2;
-	  }), 'every actions must have length 2');
-	  (0, _chai.assert)(actions.every(function (x) {
-	    return typeof x[0] === 'string';
-	  }), 'every action must have first ordinal type string event name');
-	  (0, _chai.assert)(actions.every(function (x) {
-	    return _typeof(x[1]) === 'object';
-	  }), 'every action must have second ordinal type object');
-	  (0, _chai.assert)(actions.every(function (x) {
-	    return typeof x[1].action !== 'undefined';
-	  }), 'every action must have second ordinal action function defined');
-	  (0, _chai.assert)(actions.every(function (x) {
-	    var type = _typeof(x[1].timeoutMS);
-	    return type === 'number' || type === 'function';
-	  }), 'every action must have second ordinal timeoutMS number or function defined');
-	  _chai.assert.ok(activeEvents, 'active events must exist');
-	};
+	eval("'use strict';\n\nvar _typeof2 = typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol ? \"symbol\" : typeof obj; };\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.validateOpts = undefined;\n\nvar _typeof = typeof Symbol === \"function\" && _typeof2(Symbol.iterator) === \"symbol\" ? function (obj) {\n  return typeof obj === \"undefined\" ? \"undefined\" : _typeof2(obj);\n} : function (obj) {\n  return obj && typeof Symbol === \"function\" && obj.constructor === Symbol ? \"symbol\" : typeof obj === \"undefined\" ? \"undefined\" : _typeof2(obj);\n};\n\nvar _chai = __webpack_require__(/*! chai */ 16);\n\nvar validateOpts = exports.validateOpts = function validateOpts(opts) {\n  var actions = opts.actions;\n  var activeEvents = opts.activeEvents;\n  var useFastStore = opts.useFastStore;\n  var useLocalStore = opts.useLocalStore;\n  var thresholds = opts.thresholds;\n\n  _chai.assert.ok(actions, 'actions must exist');\n  (0, _chai.assert)(Array.isArray(actions), 'actions must be an array');\n  (0, _chai.assert)(actions.every(function (x) {\n    return Array.isArray(x);\n  }), 'actions must be an array of an array');\n  (0, _chai.assert)(actions.every(function (x) {\n    return x.length === 2;\n  }), 'every actions must have length 2');\n  (0, _chai.assert)(actions.every(function (x) {\n    return typeof x[0] === 'string';\n  }), 'every action must have first ordinal type string event name');\n  (0, _chai.assert)(actions.every(function (x) {\n    return _typeof(x[1]) === 'object';\n  }), 'every action must have second ordinal type object');\n  (0, _chai.assert)(actions.every(function (x) {\n    return typeof x[1].action !== 'undefined';\n  }), 'every action must have second ordinal action function defined');\n  (0, _chai.assert)(actions.every(function (x) {\n    var type = _typeof(x[1].timeoutMS);\n    return type === 'number' || type === 'function';\n  }), 'every action must have second ordinal timeoutMS number or function defined');\n  _chai.assert.ok(activeEvents, 'active events must exist');\n};\n\n/*****************\n ** WEBPACK FOOTER\n ** C:/Users/cchamberlain/cchamberlain/redux-addons/lib/validate.js\n ** module id = 407\n ** module chunks = 2\n **/\n//# sourceURL=webpack:///C:/Users/cchamberlain/cchamberlain/redux-addons/lib/validate.js?");
 
 /***/ },
 
-/***/ 385:
+/***/ 408:
+/*!****************************************************************************!*\
+  !*** C:/Users/cchamberlain/cchamberlain/redux-idle-monitor/lib/actions.js ***!
+  \****************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.createStartDetection = undefined;
-
-	var _blueprints = __webpack_require__(78);
-
-	var _detection = __webpack_require__(169);
-
-	var _multiplexer = __webpack_require__(170);
-
-	var _constants = __webpack_require__(22);
-
-	var createStartDetection = exports.createStartDetection = function createStartDetection(context) {
-	  return function (dispatch, getState) {
-	    var log = context.log;
-
-	    var stores = (0, _multiplexer.configureStoreMultiplexer)(context)({ dispatch: dispatch, getState: getState });
-	    var startDetection = (0, _detection.configureStartDetection)(context)(stores);
-
-	    var endDetection = dispatch(startDetection);
-	    return function (dispatch, getState) {
-	      log.debug('STOP DETECTION SIGNALED');
-	      dispatch(endDetection);
-	    };
-	  };
-	};
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.createStartDetection = undefined;\n\nvar _blueprints = __webpack_require__(/*! ./blueprints */ 83);\n\nvar _detection = __webpack_require__(/*! ./detection */ 185);\n\nvar _multiplexer = __webpack_require__(/*! ./multiplexer */ 186);\n\nvar _constants = __webpack_require__(/*! ./constants */ 27);\n\nvar createStartDetection = exports.createStartDetection = function createStartDetection(context) {\n  return function (dispatch, getState) {\n    var log = context.log;\n\n    var stores = (0, _multiplexer.configureStoreMultiplexer)(context)({ dispatch: dispatch, getState: getState });\n    var startDetection = (0, _detection.configureStartDetection)(context)(stores);\n\n    var endDetection = dispatch(startDetection);\n    return function (dispatch, getState) {\n      log.debug('STOP DETECTION SIGNALED');\n      dispatch(endDetection);\n    };\n  };\n};\n\n/*****************\n ** WEBPACK FOOTER\n ** C:/Users/cchamberlain/cchamberlain/redux-idle-monitor/lib/actions.js\n ** module id = 408\n ** module chunks = 2\n **/\n//# sourceURL=webpack:///C:/Users/cchamberlain/cchamberlain/redux-idle-monitor/lib/actions.js?");
 
 /***/ },
 
-/***/ 386:
+/***/ 409:
+/*!*****************************************************************************!*\
+  !*** C:/Users/cchamberlain/cchamberlain/redux-idle-monitor/lib/defaults.js ***!
+  \*****************************************************************************/
 /***/ function(module, exports) {
 
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var getTimeStamp = exports.getTimeStamp = function getTimeStamp() {
-	  return new Date().toTimeString();
-	};
-
-	var getActiveEvents = exports.getActiveEvents = function getActiveEvents() {
-	  return ['mousemove', 'keydown', 'wheel', 'DOMMouseScroll', 'mouseWheel', 'mousedown', 'touchstart', 'touchmove', 'MSPointerDown', 'MSPointerMove'];
-	};
-
-	var getUseFastState = exports.getUseFastState = function getUseFastState() {
-	  return true;
-	};
-	var getUseLocalState = exports.getUseLocalState = function getUseLocalState() {
-	  return true;
-	};
-	var getUseWebRTCState = exports.getUseWebRTCState = function getUseWebRTCState() {
-	  return true;
-	};
-	var getUseWebSocketsState = exports.getUseWebSocketsState = function getUseWebSocketsState() {
-	  return true;
-	};
-
-	var getThresholds = exports.getThresholds = function getThresholds() {
-	  var _ref = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-
-	  var _ref$mouse = _ref.mouse;
-	  var mouse = _ref$mouse === undefined ? 20 : _ref$mouse;
-	  var _ref$phaseOffMS = _ref.phaseOffMS;
-	  var phaseOffMS = _ref$phaseOffMS === undefined ? 2000 : _ref$phaseOffMS;
-	  var _ref$phaseOnMS = _ref.phaseOnMS;
-	  var phaseOnMS = _ref$phaseOnMS === undefined ? 0 : _ref$phaseOnMS;
-	  return { mouse: mouse, phaseOffMS: phaseOffMS, phaseOnMS: phaseOnMS };
-	};
-
-	var getLevel = exports.getLevel = function getLevel() {
-	  return 'info';
-	};
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nvar getTimeStamp = exports.getTimeStamp = function getTimeStamp() {\n  return new Date().toTimeString();\n};\n\nvar getActiveEvents = exports.getActiveEvents = function getActiveEvents() {\n  return ['mousemove', 'keydown', 'wheel', 'DOMMouseScroll', 'mouseWheel', 'mousedown', 'touchstart', 'touchmove', 'MSPointerDown', 'MSPointerMove'];\n};\n\nvar getUseFastState = exports.getUseFastState = function getUseFastState() {\n  return true;\n};\nvar getUseLocalState = exports.getUseLocalState = function getUseLocalState() {\n  return true;\n};\nvar getUseWebRTCState = exports.getUseWebRTCState = function getUseWebRTCState() {\n  return true;\n};\nvar getUseWebSocketsState = exports.getUseWebSocketsState = function getUseWebSocketsState() {\n  return true;\n};\n\nvar getThresholds = exports.getThresholds = function getThresholds() {\n  var _ref = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];\n\n  var _ref$mouse = _ref.mouse;\n  var mouse = _ref$mouse === undefined ? 20 : _ref$mouse;\n  var _ref$phaseOffMS = _ref.phaseOffMS;\n  var phaseOffMS = _ref$phaseOffMS === undefined ? 2000 : _ref$phaseOffMS;\n  var _ref$phaseOnMS = _ref.phaseOnMS;\n  var phaseOnMS = _ref$phaseOnMS === undefined ? 0 : _ref$phaseOnMS;\n  return { mouse: mouse, phaseOffMS: phaseOffMS, phaseOnMS: phaseOnMS };\n};\n\nvar getLevel = exports.getLevel = function getLevel() {\n  return 'info';\n};\n\n/*****************\n ** WEBPACK FOOTER\n ** C:/Users/cchamberlain/cchamberlain/redux-idle-monitor/lib/defaults.js\n ** module id = 409\n ** module chunks = 2\n **/\n//# sourceURL=webpack:///C:/Users/cchamberlain/cchamberlain/redux-idle-monitor/lib/defaults.js?");
 
 /***/ },
 
-/***/ 387:
+/***/ 410:
+/*!**************************************************************************!*\
+  !*** C:/Users/cchamberlain/cchamberlain/redux-idle-monitor/lib/index.js ***!
+  \**************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = configure;
-
-	var _context = __webpack_require__(106);
-
-	var _context2 = _interopRequireDefault(_context);
-
-	var _reducer = __webpack_require__(389);
-
-	var _blueprints = __webpack_require__(78);
-
-	var _middleware = __webpack_require__(388);
-
-	var _multiplexer = __webpack_require__(170);
-
-	var _detection = __webpack_require__(169);
-
-	function _interopRequireDefault(obj) {
-	  return obj && obj.__esModule ? obj : { default: obj };
-	}
-
-	function configure(appOpts) {
-	  var context = (0, _context2.default)(appOpts);
-	  var translateBlueprints = context.translateBlueprints;
-
-	  var actions = translateBlueprints(_blueprints.publicBlueprints);
-	  return { reducer: (0, _reducer.createReducer)(context),
-	    middleware: (0, _middleware.createMiddleware)(context),
-	    actions: actions
-	  };
-	}
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = configure;\n\nvar _context = __webpack_require__(/*! ./context */ 112);\n\nvar _context2 = _interopRequireDefault(_context);\n\nvar _reducer = __webpack_require__(/*! ./reducer */ 412);\n\nvar _blueprints = __webpack_require__(/*! ./blueprints */ 83);\n\nvar _middleware = __webpack_require__(/*! ./middleware */ 411);\n\nvar _multiplexer = __webpack_require__(/*! ./multiplexer */ 186);\n\nvar _detection = __webpack_require__(/*! ./detection */ 185);\n\nfunction _interopRequireDefault(obj) {\n  return obj && obj.__esModule ? obj : { default: obj };\n}\n\nfunction configure(appOpts) {\n  var context = (0, _context2.default)(appOpts);\n  var translateBlueprints = context.translateBlueprints;\n\n  var actions = translateBlueprints(_blueprints.publicBlueprints);\n  return { reducer: (0, _reducer.createReducer)(context),\n    middleware: (0, _middleware.createMiddleware)(context),\n    actions: actions\n  };\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** C:/Users/cchamberlain/cchamberlain/redux-idle-monitor/lib/index.js\n ** module id = 410\n ** module chunks = 2\n **/\n//# sourceURL=webpack:///C:/Users/cchamberlain/cchamberlain/redux-idle-monitor/lib/index.js?");
 
 /***/ },
 
-/***/ 388:
+/***/ 411:
+/*!*******************************************************************************!*\
+  !*** C:/Users/cchamberlain/cchamberlain/redux-idle-monitor/lib/middleware.js ***!
+  \*******************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.createMiddleware = undefined;
-	exports.default = configureMiddleware;
-
-	var _chai = __webpack_require__(12);
-
-	var _context = __webpack_require__(106);
-
-	var _context2 = _interopRequireDefault(_context);
-
-	var _constants = __webpack_require__(22);
-
-	var _reduxMux = __webpack_require__(171);
-
-	var _blueprints = __webpack_require__(78);
-
-	var _actions = __webpack_require__(385);
-
-	var _states = __webpack_require__(390);
-
-	function _interopRequireDefault(obj) {
-	  return obj && obj.__esModule ? obj : { default: obj };
-	}
-
-	function _toConsumableArray(arr) {
-	  if (Array.isArray(arr)) {
-	    for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) {
-	      arr2[i] = arr[i];
-	    }return arr2;
-	  } else {
-	    return Array.from(arr);
-	  }
-	}
-
-	/** When context has already been created, it can be shared to middleware component. */
-	var createMiddleware = exports.createMiddleware = function createMiddleware(context) {
-	  var log = context.log;
-	  var activeStatusAction = context.activeStatusAction;
-	  var idleStatusAction = context.idleStatusAction;
-	  var translateBlueprintTypes = context.translateBlueprintTypes;
-	  var translateBlueprints = context.translateBlueprints;
-	  var IDLE_STATUSES = context.IDLE_STATUSES;
-	  var idleStatusDelay = context.idleStatusDelay;
-	  var thresholds = context.thresholds;
-
-	  var _translateBlueprints = translateBlueprints(_blueprints.publicBlueprints);
-
-	  var start = _translateBlueprints.start;
-	  var stop = _translateBlueprints.stop;
-	  var reset = _translateBlueprints.reset;
-
-	  var _translateBlueprints2 = translateBlueprints({ nextIdleStatusAction: _blueprints.nextIdleStatusBlueprint });
-
-	  var nextIdleStatusAction = _translateBlueprints2.nextIdleStatusAction;
-
-	  var startDetection = (0, _actions.createStartDetection)(context);
-
-	  var _translateBlueprintTy = translateBlueprintTypes({ START: _constants.START_BLUEPRINT,
-	    RESET: _constants.RESET_BLUEPRINT,
-	    STOP: _constants.STOP_BLUEPRINT,
-	    NEXT_IDLE_STATUS: _constants.NEXT_IDLE_STATUS_BLUEPRINT,
-	    ACTIVITY: _constants.ACTIVITY_BLUEPRINT
-	  });
-
-	  var START = _translateBlueprintTy.START;
-	  var RESET = _translateBlueprintTy.RESET;
-	  var STOP = _translateBlueprintTy.STOP;
-	  var NEXT_IDLE_STATUS = _translateBlueprintTy.NEXT_IDLE_STATUS;
-	  var ACTIVITY = _translateBlueprintTy.ACTIVITY;
-
-	  var idleStatuses = [_constants.IDLESTATUS_ACTIVE].concat(_toConsumableArray(IDLE_STATUSES));
-	  var getNextIdleStatus = (0, _states.getNextIdleStatusIn)(idleStatuses);
-	  var IDLESTATUS_FIRST = getNextIdleStatus(_constants.IDLESTATUS_ACTIVE);
-
-	  var stopDetection = null;
-	  var nextTimeoutID = null;
-	  var startDetectionID = null;
-	  return function (store) {
-	    var idleStore = (0, _reduxMux.bisectStore)(_constants.ROOT_STATE_KEY)(store);
-
-	    return function (next) {
-	      return function (action) {
-	        if (!action.type) return next(action);
-	        var dispatch = store.dispatch;
-	        var getState = store.getState;
-	        var type = action.type;
-	        var payload = action.payload;
-
-	        var scheduleTransition = function scheduleTransition(idleStatus) {
-	          clearTimeout(nextTimeoutID);
-	          var delay = dispatch(idleStatusDelay(idleStatus));
-	          _chai.assert.ok(delay, 'must return an idle status delay for idleStatus === \'' + idleStatus + '\'');
-	          _chai.assert.ok(typeof delay === 'number', 'idle status delay must be a number type for idleStatus === \'' + idleStatus + '\'');
-
-	          var lastActive = new Date().toTimeString();
-	          var nextMessage = NEXT_IDLE_STATUS + ' action continuing after ' + delay + ' MS delay, lastActive: ' + new Date().toTimeString();
-	          var nextCancelMessage = function nextCancelMessage(cancelledAt) {
-	            return NEXT_IDLE_STATUS + ' action cancelled before ' + delay + ' MS delay by dispatcher, lastActive: ' + new Date().toTimeString() + ', cancelledAt: ' + cancelledAt;
-	          };
-	          var nextIdleStatus = getNextIdleStatus(idleStatus);
-	          log.trace('Scheduling next idle status \'' + idleStatus + '\' in ' + delay + ' MS, then \'' + nextIdleStatus + '\'');
-	          nextTimeoutID = setTimeout(function () {
-	            log.trace(nextMessage);
-	            next(action);
-	            dispatch(idleStatusAction(idleStatus));
-	            if (nextIdleStatus) {
-	              dispatch(nextIdleStatusAction(nextIdleStatus));
-	            } else {
-	              log.info('No more actions to schedule');
-	              // END OF THE LINE
-	            }
-	          }, delay);
-	          return function cancel() {
-	            clearTimeout(nextTimeoutID);
-	            log.trace(nextCancelMessage(new Date().toTimeString()));
-	          };
-	        };
-
-	        if (type === START) {
-	          stopDetection = dispatch(startDetection);
-	          var result = next(action);
-	          dispatch(nextIdleStatusAction(IDLESTATUS_FIRST));
-	          return result;
-	        }
-
-	        if (type === RESET) {
-	          clearTimeout(nextTimeoutID);
-	          if (stopDetection) stopDetection();
-	          dispatch(start());
-	        }
-
-	        if (type === STOP) {
-	          clearTimeout(nextTimeoutID);
-	          clearTimeout(startDetectionID);
-	          if (stopDetection) dispatch(stopDetection);
-	        }
-
-	        if (type === NEXT_IDLE_STATUS) {
-	          return scheduleTransition(payload.nextIdleStatus);
-	        }
-
-	        if (type === ACTIVITY) {
-	          if (stopDetection && thresholds.phaseOffMS) {
-	            dispatch(stopDetection);
-	            stopDetection = null;
-	            startDetectionID = setTimeout(function () {
-	              stopDetection = dispatch(startDetection);
-	            }, thresholds.phaseOffMS);
-	          }
-
-	          var _result = next(action);
-	          if (payload.isTransition) {
-	            log.trace('Transition activity occurred, triggering user active action.');
-	            dispatch(activeStatusAction);
-	          }
-	          dispatch(nextIdleStatusAction(IDLESTATUS_FIRST));
-	          return _result;
-	        }
-	        return next(action);
-	      };
-	    };
-	  };
-	};
-
-	/** Creates middleware from opts including validation in development */
-	function configureMiddleware(opts) {
-	  return createMiddleware((0, _context2.default)(opts));
-	}
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.createMiddleware = undefined;\nexports.default = configureMiddleware;\n\nvar _chai = __webpack_require__(/*! chai */ 16);\n\nvar _context = __webpack_require__(/*! ./context */ 112);\n\nvar _context2 = _interopRequireDefault(_context);\n\nvar _constants = __webpack_require__(/*! ./constants */ 27);\n\nvar _reduxMux = __webpack_require__(/*! redux-mux */ 187);\n\nvar _blueprints = __webpack_require__(/*! ./blueprints */ 83);\n\nvar _actions = __webpack_require__(/*! ./actions */ 408);\n\nvar _states = __webpack_require__(/*! ./states */ 413);\n\nfunction _interopRequireDefault(obj) {\n  return obj && obj.__esModule ? obj : { default: obj };\n}\n\nfunction _toConsumableArray(arr) {\n  if (Array.isArray(arr)) {\n    for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) {\n      arr2[i] = arr[i];\n    }return arr2;\n  } else {\n    return Array.from(arr);\n  }\n}\n\n/** When context has already been created, it can be shared to middleware component. */\nvar createMiddleware = exports.createMiddleware = function createMiddleware(context) {\n  var log = context.log;\n  var activeStatusAction = context.activeStatusAction;\n  var idleStatusAction = context.idleStatusAction;\n  var translateBlueprintTypes = context.translateBlueprintTypes;\n  var translateBlueprints = context.translateBlueprints;\n  var IDLE_STATUSES = context.IDLE_STATUSES;\n  var idleStatusDelay = context.idleStatusDelay;\n  var thresholds = context.thresholds;\n\n  var _translateBlueprints = translateBlueprints(_blueprints.publicBlueprints);\n\n  var start = _translateBlueprints.start;\n  var stop = _translateBlueprints.stop;\n  var reset = _translateBlueprints.reset;\n\n  var _translateBlueprints2 = translateBlueprints({ nextIdleStatusAction: _blueprints.nextIdleStatusBlueprint });\n\n  var nextIdleStatusAction = _translateBlueprints2.nextIdleStatusAction;\n\n  var startDetection = (0, _actions.createStartDetection)(context);\n\n  var _translateBlueprintTy = translateBlueprintTypes({ START: _constants.START_BLUEPRINT,\n    RESET: _constants.RESET_BLUEPRINT,\n    STOP: _constants.STOP_BLUEPRINT,\n    NEXT_IDLE_STATUS: _constants.NEXT_IDLE_STATUS_BLUEPRINT,\n    ACTIVITY: _constants.ACTIVITY_BLUEPRINT\n  });\n\n  var START = _translateBlueprintTy.START;\n  var RESET = _translateBlueprintTy.RESET;\n  var STOP = _translateBlueprintTy.STOP;\n  var NEXT_IDLE_STATUS = _translateBlueprintTy.NEXT_IDLE_STATUS;\n  var ACTIVITY = _translateBlueprintTy.ACTIVITY;\n\n  var idleStatuses = [_constants.IDLESTATUS_ACTIVE].concat(_toConsumableArray(IDLE_STATUSES));\n  var getNextIdleStatus = (0, _states.getNextIdleStatusIn)(idleStatuses);\n  var IDLESTATUS_FIRST = getNextIdleStatus(_constants.IDLESTATUS_ACTIVE);\n\n  var stopDetection = null;\n  var nextTimeoutID = null;\n  var startDetectionID = null;\n  return function (store) {\n    var idleStore = (0, _reduxMux.bisectStore)(_constants.ROOT_STATE_KEY)(store);\n\n    return function (next) {\n      return function (action) {\n        if (!action.type) return next(action);\n        var dispatch = store.dispatch;\n        var getState = store.getState;\n        var type = action.type;\n        var payload = action.payload;\n\n        var scheduleTransition = function scheduleTransition(idleStatus) {\n          clearTimeout(nextTimeoutID);\n          var delay = dispatch(idleStatusDelay(idleStatus));\n          _chai.assert.ok(delay, 'must return an idle status delay for idleStatus === \\'' + idleStatus + '\\'');\n          _chai.assert.ok(typeof delay === 'number', 'idle status delay must be a number type for idleStatus === \\'' + idleStatus + '\\'');\n\n          var lastActive = new Date().toTimeString();\n          var nextMessage = NEXT_IDLE_STATUS + ' action continuing after ' + delay + ' MS delay, lastActive: ' + new Date().toTimeString();\n          var nextCancelMessage = function nextCancelMessage(cancelledAt) {\n            return NEXT_IDLE_STATUS + ' action cancelled before ' + delay + ' MS delay by dispatcher, lastActive: ' + new Date().toTimeString() + ', cancelledAt: ' + cancelledAt;\n          };\n          var nextIdleStatus = getNextIdleStatus(idleStatus);\n          log.trace('Scheduling next idle status \\'' + idleStatus + '\\' in ' + delay + ' MS, then \\'' + nextIdleStatus + '\\'');\n          nextTimeoutID = setTimeout(function () {\n            log.trace(nextMessage);\n            next(action);\n            dispatch(idleStatusAction(idleStatus));\n            if (nextIdleStatus) {\n              dispatch(nextIdleStatusAction(nextIdleStatus));\n            } else {\n              log.info('No more actions to schedule');\n              // END OF THE LINE\n            }\n          }, delay);\n          return function cancel() {\n            clearTimeout(nextTimeoutID);\n            log.trace(nextCancelMessage(new Date().toTimeString()));\n          };\n        };\n\n        if (type === START) {\n          stopDetection = dispatch(startDetection);\n          var result = next(action);\n          dispatch(nextIdleStatusAction(IDLESTATUS_FIRST));\n          return result;\n        }\n\n        if (type === RESET) {\n          clearTimeout(nextTimeoutID);\n          if (stopDetection) stopDetection();\n          dispatch(start());\n        }\n\n        if (type === STOP) {\n          clearTimeout(nextTimeoutID);\n          clearTimeout(startDetectionID);\n          if (stopDetection) dispatch(stopDetection);\n        }\n\n        if (type === NEXT_IDLE_STATUS) {\n          return scheduleTransition(payload.nextIdleStatus);\n        }\n\n        if (type === ACTIVITY) {\n          if (stopDetection && thresholds.phaseOffMS) {\n            dispatch(stopDetection);\n            stopDetection = null;\n            startDetectionID = setTimeout(function () {\n              stopDetection = dispatch(startDetection);\n            }, thresholds.phaseOffMS);\n          }\n\n          var _result = next(action);\n          if (payload.isTransition) {\n            log.trace('Transition activity occurred, triggering user active action.');\n            dispatch(activeStatusAction);\n          }\n          dispatch(nextIdleStatusAction(IDLESTATUS_FIRST));\n          return _result;\n        }\n        return next(action);\n      };\n    };\n  };\n};\n\n/** Creates middleware from opts including validation in development */\nfunction configureMiddleware(opts) {\n  return createMiddleware((0, _context2.default)(opts));\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** C:/Users/cchamberlain/cchamberlain/redux-idle-monitor/lib/middleware.js\n ** module id = 411\n ** module chunks = 2\n **/\n//# sourceURL=webpack:///C:/Users/cchamberlain/cchamberlain/redux-idle-monitor/lib/middleware.js?");
 
 /***/ },
 
-/***/ 389:
+/***/ 412:
+/*!****************************************************************************!*\
+  !*** C:/Users/cchamberlain/cchamberlain/redux-idle-monitor/lib/reducer.js ***!
+  \****************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.createReducer = undefined;
-	exports.default = configureReducer;
-
-	var _context = __webpack_require__(106);
-
-	var _context2 = _interopRequireDefault(_context);
-
-	var _constants = __webpack_require__(22);
-
-	function _interopRequireDefault(obj) {
-	  return obj && obj.__esModule ? obj : { default: obj };
-	}
-
-	/** When context has already been created, it can be shared to middleware component. */
-	var createReducer = exports.createReducer = function createReducer(context) {
-	  var initialState = context.initialState;
-	  var translateBlueprintTypes = context.translateBlueprintTypes;
-
-	  var _translateBlueprintTy = translateBlueprintTypes({ START: _constants.START_BLUEPRINT,
-	    STOP: _constants.STOP_BLUEPRINT,
-	    ACTIVITY: _constants.ACTIVITY_BLUEPRINT,
-	    ACTIVITY_DETECTION: _constants.ACTIVITY_DETECTION_BLUEPRINT,
-	    NEXT_IDLE_STATUS: _constants.NEXT_IDLE_STATUS_BLUEPRINT
-	  });
-
-	  var START = _translateBlueprintTy.START;
-	  var STOP = _translateBlueprintTy.STOP;
-	  var ACTIVITY = _translateBlueprintTy.ACTIVITY;
-	  var ACTIVITY_DETECTION = _translateBlueprintTy.ACTIVITY_DETECTION;
-	  var NEXT_IDLE_STATUS = _translateBlueprintTy.NEXT_IDLE_STATUS;
-
-	  return function () {
-	    var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
-	    var action = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
-	    var type = action.type;
-	    var payload = action.payload;
-
-	    switch (type) {
-	      case START:
-	        return Object.assign({}, state, selectStartPayload(payload));
-	      case STOP:
-	        return Object.assign({}, state, selectStopPayload(payload));
-	      case ACTIVITY:
-	        return Object.assign({}, state, selectActivityPayload(payload));
-	      case ACTIVITY_DETECTION:
-	        return Object.assign({}, state, selectActivityDetectionPayload(payload));
-	      case NEXT_IDLE_STATUS:
-	        return Object.assign({}, state, selectNextIdleStatusPayload(payload));
-	      default:
-	        return state;
-	    }
-	  };
-	};
-
-	var selectStartPayload = function selectStartPayload() {
-	  return { isRunning: true };
-	};
-	var selectStopPayload = function selectStopPayload() {
-	  return { isRunning: false };
-	};
-	var selectActivityPayload = function selectActivityPayload(_ref) {
-	  var activeStatus = _ref.activeStatus;
-	  var lastActive = _ref.lastActive;
-	  var lastEvent = _ref.lastEvent;
-	  var timeoutID = _ref.timeoutID;
-	  return { idleStatus: activeStatus, lastActive: lastActive, lastEvent: lastEvent, timeoutID: timeoutID, isIdle: false };
-	};
-	var selectActivityDetectionPayload = function selectActivityDetectionPayload(_ref2) {
-	  var isDetectionRunning = _ref2.isDetectionRunning;
-	  return { isDetectionRunning: isDetectionRunning };
-	};
-	var selectNextIdleStatusPayload = function selectNextIdleStatusPayload(_ref3) {
-	  var nextIdleStatus = _ref3.nextIdleStatus;
-	  return { idleStatus: nextIdleStatus, isIdle: true };
-	};
-
-	/** Creates reducer from opts including validation in development */
-	function configureReducer(opts) {
-	  return createReducer((0, _context2.default)(opts));
-	}
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.createReducer = undefined;\nexports.default = configureReducer;\n\nvar _context = __webpack_require__(/*! ./context */ 112);\n\nvar _context2 = _interopRequireDefault(_context);\n\nvar _constants = __webpack_require__(/*! ./constants */ 27);\n\nfunction _interopRequireDefault(obj) {\n  return obj && obj.__esModule ? obj : { default: obj };\n}\n\n/** When context has already been created, it can be shared to middleware component. */\nvar createReducer = exports.createReducer = function createReducer(context) {\n  var initialState = context.initialState;\n  var translateBlueprintTypes = context.translateBlueprintTypes;\n\n  var _translateBlueprintTy = translateBlueprintTypes({ START: _constants.START_BLUEPRINT,\n    STOP: _constants.STOP_BLUEPRINT,\n    ACTIVITY: _constants.ACTIVITY_BLUEPRINT,\n    ACTIVITY_DETECTION: _constants.ACTIVITY_DETECTION_BLUEPRINT,\n    NEXT_IDLE_STATUS: _constants.NEXT_IDLE_STATUS_BLUEPRINT\n  });\n\n  var START = _translateBlueprintTy.START;\n  var STOP = _translateBlueprintTy.STOP;\n  var ACTIVITY = _translateBlueprintTy.ACTIVITY;\n  var ACTIVITY_DETECTION = _translateBlueprintTy.ACTIVITY_DETECTION;\n  var NEXT_IDLE_STATUS = _translateBlueprintTy.NEXT_IDLE_STATUS;\n\n  return function () {\n    var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];\n    var action = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];\n    var type = action.type;\n    var payload = action.payload;\n\n    switch (type) {\n      case START:\n        return Object.assign({}, state, selectStartPayload(payload));\n      case STOP:\n        return Object.assign({}, state, selectStopPayload(payload));\n      case ACTIVITY:\n        return Object.assign({}, state, selectActivityPayload(payload));\n      case ACTIVITY_DETECTION:\n        return Object.assign({}, state, selectActivityDetectionPayload(payload));\n      case NEXT_IDLE_STATUS:\n        return Object.assign({}, state, selectNextIdleStatusPayload(payload));\n      default:\n        return state;\n    }\n  };\n};\n\nvar selectStartPayload = function selectStartPayload() {\n  return { isRunning: true };\n};\nvar selectStopPayload = function selectStopPayload() {\n  return { isRunning: false };\n};\nvar selectActivityPayload = function selectActivityPayload(_ref) {\n  var activeStatus = _ref.activeStatus;\n  var lastActive = _ref.lastActive;\n  var lastEvent = _ref.lastEvent;\n  var timeoutID = _ref.timeoutID;\n  return { idleStatus: activeStatus, lastActive: lastActive, lastEvent: lastEvent, timeoutID: timeoutID, isIdle: false };\n};\nvar selectActivityDetectionPayload = function selectActivityDetectionPayload(_ref2) {\n  var isDetectionRunning = _ref2.isDetectionRunning;\n  return { isDetectionRunning: isDetectionRunning };\n};\nvar selectNextIdleStatusPayload = function selectNextIdleStatusPayload(_ref3) {\n  var nextIdleStatus = _ref3.nextIdleStatus;\n  return { idleStatus: nextIdleStatus, isIdle: true };\n};\n\n/** Creates reducer from opts including validation in development */\nfunction configureReducer(opts) {\n  return createReducer((0, _context2.default)(opts));\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** C:/Users/cchamberlain/cchamberlain/redux-idle-monitor/lib/reducer.js\n ** module id = 412\n ** module chunks = 2\n **/\n//# sourceURL=webpack:///C:/Users/cchamberlain/cchamberlain/redux-idle-monitor/lib/reducer.js?");
 
 /***/ },
 
-/***/ 390:
+/***/ 413:
+/*!***************************************************************************!*\
+  !*** C:/Users/cchamberlain/cchamberlain/redux-idle-monitor/lib/states.js ***!
+  \***************************************************************************/
 /***/ function(module, exports) {
 
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var getNextIdleStatusIn = exports.getNextIdleStatusIn = function getNextIdleStatusIn(idleStatuses) {
-	  return function (idleStatus) {
-	    var nextIdleStatusIndex = idleStatuses.indexOf(idleStatus) + 1;
-	    if (nextIdleStatusIndex < idleStatuses.length) return idleStatuses[nextIdleStatusIndex];
-	  };
-	};
-
-/***/ },
-
-/***/ 396:
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	/**
-	 * Copyright (c) 2011-2014 Felix Gnass
-	 * Licensed under the MIT license
-	 * http://spin.js.org/
-	 * ES6ified by Cole Chamberlain
-	 *
-	 * Example:
-	    var opts = {
-	      lines: 12             // The number of lines to draw
-	    , length: 7             // The length of each line
-	    , width: 5              // The line thickness
-	    , radius: 10            // The radius of the inner circle
-	    , scale: 1.0            // Scales overall size of the spinner
-	    , corners: 1            // Roundness (0..1)
-	    , color: '#000'         // #rgb or #rrggbb
-	    , opacity: 1/4          // Opacity of the lines
-	    , rotate: 0             // Rotation offset
-	    , direction: 1          // 1: clockwise, -1: counterclockwise
-	    , speed: 1              // Rounds per second
-	    , trail: 100            // Afterglow percentage
-	    , fps: 20               // Frames per second when using setTimeout()
-	    , zIndex: 2e9           // Use a high z-index by default
-	    , className: 'spinner'  // CSS class to assign to the element
-	    , top: '50%'            // center vertically
-	    , left: '50%'           // center horizontally
-	    , shadow: false         // Whether to render a shadow
-	    , hwaccel: false        // Whether to use hardware acceleration (might be buggy)
-	    , position: 'absolute'  // Element positioning
-	    }
-	    var target = document.getElementById('foo')
-	    var spinner = new Spinner(opts).spin(target)
-	 */
-	var defaults = { lines: 8 // The number of lines to draw
-	  , length: 12 // The length of each line
-	  , width: 10 // The line thickness
-	  , radius: 25 // The radius of the inner circle
-	  , scale: 1.0 // Scales overall size of the spinner
-	  , corners: 1 // Roundness (0..1)
-	  , color: '#839496' // #rgb or #rrggbb
-	  , opacity: 1 / 4 // Opacity of the lines
-	  , rotate: 0 // Rotation offset
-	  , direction: 1 // 1: clockwise, -1: counterclockwise
-	  , speed: 1 // Rounds per second
-	  , trail: 100 // Afterglow percentage
-	  , fps: 20 // Frames per second when using setTimeout()
-	  , zIndex: 2e9 // Use a high z-index by default
-	  , className: 'spinner' // CSS class to assign to the element
-	  , top: '50%' // center vertically
-	  , left: '50%' // center horizontally
-	  , shadow: false // Whether to render a shadow
-	  , hwaccel: false // Whether to use hardware acceleration (might be buggy)
-	  , position: 'absolute' // Element positioning
-	};
-
-	var prefixes = ['webkit', 'Moz', 'ms', 'O'] /* Vendor prefixes */
-	,
-	    animations = {} /* Animation rules keyed by their name */
-	,
-	    useCssAnimations /* Whether to use CSS animations or setTimeout */
-	,
-	    sheet; /* A stylesheet to hold the @keyframe or VML rules. */
-
-	/**
-	 * Sets multiple style properties at once.
-	 */
-	function css(el, prop) {
-	  for (var n in prop) {
-	    el.style[vendor(el, n) || n] = prop[n];
-	  }
-
-	  return el;
-	}
-
-	/**
-	 * Tries various vendor prefixes and returns the first supported property.
-	 */
-	function vendor(el, prop) {
-	  var s = el.style,
-	      pp,
-	      i;
-
-	  prop = prop.charAt(0).toUpperCase() + prop.slice(1);
-	  if (s[prop] !== undefined) return prop;
-	  for (i = 0; i < prefixes.length; i++) {
-	    pp = prefixes[i] + prop;
-	    if (s[pp] !== undefined) return pp;
-	  }
-	}
-
-	/**
-	 * Utility function to create elements. If no tag name is given,
-	 * a DIV is created. Optionally properties can be passed.
-	 */
-	function createEl(tag, prop) {
-	  var el = document.createElement(tag || 'div'),
-	      n;
-
-	  for (n in prop) {
-	    el[n] = prop[n];
-	  }return el;
-	}
-
-	/**
-	 * Appends children and returns the parent.
-	 */
-	function ins(parent /* child1, child2, ...*/) {
-	  for (var i = 1, n = arguments.length; i < n; i++) {
-	    parent.appendChild(arguments[i]);
-	  }
-
-	  return parent;
-	}
-
-	/**
-	 * Creates an opacity keyframe animation rule and returns its name.
-	 * Since most mobile Webkits have timing issues with animation-delay,
-	 * we create separate rules for each line/segment.
-	 */
-	function addAnimation(alpha, trail, i, lines) {
-	  var name = ['opacity', trail, ~ ~(alpha * 100), i, lines].join('-'),
-	      start = 0.01 + i / lines * 100,
-	      z = Math.max(1 - (1 - alpha) / trail * (100 - start), alpha),
-	      prefix = useCssAnimations.substring(0, useCssAnimations.indexOf('Animation')).toLowerCase(),
-	      pre = prefix && '-' + prefix + '-' || '';
-
-	  if (!animations[name]) {
-	    sheet.insertRule('\n@' + pre + 'keyframes ' + name + '{\n0%{opacity:' + z + '}\n' + start + '%{opacity:' + alpha + '}\n' + (start + 0.01) + '%{opacity:1}\n' + (start + trail) % 100 + '%{opacity:' + alpha + '}\n100%{opacity:' + z + '}\n}', sheet.cssRules.length);
-	    animations[name] = 1;
-	  }
-
-	  return name;
-	}
-
-	/**
-	 * Returns the line color from the given string or array.
-	 */
-	var getColor = function getColor(color, idx) {
-	  return typeof color == 'string' ? color : color[idx % color.length];
-	};
-
-	/**
-	 * Internal method that adjusts the opacity of a single line.
-	 * Will be overwritten in VML fallback mode below.
-	 */
-	function opacity(el, i, val) {
-	  if (i < el.childNodes.length) el.childNodes[i].style.opacity = val;
-	}
-
-	var Spinner = function Spinner(props) {
-	  var _this = this;
-
-	  _classCallCheck(this, Spinner);
-
-	  this.spin = function (target) {
-	    _this.stop();
-
-	    var self = _this,
-	        o = self.opts,
-	        el = self.el = createEl(null, { className: o.className });
-
-	    css(el, {
-	      position: o.position,
-	      width: 0,
-	      zIndex: o.zIndex,
-	      left: o.left,
-	      top: o.top
-	    });
-
-	    if (target) {
-	      target.insertBefore(el, target.firstChild || null);
-	    }
-
-	    el.setAttribute('role', 'progressbar');
-	    self.lines(el, self.opts);
-
-	    if (!useCssAnimations) {
-	      // No CSS animation support, use setTimeout() instead
-	      var i = 0,
-	          start = (o.lines - 1) * (1 - o.direction) / 2,
-	          alpha,
-	          fps = o.fps,
-	          f = fps / o.speed,
-	          ostep = (1 - o.opacity) / (f * o.trail / 100),
-	          astep = f / o.lines;(function anim() {
-	        i++;
-	        for (var j = 0; j < o.lines; j++) {
-	          alpha = Math.max(1 - (i + (o.lines - j) * astep) % f * ostep, o.opacity);
-
-	          self.opacity(el, j * o.direction + start, alpha, o);
-	        }
-	        self.timeout = self.el && setTimeout(anim, ~ ~(1000 / fps));
-	      })();
-	    }
-	    return self;
-	  };
-
-	  this.stop = function () {
-	    var el = _this.el;
-	    if (el) {
-	      clearTimeout(_this.timeout);
-	      if (el.parentNode) el.parentNode.removeChild(el);
-	      _this.el = undefined;
-	    }
-	    return _this;
-	  };
-
-	  this.lines = function (el, o) {
-	    var i = 0,
-	        start = (o.lines - 1) * (1 - o.direction) / 2,
-	        seg;
-
-	    function fill(color, shadow) {
-	      return css(createEl(), { position: 'absolute',
-	        width: o.scale * (o.length + o.width) + 'px',
-	        height: o.scale * o.width + 'px',
-	        background: color,
-	        boxShadow: shadow,
-	        transformOrigin: 'left',
-	        transform: 'rotate(' + ~ ~(360 / o.lines * i + o.rotate) + 'deg) translate(' + o.scale * o.radius + 'px' + ',0)',
-	        borderRadius: (o.corners * o.scale * o.width >> 1) + 'px'
-	      });
-	    }
-
-	    for (; i < o.lines; i++) {
-	      seg = css(createEl(), { position: 'absolute',
-	        top: 1 + ~(o.scale * o.width / 2) + 'px',
-	        transform: o.hwaccel ? 'translate3d(0,0,0)' : '',
-	        opacity: o.opacity,
-	        animation: useCssAnimations && addAnimation(o.opacity, o.trail, start + i * o.direction, o.lines) + ' ' + 1 / o.speed + 's linear infinite'
-	      });
-	      if (o.shadow) ins(seg, css(fill('#000', '0 0 4px #000'), { top: '2px' }));
-	      ins(el, ins(seg, fill(getColor(o.color, i), '0 0 1px rgba(0,0,0,.1)')));
-	    }
-	    return el;
-	  };
-
-	  this.initVML = function () {
-
-	    /* Utility function to create a VML tag */
-	    function vml(tag, attr) {
-	      return createEl('<' + tag + ' xmlns="urn:schemas-microsoft.com:vml" class="spin-vml">', attr);
-	    }
-
-	    // No CSS transforms but VML support, add a CSS rule for VML elements:
-	    sheet.addRule('.spin-vml', 'behavior:url(#default#VML)');
-
-	    _this.lines = function (el, o) {
-	      var r = o.scale * (o.length + o.width),
-	          s = o.scale * 2 * r;
-
-	      function grp() {
-	        return css(vml('group', {
-	          coordsize: s + ' ' + s,
-	          coordorigin: -r + ' ' + -r
-	        }), { width: s, height: s });
-	      }
-
-	      var margin = -(o.width + o.length) * o.scale * 2 + 'px',
-	          g = css(grp(), { position: 'absolute', top: margin, left: margin }),
-	          i;
-
-	      function seg(i, dx, filter) {
-	        ins(g, ins(css(grp(), { rotation: 360 / o.lines * i + 'deg', left: ~ ~dx }), ins(css(vml('roundrect', { arcsize: o.corners }), { width: r,
-	          height: o.scale * o.width,
-	          left: o.scale * o.radius,
-	          top: -o.scale * o.width >> 1,
-	          filter: filter
-	        }), vml('fill', { color: getColor(o.color, i), opacity: o.opacity }), vml('stroke', { opacity: 0 }) // transparent stroke to fix color bleeding upon opacity change
-	        )));
-	      }
-
-	      if (o.shadow) for (i = 1; i <= o.lines; i++) {
-	        seg(i, -2, 'progid:DXImageTransform.Microsoft.Blur(pixelradius=2,makeshadow=1,shadowopacity=.3)');
-	      }
-
-	      for (i = 1; i <= o.lines; i++) {
-	        seg(i);
-	      }return ins(el, g);
-	    };
-
-	    _this.opacity = function (el, i, val, o) {
-	      var c = el.firstChild;
-	      o = o.shadow && o.lines || 0;
-	      if (c && i + o < c.childNodes.length) {
-	        c = c.childNodes[i + o];c = c && c.firstChild;c = c && c.firstChild;
-	        if (c) c.opacity = val;
-	      }
-	    };
-	  };
-
-	  this.opts = Object.assign({}, defaults, props);
-
-	  if (typeof document !== 'undefined') {
-	    sheet = function () {
-	      var el = createEl('style', { type: 'text/css' });
-	      ins(document.getElementsByTagName('head')[0], el);
-	      return el.sheet || el.styleSheet;
-	    }();
-
-	    var probe = css(createEl('group'), { behavior: 'url(#default#VML)' });
-
-	    if (!vendor(probe, 'transform') && probe.adj) this.initVML();else useCssAnimations = vendor(probe, 'animation');
-	  }
-	}
-
-	/**
-	 * Adds the spinner to the given target element. If this instance is already
-	 * spinning, it is automatically removed from its previous target b calling
-	 * stop() internally.
-	 */
-
-
-	/**
-	 * Stops and removes the Spinner.
-	 */
-
-
-	/**
-	 * Internal method that draws the individual lines. Will be overwritten
-	 * in VML fallback mode below.
-	 */
-	;
-
-	exports.default = Spinner;
-
-/***/ },
-
-/***/ 416:
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.idleStatusAction = exports.activeStatusAction = exports.idleStatusDelay = undefined;
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	var _visual = __webpack_require__(81);
-
-	var _constants = __webpack_require__(175);
-
-	var _reduxDevtoolsThemes = __webpack_require__(311);
-
-	var themes = _interopRequireWildcard(_reduxDevtoolsThemes);
-
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-	var paletteMap = { background: ['base00', 'base01'],
-	  content: ['base04', 'base02', 'base05'],
-	  accent: ['base0D', 'base0E', 'base0C']
-	};
-	var invertColors = function invertColors(theme) {
-	  return _extends({}, theme, { base00: theme.base07,
-	    base01: theme.base06,
-	    base02: theme.base05,
-	    base03: theme.base04,
-	    base04: theme.base03,
-	    base05: theme.base02,
-	    base06: theme.base01,
-	    base07: theme.base00
-	  });
-	};
-
-	var nonColors = ['author', 'scheme', 'base07', 'base06', 'base05', 'base04', 'base02', 'base01', 'base00'];
-	var filterColors = function filterColors(scheme) {
-	  return Object.keys(scheme).filter(function (x) {
-	    return !nonColors.includes(x);
-	  }).reduce(function (colors, key) {
-	    return Object.assign(colors, _defineProperty({}, key, scheme[key]));
-	  }, {});
-	};
-
-	var getRandomColor = function getRandomColor(colors) {
-	  var paletteKeys = Object.keys(colors);
-	  var selectedIndex = Math.floor(paletteKeys.length * Math.random());
-	  return colors[paletteKeys[selectedIndex]];
-	};
-	//** TODO: NPM MODULE */
-	var palettize = function palettize(theme) {
-	  return function (invertTheme) {
-	    var scheme = invertTheme ? invertColors(themes[theme]) : themes[theme];
-	    var colors = filterColors(scheme);
-	    var basePalette = Object.keys(paletteMap).reduce(function (palette, key) {
-	      palette[key] = paletteMap[key].map(function (x) {
-	        return scheme[x];
-	      });
-	      return palette;
-	    }, {});
-	    return _extends({}, basePalette, { bool: function bool(condition) {
-	        return condition ? scheme['base0B'] : scheme['base08'];
-	      },
-	      get colors() {
-	        return colors;
-	      },
-	      random: function random() {
-	        return getRandomColor(colors);
-	      },
-	      get red() {
-	        return scheme['base08'];
-	      },
-	      get green() {
-	        return scheme['base0B'];
-	      }
-	    });
-	  };
-	};
-
-	var solarized = palettize('solarized')(false);
-
-	var idleStatusDelay = exports.idleStatusDelay = function idleStatusDelay(idleStatus) {
-	  return function (dispatch, getState) {
-	    switch (idleStatus) {
-	      case _constants.IDLESTATUS_NOT_VERY_ACTIVE:
-	        return 5000;
-	      case _constants.IDLESTATUS_GONE_FOR_LIKE_A_SECOND:
-	        return 4000;
-	      case _constants.IDLESTATUS_LAZY_TYPER:
-	        return 3000;
-	      case _constants.IDLESTATUS_ARE_YOU_STILL_THERE:
-	        return 2000;
-	      case _constants.IDLESTATUS_GONE:
-	        return 1000;
-	      case _constants.IDLESTATUS_THEY_DONT_CARE_ABOUT_YOU:
-	        return 800;
-	      case _constants.IDLESTATUS_THEY_ARE_NEVER_COMING_BACK:
-	        return 600;
-	      case _constants.IDLESTATUS_STONE_AGE_GONE:
-	        return 400;
-	      case _constants.IDLESTATUS_EXTINCT:
-	        return 300;
-	      default:
-	        return 3000;
-	    }
-	  };
-	};
-
-	var activeStatusAction = exports.activeStatusAction = function activeStatusAction(dispatch, getState) {
-	  dispatch((0, _visual.setText)({ subtitle: 'ACTIVE' }));
-	  setColor(solarized.background[0]);
-	};
-
-	var idleStatusAction = exports.idleStatusAction = function idleStatusAction(idleStatus) {
-	  return function (dispatch, getState) {
-	    dispatch((0, _visual.setText)({ subtitle: idleStatus.replace(/_/g, ' ') }));
-	    switch (idleStatus) {
-	      case _constants.IDLESTATUS_NOT_VERY_ACTIVE:
-	        return setColor(solarized.random());
-	      case _constants.IDLESTATUS_GONE_FOR_LIKE_A_SECOND:
-	        return setColor(solarized.random());
-	      case _constants.IDLESTATUS_LAZY_TYPER:
-	        return setColor(solarized.random());
-	      case _constants.IDLESTATUS_ARE_YOU_STILL_THERE:
-	        return setColor(solarized.random());
-	      case _constants.IDLESTATUS_GONE:
-	        return setColor(solarized.random());
-	      case _constants.IDLESTATUS_THEY_DONT_CARE_ABOUT_YOU:
-	        return setColor(solarized.random());
-	      case _constants.IDLESTATUS_THEY_ARE_NEVER_COMING_BACK:
-	        return setColor(solarized.random());
-	      case _constants.IDLESTATUS_STONE_AGE_GONE:
-	        return setColor(solarized.random());
-	      case _constants.IDLESTATUS_EXTINCT:
-	        return setColor(solarized.red);
-	    }
-	  };
-	};
-
-	var setColor = function setColor(color) {
-	  return document.body.style.backgroundColor = color;
-	};
-
-/***/ },
-
-/***/ 417:
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = errors;
-
-	var _immutable = __webpack_require__(126);
-
-	var _immutable2 = _interopRequireDefault(_immutable);
-
-	var _constants = __webpack_require__(62);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var initialState = _immutable2.default.Map({ api: _immutable2.default.List(),
-	  identity: _immutable2.default.List()
-	});
-
-	function errors() {
-	  var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
-	  var action = arguments[1];
-	  var type = action.type;
-	  var payload = action.payload;
-	  var error = action.error;
-
-	  // HANDLE NON ERRORS
-
-	  if (!error) {
-	    switch (type) {
-	      case _constants.DISMISS_ERROR:
-	        var category = payload.category;
-	        var id = payload.id;
-
-	        return state.deleteIn([category, id]);
-	      case _constants.CLEAR_ERRORS:
-	      case _constants.RECEIVE_AUTHORIZE_IDENTITY:
-	      case _constants.RECEIVE_REFRESH_IDENTITY:
-	      case _constants.RECEIVE_IMPERSONATE_IDENTITY:
-	      case _constants.SET_IDENTITY:
-	        return initialState;
-	    }
-	    return state;
-	  }
-
-	  var err = payload ? payload : new Error('Unknown Error');
-
-	  // HANDLE ERRORS
-	  switch (type) {
-	    case _constants.AUTHORIZE_MIDDLEWARE:
-	    case _constants.DISMISS_ERROR:
-	    case _constants.RECEIVE_AUTHORIZE_IDENTITY:
-	    case _constants.RECEIVE_REFRESH_IDENTITY:
-	    case _constants.RECEIVE_IMPERSONATE_IDENTITY:
-	    case _constants.FETCH_DATA:
-	    case _constants.RECEIVE_DATA:
-	    case _constants.KEYED_DATA:
-	    case _constants.CLEAR_DATA:
-	      return state.update('api', function (x) {
-	        return x.unshift(err);
-	      });
-	    case _constants.FETCH_IDENTITY:
-	    case _constants.SET_IDENTITY:
-	    case _constants.FORGET_TOKENS:
-	    case _constants.FORGET_FINGERPRINT:
-	    case _constants.IDENTITY_INVALID:
-	    case _constants.IDENTITY_EXPIRED:
-	    case _constants.AUTHORIZE_MIDDLEWARE:
-	      return state.update('identity', function (x) {
-	        return x.unshift(err);
-	      });
-	  }
-	  return state;
-	}
-
-/***/ },
-
-/***/ 418:
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	var _redux = __webpack_require__(76);
-
-	var _visual = __webpack_require__(419);
-
-	var _errors = __webpack_require__(417);
-
-	var _errors2 = _interopRequireDefault(_errors);
-
-	var _reduxIdleMonitor = __webpack_require__(176);
-
-	var _reduxForm = __webpack_require__(163);
-
-	var _constants = __webpack_require__(62);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-	var form = _reduxForm.reducer.plugin({ page: function page(state, action) {
-	    // <------ 'login' is name of form given to reduxForm()
-	    var type = action.type;
-	    var payload = action.payload;
-	    var error = action.error;
-
-	    switch (type) {
-	      case _constants.SET_TEXT:
-	        var key = payload.key;
-	        var text = payload.text;
-
-	        if (!['title', 'subtitle'].includes(key)) return state;
-	        return _extends({}, state, _defineProperty({}, key, { value: text }));
-	      default:
-	        return state;
-	    }
-	  }
-	});
-
-	var rootReducer = (0, _redux.combineReducers)({ visual: _visual.visual,
-	  errors: _errors2.default,
-	  idle: _reduxIdleMonitor.reducer,
-	  form: form
-	});
-	exports.default = rootReducer;
+	eval("\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nvar getNextIdleStatusIn = exports.getNextIdleStatusIn = function getNextIdleStatusIn(idleStatuses) {\n  return function (idleStatus) {\n    var nextIdleStatusIndex = idleStatuses.indexOf(idleStatus) + 1;\n    if (nextIdleStatusIndex < idleStatuses.length) return idleStatuses[nextIdleStatusIndex];\n  };\n};\n\n/*****************\n ** WEBPACK FOOTER\n ** C:/Users/cchamberlain/cchamberlain/redux-idle-monitor/lib/states.js\n ** module id = 413\n ** module chunks = 2\n **/\n//# sourceURL=webpack:///C:/Users/cchamberlain/cchamberlain/redux-idle-monitor/lib/states.js?");
 
 /***/ },
 
 /***/ 419:
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.visual = visual;
-
-	var _immutable = __webpack_require__(126);
-
-	var _immutable2 = _interopRequireDefault(_immutable);
-
-	var _constants = __webpack_require__(62);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var REDUX_FORM_CHANGE = 'redux-form/CHANGE';
-
-	var nextValue = function nextValue(current) {
-	  var value = current.get('value');
-	  var options = current.get('options');
-	  var nextIndex = options.indexOf(value) + 1;
-	  return nextIndex >= options.size ? options.first() : options.get(nextIndex);
-	};
-
-	//Object {type: "redux-form/CHANGE", field: "subtitle", value: "ACTIVEff", touch: false, form: "page"}
-	var initialText = _immutable2.default.Map();
-	function text() {
-	  var state = arguments.length <= 0 || arguments[0] === undefined ? initialText : arguments[0];
-	  var action = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
-	  var type = action.type;
-	  var payload = action.payload;
-	  var error = action.error;
-
-	  if (error) return state;
-	  switch (type) {
-	    case _constants.SET_TEXT:
-	      return state.merge(payload);
-	    case REDUX_FORM_CHANGE:
-	      var field = action.field;
-	      var value = action.value;
-	      var form = action.form;
-
-	      if (form !== 'page') return state;
-	      return state.set(field, value);
-	  }
-	  return state;
-	}
-
-	var initialVisibility = _immutable2.default.Map();
-	function visibility() {
-	  var state = arguments.length <= 0 || arguments[0] === undefined ? initialVisibility : arguments[0];
-	  var action = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
-	  var type = action.type;
-	  var payload = action.payload;
-	  var error = action.error;
-
-	  if (error || !payload) return state;
-	  var componentID = payload.componentID;
-	  var value = payload.value;
-	  var options = payload.options;
-
-	  switch (type) {
-	    case _constants.TOGGLE_VISIBILITY:
-	      var current = state.get(componentID);
-	      if (current) {
-	        var next = nextValue(current);
-	        return state.setIn([componentID, 'value'], next);
-	      }
-	      return state.set(componentID, _immutable2.default.fromJS({ options: options, value: value }));
-	    case _constants.SET_VISIBILITY:
-	      if (state.has(componentID)) return state.setIn([componentID, 'value'], value);
-	      return state.set(componentID, _immutable2.default.fromJS({ options: options, value: value }));
-	  }
-	  return state;
-	}
-
-	var initialExpanders = _immutable2.default.Map();
-	function expanders() {
-	  var state = arguments.length <= 0 || arguments[0] === undefined ? initialExpanders : arguments[0];
-	  var action = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
-	  return function () {
-	    var type = action.type;
-	    var payload = action.payload;
-	    var error = action.error;
-
-	    if (error || !payload) return state;
-	    var componentID = payload.componentID;
-	    var value = payload.value;
-	    var initialExpanders = payload.initialExpanders;
-
-	    switch (type) {
-	      case _constants.SET_EXPANDER:
-	        return state.set(componentID, value);
-	      case _constants.TOGGLE_EXPANDER:
-	        return state.update(componentID, initialExpanders, function (x) {
-	          return !x;
-	        });
-	    }
-	    return state;
-	  }();
-	}
-
-	var initialTooltip = _immutable2.default.Map();
-	function tooltip() {
-	  var state = arguments.length <= 0 || arguments[0] === undefined ? initialTooltip : arguments[0];
-	  var action = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
-	  var type = action.type;
-	  var payload = action.payload;
-	  var error = action.error;
-
-	  if (error || !payload) return state;
-	  var componentID = payload.componentID;
-	  var props = payload.props;
-
-	  switch (type) {
-	    case _constants.REGISTER_TOOLTIP:
-	      state.set(componentID, props);
-	    case _constants.DISPOSE_TOOLTIP:
-	      state.remove(componentID);
-	  }
-	  return state;
-	}
-
-	var initialTheme = 'solarized-dark';
-	function theme() {
-	  var state = arguments.length <= 0 || arguments[0] === undefined ? initialTheme : arguments[0];
-	  var action = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
-	  var type = action.type;
-	  var payload = action.payload;
-	  var error = action.error;
-
-	  if (error || !payload) return state;
-	  switch (type) {
-	    case _constants.SET_THEME:
-	      return payload.name;
-	  }
-	  return state;
-	}
-
-	var initialState = { text: text(), visibility: visibility(), theme: theme(), expanders: expanders(), tooltip: tooltip() };
-
-	function visual() {
-	  var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
-	  var action = arguments[1];
-	  var type = action.type;
-	  var payload = action.payload;
-	  var error = action.error;
-
-	  switch (type) {
-	    case _constants.SET_TEXT:
-	    case REDUX_FORM_CHANGE:
-	      return Object.assign({}, state, { text: text(state.text, action) });
-	    case _constants.TOGGLE_VISIBILITY:
-	    case _constants.SET_VISIBILITY:
-	      return Object.assign({}, state, { visibility: visibility(state.visibility, action) });
-	    case _constants.SET_THEME:
-	      return Object.assign({}, state, { theme: theme(state.theme, action) });
-	    case _constants.TOGGLE_EXPANDER:
-	    case _constants.SET_EXPANDER:
-	      return Object.assign({}, state, { expanders: expanders(state.expanders, action) });
-	    case _constants.REGISTER_TOOLTIP:
-	    case _constants.DISPOSE_TOOLTIP:
-	      return Object.assign({}, state, { tooltip: tooltip(state.tooltip, action) });
-	  }
-	  return state;
-	}
-
-/***/ },
-
-/***/ 420:
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = configureStore;
-
-	var _redux = __webpack_require__(76);
-
-	var _reduxThunk = __webpack_require__(896);
-
-	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
-
-	var _reduxLogger = __webpack_require__(895);
-
-	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
-
-	var _reduxIdleMonitor = __webpack_require__(176);
-
-	var _name = __webpack_require__(179);
-
-	var _name2 = _interopRequireDefault(_name);
-
-	var _config = __webpack_require__(79);
-
-	var _visual = __webpack_require__(81);
-
-	var _reducers = __webpack_require__(418);
-
-	var _reducers2 = _interopRequireDefault(_reducers);
-
-	var _DevTools = __webpack_require__(172);
-
-	var _DevTools2 = _interopRequireDefault(_DevTools);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var loggerMiddleware = (0, _reduxLogger2.default)();
-
-	var composeStore = (0, _redux.compose)((0, _redux.applyMiddleware)(_reduxThunk2.default, _reduxIdleMonitor.middleware, loggerMiddleware), _DevTools2.default.instrument())(_redux.createStore);
-
-	function configureStore() {
-	  var store = composeStore(_reducers2.default);
-	  store.dispatch((0, _visual.setText)({ title: _config.appName,
-	    subtitle: 'ACTIVE',
-	    username: 'your.github.username',
-	    organization: 'your.github.organization',
-	    email: 'your.email@email.com',
-	    full: 'Your Full Name',
-	    packageName: _name2.default
-	  }));
-	  store.dispatch(_reduxIdleMonitor.actions.start());
-	  if (false) module.hot.accept('../reducers', function () {
-	    return store.replaceReducer(require('../reducers').default);
-	  });
-	  return store;
-	}
-
-/***/ },
-
-/***/ 421:
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	if (true) {
-	  module.exports = __webpack_require__(420);
-	} else {
-	  module.exports = require('./configureStore.prod');
-	}
-
-/***/ },
-
-/***/ 551:
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(37)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "body {\r\n  background-color:rgb(224,224,224);\r\n}\r\n#loading-container {\r\n   width:100%;\r\n   text-align:center;\r\n}\r\n#loading-text {\r\n  border:1px solid black;\r\n}\r\n", "", {"version":3,"sources":["/../src/app/styles/loading.css"],"names":[],"mappings":"AAAA;EACE,kCAAkC;CACnC;AACD;GACG,WAAW;GACX,kBAAkB;CACpB;AACD;EACE,uBAAuB;CACxB","file":"loading.css","sourcesContent":["body {\r\n  background-color:rgb(224,224,224);\r\n}\r\n#loading-container {\r\n   width:100%;\r\n   text-align:center;\r\n}\r\n#loading-text {\r\n  border:1px solid black;\r\n}\r\n"],"sourceRoot":"webpack://"}]);
-
-	// exports
-
-
-/***/ },
-
-/***/ 895:
+/*!**************************************!*\
+  !*** ../src/app/controls/Spinner.js ***!
+  \**************************************/
 /***/ function(module, exports) {
 
-	"use strict";
-
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-	function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
-
-	var repeat = function repeat(str, times) {
-	  return new Array(times + 1).join(str);
-	};
-	var pad = function pad(num, maxLength) {
-	  return repeat("0", maxLength - num.toString().length) + num;
-	};
-	var formatTime = function formatTime(time) {
-	  return "@ " + pad(time.getHours(), 2) + ":" + pad(time.getMinutes(), 2) + ":" + pad(time.getSeconds(), 2) + "." + pad(time.getMilliseconds(), 3);
-	};
-
-	// Use the new performance api to get better precision if available
-	var timer = typeof performance !== "undefined" && typeof performance.now === "function" ? performance : Date;
-
-	/**
-	 * parse the level option of createLogger
-	 *
-	 * @property {string | function | object} level - console[level]
-	 * @property {object} action
-	 * @property {array} payload
-	 * @property {string} type
-	 */
-
-	function getLogLevel(level, action, payload, type) {
-	  switch (typeof level === "undefined" ? "undefined" : _typeof(level)) {
-	    case "object":
-	      return typeof level[type] === "function" ? level[type].apply(level, _toConsumableArray(payload)) : level[type];
-	    case "function":
-	      return level(action);
-	    default:
-	      return level;
-	  }
-	}
-
-	/**
-	 * Creates logger with followed options
-	 *
-	 * @namespace
-	 * @property {object} options - options for logger
-	 * @property {string | function | object} options.level - console[level]
-	 * @property {boolean} options.duration - print duration of each action?
-	 * @property {boolean} options.timestamp - print timestamp with each action?
-	 * @property {object} options.colors - custom colors
-	 * @property {object} options.logger - implementation of the `console` API
-	 * @property {boolean} options.logErrors - should errors in action execution be caught, logged, and re-thrown?
-	 * @property {boolean} options.collapsed - is group collapsed?
-	 * @property {boolean} options.predicate - condition which resolves logger behavior
-	 * @property {function} options.stateTransformer - transform state before print
-	 * @property {function} options.actionTransformer - transform action before print
-	 * @property {function} options.errorTransformer - transform error before print
-	 */
-
-	function createLogger() {
-	  var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-	  var _options$level = options.level;
-	  var level = _options$level === undefined ? "log" : _options$level;
-	  var _options$logger = options.logger;
-	  var logger = _options$logger === undefined ? console : _options$logger;
-	  var _options$logErrors = options.logErrors;
-	  var logErrors = _options$logErrors === undefined ? true : _options$logErrors;
-	  var collapsed = options.collapsed;
-	  var predicate = options.predicate;
-	  var _options$duration = options.duration;
-	  var duration = _options$duration === undefined ? false : _options$duration;
-	  var _options$timestamp = options.timestamp;
-	  var timestamp = _options$timestamp === undefined ? true : _options$timestamp;
-	  var transformer = options.transformer;
-	  var _options$stateTransfo = options.stateTransformer;
-	  var // deprecated
-	  stateTransformer = _options$stateTransfo === undefined ? function (state) {
-	    return state;
-	  } : _options$stateTransfo;
-	  var _options$actionTransf = options.actionTransformer;
-	  var actionTransformer = _options$actionTransf === undefined ? function (actn) {
-	    return actn;
-	  } : _options$actionTransf;
-	  var _options$errorTransfo = options.errorTransformer;
-	  var errorTransformer = _options$errorTransfo === undefined ? function (error) {
-	    return error;
-	  } : _options$errorTransfo;
-	  var _options$colors = options.colors;
-	  var colors = _options$colors === undefined ? {
-	    title: function title() {
-	      return "#000000";
-	    },
-	    prevState: function prevState() {
-	      return "#9E9E9E";
-	    },
-	    action: function action() {
-	      return "#03A9F4";
-	    },
-	    nextState: function nextState() {
-	      return "#4CAF50";
-	    },
-	    error: function error() {
-	      return "#F20404";
-	    }
-	  } : _options$colors;
-
-	  // exit if console undefined
-
-	  if (typeof logger === "undefined") {
-	    return function () {
-	      return function (next) {
-	        return function (action) {
-	          return next(action);
-	        };
-	      };
-	    };
-	  }
-
-	  if (transformer) {
-	    console.error("Option 'transformer' is deprecated, use stateTransformer instead");
-	  }
-
-	  var logBuffer = [];
-	  function printBuffer() {
-	    logBuffer.forEach(function (logEntry, key) {
-	      var started = logEntry.started;
-	      var startedTime = logEntry.startedTime;
-	      var action = logEntry.action;
-	      var prevState = logEntry.prevState;
-	      var error = logEntry.error;
-	      var took = logEntry.took;
-	      var nextState = logEntry.nextState;
-
-	      var nextEntry = logBuffer[key + 1];
-	      if (nextEntry) {
-	        nextState = nextEntry.prevState;
-	        took = nextEntry.started - started;
-	      }
-	      // message
-	      var formattedAction = actionTransformer(action);
-	      var isCollapsed = typeof collapsed === "function" ? collapsed(function () {
-	        return nextState;
-	      }, action) : collapsed;
-
-	      var formattedTime = formatTime(startedTime);
-	      var titleCSS = colors.title ? "color: " + colors.title(formattedAction) + ";" : null;
-	      var title = "action " + (timestamp ? formattedTime : "") + " " + formattedAction.type + " " + (duration ? "(in " + took.toFixed(2) + " ms)" : "");
-
-	      // render
-	      try {
-	        if (isCollapsed) {
-	          if (colors.title) logger.groupCollapsed("%c " + title, titleCSS);else logger.groupCollapsed(title);
-	        } else {
-	          if (colors.title) logger.group("%c " + title, titleCSS);else logger.group(title);
-	        }
-	      } catch (e) {
-	        logger.log(title);
-	      }
-
-	      var prevStateLevel = getLogLevel(level, formattedAction, [prevState], "prevState");
-	      var actionLevel = getLogLevel(level, formattedAction, [formattedAction], "action");
-	      var errorLevel = getLogLevel(level, formattedAction, [error, prevState], "error");
-	      var nextStateLevel = getLogLevel(level, formattedAction, [nextState], "nextState");
-
-	      if (prevStateLevel) {
-	        if (colors.prevState) logger[prevStateLevel]("%c prev state", "color: " + colors.prevState(prevState) + "; font-weight: bold", prevState);else logger[prevStateLevel]("prev state", prevState);
-	      }
-
-	      if (actionLevel) {
-	        if (colors.action) logger[actionLevel]("%c action", "color: " + colors.action(formattedAction) + "; font-weight: bold", formattedAction);else logger[actionLevel]("action", formattedAction);
-	      }
-
-	      if (error && errorLevel) {
-	        if (colors.error) logger[errorLevel]("%c error", "color: " + colors.error(error, prevState) + "; font-weight: bold", error);else logger[errorLevel]("error", error);
-	      }
-
-	      if (nextStateLevel) {
-	        if (colors.nextState) logger[nextStateLevel]("%c next state", "color: " + colors.nextState(nextState) + "; font-weight: bold", nextState);else logger[nextStateLevel]("next state", nextState);
-	      }
-
-	      try {
-	        logger.groupEnd();
-	      } catch (e) {
-	        logger.log("—— log end ——");
-	      }
-	    });
-	    logBuffer.length = 0;
-	  }
-
-	  return function (_ref) {
-	    var getState = _ref.getState;
-	    return function (next) {
-	      return function (action) {
-	        // exit early if predicate function returns false
-	        if (typeof predicate === "function" && !predicate(getState, action)) {
-	          return next(action);
-	        }
-
-	        var logEntry = {};
-	        logBuffer.push(logEntry);
-
-	        logEntry.started = timer.now();
-	        logEntry.startedTime = new Date();
-	        logEntry.prevState = stateTransformer(getState());
-	        logEntry.action = action;
-
-	        var returnedValue = undefined;
-	        if (logErrors) {
-	          try {
-	            returnedValue = next(action);
-	          } catch (e) {
-	            logEntry.error = errorTransformer(e);
-	          }
-	        } else {
-	          returnedValue = next(action);
-	        }
-
-	        logEntry.took = timer.now() - logEntry.started;
-	        logEntry.nextState = stateTransformer(getState());
-
-	        printBuffer();
-
-	        if (logEntry.error) throw logEntry.error;
-	        return returnedValue;
-	      };
-	    };
-	  };
-	}
-
-	module.exports = createLogger;
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\n/**\r\n * Copyright (c) 2011-2014 Felix Gnass\r\n * Licensed under the MIT license\r\n * http://spin.js.org/\r\n * ES6ified by Cole Chamberlain\r\n *\r\n * Example:\r\n    var opts = {\r\n      lines: 12             // The number of lines to draw\r\n    , length: 7             // The length of each line\r\n    , width: 5              // The line thickness\r\n    , radius: 10            // The radius of the inner circle\r\n    , scale: 1.0            // Scales overall size of the spinner\r\n    , corners: 1            // Roundness (0..1)\r\n    , color: '#000'         // #rgb or #rrggbb\r\n    , opacity: 1/4          // Opacity of the lines\r\n    , rotate: 0             // Rotation offset\r\n    , direction: 1          // 1: clockwise, -1: counterclockwise\r\n    , speed: 1              // Rounds per second\r\n    , trail: 100            // Afterglow percentage\r\n    , fps: 20               // Frames per second when using setTimeout()\r\n    , zIndex: 2e9           // Use a high z-index by default\r\n    , className: 'spinner'  // CSS class to assign to the element\r\n    , top: '50%'            // center vertically\r\n    , left: '50%'           // center horizontally\r\n    , shadow: false         // Whether to render a shadow\r\n    , hwaccel: false        // Whether to use hardware acceleration (might be buggy)\r\n    , position: 'absolute'  // Element positioning\r\n    }\r\n    var target = document.getElementById('foo')\r\n    var spinner = new Spinner(opts).spin(target)\r\n */\nvar defaults = { lines: 8 // The number of lines to draw\n  , length: 12 // The length of each line\n  , width: 10 // The line thickness\n  , radius: 25 // The radius of the inner circle\n  , scale: 1.0 // Scales overall size of the spinner\n  , corners: 1 // Roundness (0..1)\n  , color: '#839496' // #rgb or #rrggbb\n  , opacity: 1 / 4 // Opacity of the lines\n  , rotate: 0 // Rotation offset\n  , direction: 1 // 1: clockwise, -1: counterclockwise\n  , speed: 1 // Rounds per second\n  , trail: 100 // Afterglow percentage\n  , fps: 20 // Frames per second when using setTimeout()\n  , zIndex: 2e9 // Use a high z-index by default\n  , className: 'spinner' // CSS class to assign to the element\n  , top: '50%' // center vertically\n  , left: '50%' // center horizontally\n  , shadow: false // Whether to render a shadow\n  , hwaccel: false // Whether to use hardware acceleration (might be buggy)\n  , position: 'absolute' // Element positioning\n};\n\nvar prefixes = ['webkit', 'Moz', 'ms', 'O'] /* Vendor prefixes */\n,\n    animations = {} /* Animation rules keyed by their name */\n,\n    useCssAnimations /* Whether to use CSS animations or setTimeout */\n,\n    sheet; /* A stylesheet to hold the @keyframe or VML rules. */\n\n/**\r\n * Sets multiple style properties at once.\r\n */\nfunction css(el, prop) {\n  for (var n in prop) {\n    el.style[vendor(el, n) || n] = prop[n];\n  }\n\n  return el;\n}\n\n/**\r\n * Tries various vendor prefixes and returns the first supported property.\r\n */\nfunction vendor(el, prop) {\n  var s = el.style,\n      pp,\n      i;\n\n  prop = prop.charAt(0).toUpperCase() + prop.slice(1);\n  if (s[prop] !== undefined) return prop;\n  for (i = 0; i < prefixes.length; i++) {\n    pp = prefixes[i] + prop;\n    if (s[pp] !== undefined) return pp;\n  }\n}\n\n/**\r\n * Utility function to create elements. If no tag name is given,\r\n * a DIV is created. Optionally properties can be passed.\r\n */\nfunction createEl(tag, prop) {\n  var el = document.createElement(tag || 'div'),\n      n;\n\n  for (n in prop) {\n    el[n] = prop[n];\n  }return el;\n}\n\n/**\r\n * Appends children and returns the parent.\r\n */\nfunction ins(parent /* child1, child2, ...*/) {\n  for (var i = 1, n = arguments.length; i < n; i++) {\n    parent.appendChild(arguments[i]);\n  }\n\n  return parent;\n}\n\n/**\r\n * Creates an opacity keyframe animation rule and returns its name.\r\n * Since most mobile Webkits have timing issues with animation-delay,\r\n * we create separate rules for each line/segment.\r\n */\nfunction addAnimation(alpha, trail, i, lines) {\n  var name = ['opacity', trail, ~ ~(alpha * 100), i, lines].join('-'),\n      start = 0.01 + i / lines * 100,\n      z = Math.max(1 - (1 - alpha) / trail * (100 - start), alpha),\n      prefix = useCssAnimations.substring(0, useCssAnimations.indexOf('Animation')).toLowerCase(),\n      pre = prefix && '-' + prefix + '-' || '';\n\n  if (!animations[name]) {\n    sheet.insertRule('\\n@' + pre + 'keyframes ' + name + '{\\n0%{opacity:' + z + '}\\n' + start + '%{opacity:' + alpha + '}\\n' + (start + 0.01) + '%{opacity:1}\\n' + (start + trail) % 100 + '%{opacity:' + alpha + '}\\n100%{opacity:' + z + '}\\n}', sheet.cssRules.length);\n    animations[name] = 1;\n  }\n\n  return name;\n}\n\n/**\r\n * Returns the line color from the given string or array.\r\n */\nvar getColor = function getColor(color, idx) {\n  return typeof color == 'string' ? color : color[idx % color.length];\n};\n\n/**\r\n * Internal method that adjusts the opacity of a single line.\r\n * Will be overwritten in VML fallback mode below.\r\n */\nfunction opacity(el, i, val) {\n  if (i < el.childNodes.length) el.childNodes[i].style.opacity = val;\n}\n\nvar Spinner = function Spinner(props) {\n  var _this = this;\n\n  _classCallCheck(this, Spinner);\n\n  this.spin = function (target) {\n    _this.stop();\n\n    var self = _this,\n        o = self.opts,\n        el = self.el = createEl(null, { className: o.className });\n\n    css(el, {\n      position: o.position,\n      width: 0,\n      zIndex: o.zIndex,\n      left: o.left,\n      top: o.top\n    });\n\n    if (target) {\n      target.insertBefore(el, target.firstChild || null);\n    }\n\n    el.setAttribute('role', 'progressbar');\n    self.lines(el, self.opts);\n\n    if (!useCssAnimations) {\n      // No CSS animation support, use setTimeout() instead\n      var i = 0,\n          start = (o.lines - 1) * (1 - o.direction) / 2,\n          alpha,\n          fps = o.fps,\n          f = fps / o.speed,\n          ostep = (1 - o.opacity) / (f * o.trail / 100),\n          astep = f / o.lines;(function anim() {\n        i++;\n        for (var j = 0; j < o.lines; j++) {\n          alpha = Math.max(1 - (i + (o.lines - j) * astep) % f * ostep, o.opacity);\n\n          self.opacity(el, j * o.direction + start, alpha, o);\n        }\n        self.timeout = self.el && setTimeout(anim, ~ ~(1000 / fps));\n      })();\n    }\n    return self;\n  };\n\n  this.stop = function () {\n    var el = _this.el;\n    if (el) {\n      clearTimeout(_this.timeout);\n      if (el.parentNode) el.parentNode.removeChild(el);\n      _this.el = undefined;\n    }\n    return _this;\n  };\n\n  this.lines = function (el, o) {\n    var i = 0,\n        start = (o.lines - 1) * (1 - o.direction) / 2,\n        seg;\n\n    function fill(color, shadow) {\n      return css(createEl(), { position: 'absolute',\n        width: o.scale * (o.length + o.width) + 'px',\n        height: o.scale * o.width + 'px',\n        background: color,\n        boxShadow: shadow,\n        transformOrigin: 'left',\n        transform: 'rotate(' + ~ ~(360 / o.lines * i + o.rotate) + 'deg) translate(' + o.scale * o.radius + 'px' + ',0)',\n        borderRadius: (o.corners * o.scale * o.width >> 1) + 'px'\n      });\n    }\n\n    for (; i < o.lines; i++) {\n      seg = css(createEl(), { position: 'absolute',\n        top: 1 + ~(o.scale * o.width / 2) + 'px',\n        transform: o.hwaccel ? 'translate3d(0,0,0)' : '',\n        opacity: o.opacity,\n        animation: useCssAnimations && addAnimation(o.opacity, o.trail, start + i * o.direction, o.lines) + ' ' + 1 / o.speed + 's linear infinite'\n      });\n      if (o.shadow) ins(seg, css(fill('#000', '0 0 4px #000'), { top: '2px' }));\n      ins(el, ins(seg, fill(getColor(o.color, i), '0 0 1px rgba(0,0,0,.1)')));\n    }\n    return el;\n  };\n\n  this.initVML = function () {\n\n    /* Utility function to create a VML tag */\n    function vml(tag, attr) {\n      return createEl('<' + tag + ' xmlns=\"urn:schemas-microsoft.com:vml\" class=\"spin-vml\">', attr);\n    }\n\n    // No CSS transforms but VML support, add a CSS rule for VML elements:\n    sheet.addRule('.spin-vml', 'behavior:url(#default#VML)');\n\n    _this.lines = function (el, o) {\n      var r = o.scale * (o.length + o.width),\n          s = o.scale * 2 * r;\n\n      function grp() {\n        return css(vml('group', {\n          coordsize: s + ' ' + s,\n          coordorigin: -r + ' ' + -r\n        }), { width: s, height: s });\n      }\n\n      var margin = -(o.width + o.length) * o.scale * 2 + 'px',\n          g = css(grp(), { position: 'absolute', top: margin, left: margin }),\n          i;\n\n      function seg(i, dx, filter) {\n        ins(g, ins(css(grp(), { rotation: 360 / o.lines * i + 'deg', left: ~ ~dx }), ins(css(vml('roundrect', { arcsize: o.corners }), { width: r,\n          height: o.scale * o.width,\n          left: o.scale * o.radius,\n          top: -o.scale * o.width >> 1,\n          filter: filter\n        }), vml('fill', { color: getColor(o.color, i), opacity: o.opacity }), vml('stroke', { opacity: 0 }) // transparent stroke to fix color bleeding upon opacity change\n        )));\n      }\n\n      if (o.shadow) for (i = 1; i <= o.lines; i++) {\n        seg(i, -2, 'progid:DXImageTransform.Microsoft.Blur(pixelradius=2,makeshadow=1,shadowopacity=.3)');\n      }\n\n      for (i = 1; i <= o.lines; i++) {\n        seg(i);\n      }return ins(el, g);\n    };\n\n    _this.opacity = function (el, i, val, o) {\n      var c = el.firstChild;\n      o = o.shadow && o.lines || 0;\n      if (c && i + o < c.childNodes.length) {\n        c = c.childNodes[i + o];c = c && c.firstChild;c = c && c.firstChild;\n        if (c) c.opacity = val;\n      }\n    };\n  };\n\n  this.opts = Object.assign({}, defaults, props);\n\n  if (typeof document !== 'undefined') {\n    sheet = function () {\n      var el = createEl('style', { type: 'text/css' });\n      ins(document.getElementsByTagName('head')[0], el);\n      return el.sheet || el.styleSheet;\n    }();\n\n    var probe = css(createEl('group'), { behavior: 'url(#default#VML)' });\n\n    if (!vendor(probe, 'transform') && probe.adj) this.initVML();else useCssAnimations = vendor(probe, 'animation');\n  }\n}\n\n/**\r\n * Adds the spinner to the given target element. If this instance is already\r\n * spinning, it is automatically removed from its previous target b calling\r\n * stop() internally.\r\n */\n\n\n/**\r\n * Stops and removes the Spinner.\r\n */\n\n\n/**\r\n * Internal method that draws the individual lines. Will be overwritten\r\n * in VML fallback mode below.\r\n */\n;\n\nexports.default = Spinner;\n\n/*****************\n ** WEBPACK FOOTER\n ** ../src/app/controls/Spinner.js\n ** module id = 419\n ** module chunks = 2\n **/\n//# sourceURL=webpack:///../src/app/controls/Spinner.js?");
 
 /***/ },
 
-/***/ 896:
-/***/ function(module, exports) {
-
-	'use strict';
-
-	exports.__esModule = true;
-	exports['default'] = thunkMiddleware;
-	function thunkMiddleware(_ref) {
-	  var dispatch = _ref.dispatch;
-	  var getState = _ref.getState;
-
-	  return function (next) {
-	    return function (action) {
-	      if (typeof action === 'function') {
-	        return action(dispatch, getState);
-	      }
-
-	      return next(action);
-	    };
-	  };
-	}
-
-/***/ },
-
-/***/ 919:
+/***/ 438:
+/*!************************************!*\
+  !*** ../src/app/entry/loading.jsx ***!
+  \************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	// style-loader: Adds some css to the DOM by adding a <style> tag
+	eval("/* WEBPACK VAR INJECTION */(function(module) {'use strict';\n\nvar _redboxReact2 = __webpack_require__(/*! redbox-react */ 14);\n\nvar _redboxReact3 = _interopRequireDefault(_redboxReact2);\n\nvar _reactTransformCatchErrors3 = __webpack_require__(/*! react-transform-catch-errors */ 12);\n\nvar _reactTransformCatchErrors4 = _interopRequireDefault(_reactTransformCatchErrors3);\n\nvar _react2 = __webpack_require__(/*! react */ 1);\n\nvar _react3 = _interopRequireDefault(_react2);\n\nvar _reactTransformHmr3 = __webpack_require__(/*! react-transform-hmr */ 13);\n\nvar _reactTransformHmr4 = _interopRequireDefault(_reactTransformHmr3);\n\nvar _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();\n\n__webpack_require__(/*! styles/loading.css */ 954);\n\nvar _performance = __webpack_require__(/*! ./global/performance */ 114);\n\nvar _performance2 = _interopRequireDefault(_performance);\n\nvar _Spinner = __webpack_require__(/*! app/controls/Spinner */ 419);\n\nvar _Spinner2 = _interopRequireDefault(_Spinner);\n\nvar _elements = __webpack_require__(/*! ./dom/elements */ 190);\n\nvar _elements2 = _interopRequireDefault(_elements);\n\nvar _bunyan = __webpack_require__(/*! bunyan */ 129);\n\nvar _globalStore = __webpack_require__(/*! state/store/globalStore */ 193);\n\nvar _configureStore = __webpack_require__(/*! state/store/configureStore */ 445);\n\nvar _configureStore2 = _interopRequireDefault(_configureStore);\n\nvar _chai = __webpack_require__(/*! chai */ 16);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return call && (typeof call === \"object\" || typeof call === \"function\") ? call : self; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function, not \" + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }\n\nvar _components = {\n  Loading: {\n    displayName: 'Loading'\n  }\n};\n\nvar _reactTransformHmr2 = (0, _reactTransformHmr4.default)({\n  filename: 'C:/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/entry/loading.jsx',\n  components: _components,\n  locals: [module],\n  imports: [_react3.default]\n});\n\nvar _reactTransformCatchErrors2 = (0, _reactTransformCatchErrors4.default)({\n  filename: 'C:/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/entry/loading.jsx',\n  components: _components,\n  locals: [],\n  imports: [_react3.default, _redboxReact3.default]\n});\n\nfunction _wrapComponent(id) {\n  return function (Component) {\n    return _reactTransformHmr2(_reactTransformCatchErrors2(Component, id), id);\n  };\n}\n\n_performance2.default.addTiming('loadingStart');\n\n/** STUFF HERE IS RUN SYNCHRONOUSLY IN HEAD OR TOP OF BODY, NO WEB FORMS YET */\n(0, _elements.blockBody)();\n\nvar Loading = _wrapComponent('Loading')(function (_Component) {\n  _inherits(Loading, _Component);\n\n  function Loading() {\n    _classCallCheck(this, Loading);\n\n    return _possibleConstructorReturn(this, Object.getPrototypeOf(Loading).apply(this, arguments));\n  }\n\n  _createClass(Loading, [{\n    key: 'render',\n    value: function render() {\n      var _this2 = this;\n\n      return _react3.default.createElement('div', { ref: function ref(x) {\n          return _this2.__element = x;\n        } });\n    }\n  }, {\n    key: 'componentDidMount',\n    value: function componentDidMount() {\n      this.spinner = new _Spinner2.default();\n      this.spinner.spin(this.__element);\n      (0, _elements.unblockBody)();\n      (0, _globalStore.saveGlobalStore)((0, _configureStore2.default)());\n    }\n  }]);\n\n  return Loading;\n}(_react2.Component));\n\nvar loading = new _elements2.default('loading', { backgroundColor: 'rgb(240, 240, 240)', position: 'fixed', zIndex: 99999, width: '100%', height: '100%', left: 0, top: 0 }, { children: _react3.default.createElement(Loading, null) });\nloading.render().then(function () {});\n/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../~/webpack/buildin/module.js */ 9)(module)))\n\n/*****************\n ** WEBPACK FOOTER\n ** ../src/app/entry/loading.jsx\n ** module id = 438\n ** module chunks = 2\n **/\n//# sourceURL=webpack:///../src/app/entry/loading.jsx?");
 
-	// load the styles
-	var content = __webpack_require__(551);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(45)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/postcss-loader/index.js!./loading.css", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/postcss-loader/index.js!./loading.css");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
+/***/ },
+
+/***/ 441:
+/*!*****************************************************************!*\
+  !*** ../src/app/state/components/redux-idle-monitor/actions.js ***!
+  \*****************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.idleStatusAction = exports.activeStatusAction = exports.idleStatusDelay = undefined;\n\nvar _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };\n\nvar _visual = __webpack_require__(/*! state/actions/visual */ 86);\n\nvar _constants = __webpack_require__(/*! ./constants */ 191);\n\nvar _reduxDevtoolsThemes = __webpack_require__(/*! redux-devtools-themes */ 332);\n\nvar themes = _interopRequireWildcard(_reduxDevtoolsThemes);\n\nfunction _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }\n\nfunction _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }\n\nvar paletteMap = { background: ['base00', 'base01'],\n  content: ['base04', 'base02', 'base05'],\n  accent: ['base0D', 'base0E', 'base0C']\n};\nvar invertColors = function invertColors(theme) {\n  return _extends({}, theme, { base00: theme.base07,\n    base01: theme.base06,\n    base02: theme.base05,\n    base03: theme.base04,\n    base04: theme.base03,\n    base05: theme.base02,\n    base06: theme.base01,\n    base07: theme.base00\n  });\n};\n\nvar nonColors = ['author', 'scheme', 'base07', 'base06', 'base05', 'base04', 'base02', 'base01', 'base00'];\nvar filterColors = function filterColors(scheme) {\n  return Object.keys(scheme).filter(function (x) {\n    return !nonColors.includes(x);\n  }).reduce(function (colors, key) {\n    return Object.assign(colors, _defineProperty({}, key, scheme[key]));\n  }, {});\n};\n\nvar getRandomColor = function getRandomColor(colors) {\n  var paletteKeys = Object.keys(colors);\n  var selectedIndex = Math.floor(paletteKeys.length * Math.random());\n  return colors[paletteKeys[selectedIndex]];\n};\n//** TODO: NPM MODULE */\nvar palettize = function palettize(theme) {\n  return function (invertTheme) {\n    var scheme = invertTheme ? invertColors(themes[theme]) : themes[theme];\n    var colors = filterColors(scheme);\n    var basePalette = Object.keys(paletteMap).reduce(function (palette, key) {\n      palette[key] = paletteMap[key].map(function (x) {\n        return scheme[x];\n      });\n      return palette;\n    }, {});\n    return _extends({}, basePalette, { bool: function bool(condition) {\n        return condition ? scheme['base0B'] : scheme['base08'];\n      },\n      get colors() {\n        return colors;\n      },\n      random: function random() {\n        return getRandomColor(colors);\n      },\n      get red() {\n        return scheme['base08'];\n      },\n      get green() {\n        return scheme['base0B'];\n      }\n    });\n  };\n};\n\nvar solarized = palettize('solarized')(false);\n\nvar idleStatusDelay = exports.idleStatusDelay = function idleStatusDelay(idleStatus) {\n  return function (dispatch, getState) {\n    switch (idleStatus) {\n      case _constants.IDLESTATUS_NOT_VERY_ACTIVE:\n        return 5000;\n      case _constants.IDLESTATUS_GONE_FOR_LIKE_A_SECOND:\n        return 4000;\n      case _constants.IDLESTATUS_LAZY_TYPER:\n        return 3000;\n      case _constants.IDLESTATUS_ARE_YOU_STILL_THERE:\n        return 2000;\n      case _constants.IDLESTATUS_GONE:\n        return 1000;\n      case _constants.IDLESTATUS_THEY_DONT_CARE_ABOUT_YOU:\n        return 800;\n      case _constants.IDLESTATUS_THEY_ARE_NEVER_COMING_BACK:\n        return 600;\n      case _constants.IDLESTATUS_STONE_AGE_GONE:\n        return 400;\n      case _constants.IDLESTATUS_EXTINCT:\n        return 300;\n      default:\n        return 3000;\n    }\n  };\n};\n\nvar activeStatusAction = exports.activeStatusAction = function activeStatusAction(dispatch, getState) {\n  dispatch((0, _visual.setText)({ subtitle: 'ACTIVE' }));\n  setColor(solarized.background[0]);\n};\n\nvar idleStatusAction = exports.idleStatusAction = function idleStatusAction(idleStatus) {\n  return function (dispatch, getState) {\n    dispatch((0, _visual.setText)({ subtitle: idleStatus.replace(/_/g, ' ') }));\n    switch (idleStatus) {\n      case _constants.IDLESTATUS_NOT_VERY_ACTIVE:\n        return setColor(solarized.random());\n      case _constants.IDLESTATUS_GONE_FOR_LIKE_A_SECOND:\n        return setColor(solarized.random());\n      case _constants.IDLESTATUS_LAZY_TYPER:\n        return setColor(solarized.random());\n      case _constants.IDLESTATUS_ARE_YOU_STILL_THERE:\n        return setColor(solarized.random());\n      case _constants.IDLESTATUS_GONE:\n        return setColor(solarized.random());\n      case _constants.IDLESTATUS_THEY_DONT_CARE_ABOUT_YOU:\n        return setColor(solarized.random());\n      case _constants.IDLESTATUS_THEY_ARE_NEVER_COMING_BACK:\n        return setColor(solarized.random());\n      case _constants.IDLESTATUS_STONE_AGE_GONE:\n        return setColor(solarized.random());\n      case _constants.IDLESTATUS_EXTINCT:\n        return setColor(solarized.red);\n    }\n  };\n};\n\nvar setColor = function setColor(color) {\n  return document.body.style.backgroundColor = color;\n};\n\n/*****************\n ** WEBPACK FOOTER\n ** ../src/app/state/components/redux-idle-monitor/actions.js\n ** module id = 441\n ** module chunks = 2\n **/\n//# sourceURL=webpack:///../src/app/state/components/redux-idle-monitor/actions.js?");
+
+/***/ },
+
+/***/ 442:
+/*!*******************************************!*\
+  !*** ../src/app/state/reducers/errors.js ***!
+  \*******************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = errors;\n\nvar _immutable = __webpack_require__(/*! immutable */ 140);\n\nvar _immutable2 = _interopRequireDefault(_immutable);\n\nvar _constants = __webpack_require__(/*! ../constants */ 67);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar initialState = _immutable2.default.Map({ api: _immutable2.default.List(),\n  identity: _immutable2.default.List()\n});\n\nfunction errors() {\n  var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];\n  var action = arguments[1];\n  var type = action.type;\n  var payload = action.payload;\n  var error = action.error;\n\n  // HANDLE NON ERRORS\n\n  if (!error) {\n    switch (type) {\n      case _constants.DISMISS_ERROR:\n        var category = payload.category;\n        var id = payload.id;\n\n        return state.deleteIn([category, id]);\n      case _constants.CLEAR_ERRORS:\n      case _constants.RECEIVE_AUTHORIZE_IDENTITY:\n      case _constants.RECEIVE_REFRESH_IDENTITY:\n      case _constants.RECEIVE_IMPERSONATE_IDENTITY:\n      case _constants.SET_IDENTITY:\n        return initialState;\n    }\n    return state;\n  }\n\n  var err = payload ? payload : new Error('Unknown Error');\n\n  // HANDLE ERRORS\n  switch (type) {\n    case _constants.AUTHORIZE_MIDDLEWARE:\n    case _constants.DISMISS_ERROR:\n    case _constants.RECEIVE_AUTHORIZE_IDENTITY:\n    case _constants.RECEIVE_REFRESH_IDENTITY:\n    case _constants.RECEIVE_IMPERSONATE_IDENTITY:\n    case _constants.FETCH_DATA:\n    case _constants.RECEIVE_DATA:\n    case _constants.KEYED_DATA:\n    case _constants.CLEAR_DATA:\n      return state.update('api', function (x) {\n        return x.unshift(err);\n      });\n    case _constants.FETCH_IDENTITY:\n    case _constants.SET_IDENTITY:\n    case _constants.FORGET_TOKENS:\n    case _constants.FORGET_FINGERPRINT:\n    case _constants.IDENTITY_INVALID:\n    case _constants.IDENTITY_EXPIRED:\n    case _constants.AUTHORIZE_MIDDLEWARE:\n      return state.update('identity', function (x) {\n        return x.unshift(err);\n      });\n  }\n  return state;\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ../src/app/state/reducers/errors.js\n ** module id = 442\n ** module chunks = 2\n **/\n//# sourceURL=webpack:///../src/app/state/reducers/errors.js?");
+
+/***/ },
+
+/***/ 443:
+/*!*******************************************!*\
+  !*** ../src/app/state/reducers/visual.js ***!
+  \*******************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.visual = visual;\n\nvar _immutable = __webpack_require__(/*! immutable */ 140);\n\nvar _immutable2 = _interopRequireDefault(_immutable);\n\nvar _constants = __webpack_require__(/*! ../constants */ 67);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar REDUX_FORM_CHANGE = 'redux-form/CHANGE';\n\nvar nextValue = function nextValue(current) {\n  var value = current.get('value');\n  var options = current.get('options');\n  var nextIndex = options.indexOf(value) + 1;\n  return nextIndex >= options.size ? options.first() : options.get(nextIndex);\n};\n\n//Object {type: \"redux-form/CHANGE\", field: \"subtitle\", value: \"ACTIVEff\", touch: false, form: \"page\"}\nvar initialText = _immutable2.default.Map();\nfunction text() {\n  var state = arguments.length <= 0 || arguments[0] === undefined ? initialText : arguments[0];\n  var action = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];\n  var type = action.type;\n  var payload = action.payload;\n  var error = action.error;\n\n  if (error) return state;\n  switch (type) {\n    case _constants.SET_TEXT:\n      return state.merge(payload);\n    case REDUX_FORM_CHANGE:\n      var field = action.field;\n      var value = action.value;\n      var form = action.form;\n\n      if (form !== 'page') return state;\n      return state.set(field, value);\n  }\n  return state;\n}\n\nvar initialVisibility = _immutable2.default.Map();\nfunction visibility() {\n  var state = arguments.length <= 0 || arguments[0] === undefined ? initialVisibility : arguments[0];\n  var action = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];\n  var type = action.type;\n  var payload = action.payload;\n  var error = action.error;\n\n  if (error || !payload) return state;\n  var componentID = payload.componentID;\n  var value = payload.value;\n  var options = payload.options;\n\n  switch (type) {\n    case _constants.TOGGLE_VISIBILITY:\n      var current = state.get(componentID);\n      if (current) {\n        var next = nextValue(current);\n        return state.setIn([componentID, 'value'], next);\n      }\n      return state.set(componentID, _immutable2.default.fromJS({ options: options, value: value }));\n    case _constants.SET_VISIBILITY:\n      if (state.has(componentID)) return state.setIn([componentID, 'value'], value);\n      return state.set(componentID, _immutable2.default.fromJS({ options: options, value: value }));\n  }\n  return state;\n}\n\nvar initialExpanders = _immutable2.default.Map();\nfunction expanders() {\n  var state = arguments.length <= 0 || arguments[0] === undefined ? initialExpanders : arguments[0];\n  var action = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];\n  return function () {\n    var type = action.type;\n    var payload = action.payload;\n    var error = action.error;\n\n    if (error || !payload) return state;\n    var componentID = payload.componentID;\n    var value = payload.value;\n    var initialExpanders = payload.initialExpanders;\n\n    switch (type) {\n      case _constants.SET_EXPANDER:\n        return state.set(componentID, value);\n      case _constants.TOGGLE_EXPANDER:\n        return state.update(componentID, initialExpanders, function (x) {\n          return !x;\n        });\n    }\n    return state;\n  }();\n}\n\nvar initialTooltip = _immutable2.default.Map();\nfunction tooltip() {\n  var state = arguments.length <= 0 || arguments[0] === undefined ? initialTooltip : arguments[0];\n  var action = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];\n  var type = action.type;\n  var payload = action.payload;\n  var error = action.error;\n\n  if (error || !payload) return state;\n  var componentID = payload.componentID;\n  var props = payload.props;\n\n  switch (type) {\n    case _constants.REGISTER_TOOLTIP:\n      state.set(componentID, props);\n    case _constants.DISPOSE_TOOLTIP:\n      state.remove(componentID);\n  }\n  return state;\n}\n\nvar initialTheme = 'solarized-dark';\nfunction theme() {\n  var state = arguments.length <= 0 || arguments[0] === undefined ? initialTheme : arguments[0];\n  var action = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];\n  var type = action.type;\n  var payload = action.payload;\n  var error = action.error;\n\n  if (error || !payload) return state;\n  switch (type) {\n    case _constants.SET_THEME:\n      return payload.name;\n  }\n  return state;\n}\n\nvar initialState = { text: text(), visibility: visibility(), theme: theme(), expanders: expanders(), tooltip: tooltip() };\n\nfunction visual() {\n  var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];\n  var action = arguments[1];\n  var type = action.type;\n  var payload = action.payload;\n  var error = action.error;\n\n  switch (type) {\n    case _constants.SET_TEXT:\n    case REDUX_FORM_CHANGE:\n      return Object.assign({}, state, { text: text(state.text, action) });\n    case _constants.TOGGLE_VISIBILITY:\n    case _constants.SET_VISIBILITY:\n      return Object.assign({}, state, { visibility: visibility(state.visibility, action) });\n    case _constants.SET_THEME:\n      return Object.assign({}, state, { theme: theme(state.theme, action) });\n    case _constants.TOGGLE_EXPANDER:\n    case _constants.SET_EXPANDER:\n      return Object.assign({}, state, { expanders: expanders(state.expanders, action) });\n    case _constants.REGISTER_TOOLTIP:\n    case _constants.DISPOSE_TOOLTIP:\n      return Object.assign({}, state, { tooltip: tooltip(state.tooltip, action) });\n  }\n  return state;\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ../src/app/state/reducers/visual.js\n ** module id = 443\n ** module chunks = 2\n **/\n//# sourceURL=webpack:///../src/app/state/reducers/visual.js?");
+
+/***/ },
+
+/***/ 444:
+/*!****************************************************!*\
+  !*** ../src/app/state/store/configureStore.dev.js ***!
+  \****************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = configureStore;\n\nvar _redux = __webpack_require__(/*! redux */ 81);\n\nvar _reduxThunk = __webpack_require__(/*! redux-thunk */ 929);\n\nvar _reduxThunk2 = _interopRequireDefault(_reduxThunk);\n\nvar _reduxLogger = __webpack_require__(/*! redux-logger */ 928);\n\nvar _reduxLogger2 = _interopRequireDefault(_reduxLogger);\n\nvar _reduxIdleMonitor = __webpack_require__(/*! state/components/redux-idle-monitor */ 192);\n\nvar _name = __webpack_require__(/*! package/name */ 195);\n\nvar _name2 = _interopRequireDefault(_name);\n\nvar _config = __webpack_require__(/*! config */ 84);\n\nvar _visual = __webpack_require__(/*! state/actions/visual */ 86);\n\nvar _reducers = __webpack_require__(/*! ../reducers */ 115);\n\nvar _reducers2 = _interopRequireDefault(_reducers);\n\nvar _DevTools = __webpack_require__(/*! app/containers/DevTools */ 188);\n\nvar _DevTools2 = _interopRequireDefault(_DevTools);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar loggerMiddleware = (0, _reduxLogger2.default)();\n\nvar composeStore = (0, _redux.compose)((0, _redux.applyMiddleware)(_reduxThunk2.default, _reduxIdleMonitor.middleware, loggerMiddleware), _DevTools2.default.instrument())(_redux.createStore);\n\nfunction configureStore() {\n  var store = composeStore(_reducers2.default);\n  store.dispatch((0, _visual.setText)({ title: _config.appName,\n    subtitle: 'ACTIVE',\n    username: 'your.github.username',\n    organization: 'your.github.organization',\n    email: 'your.email@email.com',\n    full: 'Your Full Name',\n    packageName: _name2.default\n  }));\n  store.dispatch(_reduxIdleMonitor.actions.start());\n  if (true) module.hot.accept(/*! ../reducers */ 115, function () {\n    return store.replaceReducer(__webpack_require__(/*! ../reducers */ 115).default);\n  });\n  return store;\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ../src/app/state/store/configureStore.dev.js\n ** module id = 444\n ** module chunks = 2\n **/\n//# sourceURL=webpack:///../src/app/state/store/configureStore.dev.js?");
+
+/***/ },
+
+/***/ 445:
+/*!************************************************!*\
+  !*** ../src/app/state/store/configureStore.js ***!
+  \************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("'use strict';\n\nif (true) {\n  module.exports = __webpack_require__(/*! ./configureStore.dev */ 444);\n} else {\n  module.exports = require('./configureStore.prod');\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ../src/app/state/store/configureStore.js\n ** module id = 445\n ** module chunks = 2\n **/\n//# sourceURL=webpack:///../src/app/state/store/configureStore.js?");
+
+/***/ },
+
+/***/ 928:
+/*!**************************************!*\
+  !*** ../~/redux-logger/lib/index.js ***!
+  \**************************************/
+/***/ function(module, exports) {
+
+	eval("\"use strict\";\n\nfunction _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }\n\nfunction _typeof(obj) { return obj && typeof Symbol !== \"undefined\" && obj.constructor === Symbol ? \"symbol\" : typeof obj; }\n\nvar repeat = function repeat(str, times) {\n  return new Array(times + 1).join(str);\n};\nvar pad = function pad(num, maxLength) {\n  return repeat(\"0\", maxLength - num.toString().length) + num;\n};\nvar formatTime = function formatTime(time) {\n  return \"@ \" + pad(time.getHours(), 2) + \":\" + pad(time.getMinutes(), 2) + \":\" + pad(time.getSeconds(), 2) + \".\" + pad(time.getMilliseconds(), 3);\n};\n\n// Use the new performance api to get better precision if available\nvar timer = typeof performance !== \"undefined\" && typeof performance.now === \"function\" ? performance : Date;\n\n/**\n * parse the level option of createLogger\n *\n * @property {string | function | object} level - console[level]\n * @property {object} action\n * @property {array} payload\n * @property {string} type\n */\n\nfunction getLogLevel(level, action, payload, type) {\n  switch (typeof level === \"undefined\" ? \"undefined\" : _typeof(level)) {\n    case \"object\":\n      return typeof level[type] === \"function\" ? level[type].apply(level, _toConsumableArray(payload)) : level[type];\n    case \"function\":\n      return level(action);\n    default:\n      return level;\n  }\n}\n\n/**\n * Creates logger with followed options\n *\n * @namespace\n * @property {object} options - options for logger\n * @property {string | function | object} options.level - console[level]\n * @property {boolean} options.duration - print duration of each action?\n * @property {boolean} options.timestamp - print timestamp with each action?\n * @property {object} options.colors - custom colors\n * @property {object} options.logger - implementation of the `console` API\n * @property {boolean} options.logErrors - should errors in action execution be caught, logged, and re-thrown?\n * @property {boolean} options.collapsed - is group collapsed?\n * @property {boolean} options.predicate - condition which resolves logger behavior\n * @property {function} options.stateTransformer - transform state before print\n * @property {function} options.actionTransformer - transform action before print\n * @property {function} options.errorTransformer - transform error before print\n */\n\nfunction createLogger() {\n  var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];\n  var _options$level = options.level;\n  var level = _options$level === undefined ? \"log\" : _options$level;\n  var _options$logger = options.logger;\n  var logger = _options$logger === undefined ? console : _options$logger;\n  var _options$logErrors = options.logErrors;\n  var logErrors = _options$logErrors === undefined ? true : _options$logErrors;\n  var collapsed = options.collapsed;\n  var predicate = options.predicate;\n  var _options$duration = options.duration;\n  var duration = _options$duration === undefined ? false : _options$duration;\n  var _options$timestamp = options.timestamp;\n  var timestamp = _options$timestamp === undefined ? true : _options$timestamp;\n  var transformer = options.transformer;\n  var _options$stateTransfo = options.stateTransformer;\n  var // deprecated\n  stateTransformer = _options$stateTransfo === undefined ? function (state) {\n    return state;\n  } : _options$stateTransfo;\n  var _options$actionTransf = options.actionTransformer;\n  var actionTransformer = _options$actionTransf === undefined ? function (actn) {\n    return actn;\n  } : _options$actionTransf;\n  var _options$errorTransfo = options.errorTransformer;\n  var errorTransformer = _options$errorTransfo === undefined ? function (error) {\n    return error;\n  } : _options$errorTransfo;\n  var _options$colors = options.colors;\n  var colors = _options$colors === undefined ? {\n    title: function title() {\n      return \"#000000\";\n    },\n    prevState: function prevState() {\n      return \"#9E9E9E\";\n    },\n    action: function action() {\n      return \"#03A9F4\";\n    },\n    nextState: function nextState() {\n      return \"#4CAF50\";\n    },\n    error: function error() {\n      return \"#F20404\";\n    }\n  } : _options$colors;\n\n  // exit if console undefined\n\n  if (typeof logger === \"undefined\") {\n    return function () {\n      return function (next) {\n        return function (action) {\n          return next(action);\n        };\n      };\n    };\n  }\n\n  if (transformer) {\n    console.error(\"Option 'transformer' is deprecated, use stateTransformer instead\");\n  }\n\n  var logBuffer = [];\n  function printBuffer() {\n    logBuffer.forEach(function (logEntry, key) {\n      var started = logEntry.started;\n      var startedTime = logEntry.startedTime;\n      var action = logEntry.action;\n      var prevState = logEntry.prevState;\n      var error = logEntry.error;\n      var took = logEntry.took;\n      var nextState = logEntry.nextState;\n\n      var nextEntry = logBuffer[key + 1];\n      if (nextEntry) {\n        nextState = nextEntry.prevState;\n        took = nextEntry.started - started;\n      }\n      // message\n      var formattedAction = actionTransformer(action);\n      var isCollapsed = typeof collapsed === \"function\" ? collapsed(function () {\n        return nextState;\n      }, action) : collapsed;\n\n      var formattedTime = formatTime(startedTime);\n      var titleCSS = colors.title ? \"color: \" + colors.title(formattedAction) + \";\" : null;\n      var title = \"action \" + (timestamp ? formattedTime : \"\") + \" \" + formattedAction.type + \" \" + (duration ? \"(in \" + took.toFixed(2) + \" ms)\" : \"\");\n\n      // render\n      try {\n        if (isCollapsed) {\n          if (colors.title) logger.groupCollapsed(\"%c \" + title, titleCSS);else logger.groupCollapsed(title);\n        } else {\n          if (colors.title) logger.group(\"%c \" + title, titleCSS);else logger.group(title);\n        }\n      } catch (e) {\n        logger.log(title);\n      }\n\n      var prevStateLevel = getLogLevel(level, formattedAction, [prevState], \"prevState\");\n      var actionLevel = getLogLevel(level, formattedAction, [formattedAction], \"action\");\n      var errorLevel = getLogLevel(level, formattedAction, [error, prevState], \"error\");\n      var nextStateLevel = getLogLevel(level, formattedAction, [nextState], \"nextState\");\n\n      if (prevStateLevel) {\n        if (colors.prevState) logger[prevStateLevel](\"%c prev state\", \"color: \" + colors.prevState(prevState) + \"; font-weight: bold\", prevState);else logger[prevStateLevel](\"prev state\", prevState);\n      }\n\n      if (actionLevel) {\n        if (colors.action) logger[actionLevel](\"%c action\", \"color: \" + colors.action(formattedAction) + \"; font-weight: bold\", formattedAction);else logger[actionLevel](\"action\", formattedAction);\n      }\n\n      if (error && errorLevel) {\n        if (colors.error) logger[errorLevel](\"%c error\", \"color: \" + colors.error(error, prevState) + \"; font-weight: bold\", error);else logger[errorLevel](\"error\", error);\n      }\n\n      if (nextStateLevel) {\n        if (colors.nextState) logger[nextStateLevel](\"%c next state\", \"color: \" + colors.nextState(nextState) + \"; font-weight: bold\", nextState);else logger[nextStateLevel](\"next state\", nextState);\n      }\n\n      try {\n        logger.groupEnd();\n      } catch (e) {\n        logger.log(\"—— log end ——\");\n      }\n    });\n    logBuffer.length = 0;\n  }\n\n  return function (_ref) {\n    var getState = _ref.getState;\n    return function (next) {\n      return function (action) {\n        // exit early if predicate function returns false\n        if (typeof predicate === \"function\" && !predicate(getState, action)) {\n          return next(action);\n        }\n\n        var logEntry = {};\n        logBuffer.push(logEntry);\n\n        logEntry.started = timer.now();\n        logEntry.startedTime = new Date();\n        logEntry.prevState = stateTransformer(getState());\n        logEntry.action = action;\n\n        var returnedValue = undefined;\n        if (logErrors) {\n          try {\n            returnedValue = next(action);\n          } catch (e) {\n            logEntry.error = errorTransformer(e);\n          }\n        } else {\n          returnedValue = next(action);\n        }\n\n        logEntry.took = timer.now() - logEntry.started;\n        logEntry.nextState = stateTransformer(getState());\n\n        printBuffer();\n\n        if (logEntry.error) throw logEntry.error;\n        return returnedValue;\n      };\n    };\n  };\n}\n\nmodule.exports = createLogger;\n\n/*****************\n ** WEBPACK FOOTER\n ** ../~/redux-logger/lib/index.js\n ** module id = 928\n ** module chunks = 2\n **/\n//# sourceURL=webpack:///../~/redux-logger/lib/index.js?");
+
+/***/ },
+
+/***/ 929:
+/*!*************************************!*\
+  !*** ../~/redux-thunk/lib/index.js ***!
+  \*************************************/
+/***/ function(module, exports) {
+
+	eval("'use strict';\n\nexports.__esModule = true;\nexports['default'] = thunkMiddleware;\nfunction thunkMiddleware(_ref) {\n  var dispatch = _ref.dispatch;\n  var getState = _ref.getState;\n\n  return function (next) {\n    return function (action) {\n      if (typeof action === 'function') {\n        return action(dispatch, getState);\n      }\n\n      return next(action);\n    };\n  };\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ../~/redux-thunk/lib/index.js\n ** module id = 929\n ** module chunks = 2\n **/\n//# sourceURL=webpack:///../~/redux-thunk/lib/index.js?");
+
+/***/ },
+
+/***/ 954:
+/*!*************************************!*\
+  !*** ../src/app/styles/loading.css ***!
+  \*************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("// style-loader: Adds some css to the DOM by adding a <style> tag\n\n// load the styles\nvar content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/postcss-loader!./loading.css */ 137);\nif(typeof content === 'string') content = [[module.id, content, '']];\n// add the styles to the DOM\nvar update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 49)(content, {});\nif(content.locals) module.exports = content.locals;\n// Hot Module Replacement\nif(true) {\n\t// When the styles change, update the <style> tags\n\tif(!content.locals) {\n\t\tmodule.hot.accept(/*! !./../../../~/css-loader!./../../../~/postcss-loader!./loading.css */ 137, function() {\n\t\t\tvar newContent = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/postcss-loader!./loading.css */ 137);\n\t\t\tif(typeof newContent === 'string') newContent = [[module.id, newContent, '']];\n\t\t\tupdate(newContent);\n\t\t});\n\t}\n\t// When the module is disposed, remove the <style> tags\n\tmodule.hot.dispose(function() { update(); });\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ../src/app/styles/loading.css\n ** module id = 954\n ** module chunks = 2\n **/\n//# sourceURL=webpack:///../src/app/styles/loading.css?");
 
 /***/ }
 

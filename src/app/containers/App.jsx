@@ -12,6 +12,7 @@ import ThemePanel from 'elements/panels/ThemePanel'
 import ErrorPanel from 'elements/panels/ErrorPanel'
 
 import PageForm from 'app/elements/forms/PageForm'
+import ReduxGriddle from 'griddle-overhaul-react-redux'
 
 import contextTypes from 'app/context'
 import getTheme from 'app/theme'
@@ -56,6 +57,9 @@ class App extends Component {
           <TopBar title={title} subtitle={subtitle} username={username} email={email} packageName={packageName} />
           <div style={style.content} className="body-content container">
             <PageForm />
+
+            <ReduxGriddle />
+
             <ul style={style.ul}>
               <li>Fork <a href="https://github.com/cchamberlain/redux-webpack-boilerplate">redux-webpack-boilerplate</a></li>
               <li><code>git clone https://github.com/{username}/redux-webpack-boilerplate</code></li>
