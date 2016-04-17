@@ -36,6 +36,8 @@ class App extends Component {
     document.body.style.backgroundColor = backgroundColor
     document.body.style.margin = margin
     document.body.style.padding = padding
+    if(!window.google_tag_manager)
+      console.warn('GTM BLOCKED => Please consider disabling ad block so we can see how much usage were getting')
   }
   getChildContext() {
     return  { gridProps
