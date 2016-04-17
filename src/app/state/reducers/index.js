@@ -3,6 +3,8 @@ import { visual } from './visual'
 import errors from './errors'
 import { reducer as idle } from 'state/components/redux-idle-monitor'
 import { reducer as formReducer } from 'redux-form'
+import { reducer as griddle } from 'griddle-overhaul-redux'
+
 import { SET_TEXT } from '../constants'
 
 const form = formReducer.plugin(
@@ -22,9 +24,11 @@ const form = formReducer.plugin(
   }
 })
 
+console.warn('IMPORTING GRIDDLE REDUCER', griddle)
 const rootReducer = combineReducers({ visual
                                     , errors
                                     , idle
                                     , form
+                                    , griddle
                                     })
 export default rootReducer
