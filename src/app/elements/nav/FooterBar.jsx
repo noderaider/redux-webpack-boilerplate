@@ -41,6 +41,10 @@ export default class FooterBar extends Component {
       <div style={footer.wrapper}>
         <div style={footer.left}>
           <div style={footer.row}>
+            <a href="https://js.org" target="_blank" title="JS.ORG | JavaScript Community">
+              <img src="https://logo.js.org/dark_horz.png" width="102" alt="JS.ORG Logo"/>
+            </a>
+            {/* alternatives [bright|dark]_[horz|vert|tiny].png (width[horz:102,vert:50,tiny:77]) */}
           </div>
           <div style={footer.row}>
             <Identity />

@@ -25,9 +25,9 @@ export const getPlugins = name => {
   if(name === 'app') {
     console.warn('VENDOR COMMONS CHUNK')
     //plugins.push(new CommonsChunkPlugin('vendor', 'vendor.js'))
+    plugins.push(new CommonsChunkPlugin('commons', 'commons.js'))
     if(process.env.NODE_ENV !== 'hot') {
       console.warn('APP COMMONS CHUNK')
-      plugins.push(new CommonsChunkPlugin('commons', 'commons.js'))
 //      plugins.push(new CommonsChunkPlugin('commons.js'))
           /*{ name: 'commons'
                                           , filename: 'commons.js'
