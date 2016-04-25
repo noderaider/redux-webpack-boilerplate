@@ -3,7 +3,7 @@ import { visual } from './visual'
 import errors from './errors'
 import { reducer as idle } from 'state/components/redux-idle-monitor'
 import { reducer as formReducer } from 'redux-form'
-import { reducer as griddle } from 'griddle-overhaul-redux'
+import { reducer as griddle } from 'state/components/griddle'
 
 import { SET_TEXT } from '../constants'
 
