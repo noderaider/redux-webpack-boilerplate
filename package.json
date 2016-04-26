@@ -105,6 +105,8 @@
     "redbox-react": "^1.2.3",
     "redux": "^3.4.0",
     "redux-actions": "^0.9.1",
+    "redux-grid": "*",
+    "redux-grid-view": "*",
     "redux-addons": "*",
     "redux-blueprint": "*",
     "redux-devtools": "^3.2.0",
