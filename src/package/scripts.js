@@ -11,6 +11,7 @@ export default ({}) => Object.assign({}, ...[ build('package', resource => `babe
                                             , buildBabelFile('config-server', 'config.client.js')
                                             , copy('app', 'app/vendor', 'public/vendor')
                                             , { 'transform': 'transform-package'
+                                              , 'link-dev': 'npm link ../redux-addons ../redux-blueprint ../redux-idle-monitor ../react-redux-idle-monitor ../redux-grid ../redux-grid-view ../redux-middleware ../redux-mux ../save-as'
                                               , 'postbuild-app': 'npm run copy-app'
                                               , 'build-lib-dev': 'NODE_ENV=development npm run build-lib'
                                               , 'build-lib-prod': 'NODE_ENV=production npm run build-lib'
