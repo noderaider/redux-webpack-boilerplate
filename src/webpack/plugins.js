@@ -1,7 +1,7 @@
 import { DefinePlugin, HotModuleReplacementPlugin, NoErrorsPlugin, SourceMapDevToolPlugin, ProvidePlugin, IgnorePlugin, optimize } from 'webpack'
 import { server, client, baseUrl } from '../config.server.js'
-//import CompressionPlugin from 'compression-webpack-plugin'
-//import ExtractTextPlugin from 'extract-text-webpack-plugin'
+import CompressionPlugin from 'compression-webpack-plugin'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
 const { CommonsChunkPlugin, UglifyJsPlugin, OccurenceOrderPlugin } = optimize
 
 const NODE_ENV = process.env.NODE_ENV || 'production'
@@ -16,7 +16,7 @@ const getDefinePlugin = name => new DefinePlugin( { __CLIENT__: true
                                                   , 'process.env.NODE_ENV': `"${NODE_ENV || 'development'}"`
                                                   } )
 
-export const extractText = (loaders, options) => null // ExtractTextPlugin.extract('style-loader', loaders, options)
+export const extractText = (loaders, options) => ExtractTextPlugin.extract('style-loader', loaders, options)
 
 export const getPlugins = name => {
   let plugins = [ getDefinePlugin(name)
@@ -25,7 +25,7 @@ export const getPlugins = name => {
   if(name === 'app') {
     console.warn('VENDOR COMMONS CHUNK')
     //plugins.push(new CommonsChunkPlugin('vendor', 'vendor.js'))
-    //plugins.push(new CommonsChunkPlugin('commons', 'commons.js'))
+    plugins.push(new CommonsChunkPlugin('commons', 'commons.js'))
     if(process.env.NODE_ENV !== 'hot') {
       console.warn('APP COMMONS CHUNK')
 //      plugins.push(new CommonsChunkPlugin('commons.js'))
@@ -34,7 +34,7 @@ export const getPlugins = name => {
                                           , chunks: ['app', 'timeout', 'vendor.js']
                                           , minChunks: 2
                                           }))*/
-      //plugins.push(new ExtractTextPlugin(`[name].css`, { allChunks: true, disable: false }))
+      plugins.push(new ExtractTextPlugin('[name].css', { allChunks: true, disable: false }))
     }
   }
 

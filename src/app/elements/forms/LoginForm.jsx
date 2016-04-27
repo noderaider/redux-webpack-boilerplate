@@ -1,17 +1,15 @@
 import React, { Component, PropTypes } from 'react'
 import { reduxForm } from 'redux-form'
-import { Grid, Row, Col, Well } from 'react-bootstrap'
+import { Row, Col, Well } from 'react-bootstrap'
 import Input from './controls/Input'
-import NoShim from 'elements/filters/NoShim'
 import contextTypes from 'app/context'
 
 const validate = values => {
   const errors = {}
-  if (!values.username) {
+  if (!values.username)
     errors.username = 'Required'
-  } else if (values.username.length > 15) {
+  else if (values.username.length > 15)
     errors.username = 'Must be 15 characters or less'
-  }
   return errors
 }
 

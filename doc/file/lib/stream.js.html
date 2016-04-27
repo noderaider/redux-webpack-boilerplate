@@ -45,6 +45,7 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">lib/stream.js</h1>
+<<<<<<< HEAD
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">
 /** MAP ON TO CALL A FUNCTION ONLY IN DEV AND PASS THROUGH, DOES NOT MUTATE THE INPUT */
 export const devStream = devFn =&gt; x =&gt; voidStream(() =&gt; process.env.NODE_ENV === &apos;production&apos; ? {} : devFn(x))
@@ -54,6 +55,17 @@ export const voidStream = voidFn =&gt; data =&gt; {
   voidFn(data)
   return data
 }
+=======
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">
+/** MAP ON TO CALL A FUNCTION ONLY IN DEV AND PASS THROUGH, DOES NOT MUTATE THE INPUT */
+export const devStream = devFn =&gt; x =&gt; voidStream(() =&gt; process.env.NODE_ENV === &apos;production&apos; ? {} : devFn(x))
+
+/** MAP ON TO CALL A VOID FUNCTION AND PASS THROUGH */
+export const voidStream = voidFn =&gt; data =&gt; {
+  voidFn(data)
+  return data
+}
+>>>>>>> 2f91a59c564a9a5e07e403e49f9575ab17cce567
 </code></pre>
 
 </div>

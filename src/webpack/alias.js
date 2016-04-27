@@ -20,6 +20,8 @@ export const vendorFolder = resolve(appFolder, 'vendor')
 export const externalFolder = resolve(appFolder, 'external')
 export const legacyFolder = resolve(appFolder, 'legacy')
 
+const resolveVendor = path => resolve(vendorFolder, path)
+
 export function getAlias(name) {
   return  { 'config-client': configClientPath
           , 'config': configPath
@@ -35,7 +37,5 @@ export function getAlias(name) {
           , 'styles': stylesFolder
           , 'images': imagesFolder
           , 'external': externalFolder
-          , 'react-css-transition-group': 'react-bootstrap-15'
-          , 'react-bootstrap': 'react-bootstrap-15'
           }
 }

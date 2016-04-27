@@ -1,6 +1,6 @@
 {
   "name": "redux-webpack-boilerplate",
-  "version": "0.1.9",
+  "version": "0.2.9",
   "description": "Generic base project for Redux / React / Webpack / Babel projects and libraries.",
   "main": "lib/index.js",
   "files": [
@@ -17,9 +17,11 @@
     "example"
   ],
   "scripts": {
-    "prebuild-webpack": "rimraf webpack && npm run copy-config-client && npm run copy-config-server && npm run build-config-client && npm run build-config-server",
+    "prebuild-package": "rimraf package",
+    "build-package": "babel src/package -d package",
+    "prebuild-webpack": "rimraf webpack && npm run copy-config-client && npm run copy-config-server && npm run build-package && npm run build-config-client && npm run build-config-server",
     "build-webpack": "babel src/config.client.js -o config.client.js && babel src/config.server.js -o config.server.js && babel src/webpack.config.js -o webpack.config.js && babel src/webpack.static.config.js -o webpack.static.config.js && babel src/webpack -d webpack",
-    "prebuild-public": "rimraf public && npm run build-webpack",
+    "prebuild-public": "rimraf public && npm run build-webpack && npm run build-package",
     "build-public": "ncp src/public public && webpack --config webpack.static.config.js --progress --profile --colors",
     "prebuild-app": "npm run build-public",
     "build-app": "webpack --config webpack.config.js --progress --profile --colors",
@@ -60,7 +62,7 @@
     "release": "npm version patch && npm publish",
     "postrelease": "npm run release-doc",
     "prerelease-doc": "npm run doc",
-    "release-doc": "git subtree push --prefix doc origin gh-pages",
+    "release-doc": "git subtree push --prefix public origin gh-pages",
     "postrelease-doc": "git commit -am \"doc-release\" && git push --follow-tags",
     "test": "karma start"
   },
@@ -188,7 +190,7 @@
   "bugs": {
     "url": "https://github.com/cchamberlain/redux-webpack-boilerplate/issues"
   },
-  "homepage": "https://cchamberlain.github.io/redux-webpack-boilerplate",
+  "homepage": "https://redux-webpack-boilerplate.js.org",
   "license": "MIT",
   "repository": {
     "type": "git",

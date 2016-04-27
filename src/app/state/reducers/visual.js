@@ -1,19 +1,38 @@
 import Immutable from 'immutable'
-import  { TOGGLE_VISIBILITY
+import  { SET_TEXT
+        , TOGGLE_VISIBILITY
         , SET_VISIBILITY
         , SET_THEME
         , TOGGLE_EXPANDER
         , SET_EXPANDER
-        , UPDATE_TEXT
         , REGISTER_TOOLTIP
         , DISPOSE_TOOLTIP
         } from '../constants'
+const REDUX_FORM_CHANGE = 'redux-form/CHANGE'
 
 const nextValue = current => {
   let value = current.get('value')
   let options = current.get('options')
   let nextIndex = options.indexOf(value) + 1
   return nextIndex >= options.size ? options.first() : options.get(nextIndex)
+}
+
+//Object {type: "redux-form/CHANGE", field: "subtitle", value: "ACTIVEff", touch: false, form: "page"}
+const initialText = Immutable.Map()
+function text(state = initialText, action = {}) {
+  const { type, payload, error } = action
+  if(error)
+    return state
+  switch(type) {
+    case SET_TEXT:
+      return state.merge(payload)
+    case REDUX_FORM_CHANGE:
+      const { field, value, form } = action
+      if(form !== 'page')
+        return state
+      return state.set(field, value)
+  }
+  return state
 }
 
 const initialVisibility = Immutable.Map()
@@ -53,21 +72,6 @@ function expanders(state = initialExpanders, action = {}) {
   return state
 }
 
-const initialText = Immutable.Map()
-function text(state = initialText, action = {}) {
-  const { type, payload, error } = action
-  if(error || !payload)
-    return state
-  switch(type) {
-    case UPDATE_TEXT:
-      const { componentID, maxCount, textValue } = payload
-      const currentCount = textValue.length || 0
-      const remainingCount = maxCount - currentCount
-      return state.mergeDeep({ [componentID]: { textValue, maxCount, currentCount, remainingCount } })
-  }
-  return state
-}
-
 const initialTooltip = Immutable.Map()
 function tooltip(state = initialTooltip, action = {}) {
   const { type, payload, error } = action
@@ -95,11 +99,14 @@ function theme(state = initialTheme, action = {}) {
   return state
 }
 
-const initialState = { visibility: visibility(), theme: theme(), expanders: expanders(), tooltip: tooltip() }
+const initialState = { text: text(), visibility: visibility(), theme: theme(), expanders: expanders(), tooltip: tooltip() }
 
 export function visual(state = initialState, action) {
   const { type, payload, error } = action
   switch(type) {
+    case SET_TEXT:
+    case REDUX_FORM_CHANGE:
+      return Object.assign({}, state, { text: text(state.text, action)})
     case TOGGLE_VISIBILITY:
     case SET_VISIBILITY:
       return Object.assign({}, state, { visibility: visibility(state.visibility, action) })
