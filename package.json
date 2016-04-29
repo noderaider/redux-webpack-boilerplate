@@ -45,7 +45,7 @@
     "precopy-app": "rimraf public/vendor",
     "copy-app": "ncp src/app/vendor public/vendor",
     "transform": "transform-package",
-    "link-dev": "npm link ../redux-addons ../redux-blueprint ../redux-idle-monitor ../react-redux-idle-monitor ../redux-grid ../redux-grid-view ../redux-middleware ../redux-mux ../save-as",
+    "link-dev": "npm link ../redux-load ../react-load ../redux-addons ../redux-blueprint ../redux-idle-monitor ../react-redux-idle-monitor ../redux-grid ../redux-grid-view ../redux-middleware ../redux-mux ../save-as",
     "postbuild-app": "npm run copy-app",
     "build-lib-dev": "set NODE_ENV=development&& npm run build-lib",
     "build-lib-prod": "set NODE_ENV=production&& npm run build-lib",
@@ -65,6 +65,7 @@
     "prerelease-doc": "npm run doc",
     "release-doc": "git subtree push --prefix public origin gh-pages",
     "postrelease-doc": "git commit -am \"doc-release\" && git push --follow-tags",
+    "upgrade": "ncu -a && npm update",
     "test": "karma start"
   },
   "dependencies": {
