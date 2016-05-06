@@ -1,9 +1,6 @@
 import express from 'express'
 import fs from 'fs'
-import { client as staticConfig, createServerLogger } from '../../config.server'
-//import { getCors } from '../cors'
-const log = createServerLogger('api')
-
+import { client as staticConfig, log } from '../../config'
 
 const requireQ = path => {
   return new Promise((resolve, reject) => {

@@ -1,5 +1,5 @@
 import { DefinePlugin, HotModuleReplacementPlugin, NoErrorsPlugin, SourceMapDevToolPlugin, ProvidePlugin, IgnorePlugin, optimize } from 'webpack'
-import { server, client, baseUrl } from '../config.server.js'
+import { server, client, baseUrl } from '../config.js'
 import CompressionPlugin from 'compression-webpack-plugin'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 const { CommonsChunkPlugin, UglifyJsPlugin, OccurenceOrderPlugin } = optimize

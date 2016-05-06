@@ -1,4 +1,4 @@
-import { server, client, baseUrl } from '../config.server.js'
+import { server, client, baseUrl } from '../config.js'
 import fs from 'fs'
 import path from 'path'
 
@@ -9,7 +9,7 @@ const getHotUrl = name => {
   const reload = true
   const noInfo = false
   const quiet = false
-  return `webpack-hot-middleware/client` //?path=${path}&timeout=${timeout}&overlay=${overlay}&reload=${reload}&noInfo=${noInfo}&quiet=${quiet}`
+  return 'webpack-hot-middleware/client' //?path=${path}&timeout=${timeout}&overlay=${overlay}&reload=${reload}&noInfo=${noInfo}&quiet=${quiet}`
 }
 
 function maybeHotEntry(name, ...entries) {

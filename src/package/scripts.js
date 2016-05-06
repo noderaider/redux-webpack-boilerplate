@@ -1,5 +1,5 @@
 export default ({}) => Object.assign({}, ...[ build('package', resource => `babel src/${resource} -d ${resource}`)
-                                            , build('webpack', resource => `babel src/config.client.js -o config.client.js && babel src/config.server.js -o config.server.js && babel src/${resource}.config.js -o ${resource}.config.js && babel src/${resource}.static.config.js -o ${resource}.static.config.js && babel src/${resource} -d ${resource}`, ['copy-config-client', 'copy-config-server', 'build-package', 'build-config-client', 'build-config-server'])
+                                            , build('webpack', resource => `babel src/config.js -o config.js && babel src/webpack.config.js -o webpack.config.js && babel src/${resource}.static.config.js -o ${resource}.static.config.js && babel src/${resource} -d ${resource}`, ['copy-config-client', 'copy-config-server', 'build-package', 'build-config-client', 'build-config-server'])
                                             , build('public', resource => `ncp src/${resource} ${resource} && webpack --config webpack.static.config.js --progress --profile --colors`, ['build-webpack', 'build-package'])
                                             , buildWebpack('app', 'webpack.config.js', ['build-public'])
                                             , buildBabel('bin')
@@ -7,8 +7,7 @@ export default ({}) => Object.assign({}, ...[ build('package', resource => `babe
                                             , buildBabel('test')
                                             , copy('config-client', 'config-client.json')
                                             , copy('config-server', 'config-server.json')
-                                            , buildBabelFile('config-client', 'config.client.js')
-                                            , buildBabelFile('config-server', 'config.client.js')
+                                            , buildBabelFile('config', 'config.js')
                                             , copy('app', 'app/vendor', 'public/vendor')
                                             , { 'transform': 'transform-package'
                                               , 'link-dev': 'npm link ../redux-load ../react-load ../redux-addons ../redux-blueprint ../redux-idle-monitor ../react-redux-idle-monitor ../redux-grid ../redux-grid-view ../redux-middleware ../redux-mux ../save-as'

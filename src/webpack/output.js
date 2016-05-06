@@ -1,4 +1,4 @@
-import { server, client, baseUrl, resolveRoot } from '../config.server.js'
+import { server, client, baseUrl, resolveRoot } from '../config.js'
 import { join } from 'path'
 
 const getPath = name => {
@@ -22,12 +22,12 @@ const getLibraryTarget = name => {
         return 'commonjs2'
 }
 
-const getFilename = name => `[name].js`
-const getChunkFilename = name => `[name].js`
-const getSourceMapFilename = name => `[file].map`
+const getFilename = name => '[name].js'
+const getChunkFilename = name => '[name].js'
+const getSourceMapFilename = name => '[file].map'
 const getDevtoolModuleFilenameTemplate = name => 'file:///[absolute-resource-path]'
-const getHotUpdateChunkFilename = name => `[id].[hash].hot-update.js`
-const getHotUpdateMainFilename = name => `[hash].hot-update.json`
+const getHotUpdateChunkFilename = name => '[id].[hash].hot-update.js'
+const getHotUpdateMainFilename = name => '[hash].hot-update.json'
 const getCrossOriginLoading = name => 'anonymous'
 
 const getPublicPath = name => {

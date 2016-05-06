@@ -4,7 +4,7 @@ import fs from 'fs'
 import mkdirp from 'mkdirp'
 import { getServerMap } from '../lib'
 import { join, resolve } from 'path'
-import { server, __rootname, resolveRoot, createServerLogger } from '../config.server'
+import { server, __rootname, resolveRoot } from '../config'
 import Pmx from 'pmx'
 const pmx = Pmx.init( { http: true
                       , errors: true

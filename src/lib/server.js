@@ -1,6 +1,6 @@
 import express from 'express'
 import path from 'path'
-import { createServerLogger } from '../config.server'
+import { log } from '../config'
 import Renderer from './renderers/Renderer'
 import merge from 'lodash.merge'
 import http from 'http'
@@ -8,9 +8,7 @@ import https from 'https'
 //import proxy from './proxy'
 import route from './route'
 import { assert } from 'chai'
-import { server } from '../config.server'
-
-const log = createServerLogger('Server')
+import { server } from '../config'
 
 const startHttp = (instance, { port }) => new Promise((resolve, reject) => {
   http.createServer(instance).listen(port, err => err ? reject(err) : resolve(`STARTED @ http://:::${port}`))

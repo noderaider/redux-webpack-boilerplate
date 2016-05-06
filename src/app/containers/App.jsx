@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { connect } from 'react-redux'
 import IdleMonitor from 'react-redux-idle-monitor'
 
-import { client, createClientLogger } from 'config'
+import { client, log } from 'config'
 import TopBar from 'elements/nav/TopBar'
 import FooterBar from 'elements/nav/FooterBar'
 
@@ -17,8 +17,6 @@ import PrimaryGrid from 'app/elements/grids/PrimaryGrid'
 import contextTypes from 'app/context'
 import getTheme from 'app/theme'
 const defaultTheme = 'solarized-dark'
-
-const logger = createClientLogger('App')
 
 const gridProps = { xs: 12, xsOffset: 0
                   , sm: 10, smOffset: 1

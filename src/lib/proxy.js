@@ -6,11 +6,8 @@
 import httpProxy from 'http-proxy'
 import http from 'http'
 import https from 'https'
-import { createServerLogger } from '../config.server'
-//import { getCors } from './cors'
-import { server as serverConfig } from '../config.server'
+import { server as serverConfig, log } from '../config'
 
-const log = createServerLogger('proxy')
 const proxyListen = ({ name, fromPort, toHost, toPort }) => `proxy ${name} directing from :${fromPort} to ${toHost}:${toPort}`
 
 export default function proxy() {
@@ -35,10 +32,8 @@ export default function proxy() {
       // This event fires on proxy requests
     })
 
-    //proxyServer.on('proxyRes', (proxyRes, req, res) => cors.handle(req, res))
 
     createProxyServer(http.createServer(onProxy))
-
 
     const createProxyServer = server => {
       if (config.allowWebSockets)

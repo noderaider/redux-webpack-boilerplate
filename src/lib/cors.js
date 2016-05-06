@@ -1,11 +1,9 @@
-import { createServerLogger, server as serverConfig, origins } from '../config.server'
+import { server as serverConfig, origins } from '../config'
 import { devStream } from './stream'
 
-const logger = createServerLogger('cors')
-
-const logOriginPass = (origin, pattern) => logger.trace(`PASS: origin [${origin}] matches pattern [${pattern}].`)
-const logOriginFail = (origin) => logger.trace(`FAIL: origin [${origin}] does not match any patterns.`)
-const logOriginDNE = () => logger.trace('DNE: origin header does not exist.')
+const logOriginPass = (origin, pattern) => log.trace(`PASS: origin [${origin}] matches pattern [${pattern}].`)
+const logOriginFail = (origin) => log.trace(`FAIL: origin [${origin}] does not match any patterns.`)
+const logOriginDNE = () => log.trace('DNE: origin header does not exist.')
 
 const corsValidator = patterns => {
   return req => (typeof req.headers.origin === 'string'
@@ -35,8 +33,8 @@ export function getCors() {
   const handle = (req, res) => {
     const resolvedOrigin = req.headers.origin || req.headers.host
     if(!isOriginOk(req))
-      return req.headers.origin ? logger.error(`proxy -origin [${resolvedOrigin}], method [${req.method}]`) : logger.warn('proxy -host [%s], method [%s]', req.headers.host, req.method)
-    logger.trace(`proxy +${req.headers.origin ? 'origin' : 'host'} [${resolvedOrigin}], method [${req.method}]`)
+      return req.headers.origin ? log.error(`proxy -origin [${resolvedOrigin}], method [${req.method}]`) : log.warn('proxy -host [%s], method [%s]', req.headers.host, req.method)
+    log.trace(`proxy +${req.headers.origin ? 'origin' : 'host'} [${resolvedOrigin}], method [${req.method}]`)
     res.setHeader('Access-Control-Allow-Origin', resolvedOrigin)
     res.setHeader('Access-Control-Allow-Credentials', true)
   }

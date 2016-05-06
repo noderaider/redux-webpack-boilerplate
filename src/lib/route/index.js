@@ -1,13 +1,9 @@
 import express from 'express'
 import { join } from 'path'
 import favicon from 'serve-favicon'
-import { createServerLogger, server } from '../../config.server'
-//import { getCors } from '../cors'
+import { server, log } from '../../config'
 import configureApi from './api'
 import { assert } from 'chai'
-
-const log = createServerLogger('routes')
-//const cors = getCors()
 
 const gzipExtensionFilter = /^(js|css|html|json|ico|eot|otf|ttf)$/
 

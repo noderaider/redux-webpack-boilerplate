@@ -1,4 +1,4 @@
-import { __rootname, resolveRoot } from '../config.server.js'
+import { __rootname, resolveRoot } from '../config.js'
 import { getAlias } from './alias'
 
 export function getResolve(name) {

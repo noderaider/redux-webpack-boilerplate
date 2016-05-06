@@ -1,9 +1,9 @@
-import { resolveRoot } from '../config.server.js'
+import { resolveRoot } from '../config.js'
 import { resolve } from 'path'
 
 export const configClientPath = resolveRoot('./config-client.json')
 export const configServerPath = resolveRoot('./config-server.json')
-export const configPath = resolveRoot('./config.client.js')
+export const configPath = resolveRoot('./config.js')
 
 export const libFolder = resolveRoot('./src/lib')
 export const packageFolder = resolveRoot('./src/package')
