@@ -13,7 +13,7 @@ var _lib = require('../lib');
 
 var _path = require('path');
 
-var _config = require('../config.server');
+var _config = require('../config');
 
 var _pmx = require('pmx');
 
