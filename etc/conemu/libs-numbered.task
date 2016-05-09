@@ -1,0 +1,43 @@
+> -cur_console:t:redux-load_1_1-1 -cur_console:n -cur_console:d:%USERPROFILE%\cchamberlain\redux-load zsh -li
+
+-cur_console:t:redux-addons_2_3-1 -cur_console:s1THn -cur_console:d:%USERPROFILE%\cchamberlain\redux-addons zsh -li
+
+-cur_console:t:redux-idle-monitor_3_2-1 -cur_console:s1THn -cur_console:d:%USERPROFILE%\cchamberlain\redux-idle-monitor zsh -li
+
+-cur_console:t:save-as_4_4-1 -cur_console:s2THn -cur_console:d:%USERPROFILE%\cchamberlain\save-as zsh -li
+
+
+
+-cur_console:t:redux-grid_5_1-3 -cur_console:s1TVn -cur_console:d:%USERPROFILE%\cchamberlain\redux-grid zsh -li
+
+-cur_console:t:react-load_6_1-2 -cur_console:s1TVn -cur_console:d:%USERPROFILE%\cchamberlain\react-load zsh -li
+
+-cur_console:t:redux-grid-view_7_1-4 -cur_console:s5TVn -cur_console:d:%USERPROFILE%\cchamberlain\redux-grid-view zsh -li
+
+
+
+
+-cur_console:t:react-hatch_8_2-3 -cur_console:s3TVn -cur_console:d:%USERPROFILE%\cchamberlain\react-hatch zsh -li
+
+-cur_console:t:react-redux-idle-monitor_9_2-2 -cur_console:s3TVn -cur_console:d:%USERPROFILE%\cchamberlain\react-redux-idle-monitor zsh -li
+
+-cur_console:t:react-pin_10_2-4 -cur_console:s8TVn -cur_console:d:%USERPROFILE%\cchamberlain\react-pin zsh -li
+
+
+
+
+-cur_console:t:redux-mux_11_3-3 -cur_console:s2TVn -cur_console:d:%USERPROFILE%\cchamberlain\redux-mux zsh -li
+
+-cur_console:t:redux-middleware_12_3-2 -cur_console:s2TVn -cur_console:d:%USERPROFILE%\cchamberlain\redux-middleware zsh -li
+
+-cur_console:t:redux-blueprint_13_3-4 -cur_console:s11TVn -cur_console:d:%USERPROFILE%\cchamberlain\redux-blueprint zsh -li
+
+
+
+
+
+-cur_console:t:repackage_14_4-3 -cur_console:s4TVn -cur_console:d:%USERPROFILE%\cchamberlain\repackage zsh -li
+
+-cur_console:t:isoconfig_15_4-2 -cur_console:s4TVn -cur_console:d:%USERPROFILE%\cchamberlain\isoconfig zsh -li
+
+-cur_console:t:browser-detective_16_4-4 -cur_console:s14TVn -cur_console:d:%USERPROFILE%\cchamberlain\browser-detective zsh -li
