@@ -4,6 +4,5 @@ export function getExternals(name) {
     return  { 'react/lib/ReactCSSTransitionGroup': 'ReactCSSTransitionGroup'
             , 'react': 'React'
             , 'react-dom': 'ReactDOM'
-            , 'tinymce': 'tinymce'
             }
 }

@@ -1,80 +1,90 @@
 {
-	"folders":
-	[
-		{
-			"name": "redux-webpack-boilerplate",
-			"follow_symlinks": true,
-			"path": "."
-		},
-		{
-			"name": "redux-load",
-			"follow_symlinks": true,
-			"path": "../redux-load"
-		},
-		{
-			"name": "react-load",
-			"follow_symlinks": true,
-			"path": "../react-load"
-		},
-		{
-			"name": "redux-idle-monitor",
-			"follow_symlinks": true,
-			"path": "../redux-idle-monitor"
-		},
-		{
-			"name": "react-redux-idle-monitor",
-			"follow_symlinks": true,
-			"path": "../react-redux-idle-monitor"
-		},
-		{
-			"name": "react-hatch",
-			"follow_symlinks": true,
-			"path": "../react-hatch"
-		},
-		{
-			"name": "redux-addons",
-			"follow_symlinks": true,
-			"path": "../redux-addons"
-		},
-		{
-			"name": "redux-middleware",
-			"follow_symlinks": true,
-			"path": "../redux-middleware"
-		},
-		{
-			"name": "redux-mux",
-			"follow_symlinks": true,
-			"path": "../redux-mux"
-		},
-		{
-			"name": "redux-blueprint",
-			"follow_symlinks": true,
-			"path": "../redux-mux"
-		},
-		{
-			"name": "redux-grid",
-			"follow_symlinks": true,
-			"path": "../redux-grid"
-		},
-		{
-			"name": "redux-grid-view",
-			"follow_symlinks": true,
-			"path": "../redux-grid-view"
-		},
-		{
-			"name": "save-as",
-			"follow_symlinks": true,
-			"path": "../save-as"
-		},
-		{
-			"name": "repackage",
-			"follow_symlinks": true,
-			"path": "../repackage"
-		},
-		{
-			"name": "browser-detective",
-			"follow_symlinks": true,
-			"path": "../browser-detective"
-		}
-	]
+  "folders":
+  [
+    {
+      "name": "redux-webpack-boilerplate",
+      "follow_symlinks": true,
+      "path": "."
+    },
+    {
+      "name": "redux-load",
+      "follow_symlinks": true,
+      "path": "../redux-load"
+    },
+    {
+      "name": "react-load",
+      "follow_symlinks": true,
+      "path": "../react-load"
+    },
+    {
+      "name": "redux-idle-monitor",
+      "follow_symlinks": true,
+      "path": "../redux-idle-monitor"
+    },
+    {
+      "name": "react-redux-idle-monitor",
+      "follow_symlinks": true,
+      "path": "../react-redux-idle-monitor"
+    },
+    {
+      "name": "react-hatch",
+      "follow_symlinks": true,
+      "path": "../react-hatch"
+    },
+    {
+      "name": "react-pin",
+      "follow_symlinks": true,
+      "path": "../react-pin"
+    },
+    {
+      "name": "redux-addons",
+      "follow_symlinks": true,
+      "path": "../redux-addons"
+    },
+    {
+      "name": "redux-middleware",
+      "follow_symlinks": true,
+      "path": "../redux-middleware"
+    },
+    {
+      "name": "redux-mux",
+      "follow_symlinks": true,
+      "path": "../redux-mux"
+    },
+    {
+      "name": "redux-blueprint",
+      "follow_symlinks": true,
+      "path": "../redux-mux"
+    },
+    {
+      "name": "redux-grid",
+      "follow_symlinks": true,
+      "path": "../redux-grid"
+    },
+    {
+      "name": "redux-grid-view",
+      "follow_symlinks": true,
+      "path": "../redux-grid-view"
+    },
+    {
+      "name": "save-as",
+      "follow_symlinks": true,
+      "path": "../save-as"
+    },
+    {
+      "name": "repackage",
+      "follow_symlinks": true,
+      "path": "../repackage"
+    },
+    {
+      "name": "browser-detective",
+      "follow_symlinks": true,
+      "path": "../browser-detective"
+    },
+    {
+      "name": "isoconfig",
+      "follow_symlinks": true,
+      "path": "../isoconfig"
+    }
+  ]
 }

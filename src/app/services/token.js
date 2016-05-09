@@ -6,7 +6,7 @@
 
 import jwtSimple from 'jwt-simple'
 import { state } from 'config-client'
-import { saveState, loadState, removeState } from 'services/state'
+import { saveState, loadState, removeState } from 'app/services/state'
 
 const noop = () => {}
 

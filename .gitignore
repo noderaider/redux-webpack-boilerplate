@@ -2,6 +2,9 @@
 /bin/
 /lib/
 /webpack/
+/config.js
+/webpack.config.js
+/webpack.static.config.js
 
 # Logs
 logs

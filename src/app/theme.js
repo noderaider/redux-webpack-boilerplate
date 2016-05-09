@@ -223,8 +223,8 @@ export default function getTheme(themeName) {
   if(!themeName.includes('-'))
     throw new Error(`Incorrect format provided => '${themeName}', must be of format 'scheme-(light|dark)'`)
 
-  const [schemeName, jediOrSith] = themeName.split('-')
-  const inverted = jediOrSith === 'dark'
+  const [schemeName, lightOrDark] = themeName.split('-')
+  const inverted = lightOrDark === 'dark'
 
   const palette = getScheme(schemeName)
   if(!palette)

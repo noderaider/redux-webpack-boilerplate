@@ -31,8 +31,6 @@ export function getEntry(name) {
             }
   }
 
-  const tinyMCEPlugins = ['']
-  return  { 'loading': maybeHotEntry(name, '../src/app/entry/loading')
-          , 'app':  maybeHotEntry(name, '../src/app/entry/app')
+  return  { app:  maybeHotEntry(name, '../src/app/entry/app')
           }
 }

@@ -3,8 +3,6 @@ import { join } from 'path'
 
 const getPath = name => {
     switch(name) {
-        case 'lambda':
-            return resolveRoot('lambda')
         case 'static':
             return resolveRoot('public', 'assets')
         default:
@@ -13,13 +11,9 @@ const getPath = name => {
 }
 
 const getLibrary = name => {
-    if(name === 'lambda')
-        return '[name]'
 }
 
 const getLibraryTarget = name => {
-    if(name === 'lambda')
-        return 'commonjs2'
 }
 
 const getFilename = name => '[name].js'
