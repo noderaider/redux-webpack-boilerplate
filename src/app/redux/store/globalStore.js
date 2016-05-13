@@ -1,18 +1,18 @@
 import Promise from 'bluebird'
 import { assert } from 'chai'
-import { appKey } from 'config'
+import { packageKey } from 'config'
 
-const createGlobalAccessor = GLOBAL_KEY => {
-  window[GLOBAL_KEY] = window[GLOBAL_KEY] || {}
-  return  { set: (key, value) => window[GLOBAL_KEY][key] = value
-          , get: key => window[GLOBAL_KEY][key]
+const createGlobalAccessor = globalKey => {
+  window[globalKey] = window[globalKey] || {}
+  return  { set: (key, value) => window[globalKey][key] = value
+          , get: key => window[globalKey][key]
           }
 }
 
 const STORE_KEY = '__store__'
 const HISTORY_KEY = '__history__'
 const INITIAL_STATE_KEY = '__initialState__'
-const accessor = createGlobalAccessor(appKey)
+const accessor = createGlobalAccessor(packageKey)
 const pollFrequency = 100
 
 export const saveStore = (store, history) => {

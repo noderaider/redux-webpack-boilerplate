@@ -6,7 +6,7 @@ import http from 'http'
 import https from 'https'
 import proxy from './proxy'
 import configureRouter from './router/configureRouter'
-import { readPfx } from '@tixinc/config/lib/tls'
+import { readPfx } from './tls'
 import { assert } from 'chai'
 
 
@@ -28,12 +28,11 @@ const startServer = (app, { scheme, binding }) => {
   if(scheme === 'https') {
     const { tls } = server
     assert.ok(tls, 'tls options must be defined for https')
-    const { pfxName, passphrase } = tls
+    const { pfxName, passphrase = process.env.PASSPHRASE } = tls
     assert.typeOf(pfxName, 'string', 'pfxName must be a string filename')
-    const resolvedPassphrase = process.env.PASSPHRASE || passphrase
-    assert.typeOf(resolvedPassphrase, 'string', 'passphrase must be passed or set in environment variable PASSPHRASE')
+    assert.typeOf(passphrase, 'string', 'passphrase must be passed or set in environment variable PASSPHRASE')
 
-    return readPfx(pfxName, resolvedPassphrase)
+    return readPfx({ filename: pfxName, passphrase })
       .then(opts => {
         startHttps(app, binding, opts)
           .then(message => log.info({ binding }, message))
@@ -88,7 +87,7 @@ const configureServer = ({ paths }) => {
                           , start: () => startServer(app, { scheme, binding })
                           })
   }
-  proxy()
+  //proxy()
   return serverMap
 }
 

@@ -19,13 +19,13 @@ const paths = { NODE_ROOT: __rootname
               , SERVER_CONFIG_PATH: resolveRoot('config-server.json')
               , CLIENT_CONFIG_PATH: resolveRoot('config-client.json')
               , PUBLIC_ROOT: resolveRoot('public')
+              , ASSETS_ROOT: resolveRoot('public/assets')
               , STATIC_ROOT: resolveRoot('public/static')
               , IMAGES_ROOT: resolveRoot('public/static/images')
               , APP_ROOT: resolveRoot('app')
               , BIN_ROOT: resolveRoot('bin')
               , LOG_ROOT: resolveRoot('log')
-              , LEGACY_STYLES_ROOT: resolveRoot('app/legacy/styles')
-              , LEGACY_IMAGES_ROOT: resolveRoot('app/legacy/images')
+              , DOC_ROOT: resolveRoot('doc')
               }
 
 const serverMap = getServerMap(paths)

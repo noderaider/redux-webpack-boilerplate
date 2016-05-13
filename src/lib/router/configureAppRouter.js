@@ -9,7 +9,8 @@ import { createMemoryHistory, match, RouterContext } from 'react-router'
 import { Provider } from 'react-redux'
 import { syncHistoryWithStore } from 'react-router-redux'
 import serialize from 'serialize-javascript'
-import { log, jspmBrowser, jspmConfig, IS_HOT, IS_DEV, noop } from '../../config'
+
+import { packageName, faviconUrl, log, jspmBrowser, jspmConfig, IS_HOT, IS_DEV, noop } from '../../config'
 import configureStore from '../redux/store/configureStore.js'
 import configureRoutes from '../routes/configureRoutes.js'
 
@@ -25,18 +26,15 @@ const serializeGlobalSetter = ({ globalKey, key, value }) => {
 
 const InitialState = ({ globalKey, state }) => <script dangerouslySetInnerHTML={{ __html: serializeGlobalSetter({ globalKey, key: '__initialState__', value: serialize(state)}) }} />
 
-
-
 const HTML = ({ content, store }) => {
   const state = store ? store.getState() : noop()
   return (
     <html lang="en">
     <head>
       <meta charSet="utf-8" />
-      <meta httpEquiv="X-UA-Compatible" content="IE=Edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>{IS_HOT ? 'Tix is so hot right now...' : (IS_DEV ? 'Tix is so dev right now...' : 'Tix - Login')}</title>
-      <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+      <title>{packageName}{IS_HOT ? ' is so hot right now...' : (IS_DEV ? ' is so dev right now...' : null)}</title>
+      <link rel="icon" href={faviconUrl} type="image/x-icon" />
       {IS_DEV ? null : <link rel="stylesheet" href="/assets/app.css" type="text/css" />}
       <script src="/assets/polyfill.js" />
       <script src="/assets/vendor.js" />
@@ -46,7 +44,6 @@ const HTML = ({ content, store }) => {
       {state ? <InitialState globalKey={GLOBAL_KEY} state={state} /> : null}
       {content ? <div id="root" dangerouslySetInnerHTML={{ __html: content }}/> : <div id="root" />}
       <script src="/assets/app.js" />
-      <script src="//www.google.com/recaptcha/api.js?onload=recaptchaOnLoad&render=explicit" async defer />
     </body>
     </html>
   )
@@ -72,9 +69,6 @@ export default function configureAppRouter({ cors, paths }) {
     let store = configureStore({ history: memoryHistory })
     const history = syncHistoryWithStore(memoryHistory, store)
     const routes = configureRoutes()
-
-    if(req.url === '/')
-      return next()
 
     /* react router match history */
     match({ history, routes, location: req.url }, (error, redirectLocation, renderProps) => {
