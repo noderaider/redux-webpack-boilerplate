@@ -1,5 +1,7 @@
 import React from 'react'
-import Griddle from 'griddle-overhaul-react-redux'
-import { context } from 'app/redux/components/griddle'
+//import Griddle from 'griddle-overhaul-react-redux'
+//import { context } from 'app/redux/components/griddle'
 
-export default props => <Griddle context={context('primary')} />
+export default props => <div id="no-grid" />
+
+//<Griddle context={context('primary')} />

@@ -20,6 +20,7 @@ export function getAlias(name) {
   return  { 'config': configPath
           , 'package': packageFolder
           , 'app': appFolder
+          , 'lib': libFolder
           , 'vendor': vendorFolder
           , 'styles': stylesFolder
           , 'images': imagesFolder

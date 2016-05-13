@@ -18,9 +18,6 @@ class LoginForm extends Component {
   static propTypes =  { fields: PropTypes.object.isRequired
                       , handleSubmit: PropTypes.func.isRequired
                       , submitting: PropTypes.bool.isRequired
-
-
-
                       , onForgotPasswordClick: PropTypes.func.isRequired
                       };
   componentDidMount() {
@@ -61,7 +58,7 @@ class LoginForm extends Component {
             </div>
           </Col>
           <Col xs={4} pullRight>
-            <button
+
                 type="submit"
                 style={style.bold}
                 className="btn btn-default btn-stretch pull-right"

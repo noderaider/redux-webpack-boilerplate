@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import Label from 'app/elements/forms/controls/Label'
 import classNames from 'classnames'
-import Identity from 'controls/Identity'
 
 import DevMicro from 'app/elements/micro/DevMicro'
 import HotMicro from 'app/elements/micro/HotMicro'
@@ -47,7 +46,6 @@ export default class FooterBar extends Component {
             {/* alternatives [bright|dark]_[horz|vert|tiny].png (width[horz:102,vert:50,tiny:77]) */}
           </div>
           <div style={footer.row}>
-            <Identity />
           </div>
         </div>
         <div style={footer.right}>
