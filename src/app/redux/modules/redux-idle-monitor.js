@@ -2,7 +2,7 @@ import configure  from 'redux-idle-monitor'
 import { push } from 'react-router-redux'
 import * as themes from 'redux-devtools-themes'
 
-import { appName } from 'config'
+import { packageName } from 'config'
 import { setText } from 'app/redux/actions/visual'
 
 export const IDLESTATUS_NOT_VERY_ACTIVE = 'NOT_VERY_ACTIVE'
@@ -129,7 +129,7 @@ export const idleStatusAction = idleStatus => (dispatch, getState) => {
 
 const setColor = color => document.body.style.backgroundColor = color
 
-const opts = { appName, IDLE_STATUSES, idleStatusDelay, activeStatusAction, idleStatusAction }
+const opts = { appName: packageName, IDLE_STATUSES, idleStatusDelay, activeStatusAction, idleStatusAction }
 
 const { reducer, actions, middleware } = configure(opts)
 export { actions, middleware }

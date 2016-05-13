@@ -33,13 +33,13 @@ var paths = { NODE_ROOT: _config.__rootname,
               SERVER_CONFIG_PATH: (0, _config.resolveRoot)('config-server.json'),
               CLIENT_CONFIG_PATH: (0, _config.resolveRoot)('config-client.json'),
               PUBLIC_ROOT: (0, _config.resolveRoot)('public'),
+              ASSETS_ROOT: (0, _config.resolveRoot)('public/assets'),
               STATIC_ROOT: (0, _config.resolveRoot)('public/static'),
               IMAGES_ROOT: (0, _config.resolveRoot)('public/static/images'),
               APP_ROOT: (0, _config.resolveRoot)('app'),
               BIN_ROOT: (0, _config.resolveRoot)('bin'),
               LOG_ROOT: (0, _config.resolveRoot)('log'),
-              LEGACY_STYLES_ROOT: (0, _config.resolveRoot)('app/legacy/styles'),
-              LEGACY_IMAGES_ROOT: (0, _config.resolveRoot)('app/legacy/images')
+              DOC_ROOT: (0, _config.resolveRoot)('doc')
 };
 
 var serverMap = (0, _lib.getServerMap)(paths);

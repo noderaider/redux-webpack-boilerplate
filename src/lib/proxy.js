@@ -16,6 +16,8 @@ export default function proxy() {
   const hasHttps = cdnBindings.has('https')
   //const cors = getCors()
   const proxyConfigs = Array.isArray(serverConfig.proxies) ? serverConfig.proxies : [ serverConfig.proxies ]
+  if(proxyConfigs.length === 0)
+    return
 
   /*** Iterate proxy configs and start routing */
   proxyConfigs.forEach(config => {
@@ -28,9 +30,7 @@ export default function proxy() {
       res.end()
     })
 
-    proxyServer.on('proxyReq', (proxyReq, req, res, options) => {
-      // This event fires on proxy requests
-    })
+    proxyServer.on('proxyReq', (proxyReq, req, res, options) => { /* This event fires on proxy requests */ })
 
 
     createProxyServer(http.createServer(onProxy))

@@ -1,8 +1,10 @@
 import Immutable from 'immutable'
+import { defaultTheme } from '../../../config'
 import hydrateImmutable, { HYDRATE } from '../hydrateImmutable'
 import  { TOGGLE_VISIBILITY
         , SET_VISIBILITY
         , SET_THEME
+        , SET_TEXT
         , TOGGLE_EXPANDER
         , SET_EXPANDER
         , REGISTER_TOOLTIP
@@ -65,7 +67,21 @@ function tooltip(state = Immutable.Map(), action = {}) {
   return state
 }
 
-const initialTheme = 'tix-light'
+function text(state = Immutable.Map(), action = {}) {
+  const { type, payload, error } = action
+  if(error || !payload)
+    return state
+  switch(type) {
+    case UPDATE_TEXT:
+      const { componentID, maxCount, textValue } = payload
+      const currentCount = textValue.length || 0
+      const remainingCount = maxCount - currentCount
+      return state.mergeDeep({ [componentID]: { textValue, maxCount, currentCount, remainingCount } })
+  }
+  return state
+}
+
+const initialTheme = defaultTheme
 function theme(state = initialTheme, action = {}) {
   const { type, payload, error } = action
   if(error || !payload)

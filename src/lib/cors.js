@@ -14,7 +14,8 @@ const corsValidator = patterns => {
 }
 
 export function getCors() {
-  const isOriginOk = corsValidator(origins.map(x => new RegExp(x)))
+  const isOriginOk = origins ? corsValidator(origins.map(x => new RegExp(x))) : true
+
 
   const failureStatus = { code: 403
                         , message: '403 Forbidden'

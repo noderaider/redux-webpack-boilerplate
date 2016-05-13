@@ -3,6 +3,9 @@ import { createLogger } from 'bunyan'
 
 export const packageName = 'redux-webpack-boilerplate'
 export const packageKey = 'boilerplate'
+export const defaultTheme = 'solarized-dark'
+export const faviconUrl = '/images/nintendo.ico'
+export const faviconPath = path.join(__dirname, 'public/images/nintendo.ico')
 
 export const noop = () => {}
 export const IS_HOT = process.env.NODE_ENV === 'hot'
