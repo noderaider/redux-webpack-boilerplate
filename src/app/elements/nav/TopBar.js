@@ -20,7 +20,7 @@ export default class TopBar extends Component {
           <FA name="bars" size="lg" />
         </button>
         <span style={header.title}>
-          <a href="/" style={header.anchor}>{title}{subtitle ? <span style={header.subtitle}>{subtitle}</span> : null}</a>
+          <a href="/" style={header.anchor}><span>{title}</span>{subtitle ? <span style={header.subtitle}>{subtitle}</span> : null}</a>
         </span>
         <span style={header.banner}>
           <a href={`https://nodei.co/npm/${packageName}/`}>
