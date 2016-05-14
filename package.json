@@ -18,7 +18,7 @@
   ],
   "scripts": {
     "prebuild-package": "rimraf package",
-    "build-package": "babel src/package -d package",
+    "build-package": "repackage && babel src/package -d package",
     "prebuild-webpack": "rimraf webpack && npm run copy-config-client && npm run copy-config-server && npm run build-package && npm run build-config",
     "build-webpack": "babel src/config.js -o config.js && babel src/webpack.config.js -o webpack.config.js && babel src/webpack.static.config.js -o webpack.static.config.js && babel src/webpack -d webpack",
     "prebuild-public": "rimraf public && npm run build-webpack && npm run build-package",
@@ -129,6 +129,7 @@
     "redux-middleware": "*",
     "redux-mux": "*",
     "regenerator": "^0.8.42",
+    "repackage": "^0.2.15",
     "router": "^1.1.4",
     "safe-json-stringify": "^1.0.3",
     "script-loader": "^0.6.1",

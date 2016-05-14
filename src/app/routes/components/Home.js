@@ -18,16 +18,7 @@ class Home extends Component {
           <li><code>git clone https://github.com/{username}/redux-webpack-boilerplate</code></li>
           <li>Set title to <b>{title}</b> in src/config-client.json</li>
           <li>Set subtitle to <b>{title}</b> in src/config-client.json</li>
-          <li>Create .repackagerc file in project root (for building package.json)<pre><code>{
-`{ "username": "${username}"
-, "organization": "${organization}"
-, "email": "${email}"
-, "full": "${full}"
-}`}</code></pre></li>
-          <li><code>npm -g repackage</code></li>
-          <li><code>repackage</code></li>
           <li>Set package name to <b>{packageName}</b> in src/package/name.js</li>
-          <li><code>repackage</code> again</li>
           <li><code>npm i</code></li>
           <li><code>npm run start-hot</code></li>
         </ul>
