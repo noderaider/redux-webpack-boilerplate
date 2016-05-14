@@ -1,1 +1,1 @@
-export default ({ license = 'MIT' }) => license
+export default ({ license = 'MIT' } = {}) => license

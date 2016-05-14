@@ -206,7 +206,7 @@
   "bugs": {
     "url": "https://github.com/cchamberlain/redux-webpack-boilerplate/issues"
   },
-  "homepage": "https://cchamberlain.github.io/redux-webpack-boilerplate",
+  "homepage": "https://redux-webpack-boilerplate.js.org",
   "license": "MIT",
   "repository": {
     "type": "git",

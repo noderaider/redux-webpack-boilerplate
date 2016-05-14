@@ -76038,7 +76038,7 @@ webpackJsonp([4,3],[
 
 	module.exports = {
 		"name": "redux-webpack-boilerplate",
-		"version": "0.2.14",
+		"version": "0.2.15",
 		"description": "Generic base project for Redux / React / Webpack / Babel projects and libraries.",
 		"main": "lib/index.js",
 		"files": [
@@ -76244,7 +76244,7 @@ webpackJsonp([4,3],[
 		"bugs": {
 			"url": "https://github.com/cchamberlain/redux-webpack-boilerplate/issues"
 		},
-		"homepage": "https://cchamberlain.github.io/redux-webpack-boilerplate",
+		"homepage": "https://redux-webpack-boilerplate.js.org",
 		"license": "MIT",
 		"repository": {
 			"type": "git",

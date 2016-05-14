@@ -6,7 +6,7 @@
 `npm i -S redux-webpack-boilerplate`
 
 
-See a working demo in a real project at [redux-webpack-boilerplate](https://cchamberlain.github.io/redux-webpack-boilerplate)
+See a working demo at [redux-webpack-boilerplate.js.org](http://redux-webpack-boilerplate.js.org)
 
 
 ![redux-webpack-boilerplate](/src/public/images/boilerplate.png)
@@ -21,7 +21,7 @@ See a working demo in a real project at [redux-webpack-boilerplate](https://ccha
 * Hot reloading via React-Transform and Webpack HMR API.
 * Only common and useful redux patterns setup.
 * Documents itself with (ESDoc)[https://esdoc.org/] and pushes to projects GitHub pages on release.
-* package.json scripts separated and pre-compiled to achieve Windows and OSX support for environment variables.
+* package.json scripts separated and pre-compiled with [repackage](http://repackage.js.org) to achieve Windows and OSX support for environment variables.
 * Preconfigured with [redux-idle-monitor](https://npmjs.com/packages/redux-idle-monitor) and [react-redux-idle-monitor](https://npmjs.com/packages/react-redux-idle-monitor) to monitor when user becomes idle.
 * Preconfigured with griddle for grid data.
 * Preconfigured with redux-form
