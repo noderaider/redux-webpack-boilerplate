@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../">
+  <title data-ice="title">lib/redux/reducers/identity.js | redux-idle-monitor API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/cchamberlain/redux-webpack-boilerplate" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getCors">getCors</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-proxy">proxy</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-readCertificate">readCertificate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-readPfx">readPfx</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getServerMap">getServerMap</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-configureServer">configureServer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-devStream">devStream</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-voidStream">voidStream</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">redux</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-hydrateImmutable">hydrateImmutable</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ACTIVE_SESSION">ACTIVE_SESSION</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ADD_ERROR">ADD_ERROR</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-AUTHORIZE_MIDDLEWARE">AUTHORIZE_MIDDLEWARE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CLEAR_DATA">CLEAR_DATA</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CLEAR_ERRORS">CLEAR_ERRORS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CLEAR_SUGGESTIONS">CLEAR_SUGGESTIONS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CLEAR_VALIDATED">CLEAR_VALIDATED</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DISMISS_ERROR">DISMISS_ERROR</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DISPOSE_TOOLTIP">DISPOSE_TOOLTIP</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-EXPIRED_SESSION">EXPIRED_SESSION</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FETCH_AUTHORIZE_IDENTITY">FETCH_AUTHORIZE_IDENTITY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FETCH_DATA">FETCH_DATA</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FETCH_IDENTITY">FETCH_IDENTITY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FETCH_IMPERSONATE_IDENTITY">FETCH_IMPERSONATE_IDENTITY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FETCH_MONIKERS">FETCH_MONIKERS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FETCH_REFRESH_IDENTITY">FETCH_REFRESH_IDENTITY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FETCH_SUGGESTIONS">FETCH_SUGGESTIONS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FILTER_SUGGESTIONS">FILTER_SUGGESTIONS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FORGET_FINGERPRINT">FORGET_FINGERPRINT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FORGET_TOKENS">FORGET_TOKENS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FORGOTTEN_FINGERPRINT">FORGOTTEN_FINGERPRINT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FORGOTTEN_TOKENS">FORGOTTEN_TOKENS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-HYDRATE_FINGERPRINT">HYDRATE_FINGERPRINT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-HYDRATE_IDENTITY">HYDRATE_IDENTITY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-HYDRATE_TOKENS">HYDRATE_TOKENS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-IDENTITY_EXPIRED">IDENTITY_EXPIRED</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-IDENTITY_INVALID">IDENTITY_INVALID</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INACTIVE_SESSION">INACTIVE_SESSION</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-KEYED_DATA">KEYED_DATA</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PERSISTED_FINGERPRINT">PERSISTED_FINGERPRINT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PERSISTED_TOKENS">PERSISTED_TOKENS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-POST_AUTHORIZE">POST_AUTHORIZE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-POST_AUTHORIZE_ADMIN">POST_AUTHORIZE_ADMIN</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-RECEIVE_AUTHORIZE_IDENTITY">RECEIVE_AUTHORIZE_IDENTITY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-RECEIVE_DATA">RECEIVE_DATA</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-RECEIVE_IMPERSONATE_IDENTITY">RECEIVE_IMPERSONATE_IDENTITY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-RECEIVE_MONIKERS">RECEIVE_MONIKERS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-RECEIVE_REFRESH_IDENTITY">RECEIVE_REFRESH_IDENTITY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-REGISTER_TOOLTIP">REGISTER_TOOLTIP</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SET_EXPANDER">SET_EXPANDER</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SET_IDENTITY">SET_IDENTITY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SET_SESSION_TIMEOUTS">SET_SESSION_TIMEOUTS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SET_TEXT">SET_TEXT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SET_THEME">SET_THEME</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SET_VALIDATED">SET_VALIDATED</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SET_VISIBILITY">SET_VISIBILITY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TOGGLE_EXPANDER">TOGGLE_EXPANDER</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TOGGLE_VISIBILITY">TOGGLE_VISIBILITY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-UPDATE_INPUT_VALUE">UPDATE_INPUT_VALUE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-HYDRATE">HYDRATE</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">redux/reducers</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-api">api</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-autocomplete">autocomplete</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-errors">errors</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-identity">identity</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-validation">validation</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-visual">visual</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-initialState">initialState</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">redux/store</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-configureStore">configureStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-configureStore">configureStore</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">router</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-configureApiRouter">configureApiRouter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-configureAppRouter">configureAppRouter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-configureRouter">configureRouter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-configureSecureRouter">configureSecureRouter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-configureUnsupportedRouter">configureUnsupportedRouter</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">routes</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-configureRoutes">configureRoutes</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">routes/Identity/routes/Login/components</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/routes/Identity/routes/Login/components/Login.js~Login.html">Login</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">routes/Identity/routes/Maintenance/components</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/routes/Identity/routes/Maintenance/components/Maintenance.js~Maintenance.html">Maintenance</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">routes/NoMatch/components</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/routes/NoMatch/components/NoMatch.js~NoMatch.html">NoMatch</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">routes/components</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/routes/components/App.js~App.html">App</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/routes/components/Index.js~Index.html">Index</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">lib/redux/reducers/identity.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Immutable from &apos;immutable&apos;
+import  { FORGET_TOKENS
+        , FORGET_FINGERPRINT
+        , FETCH_IDENTITY
+        , SET_IDENTITY
+        , POST_AUTHORIZE
+        , POST_AUTHORIZE_ADMIN
+        , IDENTITY_INVALID
+        , IDENTITY_EXPIRED
+        //, DISMISS_ERROR
+        , AUTHORIZE_MIDDLEWARE
+        } from &apos;../constants&apos;
+
+const getTixClaimSchema = name =&gt; `http://schemas.tix.com/identity/claims/${name}`
+const getClaim = (decodedToken, name) =&gt; decodedToken[name]
+const hasTixClaim = (decodedToken, name, value) =&gt; hasClaim(decodedToken, getTixClaimSchema(name), value)
+const getTixClaim = (decodedToken, name) =&gt; getClaim(decodedToken, getTixClaimSchema(name))
+const hasRole = (decodedToken, roleName) =&gt; hasClaim(decodedToken, getTixClaimSchema(&apos;role&apos;), roleName)
+const hasClaim = (decodedToken, name, value) =&gt; {
+  let claim = getClaim(decodedToken, name)
+  // if claim exists but value was not specified, return true
+  if (claim &amp;&amp; !value)
+    return true
+  if (claim)
+    return Array.isArray(claim) ? claim.indexOf(value) !== -1 : claim === value
+}
+
+
+function tokens(state = null, action = {}) {
+  const { type, payload, error } = action
+  switch(type) {
+    case SET_IDENTITY:
+      if(error || !payload.tokens)
+        return null
+      return payload.tokens
+    case FORGET_TOKENS:
+    case IDENTITY_INVALID:
+      return null
+    case AUTHORIZE_MIDDLEWARE:
+      return error ? null : state
+  }
+  return state
+}
+
+function fingerprint(state = null, action = {}) {
+  const { type, payload, error } = action
+  switch(type) {
+    case FORGET_FINGERPRINT:
+      return null
+    case SET_IDENTITY:
+      if(error)
+        return state
+      const { decodedToken } = payload
+      return getTixClaim(decodedToken, &apos;fingerprint&apos;)
+  }
+  return state
+}
+
+
+function isFetching(state = false, action = {}) {
+  const { type, payload, error } = action
+  switch(type) {
+    case FETCH_IDENTITY:
+      return true
+    case SET_IDENTITY:
+      return false
+  }
+  return state
+}
+
+function isAuthorized(state = false, action = {}) {
+  const { type, payload, error } = action
+  switch(type) {
+    case FORGET_TOKENS:
+    case FORGET_FINGERPRINT:
+    case IDENTITY_INVALID:
+    //case IDENTITY_EXPIRED:
+      return false
+    case AUTHORIZE_MIDDLEWARE:
+      return error ? false : state
+    case SET_IDENTITY:
+      return error ? false : true
+  }
+  return state
+}
+
+function isAdmin(state = false, action = {}) {
+  const { type, payload, error } = action
+  switch(type) {
+    case FORGET_TOKENS:
+    case FORGET_FINGERPRINT:
+    case IDENTITY_INVALID:
+    //case IDENTITY_EXPIRED:
+      return false
+    case AUTHORIZE_MIDDLEWARE:
+      return error ? false : state
+    case SET_IDENTITY:
+      if(error)
+        return false
+      const { decodedToken } = payload
+      const id = getTixClaim(decodedToken, &apos;actualorganizationid&apos;)
+      return id === 1
+  }
+  return state
+}
+
+function subject(state = null, action = {}) {
+  const { type, payload, error } = action
+  if(error)
+    return state
+  switch(type) {
+    case SET_IDENTITY:
+      const { decodedToken } = payload
+      return getClaim(decodedToken, &apos;sub&apos;)
+  }
+  return state
+}
+
+function user(state = null, action = {}) {
+  const { type, payload, error } = action
+
+  switch(type) {
+    case FORGET_TOKENS:
+    case FORGET_FINGERPRINT:
+    case IDENTITY_INVALID:
+    //case IDENTITY_EXPIRED:
+      return null
+    case AUTHORIZE_MIDDLEWARE:
+      return error ? null : state
+    case SET_IDENTITY:
+      if(error)
+        return null
+      const { decodedToken } = payload
+      let fullName = getTixClaim(decodedToken, &apos;username&apos;) // userfullname
+      /** Probably should switch this parsing around to return &apos;userfirstname&apos; and &apos;userlastname&apos; */
+      let sanitizedFullName = fullName ? fullName.trim() : &apos;Unknown Name&apos;
+      let nameParts = sanitizedFullName.split(&apos; &apos;).map(x =&gt; x.trim()).filter(x =&gt; x &amp;&amp; x.length &gt; 0)
+      let [ firstName, ...lastNames ] = nameParts
+      return  { username: getClaim(decodedToken, &apos;sub&apos;)
+              , id: getTixClaim(decodedToken, &apos;userid&apos;)
+              , fullName
+              , firstName
+              , lastName: lastNames.join(&apos; &apos;)
+              }
+  }
+  return state
+}
+
+function actualUser(state = null, action = {}) {
+  const { type, payload, error } = action
+  switch(type) {
+    case FORGET_TOKENS:
+    case FORGET_FINGERPRINT:
+    case IDENTITY_INVALID:
+    //case IDENTITY_EXPIRED:
+      return null
+    case AUTHORIZE_MIDDLEWARE:
+      return error ? null : state
+    case SET_IDENTITY:
+      if(error)
+        return null
+      const { decodedToken } = payload
+      return  { username: getTixClaim(decodedToken, &apos;actualusername&apos;) || &apos;No Actual Username&apos; // &apos;implement?&apos;
+              , id: getTixClaim(decodedToken, &apos;actualuserid&apos;) || &apos;No Actual User Id&apos;
+              , fullName: getTixClaim(decodedToken, &apos;actualfullName&apos;) || &apos;No Full Name&apos; // &apos;implement?&apos;
+              , firstName: getTixClaim(decodedToken, &apos;actualfirstname&apos;) // &apos;implement?&apos;
+              , lastName: getTixClaim(decodedToken, &apos;actuallastname&apos;) // &apos;implement?&apos;
+              }
+  }
+  return state
+}
+
+function organization(state = null, action = {}) {
+  const { type, payload, error } = action
+  switch(type) {
+    case FORGET_TOKENS:
+    case FORGET_FINGERPRINT:
+    case IDENTITY_INVALID:
+    //case IDENTITY_EXPIRED:
+      return null
+    case AUTHORIZE_MIDDLEWARE:
+      return error ? null : state
+    case SET_IDENTITY:
+      if(error)
+        return null
+      const { decodedToken } = payload
+      return  { id: getTixClaim(decodedToken, &apos;organizationid&apos;)
+              , name: getTixClaim(decodedToken, &apos;organization&apos;) // organizationname
+              }
+  }
+  return state
+}
+
+function actualOrganization(state = null, action = {}) {
+  const { type, payload, error } = action
+  switch(type) {
+    case FORGET_TOKENS:
+    case FORGET_FINGERPRINT:
+    case IDENTITY_INVALID:
+    //case IDENTITY_EXPIRED:
+      return null
+    case AUTHORIZE_MIDDLEWARE:
+      return error ? null : state
+    case SET_IDENTITY:
+      if(error)
+        return null
+      const { decodedToken } = payload
+      let id = getTixClaim(decodedToken, &apos;actualorganizationid&apos;)
+      return  { id
+              , name: id === 1 ? &apos;Tix&apos; : getTixClaim(decodedToken, &apos;organization&apos;) // actualorganizationname
+              }
+  }
+  return state
+}
+
+const getTimeoutMS = timeoutMinutes =&gt; timeoutMinutes * 60000
+const defaultTimeoutMS = getTimeoutMS(120)
+/** Sliding session timeout from any point in time */
+function timeoutMS(state = defaultTimeoutMS, action = {}) {
+  const { type, payload, error } = action
+  switch(type) {
+    case FORGET_TOKENS:
+    case FORGET_FINGERPRINT:
+    case IDENTITY_INVALID:
+    //case IDENTITY_EXPIRED:
+      return defaultTimeoutMS
+    case AUTHORIZE_MIDDLEWARE:
+      return error ? defaultTimeoutMS : state
+    case SET_IDENTITY:
+      if(error)
+        return defaultTimeoutMS
+      const { decodedToken } = payload
+      return getTimeoutMS(getTixClaim(decodedToken, &apos;timeout&apos;))
+  }
+  return state
+}
+
+const inactiveWindowMS = 30000
+const getInactiveMS = timeoutMinutes =&gt; timeoutMinutes * 60000 - inactiveWindowMS
+const defaultInactiveMS = getInactiveMS(120)
+/** Sliding session inactive from any point in time */
+function inactiveMS(state = defaultInactiveMS, action = {}) {
+  const { type, payload, error } = action
+  switch(type) {
+    case FORGET_TOKENS:
+    case FORGET_FINGERPRINT:
+    case IDENTITY_INVALID:
+    //case IDENTITY_EXPIRED:
+      return defaultInactiveMS
+    case AUTHORIZE_MIDDLEWARE:
+      return error ? defaultInactiveMS : state
+    case SET_IDENTITY:
+      if(error)
+        return defaultInactiveMS
+      const { decodedToken } = payload
+      return getInactiveMS(getTixClaim(decodedToken, &apos;timeout&apos;))
+  }
+  return state
+}
+
+/** What time (epoch) does token expire at */
+function expiresAtMS(state = null, action = {}) {
+  const { type, payload, error } = action
+  switch(type) {
+    case FORGET_TOKENS:
+    case FORGET_FINGERPRINT:
+    case IDENTITY_INVALID:
+    //case IDENTITY_EXPIRED:
+      return null
+    case AUTHORIZE_MIDDLEWARE:
+      return error ? null : state
+    case SET_IDENTITY:
+      if(error)
+        return null
+      const { decodedToken } = payload
+      return decodedToken.exp * 1000
+  }
+  return state
+}
+
+/** How long of a window prior to expiration should refresh occur */
+const refreshWindowMS = 40000
+/** What time (epoch) should refresh occur at */
+function refreshAtMS(state = null, action = {}) {
+  const { type, payload, error } = action
+  switch(type) {
+    case FORGET_TOKENS:
+    case FORGET_FINGERPRINT:
+    case IDENTITY_INVALID:
+    //case IDENTITY_EXPIRED:
+      return null
+    case AUTHORIZE_MIDDLEWARE:
+      return error ? null : state
+    case SET_IDENTITY:
+      if(error)
+        return null
+      const { decodedToken } = payload
+      return decodedToken.exp * 1000 - refreshWindowMS
+  }
+  return state
+}
+
+const initialState =  { isFetching: isFetching()
+                      , isAuthorized: isAuthorized()
+                      , isAdmin: isAdmin()
+                      , subject: subject()
+                      , user: user()
+                      , actualUser: actualUser()
+                      , organization: organization()
+                      , actualOrganization: actualOrganization()
+                      , timeoutMS: timeoutMS()
+                      , inactiveMS: inactiveMS()
+                      , expiresAtMS: expiresAtMS()
+                      , refreshAtMS: refreshAtMS()
+                      , tokens: tokens()
+                      , fingerprint: fingerprint()
+                      //, errors: errors()
+                      }
+
+
+export function identity(state = initialState, action) {
+  const { type, payload, error } = action
+  switch(type) {
+    case FETCH_IDENTITY:
+    case SET_IDENTITY:
+    case FORGET_TOKENS:
+    case FORGET_FINGERPRINT:
+    case IDENTITY_INVALID:
+    case IDENTITY_EXPIRED:
+    case AUTHORIZE_MIDDLEWARE:
+      return Object.assign({}, state, { isFetching: isFetching(state.isFetching, action)
+                                      , isAuthorized: isAuthorized(state.isAuthorized, action)
+                                      , isAdmin: isAdmin(state.isAdmin, action)
+                                      , subject: subject(state.subject, action)
+                                      , user: user(state.user, action)
+                                      , actualUser: actualUser(state.actualUser, action)
+                                      , organization: organization(state.organization, action)
+                                      , actualOrganization: actualOrganization(state.actualOrganization, action)
+                                      , timeoutMS: timeoutMS(state.timeoutMS, action)
+                                      , inactiveMS: inactiveMS(state.inactiveMS, action)
+                                      , expiresAtMS: expiresAtMS(state.expiresAtMS, action)
+                                      , refreshAtMS: refreshAtMS(state.refreshAtMS, action)
+                                      , tokens: tokens(state.tokens, action)
+                                      , fingerprint: fingerprint(state.fingerprint, action)
+                                      //, errors: errors(state.errors, action)
+                                      })
+  }
+  return state
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.6)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

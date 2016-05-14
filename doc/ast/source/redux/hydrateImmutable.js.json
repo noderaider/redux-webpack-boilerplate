@@ -1,0 +1,781 @@
+{
+  "type": "Program",
+  "start": 0,
+  "end": 364,
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 9,
+      "column": 0
+    }
+  },
+  "sourceType": "module",
+  "body": [
+    {
+      "type": "ImportDeclaration",
+      "start": 0,
+      "end": 33,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 33
+        }
+      },
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "start": 7,
+          "end": 16,
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 7
+            },
+            "end": {
+              "line": 1,
+              "column": 16
+            }
+          },
+          "local": {
+            "type": "Identifier",
+            "start": 7,
+            "end": 16,
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 7
+              },
+              "end": {
+                "line": 1,
+                "column": 16
+              }
+            },
+            "name": "Immutable"
+          }
+        }
+      ],
+      "importKind": "value",
+      "source": {
+        "type": "Literal",
+        "start": 22,
+        "end": 33,
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 22
+          },
+          "end": {
+            "line": 1,
+            "column": 33
+          }
+        },
+        "value": "immutable",
+        "rawValue": "immutable",
+        "raw": "'immutable'"
+      }
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "start": 37,
+      "end": 74,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 3,
+          "column": 37
+        }
+      },
+      "declaration": {
+        "type": "VariableDeclaration",
+        "start": 44,
+        "end": 74,
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 7
+          },
+          "end": {
+            "line": 3,
+            "column": 37
+          }
+        },
+        "declarations": [
+          {
+            "type": "VariableDeclarator",
+            "start": 50,
+            "end": 74,
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 13
+              },
+              "end": {
+                "line": 3,
+                "column": 37
+              }
+            },
+            "id": {
+              "type": "Identifier",
+              "start": 50,
+              "end": 57,
+              "loc": {
+                "start": {
+                  "line": 3,
+                  "column": 13
+                },
+                "end": {
+                  "line": 3,
+                  "column": 20
+                }
+              },
+              "name": "HYDRATE"
+            },
+            "init": {
+              "type": "Literal",
+              "start": 60,
+              "end": 74,
+              "loc": {
+                "start": {
+                  "line": 3,
+                  "column": 23
+                },
+                "end": {
+                  "line": 3,
+                  "column": 37
+                }
+              },
+              "value": "@@redux/INIT",
+              "rawValue": "@@redux/INIT",
+              "raw": "'@@redux/INIT'",
+              "leadingComments": null,
+              "trailingComments": null
+            },
+            "trailingComments": null
+          }
+        ],
+        "kind": "const",
+        "trailingComments": [
+          {
+            "type": "Block",
+            "value": "* Tests if object is an immutable structure and if not returns a new state that is immutable. ",
+            "start": 78,
+            "end": 176,
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 0
+              },
+              "end": {
+                "line": 5,
+                "column": 98
+              }
+            },
+            "range": [
+              78,
+              176
+            ]
+          }
+        ],
+        "leadingComments": []
+      },
+      "specifiers": [],
+      "source": null,
+      "trailingComments": [
+        {
+          "type": "Block",
+          "value": "* Tests if object is an immutable structure and if not returns a new state that is immutable. ",
+          "start": 78,
+          "end": 176,
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 0
+            },
+            "end": {
+              "line": 5,
+              "column": 98
+            }
+          },
+          "range": [
+            78,
+            176
+          ]
+        }
+      ]
+    },
+    {
+      "type": "ExportDefaultDeclaration",
+      "start": 178,
+      "end": 362,
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 0
+        },
+        "end": {
+          "line": 8,
+          "column": 1
+        }
+      },
+      "declaration": {
+        "type": "FunctionDeclaration",
+        "start": 193,
+        "end": 362,
+        "loc": {
+          "start": {
+            "line": 6,
+            "column": 15
+          },
+          "end": {
+            "line": 8,
+            "column": 1
+          }
+        },
+        "id": {
+          "type": "Identifier",
+          "start": 202,
+          "end": 218,
+          "loc": {
+            "start": {
+              "line": 6,
+              "column": 24
+            },
+            "end": {
+              "line": 6,
+              "column": 40
+            }
+          },
+          "name": "hydrateImmutable",
+          "leadingComments": null
+        },
+        "generator": false,
+        "expression": false,
+        "async": false,
+        "params": [
+          {
+            "type": "Identifier",
+            "start": 219,
+            "end": 224,
+            "loc": {
+              "start": {
+                "line": 6,
+                "column": 41
+              },
+              "end": {
+                "line": 6,
+                "column": 46
+              }
+            },
+            "name": "state"
+          },
+          {
+            "type": "AssignmentPattern",
+            "start": 226,
+            "end": 237,
+            "loc": {
+              "start": {
+                "line": 6,
+                "column": 48
+              },
+              "end": {
+                "line": 6,
+                "column": 59
+              }
+            },
+            "operator": "=",
+            "left": {
+              "type": "Identifier",
+              "start": 226,
+              "end": 232,
+              "loc": {
+                "start": {
+                  "line": 6,
+                  "column": 48
+                },
+                "end": {
+                  "line": 6,
+                  "column": 54
+                }
+              },
+              "name": "action"
+            },
+            "right": {
+              "type": "ObjectExpression",
+              "start": 235,
+              "end": 237,
+              "loc": {
+                "start": {
+                  "line": 6,
+                  "column": 57
+                },
+                "end": {
+                  "line": 6,
+                  "column": 59
+                }
+              },
+              "properties": []
+            }
+          }
+        ],
+        "body": {
+          "type": "BlockStatement",
+          "start": 239,
+          "end": 362,
+          "loc": {
+            "start": {
+              "line": 6,
+              "column": 61
+            },
+            "end": {
+              "line": 8,
+              "column": 1
+            }
+          },
+          "body": [
+            {
+              "type": "ReturnStatement",
+              "start": 244,
+              "end": 359,
+              "loc": {
+                "start": {
+                  "line": 7,
+                  "column": 2
+                },
+                "end": {
+                  "line": 7,
+                  "column": 117
+                }
+              },
+              "argument": {
+                "type": "ArrayExpression",
+                "start": 251,
+                "end": 359,
+                "loc": {
+                  "start": {
+                    "line": 7,
+                    "column": 9
+                  },
+                  "end": {
+                    "line": 7,
+                    "column": 117
+                  }
+                },
+                "elements": [
+                  {
+                    "type": "ConditionalExpression",
+                    "start": 252,
+                    "end": 350,
+                    "loc": {
+                      "start": {
+                        "line": 7,
+                        "column": 10
+                      },
+                      "end": {
+                        "line": 7,
+                        "column": 108
+                      }
+                    },
+                    "test": {
+                      "type": "LogicalExpression",
+                      "start": 252,
+                      "end": 316,
+                      "loc": {
+                        "start": {
+                          "line": 7,
+                          "column": 10
+                        },
+                        "end": {
+                          "line": 7,
+                          "column": 74
+                        }
+                      },
+                      "left": {
+                        "type": "BinaryExpression",
+                        "start": 252,
+                        "end": 275,
+                        "loc": {
+                          "start": {
+                            "line": 7,
+                            "column": 10
+                          },
+                          "end": {
+                            "line": 7,
+                            "column": 33
+                          }
+                        },
+                        "left": {
+                          "type": "MemberExpression",
+                          "start": 252,
+                          "end": 263,
+                          "loc": {
+                            "start": {
+                              "line": 7,
+                              "column": 10
+                            },
+                            "end": {
+                              "line": 7,
+                              "column": 21
+                            }
+                          },
+                          "object": {
+                            "type": "Identifier",
+                            "start": 252,
+                            "end": 258,
+                            "loc": {
+                              "start": {
+                                "line": 7,
+                                "column": 10
+                              },
+                              "end": {
+                                "line": 7,
+                                "column": 16
+                              }
+                            },
+                            "name": "action"
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "start": 259,
+                            "end": 263,
+                            "loc": {
+                              "start": {
+                                "line": 7,
+                                "column": 17
+                              },
+                              "end": {
+                                "line": 7,
+                                "column": 21
+                              }
+                            },
+                            "name": "type"
+                          },
+                          "computed": false
+                        },
+                        "operator": "===",
+                        "right": {
+                          "type": "Identifier",
+                          "start": 268,
+                          "end": 275,
+                          "loc": {
+                            "start": {
+                              "line": 7,
+                              "column": 26
+                            },
+                            "end": {
+                              "line": 7,
+                              "column": 33
+                            }
+                          },
+                          "name": "HYDRATE"
+                        }
+                      },
+                      "operator": "&&",
+                      "right": {
+                        "type": "UnaryExpression",
+                        "start": 279,
+                        "end": 316,
+                        "loc": {
+                          "start": {
+                            "line": 7,
+                            "column": 37
+                          },
+                          "end": {
+                            "line": 7,
+                            "column": 74
+                          }
+                        },
+                        "operator": "!",
+                        "prefix": true,
+                        "argument": {
+                          "type": "CallExpression",
+                          "start": 280,
+                          "end": 316,
+                          "loc": {
+                            "start": {
+                              "line": 7,
+                              "column": 38
+                            },
+                            "end": {
+                              "line": 7,
+                              "column": 74
+                            }
+                          },
+                          "callee": {
+                            "type": "MemberExpression",
+                            "start": 280,
+                            "end": 309,
+                            "loc": {
+                              "start": {
+                                "line": 7,
+                                "column": 38
+                              },
+                              "end": {
+                                "line": 7,
+                                "column": 67
+                              }
+                            },
+                            "object": {
+                              "type": "MemberExpression",
+                              "start": 280,
+                              "end": 298,
+                              "loc": {
+                                "start": {
+                                  "line": 7,
+                                  "column": 38
+                                },
+                                "end": {
+                                  "line": 7,
+                                  "column": 56
+                                }
+                              },
+                              "object": {
+                                "type": "Identifier",
+                                "start": 280,
+                                "end": 289,
+                                "loc": {
+                                  "start": {
+                                    "line": 7,
+                                    "column": 38
+                                  },
+                                  "end": {
+                                    "line": 7,
+                                    "column": 47
+                                  }
+                                },
+                                "name": "Immutable"
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "start": 290,
+                                "end": 298,
+                                "loc": {
+                                  "start": {
+                                    "line": 7,
+                                    "column": 48
+                                  },
+                                  "end": {
+                                    "line": 7,
+                                    "column": 56
+                                  }
+                                },
+                                "name": "Iterable"
+                              },
+                              "computed": false
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "start": 299,
+                              "end": 309,
+                              "loc": {
+                                "start": {
+                                  "line": 7,
+                                  "column": 57
+                                },
+                                "end": {
+                                  "line": 7,
+                                  "column": 67
+                                }
+                              },
+                              "name": "isIterable"
+                            },
+                            "computed": false
+                          },
+                          "arguments": [
+                            {
+                              "type": "Identifier",
+                              "start": 310,
+                              "end": 315,
+                              "loc": {
+                                "start": {
+                                  "line": 7,
+                                  "column": 68
+                                },
+                                "end": {
+                                  "line": 7,
+                                  "column": 73
+                                }
+                              },
+                              "name": "state"
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    "consequent": {
+                      "type": "CallExpression",
+                      "start": 319,
+                      "end": 342,
+                      "loc": {
+                        "start": {
+                          "line": 7,
+                          "column": 77
+                        },
+                        "end": {
+                          "line": 7,
+                          "column": 100
+                        }
+                      },
+                      "callee": {
+                        "type": "MemberExpression",
+                        "start": 319,
+                        "end": 335,
+                        "loc": {
+                          "start": {
+                            "line": 7,
+                            "column": 77
+                          },
+                          "end": {
+                            "line": 7,
+                            "column": 93
+                          }
+                        },
+                        "object": {
+                          "type": "Identifier",
+                          "start": 319,
+                          "end": 328,
+                          "loc": {
+                            "start": {
+                              "line": 7,
+                              "column": 77
+                            },
+                            "end": {
+                              "line": 7,
+                              "column": 86
+                            }
+                          },
+                          "name": "Immutable"
+                        },
+                        "property": {
+                          "type": "Identifier",
+                          "start": 329,
+                          "end": 335,
+                          "loc": {
+                            "start": {
+                              "line": 7,
+                              "column": 87
+                            },
+                            "end": {
+                              "line": 7,
+                              "column": 93
+                            }
+                          },
+                          "name": "fromJS"
+                        },
+                        "computed": false
+                      },
+                      "arguments": [
+                        {
+                          "type": "Identifier",
+                          "start": 336,
+                          "end": 341,
+                          "loc": {
+                            "start": {
+                              "line": 7,
+                              "column": 94
+                            },
+                            "end": {
+                              "line": 7,
+                              "column": 99
+                            }
+                          },
+                          "name": "state"
+                        }
+                      ]
+                    },
+                    "alternate": {
+                      "type": "Identifier",
+                      "start": 345,
+                      "end": 350,
+                      "loc": {
+                        "start": {
+                          "line": 7,
+                          "column": 103
+                        },
+                        "end": {
+                          "line": 7,
+                          "column": 108
+                        }
+                      },
+                      "name": "state"
+                    }
+                  },
+                  {
+                    "type": "Identifier",
+                    "start": 352,
+                    "end": 358,
+                    "loc": {
+                      "start": {
+                        "line": 7,
+                        "column": 110
+                      },
+                      "end": {
+                        "line": 7,
+                        "column": 116
+                      }
+                    },
+                    "name": "action"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "leadingComments": [
+          {
+            "type": "Block",
+            "value": "* Tests if object is an immutable structure and if not returns a new state that is immutable. ",
+            "start": 78,
+            "end": 176,
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 0
+              },
+              "end": {
+                "line": 5,
+                "column": 98
+              }
+            },
+            "range": [
+              78,
+              176
+            ]
+          }
+        ],
+        "trailingComments": []
+      },
+      "leadingComments": [
+        {
+          "type": "Block",
+          "value": "* Tests if object is an immutable structure and if not returns a new state that is immutable. ",
+          "start": 78,
+          "end": 176,
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 0
+            },
+            "end": {
+              "line": 5,
+              "column": 98
+            }
+          },
+          "range": [
+            78,
+            176
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../">
+  <title data-ice="title">lib/redux/reducers/visual.js | redux-idle-monitor API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/cchamberlain/redux-webpack-boilerplate" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getCors">getCors</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-proxy">proxy</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-readCertificate">readCertificate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-readPfx">readPfx</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getServerMap">getServerMap</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-configureServer">configureServer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-devStream">devStream</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-voidStream">voidStream</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">redux</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-hydrateImmutable">hydrateImmutable</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ACTIVE_SESSION">ACTIVE_SESSION</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ADD_ERROR">ADD_ERROR</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-AUTHORIZE_MIDDLEWARE">AUTHORIZE_MIDDLEWARE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CLEAR_DATA">CLEAR_DATA</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CLEAR_ERRORS">CLEAR_ERRORS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CLEAR_SUGGESTIONS">CLEAR_SUGGESTIONS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CLEAR_VALIDATED">CLEAR_VALIDATED</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DISMISS_ERROR">DISMISS_ERROR</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DISPOSE_TOOLTIP">DISPOSE_TOOLTIP</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-EXPIRED_SESSION">EXPIRED_SESSION</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FETCH_AUTHORIZE_IDENTITY">FETCH_AUTHORIZE_IDENTITY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FETCH_DATA">FETCH_DATA</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FETCH_IDENTITY">FETCH_IDENTITY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FETCH_IMPERSONATE_IDENTITY">FETCH_IMPERSONATE_IDENTITY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FETCH_MONIKERS">FETCH_MONIKERS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FETCH_REFRESH_IDENTITY">FETCH_REFRESH_IDENTITY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FETCH_SUGGESTIONS">FETCH_SUGGESTIONS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FILTER_SUGGESTIONS">FILTER_SUGGESTIONS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FORGET_FINGERPRINT">FORGET_FINGERPRINT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FORGET_TOKENS">FORGET_TOKENS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FORGOTTEN_FINGERPRINT">FORGOTTEN_FINGERPRINT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FORGOTTEN_TOKENS">FORGOTTEN_TOKENS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-HYDRATE_FINGERPRINT">HYDRATE_FINGERPRINT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-HYDRATE_IDENTITY">HYDRATE_IDENTITY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-HYDRATE_TOKENS">HYDRATE_TOKENS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-IDENTITY_EXPIRED">IDENTITY_EXPIRED</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-IDENTITY_INVALID">IDENTITY_INVALID</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INACTIVE_SESSION">INACTIVE_SESSION</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-KEYED_DATA">KEYED_DATA</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PERSISTED_FINGERPRINT">PERSISTED_FINGERPRINT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PERSISTED_TOKENS">PERSISTED_TOKENS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-POST_AUTHORIZE">POST_AUTHORIZE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-POST_AUTHORIZE_ADMIN">POST_AUTHORIZE_ADMIN</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-RECEIVE_AUTHORIZE_IDENTITY">RECEIVE_AUTHORIZE_IDENTITY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-RECEIVE_DATA">RECEIVE_DATA</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-RECEIVE_IMPERSONATE_IDENTITY">RECEIVE_IMPERSONATE_IDENTITY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-RECEIVE_MONIKERS">RECEIVE_MONIKERS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-RECEIVE_REFRESH_IDENTITY">RECEIVE_REFRESH_IDENTITY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-REGISTER_TOOLTIP">REGISTER_TOOLTIP</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SET_EXPANDER">SET_EXPANDER</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SET_IDENTITY">SET_IDENTITY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SET_SESSION_TIMEOUTS">SET_SESSION_TIMEOUTS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SET_TEXT">SET_TEXT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SET_THEME">SET_THEME</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SET_VALIDATED">SET_VALIDATED</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SET_VISIBILITY">SET_VISIBILITY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TOGGLE_EXPANDER">TOGGLE_EXPANDER</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TOGGLE_VISIBILITY">TOGGLE_VISIBILITY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-UPDATE_INPUT_VALUE">UPDATE_INPUT_VALUE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-HYDRATE">HYDRATE</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">redux/reducers</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-api">api</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-autocomplete">autocomplete</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-errors">errors</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-identity">identity</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-validation">validation</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-visual">visual</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-initialState">initialState</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">redux/store</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-configureStore">configureStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-configureStore">configureStore</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">router</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-configureApiRouter">configureApiRouter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-configureAppRouter">configureAppRouter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-configureRouter">configureRouter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-configureSecureRouter">configureSecureRouter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-configureUnsupportedRouter">configureUnsupportedRouter</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">routes</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-configureRoutes">configureRoutes</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">routes/Identity/routes/Login/components</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/routes/Identity/routes/Login/components/Login.js~Login.html">Login</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">routes/Identity/routes/Maintenance/components</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/routes/Identity/routes/Maintenance/components/Maintenance.js~Maintenance.html">Maintenance</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">routes/NoMatch/components</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/routes/NoMatch/components/NoMatch.js~NoMatch.html">NoMatch</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">routes/components</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/routes/components/App.js~App.html">App</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/routes/components/Index.js~Index.html">Index</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">lib/redux/reducers/visual.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Immutable from &apos;immutable&apos;
+import { defaultTheme } from &apos;../../../config&apos;
+import hydrateImmutable, { HYDRATE } from &apos;../hydrateImmutable&apos;
+import  { TOGGLE_VISIBILITY
+        , SET_VISIBILITY
+        , SET_THEME
+        , TOGGLE_EXPANDER
+        , SET_EXPANDER
+        , REGISTER_TOOLTIP
+        , DISPOSE_TOOLTIP
+        , SET_TEXT
+       } from &apos;../constants&apos;
+
+const REDUX_FORM_CHANGE = &apos;redux-form/CHANGE&apos;
+
+const nextValue = current =&gt; {
+  let value = current.get(&apos;value&apos;)
+  let options = current.get(&apos;options&apos;)
+  let nextIndex = options.indexOf(value) + 1
+  return nextIndex &gt;= options.size ? options.first() : options.get(nextIndex)
+}
+
+function visibility(state = Immutable.Map(), action = {}) {
+  const { type, payload, error } = action
+  if(error || !payload)
+    return state
+  const { componentID, value, options } = payload
+  switch(type) {
+    case TOGGLE_VISIBILITY:
+      const current = state.get(componentID)
+      if(current) {
+        const next = nextValue(current)
+        return state.setIn([componentID, &apos;value&apos;], next)
+      }
+      return state.set(componentID, Immutable.fromJS({ options, value }))
+    case SET_VISIBILITY:
+      if(state.has(componentID))
+        return state.setIn([componentID, &apos;value&apos;], value)
+      return state.set(componentID, Immutable.fromJS({ options, value }))
+  }
+  return state
+}
+
+function expanders(state = Immutable.Map(), action = {}) {
+  const { type, payload, error } = action
+  if(error || !payload)
+    return state
+  const { componentID, value, initialExpanders } = payload
+  switch(type) {
+    case SET_EXPANDER:
+      return state.set(componentID, value)
+    case TOGGLE_EXPANDER:
+      return state.update(componentID, initialExpanders, x =&gt; !x )
+  }
+  return state
+}
+
+function tooltip(state = Immutable.Map(), action = {}) {
+  const { type, payload, error } = action
+  if(error || !payload)
+    return state
+  const { componentID, props } = payload
+  switch(type) {
+    case REGISTER_TOOLTIP:
+      state.set(componentID, props)
+    case DISPOSE_TOOLTIP:
+      state.remove(componentID)
+  }
+  return state
+}
+
+function text(state = Immutable.Map(), action = {}) {
+  const { type, payload, error } = action
+  if(error)
+    return state
+  switch(type) {
+    case SET_TEXT:
+      return state.merge(payload)
+    case REDUX_FORM_CHANGE:
+      const { field, value, form } = action
+      if(form !== &apos;page&apos;)
+        return state
+      return state.set(field, value)
+  }
+  return state
+}
+
+const initialTheme = defaultTheme
+function theme(state = initialTheme, action = {}) {
+  const { type, payload, error } = action
+  if(error || !payload)
+    return state
+  switch(type) {
+    case SET_THEME:
+      return payload.name
+  }
+  return state
+}
+
+const initialState = { visibility: visibility(), theme: theme(), expanders: expanders(), tooltip: tooltip(), text: text() }
+
+export function visual(state = initialState, action) {
+  const { type, payload, error } = action
+  switch(type) {
+    case HYDRATE:
+      return Object.assign({}, state, { visibility: visibility(...hydrateImmutable(state.visibility, action))
+                                      , expanders: expanders(...hydrateImmutable(state.expanders, action))
+                                      , tooltip: tooltip(...hydrateImmutable(state.tooltip, action))
+                                      , text: text(...hydrateImmutable(state.text, action))
+                                      })
+    case TOGGLE_VISIBILITY:
+    case SET_VISIBILITY:
+      return Object.assign({}, state, { visibility: visibility(state.visibility, action) })
+    case SET_THEME:
+      return Object.assign({}, state, { theme: theme(state.theme, action)})
+    case TOGGLE_EXPANDER:
+    case SET_EXPANDER:
+      return Object.assign({}, state, { expanders: expanders(state.expanders, action)})
+    case REGISTER_TOOLTIP:
+    case DISPOSE_TOOLTIP:
+      return Object.assign({}, state, { tooltip: tooltip(state.tooltip, action)})
+    case SET_TEXT:
+    case REDUX_FORM_CHANGE:
+      return Object.assign({}, state, { text: text(state.text, action) })
+  }
+  return state
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.6)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
