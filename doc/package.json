@@ -1,6 +1,6 @@
 {
   "name": "redux-webpack-boilerplate",
-  "version": "0.2.13",
+  "version": "0.2.14",
   "description": "Generic base project for Redux / React / Webpack / Babel projects and libraries.",
   "main": "lib/index.js",
   "files": [
@@ -57,7 +57,7 @@
     "watch": "npm run watch-build",
     "predoc": "rimraf doc",
     "doc": "esdoc -c ./esdoc.json",
-    "prerelease": "npm run build",
+    "prerelease": "npm run build && git add -A && git commit -am \"publish\"",
     "release": "npm version patch && npm publish",
     "postrelease": "npm run release-doc",
     "prerelease-doc": "npm run doc",
@@ -206,7 +206,7 @@
   "bugs": {
     "url": "https://github.com/cchamberlain/redux-webpack-boilerplate/issues"
   },
-  "homepage": "https://redux-webpack-boilerplate.js.org",
+  "homepage": "https://cchamberlain.github.io/redux-webpack-boilerplate",
   "license": "MIT",
   "repository": {
     "type": "git",

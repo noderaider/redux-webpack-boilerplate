@@ -76038,7 +76038,7 @@ webpackJsonp([4,3],[
 
 	module.exports = {
 		"name": "redux-webpack-boilerplate",
-		"version": "0.2.13",
+		"version": "0.2.14",
 		"description": "Generic base project for Redux / React / Webpack / Babel projects and libraries.",
 		"main": "lib/index.js",
 		"files": [
