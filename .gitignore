@@ -1,6 +1,7 @@
 .repackagerc
 /bin/
 /lib/
+/public/
 /webpack/
 /config.js
 /webpack.config.js

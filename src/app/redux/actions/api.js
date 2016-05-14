@@ -35,11 +35,7 @@ export const decodeToken = accessToken => jwtSimple.decode(accessToken, null, tr
 export const isExpired = decodedToken => getExpiresInMS(decodedToken) < 0
 const getExpiresInMS = decodedToken => decodedToken.exp * 1000 - Date.now()
 
-const getTixClaimSchema = name => `http://schemas.tix.com/identity/claims/${name}`
 const getClaim = (decodedToken, name) => decodedToken[name]
-const hasTixClaim = (decodedToken, name, value) => hasClaim(decodedToken, getTixClaimSchema(name), value)
-const getTixClaim = (decodedToken, name) => getClaim(decodedToken, getTixClaimSchema(name))
-const hasRole = (decodedToken, roleName) => hasClaim(decodedToken, getTixClaimSchema('role'), roleName)
 const hasClaim = (decodedToken, name, value) => {
   let claim = getClaim(decodedToken, name)
   // if claim exists but value was not specified, return true
