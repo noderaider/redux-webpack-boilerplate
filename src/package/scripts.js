@@ -25,7 +25,7 @@ export default ({}) => Object.assign({}, ...[ build('package', resource => `babe
                                               , 'watch': 'npm run watch-build'
                                               , 'predoc': 'rimraf doc'
                                               , 'doc': 'esdoc -c ./esdoc.json'
-                                              , 'prerelease': 'npm run build'
+                                              , 'prerelease': 'npm run build && git add -A && git commit -am "publish"'
                                               , 'release': 'npm version patch && npm publish'
                                               , 'postrelease': 'npm run release-doc'
                                               , 'prerelease-doc': 'npm run doc'

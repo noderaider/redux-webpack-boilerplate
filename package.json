@@ -19,7 +19,7 @@
   "scripts": {
     "prebuild-package": "rimraf package",
     "build-package": "babel src/package -d package",
-    "prebuild-webpack": "rimraf webpack && npm run copy-config-client && npm run copy-config-server && npm run build-package && npm run build-config",
+    "prebuild-webpack": "rimraf webpack && npm run copy-config-client && npm run copy-config-server && npm run build-package && npm run build-config-client && npm run build-config-server",
     "build-webpack": "babel src/config.js -o config.js && babel src/webpack.config.js -o webpack.config.js && babel src/webpack.static.config.js -o webpack.static.config.js && babel src/webpack -d webpack",
     "prebuild-public": "rimraf public && npm run build-webpack && npm run build-package",
     "build-public": "ncp src/public public && webpack --config webpack.static.config.js --progress --profile --colors",
@@ -57,7 +57,7 @@
     "watch": "npm run watch-build",
     "predoc": "rimraf doc",
     "doc": "esdoc -c ./esdoc.json",
-    "prerelease": "npm run build",
+    "prerelease": "npm run build && git add -A && git commit -am \"publish\"",
     "release": "npm version patch && npm publish",
     "postrelease": "npm run release-doc",
     "prerelease-doc": "npm run doc",
@@ -206,7 +206,7 @@
   "bugs": {
     "url": "https://github.com/cchamberlain/redux-webpack-boilerplate/issues"
   },
-  "homepage": "https://redux-webpack-boilerplate.js.org",
+  "homepage": "https://cchamberlain.github.io/redux-webpack-boilerplate",
   "license": "MIT",
   "repository": {
     "type": "git",
