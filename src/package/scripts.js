@@ -1,5 +1,5 @@
 export default ({}) => Object.assign({}, ...[ build('package', resource => `babel src/${resource} -d ${resource}`)
-                                            , build('webpack', resource => `babel src/config.js -o config.js && babel src/webpack.config.js -o webpack.config.js && babel src/${resource}.static.config.js -o ${resource}.static.config.js && babel src/${resource} -d ${resource}`, ['copy-config-client', 'copy-config-server', 'build-package', 'build-config-client', 'build-config-server'])
+                                            , build('webpack', resource => `babel src/config.js -o config.js && babel src/webpack.config.js -o webpack.config.js && babel src/${resource}.static.config.js -o ${resource}.static.config.js && babel src/${resource} -d ${resource}`, ['copy-config-client', 'copy-config-server', 'build-package', 'config-client', 'config-server'])
                                             , build('public', resource => `ncp src/${resource} ${resource} && webpack --config webpack.static.config.js --progress --profile --colors`, ['build-webpack', 'build-package'])
                                             , buildWebpack('app', 'webpack.config.js', ['build-public'])
                                             , buildBabel('bin')

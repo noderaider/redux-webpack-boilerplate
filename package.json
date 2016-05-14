@@ -19,7 +19,7 @@
   "scripts": {
     "prebuild-package": "rimraf package",
     "build-package": "babel src/package -d package",
-    "prebuild-webpack": "rimraf webpack && npm run copy-config-client && npm run copy-config-server && npm run build-package && npm run build-config-client && npm run build-config-server",
+    "prebuild-webpack": "rimraf webpack && npm run copy-config-client && npm run copy-config-server && npm run build-package && npm run config-client && npm run config-server",
     "build-webpack": "babel src/config.js -o config.js && babel src/webpack.config.js -o webpack.config.js && babel src/webpack.static.config.js -o webpack.static.config.js && babel src/webpack -d webpack",
     "prebuild-public": "rimraf public && npm run build-webpack && npm run build-package",
     "build-public": "ncp src/public public && webpack --config webpack.static.config.js --progress --profile --colors",
