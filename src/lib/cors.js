@@ -15,10 +15,6 @@ const corsValidator = patterns => {
 
 export function getCors() {
   const isOriginOk = origins ? corsValidator(origins.map(x => new RegExp(x))) : true
-<<<<<<< HEAD
-=======
-
->>>>>>> 4abea51040a37095cd7be44e51e3f79dcec9524c
 
   const failureStatus = { code: 403
                         , message: '403 Forbidden'

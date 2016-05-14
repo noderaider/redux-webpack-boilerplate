@@ -40,7 +40,7 @@ class App extends Component {
             }
   }
   render(){
-    const { dispatch, theme, title, subtitle, username, organization, email, full, packageName, errors } = this.props
+    const { dispatch, theme, title, subtitle, username, organization, email, full, packageName, errors, children } = this.props
     const { style } = theme
 
     const hasErrors = errors.get('api').size > 0 || errors.get('identity').size > 0

@@ -9,7 +9,7 @@ export default function configureRoutes({ ContainerComponent = App, IndexCompone
   assert.ok(childRoutes, 'childRoutes are required')
   return  { path: '/'
           , component: ContainerComponent
-          //, indexRoute: { component: IndexComponent }
+          , indexRoute: { component: IndexComponent }
           , childRoutes
           }
 }

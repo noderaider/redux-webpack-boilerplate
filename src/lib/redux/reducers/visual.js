@@ -4,12 +4,14 @@ import hydrateImmutable, { HYDRATE } from '../hydrateImmutable'
 import  { TOGGLE_VISIBILITY
         , SET_VISIBILITY
         , SET_THEME
-        , SET_TEXT
         , TOGGLE_EXPANDER
         , SET_EXPANDER
         , REGISTER_TOOLTIP
         , DISPOSE_TOOLTIP
-        } from '../constants'
+        , SET_TEXT
+       } from '../constants'
+
+const REDUX_FORM_CHANGE = 'redux-form/CHANGE'
 
 const nextValue = current => {
   let value = current.get('value')
@@ -69,14 +71,16 @@ function tooltip(state = Immutable.Map(), action = {}) {
 
 function text(state = Immutable.Map(), action = {}) {
   const { type, payload, error } = action
-  if(error || !payload)
+  if(error)
     return state
   switch(type) {
-    case UPDATE_TEXT:
-      const { componentID, maxCount, textValue } = payload
-      const currentCount = textValue.length || 0
-      const remainingCount = maxCount - currentCount
-      return state.mergeDeep({ [componentID]: { textValue, maxCount, currentCount, remainingCount } })
+    case SET_TEXT:
+      return state.merge(payload)
+    case REDUX_FORM_CHANGE:
+      const { field, value, form } = action
+      if(form !== 'page')
+        return state
+      return state.set(field, value)
   }
   return state
 }
@@ -93,7 +97,7 @@ function theme(state = initialTheme, action = {}) {
   return state
 }
 
-const initialState = { visibility: visibility(), theme: theme(), expanders: expanders(), tooltip: tooltip() }
+const initialState = { visibility: visibility(), theme: theme(), expanders: expanders(), tooltip: tooltip(), text: text() }
 
 export function visual(state = initialState, action) {
   const { type, payload, error } = action
@@ -102,6 +106,7 @@ export function visual(state = initialState, action) {
       return Object.assign({}, state, { visibility: visibility(...hydrateImmutable(state.visibility, action))
                                       , expanders: expanders(...hydrateImmutable(state.expanders, action))
                                       , tooltip: tooltip(...hydrateImmutable(state.tooltip, action))
+                                      , text: text(...hydrateImmutable(state.text, action))
                                       })
     case TOGGLE_VISIBILITY:
     case SET_VISIBILITY:
@@ -114,6 +119,9 @@ export function visual(state = initialState, action) {
     case REGISTER_TOOLTIP:
     case DISPOSE_TOOLTIP:
       return Object.assign({}, state, { tooltip: tooltip(state.tooltip, action)})
+    case SET_TEXT:
+    case REDUX_FORM_CHANGE:
+      return Object.assign({}, state, { text: text(state.text, action) })
   }
   return state
 }

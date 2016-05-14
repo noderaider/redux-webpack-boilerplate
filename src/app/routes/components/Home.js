@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
 
 import contextTypes from 'app/context'
 import PageForm from 'app/elements/forms/PageForm'

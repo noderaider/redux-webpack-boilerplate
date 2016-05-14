@@ -15,7 +15,7 @@ export const IS_BROWSER = typeof window === 'object'
 export const client = require('./config-client.json')
 export const server = IS_BROWSER ? noop() : require('./config-server.json')
 const configJSON = IS_BROWSER ? client : server
-export const packageJSON = IS_BROWSER ? { name: packageName } : require('./package.json')
+export const packageJSON = require('./package.json')
 
 export const baseUrl = `http${client['_configuration_'] === 'debug' ? '' : 's'}://${client.hostname}`
 
