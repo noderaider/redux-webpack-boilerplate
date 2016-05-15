@@ -1,12 +1,44 @@
 webpackJsonp([5,3],{
 
-/***/ 528:
-/*!***************************************************************!*\
-  !*** ../src/app/routes/Test/routes/Grids/components/Grids.js ***!
-  \***************************************************************/
+/***/ 458:
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ 1);\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _PrimaryGrid = __webpack_require__(/*! app/elements/grids/PrimaryGrid */ 117);\n\nvar _PrimaryGrid2 = _interopRequireDefault(_PrimaryGrid);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = function (_ref) {\n  var children = _ref.children;\n  var params = _ref.params;\n  return _react2.default.createElement(\n    'div',\n    null,\n    _react2.default.createElement(\n      'h2',\n      null,\n      'Grid Tests'\n    ),\n    params.id ? _react2.default.createElement(\n      'span',\n      null,\n      params.id\n    ) : null,\n    _react2.default.createElement(_PrimaryGrid2.default, null),\n    children\n  );\n};\n\n/*****************\n ** WEBPACK FOOTER\n ** ../src/app/routes/Test/routes/Grids/components/Grids.js\n ** module id = 528\n ** module chunks = 5\n **/\n//# sourceURL=webpack:///../src/app/routes/Test/routes/Grids/components/Grids.js?");
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _PrimaryGrid = __webpack_require__(99);
+
+	var _PrimaryGrid2 = _interopRequireDefault(_PrimaryGrid);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = function (_ref) {
+	  var children = _ref.children;
+	  var params = _ref.params;
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    _react2.default.createElement(
+	      'h2',
+	      null,
+	      'Grid Tests'
+	    ),
+	    params.id ? _react2.default.createElement(
+	      'span',
+	      null,
+	      params.id
+	    ) : null,
+	    _react2.default.createElement(_PrimaryGrid2.default, null),
+	    children
+	  );
+	};
 
 /***/ }
 
