@@ -2,7 +2,7 @@ import { persistState } from 'redux-devtools'
 import { browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 import { saveStore, getInitialState } from './globalStore'
-import idle, { middleware as idleMiddleware } from '../modules/redux-idle-monitor'
+import idle, { actions as idleActions, middleware as idleMiddleware } from '../modules/redux-idle-monitor'
 import initBrowserStore from './initBrowserStore'
 
 const importConfigureStore = () => require('lib/redux/store/configureStore').default
@@ -29,6 +29,7 @@ const createBrowserStore = ({ history = browserHistory, initialState = getInitia
   const unsubscribe = initBrowserStore(store)
   const browserStore = { ...store, unsubscribe }
   saveStore(browserStore, syncedHistory)
+  store.dispatch(idleActions.start())
   return [browserStore, syncedHistory]
 }
 

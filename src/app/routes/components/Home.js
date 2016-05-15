@@ -17,7 +17,7 @@ class Home extends Component {
           <li>Fork <a href="https://github.com/cchamberlain/redux-webpack-boilerplate">redux-webpack-boilerplate</a></li>
           <li><code>git clone https://github.com/{username}/redux-webpack-boilerplate</code></li>
           <li>Set title to <b>{title}</b> in src/config-client.json</li>
-          <li>Set subtitle to <b>{title}</b> in src/config-client.json</li>
+          <li>Set subtitle to <b>{subtitle}</b> in src/config-client.json</li>
           <li>Set package name to <b>{packageName}</b> in src/package/name.js</li>
           <li><code>npm i</code></li>
           <li><code>npm run start-hot</code></li>
