@@ -2,6 +2,7 @@ import { packageName, packageKey } from 'config'
 import subscribeStore from './subscribeStore'
 import hydrateStore from './hydrateStore'
 import { setText } from '../actions/visual'
+import { actions as idleActions } from '../modules/redux-idle-monitor'
 
 export default function initBrowserStore(store) {
   const unsubscribe = subscribeStore(store)
@@ -14,5 +15,6 @@ export default function initBrowserStore(store) {
                           , full: 'Your Full Name'
                           }))
   hydrateStore(store)
+  store.dispatch(idleActions.start())
   return unsubscribe
 }
