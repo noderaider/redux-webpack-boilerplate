@@ -1,39 +1,12 @@
-webpackJsonp([6,3],{
+webpackJsonp([6,1],{
 
-/***/ 456:
+/***/ 648:
+/*!********************************************************!*\
+  !*** ../src/app/routes/routes/Test/components/Test.js ***!
+  \********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = function (_ref) {
-	  var children = _ref.children;
-	  var params = _ref.params;
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    _react2.default.createElement(
-	      'h2',
-	      null,
-	      'Form Tests'
-	    ),
-	    params.id ? _react2.default.createElement(
-	      'span',
-	      null,
-	      params.id
-	    ) : null,
-	    children
-	  );
-	};
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ 1);\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactRouter = __webpack_require__(/*! react-router */ 195);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = function (_ref) {\n  var children = _ref.children;\n  return _react2.default.createElement(\n    'div',\n    null,\n    _react2.default.createElement(\n      'ul',\n      null,\n      _react2.default.createElement(\n        'li',\n        null,\n        _react2.default.createElement(\n          _reactRouter.Link,\n          { to: '/test/forms' },\n          'Forms'\n        )\n      ),\n      _react2.default.createElement(\n        'li',\n        null,\n        _react2.default.createElement(\n          _reactRouter.Link,\n          { to: '/test/grids' },\n          'Grids'\n        )\n      )\n    ),\n    children\n  );\n};\n\n/*****************\n ** WEBPACK FOOTER\n ** ../src/app/routes/routes/Test/components/Test.js\n ** module id = 648\n ** module chunks = 6\n **/\n//# sourceURL=webpack:///../src/app/routes/routes/Test/components/Test.js?");
 
 /***/ }
 
