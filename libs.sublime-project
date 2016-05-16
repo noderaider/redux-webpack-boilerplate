@@ -7,6 +7,11 @@
       "path": "."
     },
     {
+      "name": "print",
+      "follow_symlinks": true,
+      "path": "../print"
+    },
+    {
       "name": "redux-load",
       "follow_symlinks": true,
       "path": "../redux-load"

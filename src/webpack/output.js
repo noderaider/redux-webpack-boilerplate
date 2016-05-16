@@ -2,18 +2,35 @@ import { server, client, baseUrl, resolveRoot } from '../config.js'
 import { join } from 'path'
 
 const getPath = name => {
-    switch(name) {
-        case 'static':
-            return resolveRoot('public', 'assets')
-        default:
-            return resolveRoot('public', 'assets')
-    }
+  switch(name) {
+    case 'server':
+      return resolveRoot('lib', 'app')
+    case 'static':
+      return resolveRoot('public', 'assets')
+    default:
+      return resolveRoot('public', 'assets')
+  }
+}
+
+const getPublicPath = name => {
+  switch(name) {
+    case 'server':
+      return '/lib/app'
+    case 'static':
+      return `${baseUrl}/assets/`
+    default:
+      return `${baseUrl}/assets/`
+  }
 }
 
 const getLibrary = name => {
 }
 
 const getLibraryTarget = name => {
+  switch(name) {
+    case 'server':
+      return 'commonjs2'
+  }
 }
 
 const getFilename = name => '[name].js'
@@ -24,16 +41,9 @@ const getHotUpdateChunkFilename = name => '[id].[hash].hot-update.js'
 const getHotUpdateMainFilename = name => '[hash].hot-update.json'
 const getCrossOriginLoading = name => 'anonymous'
 
-const getPublicPath = name => {
-    switch(name) {
-        case 'static':
-            return `${baseUrl}/assets/`
-        default:
-            return `${baseUrl}/assets/`
-    }
-}
 
-export function getOutput(name) {
+
+export default name => {
   let output =  { path: getPath(name)
                 , library: getLibrary(name)
                 , libraryTarget: getLibraryTarget(name)

@@ -1,7 +1,6 @@
 import Promise from 'bluebird'
 import express from 'express'
 import { server, log } from '../config'
-import merge from 'lodash.merge'
 import http from 'http'
 import https from 'https'
 import proxy from './proxy'

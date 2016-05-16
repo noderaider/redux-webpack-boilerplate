@@ -1,0 +1,2396 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ACTIVIT",
+				"activityDetectionAction"
+			],
+			[
+				"REMOVE",
+				"REMOVE_ERROR_AT_POS"
+			],
+			[
+				"REMOVE_ERR",
+				"REMOVE_ERROR_AT_POS_REDUCER"
+			],
+			[
+				"fout",
+				"foutStyles"
+			],
+			[
+				"SetEnvP",
+				"SetEnvPSModulePath"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "src/lib/redux/reducers/visual.js",
+			"settings":
+			{
+				"buffer_size": 4071,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/CNAME",
+			"settings":
+			{
+				"buffer_size": 33,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/cchamberlain/cchamberlain/repackage/src/lib/index.js",
+			"settings":
+			{
+				"buffer_size": 4366,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/package/author.js",
+			"settings":
+			{
+				"buffer_size": 182,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/package/bugs.js",
+			"settings":
+			{
+				"buffer_size": 146,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/package/homepage.js",
+			"settings":
+			{
+				"buffer_size": 191,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/package/license.js",
+			"settings":
+			{
+				"buffer_size": 53,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/package/repository.js",
+			"settings":
+			{
+				"buffer_size": 275,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "README.md",
+			"settings":
+			{
+				"buffer_size": 1366,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": ".gitignore",
+			"settings":
+			{
+				"buffer_size": 631,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/app/routes/components/Home.js",
+			"settings":
+			{
+				"buffer_size": 1556,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/app/redux/store/configureBrowserStore.dev.js",
+			"settings":
+			{
+				"buffer_size": 1823,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/app/redux/store/initBrowserStore.js",
+			"settings":
+			{
+				"buffer_size": 832,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/lib/router/configureAppRouter.js",
+			"settings":
+			{
+				"buffer_size": 3315,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/public/static/html/hot.html",
+			"settings":
+			{
+				"buffer_size": 610,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/app/elements/visual/FA.js",
+			"settings":
+			{
+				"buffer_size": 2659,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/package/scripts.js",
+			"settings":
+			{
+				"buffer_size": 3301,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/webpack.server.config.js",
+			"settings":
+			{
+				"buffer_size": 88,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/cchamberlain/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+			"settings":
+			{
+				"buffer_size": 1112,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/app/routes/index.js",
+			"settings":
+			{
+				"buffer_size": 778,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/app/AppProvider.js",
+			"settings":
+			{
+				"buffer_size": 551,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 188.0,
+		"last_filter": "install",
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"vin",
+				"Vintageous: Open .vintageousrc"
+			],
+			[
+				"reind",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"reindent",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"reinde",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"erro",
+				"SublimeLinter: Show All Errors"
+			],
+			[
+				"set syntax babel",
+				"Set Syntax: JavaScript (Babel)"
+			],
+			[
+				"set syntax html",
+				"Set Syntax: HTML (ASP)"
+			],
+			[
+				"postcss",
+				"Run PostCSS Sorting"
+			],
+			[
+				"set syntax html asp",
+				"Set Syntax: HTML (ASP)"
+			],
+			[
+				"indent",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"sort",
+				"Run PostCSS Sorting"
+			],
+			[
+				"select",
+				"OmniSharpSublime: Select Server Version"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"set syntax asp",
+				"Set Syntax: HTML (ASP)"
+			],
+			[
+				"lint",
+				"SublimeLinter: Show All Errors"
+			],
+			[
+				"show error",
+				"SublimeLinter: Show All Errors"
+			],
+			[
+				"babel",
+				"Set Syntax: JavaScript (Babel)"
+			],
+			[
+				"error",
+				"SublimeLinter: Show All Errors"
+			],
+			[
+				"user ",
+				"Preferences: Settings - User"
+			],
+			[
+				"clear ca",
+				"SublimeLinter: Clear Caches"
+			],
+			[
+				"show all",
+				"SublimeLinter: Show All Errors"
+			],
+			[
+				"lint this vi",
+				"SublimeLinter: Lint This View"
+			],
+			[
+				"clear",
+				"SublimeLinter: Clear Caches"
+			],
+			[
+				"err",
+				"SublimeLinter: Show All Errors"
+			],
+			[
+				"lint this",
+				"SublimeLinter: Lint This View"
+			],
+			[
+				"show",
+				"SublimeLinter: Show All Errors"
+			],
+			[
+				"clear c",
+				"SublimeLinter: Clear Caches"
+			],
+			[
+				"lint this v",
+				"SublimeLinter: Lint This View"
+			],
+			[
+				"bab",
+				"Set Syntax: JavaScript (Babel)"
+			],
+			[
+				"SNIPPet",
+				"Snippet: React: class component"
+			],
+			[
+				"babe",
+				"Set Syntax: JavaScript (Babel)"
+			],
+			[
+				"set syntax bab",
+				"Set Syntax: JavaScript (Babel)"
+			],
+			[
+				"lint error",
+				"SublimeLinter: Show All Errors"
+			],
+			[
+				"ind",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"sublime",
+				"SublimeLinter: Clear Caches"
+			],
+			[
+				"choose ",
+				"SublimeLinter: Choose Gutter Theme"
+			],
+			[
+				"choose li",
+				"SublimeLinter: Choose Lint Mode"
+			],
+			[
+				"cache",
+				"SublimeLinter: Clear Caches"
+			],
+			[
+				"prefere",
+				"Preferences: SublimeLinter Settings – Default"
+			],
+			[
+				"eslint",
+				"SublimeLinter: Choose Lint Mode"
+			],
+			[
+				"remove p",
+				"Package Control: Remove Package"
+			],
+			[
+				"remove package",
+				"Package Control: Remove Package"
+			],
+			[
+				"install pack",
+				"Package Control: Install Package"
+			],
+			[
+				"snippet",
+				"Snippet: #!/usr/bin/env"
+			],
+			[
+				"syntax babel",
+				"Set Syntax: JavaScript (Babel)"
+			],
+			[
+				"syntax: bab",
+				"Set Syntax: JavaScript (Babel)"
+			],
+			[
+				"set syntax",
+				"Set Syntax: LESS"
+			],
+			[
+				"set syntax: java",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"json",
+				"Set Syntax: JSON"
+			],
+			[
+				"powershell",
+				"Set Syntax: PowerShell"
+			]
+		],
+		"width": 402.0
+	},
+	"console":
+	{
+		"height": 247.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/routes",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/routes/components",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/lib",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/package"
+	],
+	"file_history":
+	[
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/libs.sublime-project",
+		"/C/Users/cchamberlain/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/lib/routes/configureRoutes.js",
+		"/C/Users/cchamberlain/AppData/Roaming/Sublime Text 3/Packages/User/.vintageousrc",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/package/scripts.js",
+		"/C/Users/cchamberlain/cchamberlain/repackage/.gitignore",
+		"/C/Users/cchamberlain/cchamberlain/repackage/README.md",
+		"/C/Users/cchamberlain/cchamberlain/repackage/src/bin/repackage.js",
+		"/C/Users/cchamberlain/cchamberlain/repackage/src/package/scripts.js",
+		"/C/Users/cchamberlain/cchamberlain/repackage/package.json",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/elements/nav/TopBar.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/.gitignore",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/.repackagerc",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/public/static/html/index.html",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/public/index.html",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/public/static/html/hot.html",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/routes/components/Home.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/redux/store/initBrowserStore.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/lib/redux/constants.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/redux/actions/visual.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/lib/proxy.js",
+		"/C/Users/cchamberlain/cchamberlain/isoconfig/README.md",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/lib/cors.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/config.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/lib/redux/reducers/visual.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/redux/modules/redux-idle-monitor.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/redux/store/globalStore.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/lib/router/configureAppRouter.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/lib/server.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/lib/tls.js",
+		"/C/Users/cchamberlain/cchamberlain/react-pin/src/lib/index.js",
+		"/C/Users/cchamberlain/cchamberlain/react-pin/src/config.js",
+		"/C/Users/cchamberlain/cchamberlain/react-pin/package.json",
+		"/C/Users/cchamberlain/cchamberlain/isoconfig/package.json",
+		"/C/Users/cchamberlain/cchamberlain/react-pin/CNAME",
+		"/C/Users/cchamberlain/cchamberlain/react-pin/README.md",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/elements/forms/PageForm.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/package.json",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/config.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/routes/index.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/routes/NoMatch/components/NoMatch.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/routes/components/App.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/etc/conemu/libs.task",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/elements/nav/FooterBar.js",
+		"/C/Users/cchamberlain/cchamberlain/isoconfig/CNAME",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/lib/router/configureRouter.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/routes/Test/components/Test.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/bin/run.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/routes/Test/routes/Grids/index.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/routes/Test/routes/Grids/components/Grids.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/routes/Test/routes/Forms/components/Forms.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/routes/Test/routes/Forms/index.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/routes/Test/index.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/elements/panels/ErrorPanel.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/elements/panels/DebugPanel.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/elements/panels/base/CorePanel.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/elements/forms/LoginForm.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/lib/router/configureUnsupportedRouter.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/elements/grids/PrimaryGrid.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/elements/forms/controls/Label.jsx",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/elements/micro/core/Micro.jsx",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/elements/nav/FooterBar.jsx",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/elements/panels/base/CorePanel.jsx",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/elements/panels/ErrorPanel.jsx",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/elements/grids/PrimaryGrid.jsx",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/elements/diagnostics/Access.jsx",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/elements/panels/ThemePanel.jsx",
+		"/C/Users/cchamberlain/cchamberlain/react-hatch/src/lib/index.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/webpack/output.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/redux/actions/identity.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/state/components/redux-idle-monitor/constants.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/state/components/redux-idle-monitor/actions.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/entry/app.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/containers/Musical.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/webpack/entry.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/webpack/loaders.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/webpack/externals.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/webpack/alias.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/webpack/alias.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/redux/store/subscribeStore.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/redux/actions/api.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/entry/global/wtf.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/state/components/redux-idle-monitor/index.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/services/token.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/theme.js",
+		"/C/Users/ColeChamberlain/tixinc/js/js.sublime-project",
+		"/C/Users/ColeChamberlain/tixinc/js/src/lib/routes/configureRoutes.js",
+		"/C/Users/ColeChamberlain/tixinc/js/src/lib/routes/components/Index.js",
+		"/C/Users/ColeChamberlain/tixinc/js/src/lib/router/configureAppRouter.js",
+		"/C/Users/ColeChamberlain/tixinc/js/src/lib/routes/components/Spinner.js",
+		"/C/Users/ColeChamberlain/tixinc/js/src/lib/routes/Identity/routes/Login/index.js",
+		"/C/Users/ColeChamberlain/tixinc/js/src/lib/server.js",
+		"/C/Users/ColeChamberlain/tixinc/js/src/lib/router/configureRouter.js",
+		"/C/Users/ColeChamberlain/tixinc/js/src/lib/routes/Identity/index.js",
+		"/C/Users/ColeChamberlain/tixinc/js/src/app/routes/index.js",
+		"/C/Users/ColeChamberlain/tixinc/js/src/app/state/store/configureBrowserStore.dev.js",
+		"/C/Users/ColeChamberlain/tixinc/js/src/app/entry/app.js",
+		"/C/Users/ColeChamberlain/cchamberlain/redux-idle-monitor/package.json",
+		"/C/Users/ColeChamberlain/cchamberlain/redux-webpack-boilerplate/package.json",
+		"/C/Users/ColeChamberlain/cchamberlain/repackage/package.json",
+		"/C/Users/ColeChamberlain/cchamberlain/redux-webpack-boilerplate/src/package/scripts.js",
+		"/C/Users/ColeChamberlain/cchamberlain/repackage/src/package/scripts.js",
+		"/C/Users/ColeChamberlain/tixinc/js/src/lib/router/configureSecureRouter.js",
+		"/C/Users/ColeChamberlain/cchamberlain/redux-grid-view/package.json",
+		"/C/Users/ColeChamberlain/cchamberlain/redux-grid/package.json",
+		"/C/Users/ColeChamberlain/cchamberlain/redux-blueprint/package.json",
+		"/C/Users/ColeChamberlain/cchamberlain/redux-mux/package.json",
+		"/C/Users/ColeChamberlain/cchamberlain/redux-middleware/package.json",
+		"/C/Users/ColeChamberlain/cchamberlain/redux-addons/package.json",
+		"/C/Users/ColeChamberlain/tixinc/js/src/app/entry/timeout.js",
+		"/C/Users/ColeChamberlain/tixinc/js/src/app/entry/loading.js",
+		"/C/Users/ColeChamberlain/tixinc/js/src/app/entry/dom/elements.js",
+		"/C/Users/ColeChamberlain/cchamberlain/react-redux-idle-monitor/package.json",
+		"/C/Users/ColeChamberlain/tixinc/js/src/app/entry/global/performance.js",
+		"/C/Users/ColeChamberlain/tixinc/js/src/app/containers/DevTools.js",
+		"/C/Users/ColeChamberlain/tixinc/js/src/app/routes/Identity/index.js",
+		"/C/Users/ColeChamberlain/tixinc/js/src/app/entry/dom/RootElement.js",
+		"/C/Users/ColeChamberlain/tixinc/js/package.json",
+		"/C/Users/ColeChamberlain/tixinc/js/src/app/routes/components/App.jsx",
+		"/C/Users/ColeChamberlain/tixinc/js/src/webpack/loaders.js",
+		"/C/Users/ColeChamberlain/tixinc/js/src/app/AppProvider.js",
+		"/C/Users/ColeChamberlain/tixinc/js/src/lib/route/index.js",
+		"/C/Users/ColeChamberlain/tixinc/js/src/app/state/store/globalStore.js",
+		"/C/Users/ColeChamberlain/tixinc/js/src/app/containers/showDevTools.js",
+		"/C/Users/ColeChamberlain/tixinc/js/src/webpack/plugins.js",
+		"/C/Users/ColeChamberlain/tixinc/js/src/webpack/output.js",
+		"/C/Users/ColeChamberlain/tixinc/js/src/webpack/entry.js",
+		"/C/Users/ColeChamberlain/tixinc/js/webpack.lib.config.js"
+	],
+	"find":
+	{
+		"height": 36.0
+	},
+	"find_in_files":
+	{
+		"height": 92.0,
+		"where_history":
+		[
+			"C:\\Users\\cchamberlain\\cchamberlain\\redux-webpack-boilerplate\\src\\",
+			"C:\\Users\\ColeChamberlain\\cchamberlain\\redux-webpack-boilerplate\\src\\",
+			"C:\\Users\\ColeChamberlain\\cchamberlain\\redux-webpack-boilerplate\\src",
+			"C:\\Users\\ColeChamberlain\\tixinc\\js\\src",
+			"C:\\Users\\ColeChamberlain\\cchamberlain\\griddle-overhaul-connector\\src,C:\\Users\\ColeChamberlain\\cchamberlain\\griddle-overhaul-core\\src,C:\\Users\\ColeChamberlain\\cchamberlain\\griddle-overhaul-render\\src",
+			"C:\\Users\\ColeChamberlain\\tixinc\\js\\src",
+			"C:\\Users\\ColeChamberlain\\cchamberlain\\redux-webpack-boilerplate\\src",
+			"C:\\Users\\ColeChamberlain\\tixinc\\js\\src",
+			"C:\\Users\\ColeChamberlain\\cchamberlain\\tixinc\\src",
+			"C:\\Users\\ColeChamberlain\\cchamberlain\\redux-idle-monitor\\src",
+			"C:\\Users\\ColeChamberlain\\redux-idle-monitor\\src",
+			"C:\\Users\\ColeChamberlain\\tixinc\\js\\src",
+			"C:\\Users\\ColeChamberlain\\tixinc\\js",
+			"C:\\Users\\cchamberlain\\tixinc\\js",
+			"C:\\Users\\ColeChamberlain\\tixinc\\js\\src,C:\\Users\\ColeChamberlain\\cchamberlain\\redux-addons\\src,C:\\Users\\ColeChamberlain\\cchamberlain\\redux-middleware\\src,C:\\Users\\ColeChamberlain\\cchamberlain\\redux-idle-monitor\\src",
+			"C:\\Users\\ColeChamberlain\\tixinc\\js\\src,-*.min.js",
+			"C:\\Users\\cchamberlain\\tixinc\\js\\src,-*.min.js",
+			"C:\\Users\\cchamberlain\\tixinc\\js\\src,C:\\Users\\cchamberlain\\tixinc\\tix.com,-*.min.js",
+			"C:\\Users\\cchamberlain\\tixinc\\js\\src,C:\\Users\\cchamberlain\\tixinc\\tix.com",
+			"C:\\Users\\cchamberlain\\tixinc\\js",
+			"C:\\Users\\cchamberlain\\tixinc\\js\\src,C:\\Users\\cchamberlain\\tixinc\\tix.com",
+			"<current file>",
+			"C:\\Users\\cchamberlain\\tixinc\\js\\src,C:\\Users\\cchamberlain\\tixinc\\tix.com",
+			"C:\\Users\\cchamberlain\\tixinc\\js\\src",
+			"C:\\Users\\cchamberlain\\tixinc\\js",
+			"C:\\Users\\cchamberlain\\tixinc\\js\\src",
+			"C:\\Users\\cchamberlain\\tixinc\\js",
+			"C:\\Users\\cchamberlain\\tixinc\\js\\src",
+			"C:\\Users\\cchamberlain\\tixinc\\config\\src",
+			"C:\\Users\\cchamberlain\\tixinc\\js\\src",
+			"C:\\Users\\cchamberlain\\cchamberlain\\react-idle-timer\\src",
+			"C:\\Users\\cchamberlain\\tixinc\\config\\src",
+			"C:\\Users\\cchamberlain\\tixinc\\js\\src",
+			"C:\\Users\\cchamberlain\\tixinc\\js",
+			"C:\\Users\\cchamberlain\\tixinc\\config\\src\\json",
+			"C:\\Users\\cchamberlain\\tixinc\\config\\src",
+			"C:\\Users\\cchamberlain\\tixinc\\config",
+			"C:\\Users\\cchamberlain\\tixinc\\js",
+			"C:\\Users\\cchamberlain\\tixinc\\js\\src",
+			"C:\\Users\\cchamberlain\\tixinc\\config\\src",
+			"C:\\Users\\cchamberlain\\tixinc\\js\\src",
+			"C:\\Users\\cchamberlain\\tixinc\\config\\src",
+			"C:\\Users\\cchamberlain\\tixinc\\config",
+			"C:\\Users\\cchamberlain\\tixinc\\js",
+			"C:\\Users\\cchamberlain\\tixinc\\js\\src",
+			"C:\\Users\\cchamberlain\\tixinc\\js",
+			"C:\\Users\\cchamberlain\\tixinc\\services",
+			"C:\\Users\\cchamberlain\\tixinc\\net",
+			"C:\\Users\\cchamberlain\\tixinc\\config",
+			"C:\\Users\\cchamberlain\\tixinc\\tixinc-js",
+			"C:\\Users\\cchamberlain\\tixinc\\tixinc-js\\src",
+			"C:\\Users\\cchamberlain\\tixinc\\tixinc-js",
+			"C:\\Users\\cchamberlain\\cchamberlain\\powerapi",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"hot.html",
+			"idleActions.start",
+			"redux-webpack-boilerplate",
+			"REDUX_FORM_CHANGE",
+			"updateText",
+			"setText",
+			"updateText",
+			"setText",
+			"updateText",
+			"setText",
+			"tix-light",
+			"\n        ",
+			"AuthorizePanel",
+			"AuthorizedPanel",
+			"'app/state/",
+			"'state/",
+			"'elements/",
+			"'services/",
+			"NoAuto",
+			"timings =>",
+			"THISSSS WORKS",
+			"initializeGrid",
+			"storeBoundActions",
+			"griddle",
+			"solarized",
+			"tix",
+			"musical",
+			"isPaused",
+			"elapsedMS",
+			"threshold",
+			"ErrorFilter",
+			"LoginForm",
+			"ErrorPanel",
+			"ErrorFilter",
+			"@reduxForm",
+			"filters/ErrorFilter",
+			"ErrorFilter",
+			"transform-decorators-legacy",
+			"create-fragment",
+			"redux-idle-monitor",
+			"user-secret\"",
+			"user-secret'",
+			"timeout'",
+			"timeout",
+			"actions/timeout",
+			"activeState",
+			"_STATE",
+			"idleState",
+			"STOP DETECTION SIGNALED",
+			"DETECTOR ACTIVITY",
+			"DETECTOR_ACTIVITY",
+			"translateActionBlueprints",
+			"cleanActionName",
+			"createDispatcher",
+			"actionDefinition",
+			"fastState set",
+			"NO SKIP RESTART",
+			"idle monitor stopped",
+			"USER ACTIVE",
+			"dispatch(createSt",
+			"dispatch(start",
+			"schedule'",
+			"INSIDE CREATE",
+			"idle monitor stopped",
+			"'schedule'",
+			"timeoutMS",
+			"api.",
+			"  ",
+			"menuData",
+			"EDITOR JSON PARSED",
+			"from 'react-bootstrap",
+			"DropDown",
+			".replace(/\\$",
+			".replace('$', '_'",
+			"Microsoft.Web.Infrastructure",
+			"classic",
+			"7000",
+			"renderTooltip",
+			"renderToDOM",
+			"liSearch",
+			"bg-row-1",
+			"mega-menu",
+			"mega-menu-right",
+			"7px;",
+			"btnSearch",
+			"header-bar-right",
+			"ManagementSearch.aspx",
+			"bg_white.png",
+			"stylemanagement.css",
+			"TixNavTemp",
+			"selectByIDSuffix",
+			"TixNavTemp",
+			".mega-menu",
+			"AppHead.asp",
+			"AppBody.asp",
+			"AppHead",
+			"TimeoutNoHead",
+			"TimeoutHead.asp",
+			"TimeoutNoHead.asp",
+			"TimeoutBody.asp",
+			"loading.js",
+			"legacy.js",
+			"AppHead.asp",
+			"PageTopInclude.asp",
+			"strBody",
+			"PrivateLabelInclude",
+			"strBody =",
+			"strBody",
+			"TopNavInclude.asp",
+			"Banner.asp",
+			"TopNavInclude.asp",
+			"BannerManagement.asp",
+			"UA-63226316-1",
+			"eventTooltip",
+			"renderTooltip",
+			"apiAction",
+			"EventTooltip",
+			"TixTooltip",
+			"selectTarget",
+			"selectDOM",
+			"ReactTooltip",
+			"navbar-brand",
+			"/spinner",
+			"colors.less",
+			"Privacy Policy",
+			"', 'value']",
+			"theme-panel",
+			"options.get"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"'app/redux/",
+			"'app/state/",
+			"'app/elements/",
+			"'app/services/",
+			"initialValue",
+			"fragmentType",
+			"domElement",
+			"props.fragmentType",
+			"getFragmentType",
+			"data-fragment-type",
+			"Static",
+			"Expander",
+			"popHTMLControl",
+			"resetComponents",
+			"criteria-component",
+			"componentRadioAll",
+			"componentRadioNone",
+			"componentRadioChoose",
+			"componentRadio",
+			"ClientIDMode=\"Predictable\"",
+			"byIDPrefix",
+			"byIDSuffix",
+			"'ext"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 20,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "src/lib/redux/reducers/visual.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4071,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2475,
+								2475
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tabs_extra_last_activated": 1463245463.7,
+							"tabs_extra_last_activated_sheet_index": 0,
+							"tabs_extra_spawned": true,
+							"vintage":
+							{
+								"_vintageous_glue_until_normal_mode": false,
+								"action": null,
+								"action_count": "",
+								"mode": "mode_normal",
+								"motion": null,
+								"motion_count": "",
+								"must_capture_register_name": false,
+								"normal_insert_count": "1",
+								"partial_sequence": "",
+								"register": "\"",
+								"sequence": "",
+								"xpos": 21
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 992.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "public/CNAME",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 33,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								33,
+								33
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tabs_extra_last_activated": 1463216560.05,
+							"tabs_extra_last_activated_sheet_index": 1,
+							"tabs_extra_spawned": true,
+							"vintage":
+							{
+								"action": null,
+								"action_count": "",
+								"mode": "mode_normal",
+								"motion": null,
+								"motion_count": "",
+								"must_capture_register_name": false,
+								"partial_sequence": "",
+								"register": "\"",
+								"sequence": "",
+								"xpos": 0
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 20,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/C/Users/cchamberlain/cchamberlain/repackage/src/lib/index.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4366,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2234,
+								2234
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tabs_extra_last_activated": 1463244189.24,
+							"tabs_extra_last_activated_sheet_index": 2,
+							"tabs_extra_spawned": true,
+							"vintage":
+							{
+								"_vintageous_glue_until_normal_mode": false,
+								"action": null,
+								"action_count": "",
+								"mode": "mode_normal",
+								"motion": null,
+								"motion_count": "",
+								"must_capture_register_name": false,
+								"normal_insert_count": "1",
+								"partial_sequence": "",
+								"register": "\"",
+								"sequence": "",
+								"xpos": 15
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 591.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 15,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/package/author.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 182,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								182,
+								182
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tabs_extra_last_activated": 1463243977.14,
+							"tabs_extra_last_activated_sheet_index": 3,
+							"tabs_extra_spawned": true,
+							"vintage":
+							{
+								"_vintageous_glue_until_normal_mode": false,
+								"action": null,
+								"action_count": "",
+								"mode": "mode_normal",
+								"motion": null,
+								"motion_count": "",
+								"must_capture_register_name": false,
+								"normal_insert_count": "1",
+								"partial_sequence": "",
+								"register": "\"",
+								"sequence": "",
+								"xpos": 0
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 19,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/package/bugs.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 146,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								146,
+								146
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tabs_extra_last_activated": 1463244068.67,
+							"tabs_extra_last_activated_sheet_index": 4,
+							"tabs_extra_spawned": true,
+							"vintage":
+							{
+								"_vintageous_glue_until_normal_mode": false,
+								"action": null,
+								"action_count": "",
+								"mode": "mode_normal",
+								"motion": null,
+								"motion_count": "",
+								"must_capture_register_name": false,
+								"normal_insert_count": "1",
+								"partial_sequence": "",
+								"register": "\"",
+								"sequence": "",
+								"xpos": 0
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 16,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/package/homepage.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 191,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								191,
+								191
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tabs_extra_last_activated": 1463244012.34,
+							"tabs_extra_last_activated_sheet_index": 5,
+							"tabs_extra_spawned": true,
+							"vintage":
+							{
+								"_vintageous_glue_until_normal_mode": false,
+								"action": null,
+								"action_count": "",
+								"mode": "mode_normal",
+								"motion": null,
+								"motion_count": "",
+								"must_capture_register_name": false,
+								"normal_insert_count": "1",
+								"partial_sequence": "",
+								"register": "\"",
+								"sequence": "",
+								"xpos": 62
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 18,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/package/license.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 53,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								53,
+								53
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tabs_extra_last_activated": 1463244015.54,
+							"tabs_extra_last_activated_sheet_index": 7,
+							"tabs_extra_spawned": true,
+							"vintage":
+							{
+								"_vintageous_glue_until_normal_mode": false,
+								"action": null,
+								"action_count": "",
+								"mode": "mode_normal",
+								"motion": null,
+								"motion_count": "",
+								"must_capture_register_name": false,
+								"normal_insert_count": "1",
+								"partial_sequence": "",
+								"register": "\"",
+								"sequence": "",
+								"xpos": 0
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 17,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "src/package/repository.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 275,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								275,
+								275
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tabs_extra_last_activated": 1463244066.57,
+							"tabs_extra_last_activated_sheet_index": 7,
+							"tabs_extra_spawned": true,
+							"vintage":
+							{
+								"_vintageous_glue_until_normal_mode": false,
+								"action": null,
+								"action_count": "",
+								"mode": "mode_normal",
+								"motion": null,
+								"motion_count": "",
+								"must_capture_register_name": false,
+								"normal_insert_count": "1",
+								"partial_sequence": "",
+								"register": "\"",
+								"sequence": "",
+								"xpos": 0
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "README.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1366,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								427,
+								427
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.sublime-syntax",
+							"tabs_extra_last_activated": 1463246349.13,
+							"tabs_extra_last_activated_sheet_index": 8,
+							"tabs_extra_spawned": true,
+							"vintage":
+							{
+								"_vintageous_glue_until_normal_mode": false,
+								"action": null,
+								"action_count": "",
+								"mode": "mode_normal",
+								"motion": null,
+								"motion_count": "",
+								"must_capture_register_name": false,
+								"normal_insert_count": "1",
+								"partial_sequence": "",
+								"register": "\"",
+								"sequence": "",
+								"xpos": 23
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": ".gitignore",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 631,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								242,
+								242
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tabs_extra_last_activated": 1463246411.3,
+							"tabs_extra_last_activated_sheet_index": 9,
+							"tabs_extra_spawned": true,
+							"vintage":
+							{
+								"_vintageous_glue_until_normal_mode": false,
+								"action": null,
+								"action_count": "",
+								"mode": "mode_normal",
+								"motion": null,
+								"motion_count": "",
+								"must_capture_register_name": false,
+								"normal_insert_count": "1",
+								"partial_sequence": "",
+								"register": "\"",
+								"sequence": "",
+								"xpos": 17
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "src/app/routes/components/Home.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1556,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1235,
+								1235
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tabs_extra_last_activated": 1463274150.84,
+							"tabs_extra_last_activated_sheet_index": 10,
+							"tabs_extra_spawned": true,
+							"vintage":
+							{
+								"_vintageous_glue_until_normal_mode": false,
+								"action": null,
+								"action_count": "",
+								"mode": "mode_normal",
+								"motion": null,
+								"motion_count": "",
+								"must_capture_register_name": false,
+								"normal_insert_count": "1",
+								"partial_sequence": "",
+								"register": "\"",
+								"sequence": "",
+								"xpos": 36
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "src/app/redux/store/configureBrowserStore.dev.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1823,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								224,
+								224
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tabs_extra_last_activated": 1463274231.14,
+							"tabs_extra_last_activated_sheet_index": 11,
+							"tabs_extra_spawned": true,
+							"vintage":
+							{
+								"_vintageous_glue_until_normal_mode": false,
+								"action": null,
+								"action_count": "",
+								"mode": "mode_normal",
+								"motion": null,
+								"motion_count": "",
+								"must_capture_register_name": false,
+								"normal_insert_count": "1",
+								"partial_sequence": "",
+								"register": "\"",
+								"sequence": "",
+								"xpos": 15
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "src/app/redux/store/initBrowserStore.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 832,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								832,
+								832
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tabs_extra_last_activated": 1463274349.94,
+							"tabs_extra_last_activated_sheet_index": 13,
+							"tabs_extra_spawned": true,
+							"vintage":
+							{
+								"_vintageous_glue_until_normal_mode": false,
+								"action": null,
+								"action_count": "",
+								"mode": "mode_normal",
+								"motion": null,
+								"motion_count": "",
+								"must_capture_register_name": false,
+								"normal_insert_count": "1",
+								"partial_sequence": "",
+								"register": "\"",
+								"sequence": "",
+								"xpos": 36
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "src/lib/router/configureAppRouter.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3315,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3001,
+								3001
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tabs_extra_last_activated": 1463276518.78,
+							"tabs_extra_last_activated_sheet_index": 13,
+							"tabs_extra_spawned": true,
+							"vintage":
+							{
+								"_vintageous_glue_until_normal_mode": false,
+								"action": null,
+								"action_count": "",
+								"mode": "mode_normal",
+								"motion": null,
+								"motion_count": "",
+								"must_capture_register_name": false,
+								"normal_insert_count": "1",
+								"partial_sequence": "",
+								"register": "\"",
+								"sequence": "",
+								"xpos": 31
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 511.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "src/public/static/html/hot.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 610,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								320,
+								320
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tabs_extra_last_activated": 1463276623.92,
+							"tabs_extra_last_activated_sheet_index": 14,
+							"tabs_extra_spawned": true,
+							"vintage":
+							{
+								"_vintageous_glue_until_normal_mode": false,
+								"action": null,
+								"action_count": "",
+								"mode": "mode_normal",
+								"motion": null,
+								"motion_count": "",
+								"must_capture_register_name": false,
+								"normal_insert_count": "1",
+								"partial_sequence": "",
+								"register": "\"",
+								"sequence": "",
+								"xpos": 46
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "src/app/elements/visual/FA.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2659,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2064,
+								2064
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tabs_extra_last_activated": 1463276652.45,
+							"tabs_extra_last_activated_sheet_index": 15,
+							"tabs_extra_spawned": true,
+							"vintage":
+							{
+								"_vintageous_glue_until_normal_mode": false,
+								"action": null,
+								"action_count": "",
+								"mode": "mode_normal",
+								"motion": null,
+								"motion_count": "",
+								"must_capture_register_name": false,
+								"normal_insert_count": "1",
+								"partial_sequence": "",
+								"register": "\"",
+								"sequence": "",
+								"xpos": 2
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 288.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "src/package/scripts.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3301,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1232,
+								1232
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tabs_extra_last_activated": 1463277009.48,
+							"tabs_extra_last_activated_sheet_index": 16,
+							"tabs_extra_spawned": true,
+							"vintage":
+							{
+								"_vintageous_glue_until_normal_mode": false,
+								"action": null,
+								"action_count": "",
+								"mode": "mode_normal",
+								"motion": null,
+								"motion_count": "",
+								"must_capture_register_name": false,
+								"normal_insert_count": "1",
+								"partial_sequence": "",
+								"recording": false,
+								"register": "\"",
+								"sequence": "",
+								"xpos": 50
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"file": "src/webpack.server.config.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 88,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								88,
+								88
+							]
+						],
+						"settings":
+						{
+							"open_with_edit": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tabs_extra_last_activated": 1463277039.95,
+							"tabs_extra_last_activated_sheet_index": 17,
+							"tabs_extra_spawned": true,
+							"vintage":
+							{
+								"_vintageous_glue_until_normal_mode": false,
+								"action": null,
+								"action_count": "",
+								"mode": "mode_normal",
+								"motion": null,
+								"motion_count": "",
+								"must_capture_register_name": false,
+								"normal_insert_count": "1",
+								"partial_sequence": "",
+								"register": "\"",
+								"sequence": "",
+								"xpos": 0
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 18,
+					"file": "/C/Users/cchamberlain/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1112,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								664,
+								664
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JSON.tmLanguage",
+							"tabs_extra_last_activated": 1463277217.15,
+							"tabs_extra_last_activated_sheet_index": 18,
+							"tabs_extra_spawned": true,
+							"vintage":
+							{
+								"action": null,
+								"action_count": "",
+								"mode": "mode_normal",
+								"motion": null,
+								"motion_count": "",
+								"must_capture_register_name": false,
+								"partial_sequence": "",
+								"register": "\"",
+								"sequence": "",
+								"xpos": 33
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 19,
+					"file": "src/app/routes/index.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 778,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								621,
+								621
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tabs_extra_last_activated": 1463277345.1,
+							"tabs_extra_last_activated_sheet_index": 19,
+							"tabs_extra_moving":
+							[
+								3,
+								0
+							],
+							"tabs_extra_spawned": true,
+							"vintage":
+							{
+								"_vintageous_glue_until_normal_mode": false,
+								"action": null,
+								"action_count": "",
+								"mode": "mode_normal",
+								"motion": null,
+								"motion_count": "",
+								"must_capture_register_name": false,
+								"normal_insert_count": "1",
+								"partial_sequence": "",
+								"register": "\"",
+								"sequence": "",
+								"xpos": 10
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 20,
+					"file": "src/app/AppProvider.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 551,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								470,
+								470
+							]
+						],
+						"settings":
+						{
+							"highlight_line": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tabs_extra_last_activated": 1463277909.68,
+							"tabs_extra_last_activated_sheet_index": 20,
+							"tabs_extra_spawned": true,
+							"vintage":
+							{
+								"_vintageous_glue_until_normal_mode": false,
+								"action": null,
+								"action_count": "",
+								"mode": "mode_normal",
+								"motion": null,
+								"motion_count": "",
+								"must_capture_register_name": false,
+								"normal_insert_count": "1",
+								"partial_sequence": "",
+								"register": "\"",
+								"sequence": "",
+								"xpos": 13
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 48.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/Kulture/ASP.NET.sublime-build",
+	"project": "libs.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"identity.js",
+				"@tixinc\\js-app\\state\\actions\\identity.js"
+			],
+			[
+				"adminpanel",
+				"js\\src\\app\\elements\\panels\\AdminPanel.jsx"
+			],
+			[
+				"sidebar",
+				"js\\src\\app\\elements\\nav\\SideBar.jsx"
+			],
+			[
+				"timeout.jsx",
+				"js\\src\\app\\containers\\Timeout.jsx"
+			],
+			[
+				"hatch.jsx",
+				"js\\src\\app\\controls\\hatch.jsx"
+			],
+			[
+				"polyfill.js",
+				"js\\src\\public\\static\\polyfill.js"
+			],
+			[
+				"loading.js",
+				"js\\src\\app\\entry\\loading.jsx"
+			],
+			[
+				"timeout.js",
+				"js\\src\\app\\styles\\timeout.js"
+			],
+			[
+				"timeout",
+				"js\\src\\app\\containers\\Timeout.jsx"
+			],
+			[
+				"tixadmin",
+				"tix.com\\Clients\\TixAdmin\\TixAdmin.master"
+			],
+			[
+				"tixadmin.ma",
+				"tix.com\\Clients\\TixAdmin\\TixAdmin.master"
+			],
+			[
+				"package.json",
+				"tix.com\\package.json"
+			],
+			[
+				"theme.js",
+				"js\\src\\app\\theme.js"
+			],
+			[
+				"palette",
+				"js\\src\\app\\palette.js"
+			],
+			[
+				"tixadmin.master",
+				"tix.com\\Clients\\TixAdmin\\TixAdmin.master"
+			],
+			[
+				"tix.css",
+				"js\\src\\app\\legacy\\styles\\skins\\tix.css"
+			],
+			[
+				"global.asa",
+				"tix.com\\Global.asa"
+			],
+			[
+				"dcmegamen",
+				"tix.com\\Clients\\Tix\\CSS\\dcmegamenu.css"
+			],
+			[
+				"megamenu.css",
+				"js\\src\\app\\legacy\\styles\\dcmegamenu.css"
+			],
+			[
+				"legacy.js",
+				"js\\src\\app\\entry\\legacy.js"
+			],
+			[
+				"legacy.jsx",
+				"js\\src\\app\\legacy\\elements\\render.jsx"
+			],
+			[
+				"headbottom.asp",
+				"tix.com\\Asp\\Include\\HeadBottom.asp"
+			],
+			[
+				"apphead",
+				"tix.com\\Asp\\Include\\AppHead.asp"
+			],
+			[
+				"managementinclude.asp",
+				"tix.com\\Include\\ManagementInclude.asp"
+			],
+			[
+				"default.asp",
+				"tix.com\\Management\\Default.asp"
+			],
+			[
+				"pagetopin",
+				"tix.com\\PageTopInclude.asp"
+			],
+			[
+				"nocachein",
+				"tix.com\\NoCacheInclude.asp"
+			],
+			[
+				"pagetopinclude.asp",
+				"tix.com\\PageTopInclude.asp"
+			],
+			[
+				"privatelab",
+				"tix.com\\PrivateLabelInclude.asp"
+			],
+			[
+				"banner.html",
+				"tix.com\\Clients\\Tix\\Banner.html"
+			],
+			[
+				"apphead.asp",
+				"tix.com\\Asp\\Include\\AppHead.asp"
+			],
+			[
+				"head",
+				"tix.com\\Forms\\Controls\\AppHead.ascx"
+			],
+			[
+				"tooltip",
+				"js\\src\\app\\legacy\\elements\\Tooltip.jsx"
+			],
+			[
+				"expander",
+				"js\\src\\app\\legacy\\elements\\Expander.jsx"
+			],
+			[
+				"micro.jsx",
+				"js\\src\\app\\elements\\micro\\core\\Micro.jsx"
+			],
+			[
+				"tooltip.jsx",
+				"js\\src\\app\\legacy\\elements\\Tooltip.jsx"
+			],
+			[
+				"timeout.css",
+				"js\\src\\app\\containers\\Timeout.css"
+			],
+			[
+				"hatch.less",
+				"js\\src\\app\\controls\\hatch.less"
+			],
+			[
+				"footer",
+				"js\\src\\app\\elements\\nav\\FooterBar.jsx"
+			],
+			[
+				"footerbar",
+				"js\\src\\app\\elements\\nav\\FooterBar.jsx"
+			],
+			[
+				"identity.jsx",
+				"js\\src\\app\\controls\\identity.jsx"
+			],
+			[
+				"themepanel",
+				"js\\app\\elements\\panels\\ThemePanel.jsx"
+			],
+			[
+				"messagetemplateediotr.js",
+				"js\\obsolete\\tix.com\\UserControls\\Javascript\\MessageTemplateEditor.obsolete.js"
+			],
+			[
+				"messagetemplateeditor",
+				"tix.com\\UserControls\\MessageTemplateEditor.ascx"
+			],
+			[
+				"web.config",
+				"tix.com\\web.config"
+			],
+			[
+				"seatstatus",
+				"tix.com\\UserControls\\SeatStatus.ascx"
+			],
+			[
+				"eventselection",
+				"tix.com\\UserControls\\EventSelection.ascx"
+			],
+			[
+				"criteriacontrol.js",
+				"js\\src\\app\\legacy\\CriteriaControl.js"
+			],
+			[
+				"criteriacontrol",
+				"js\\app\\legacy\\CriteriaControl.js"
+			],
+			[
+				"render.jsx",
+				"js\\app\\legacy\\elements\\render.jsx"
+			],
+			[
+				"render",
+				"js\\src\\app\\legacy\\elements\\render.jsx"
+			],
+			[
+				"renderer",
+				"config\\src\\app\\controls\\renderer.jsx"
+			],
+			[
+				"criteriacomponent",
+				"js\\src\\app\\legacy\\elements\\CriteriaComponent.jsx"
+			],
+			[
+				"eventselection.ascx.cs",
+				"tix.com\\UserControls\\EventSelection.ascx.cs"
+			],
+			[
+				"eventselection.ascx",
+				"tix.com\\UserControls\\EventSelection.ascx"
+			],
+			[
+				"eventdetailreport.aspx",
+				"tix.com\\Reports\\EventDetailReport.aspx"
+			],
+			[
+				"organizationsettings",
+				"tix.com\\Management\\OrganizationSettings.aspx"
+			],
+			[
+				"organizationsettings.aspx.cs",
+				"tix.com\\Management\\OrganizationSettings.aspx.cs"
+			],
+			[
+				"organizationsett",
+				"tix.com\\Management\\OrganizationSettings.aspx"
+			],
+			[
+				"organizationsettings.aspx",
+				"tix.com\\Management\\OrganizationSettings.aspx"
+			],
+			[
+				"organizationoptions.",
+				"tix.com\\Management\\OrganizationOptions.asp"
+			],
+			[
+				"criteria",
+				"tix.com\\UserControls\\CriteriaControl.ascx"
+			],
+			[
+				"package.",
+				"tix.com\\package.json"
+			],
+			[
+				"adminpane",
+				"js\\src\\app\\elements\\panels\\AdminPanel.jsx"
+			],
+			[
+				"entry/command",
+				"config\\src\\entry\\commandify.jsx"
+			],
+			[
+				"client.jsx",
+				"js\\src\\app\\elements\\Client.jsx"
+			],
+			[
+				"identitycontroller",
+				"net\\Tix.Web.Core\\Controllers\\Api\\IdentityController.cs"
+			],
+			[
+				"host.jsx",
+				"js\\src\\app\\elements\\Host.jsx"
+			],
+			[
+				"api.js",
+				"js\\src\\app\\services\\api.js"
+			],
+			[
+				"topbar",
+				"js\\src\\app\\elements\\nav\\TopBar.jsx"
+			],
+			[
+				"topbar.jsx",
+				"config\\src\\app\\nav\\TopBar.jsx"
+			],
+			[
+				"sidemenu",
+				"js\\src\\app\\elements\\nav\\SideMenu.jsx"
+			],
+			[
+				"debugpan",
+				"js\\src\\app\\elements\\panels\\DebugPanel.jsx"
+			],
+			[
+				"reauthroz",
+				"js\\client\\controls\\reauthorize.jsx"
+			],
+			[
+				"footerb",
+				"js\\client\\elements\\nav\\FooterBar.jsx"
+			],
+			[
+				"app.jsx",
+				"config\\src\\app.jsx"
+			],
+			[
+				"api/index",
+				"tixinc-js\\src\\app\\api\\index.js"
+			],
+			[
+				"reactrenderer",
+				"tixinc-js\\src\\app\\ReactRenderer.jsx"
+			],
+			[
+				"shoppingcart/dire",
+				"tixinc-js\\src\\app\\core\\panels\\orderdetails\\shoppingcart\\directive.js"
+			],
+			[
+				"client/main",
+				"tixinc-js\\src\\client\\main.jsx"
+			],
+			[
+				"login/directive",
+				"tixinc-js\\src\\client\\core\\modals\\login\\directive.js"
+			],
+			[
+				"login/view",
+				"tixinc-js\\src\\client\\core\\modals\\login\\view.html"
+			],
+			[
+				"login/direc",
+				"tixinc-js\\src\\client\\core\\panels\\login\\directive.js"
+			],
+			[
+				"mixins/index",
+				"tixinc-js\\src\\ext\\lodash\\mixins\\index.js"
+			],
+			[
+				"mixins/function",
+				"tixinc-js\\src\\ext\\lodash\\mixins\\function.js"
+			],
+			[
+				"mixins/obje",
+				"tixinc-js\\src\\ext\\lodash\\mixins\\object.js"
+			],
+			[
+				"mixins/string",
+				"tixinc-js\\src\\ext\\lodash\\mixins\\string.js"
+			],
+			[
+				"ticket/servi",
+				"tixinc-js\\client\\areas\\ticket\\service.js"
+			],
+			[
+				"encodingindex",
+				"tixinc-js\\client\\core\\base\\encoding\\index.js"
+			],
+			[
+				"telephoneindex",
+				"tixinc-js\\client\\core\\filters\\telephone\\index.js"
+			],
+			[
+				"cookie/index",
+				"tixinc-js\\client\\core\\base\\cookie\\index.js"
+			],
+			[
+				"identity/controller",
+				"tixinc-js\\client\\core\\base\\identity\\controller.js"
+			],
+			[
+				"signalr/contr",
+				"tixinc-js\\client\\core\\base\\signalr\\controller.js"
+			],
+			[
+				"token/service",
+				"tixinc-js\\client\\core\\base\\token\\service.js"
+			],
+			[
+				"login/dire",
+				"tixinc-js\\client\\core\\panels\\login\\directive.js"
+			],
+			[
+				"dashboard/directive",
+				"tixinc-js\\client\\core\\panels\\dashboard\\directive.js"
+			],
+			[
+				"login/di",
+				"tixinc-js\\client\\core\\modals\\login\\directive.js"
+			],
+			[
+				"customerinfo",
+				"tixinc-js\\client\\core\\panels\\orderdetails\\customerinfo\\directive.js"
+			],
+			[
+				"passwordreset/d",
+				"tixinc-js\\client\\core\\panels\\passwordreset\\directive.js"
+			],
+			[
+				"main/directive",
+				"tixinc-js\\client\\core\\menu\\main\\directive.js"
+			],
+			[
+				"maintreemu",
+				"tixinc-js\\client\\core\\menu\\main\\treemenu.js"
+			],
+			[
+				"shoppingcart/directive",
+				"tixinc-js\\client\\core\\panels\\orderdetails\\shoppingcart\\directive.js"
+			],
+			[
+				"topbar/dire",
+				"tixinc-js\\client\\core\\nav\\topbar\\directive.js"
+			],
+			[
+				"functions.js",
+				"tixinc-js\\client\\config\\functions.js"
+			],
+			[
+				"host.js",
+				"tixinc-js\\client\\elements\\Host.jsx"
+			],
+			[
+				"updates",
+				"tixinc-js\\client\\helpers\\updates.es"
+			],
+			[
+				"state.shim",
+				"tixinc-js\\client\\helpers\\state.shim.es"
+			],
+			[
+				"state.e",
+				"tixinc-js\\client\\helpers\\state.es"
+			],
+			[
+				"pipeline.shim",
+				"tixinc-js\\client\\helpers\\pipeline.shim.es"
+			],
+			[
+				"pipeline.es",
+				"tixinc-js\\client\\helpers\\pipeline.es"
+			],
+			[
+				"functions.shim",
+				"tixinc-js\\client\\helpers\\functions.shim.es"
+			],
+			[
+				"helpers",
+				"ext\\helpers.js"
+			],
+			[
+				"async",
+				"tixinc-js\\client\\helpers\\async.es"
+			],
+			[
+				"fa.j",
+				"app\\elements\\fa.jsx"
+			],
+			[
+				"nav.jsx",
+				"app\\elements\\nav.jsx"
+			],
+			[
+				"endpoints.l",
+				"app\\elements\\endpoints.less"
+			],
+			[
+				"endpoints.js",
+				"app\\containers\\Endpoints.jsx"
+			],
+			[
+				"extensions",
+				"app\\styles\\extensions.less"
+			],
+			[
+				"enpoints.less",
+				"app\\elements\\endpoints.less"
+			],
+			[
+				"app.less",
+				"app\\containers\\App.less"
+			],
+			[
+				"endpoints.",
+				"app\\elements\\endpoints.less"
+			],
+			[
+				"colors",
+				"app\\styles\\colors.less"
+			],
+			[
+				"endpoints.less",
+				"app\\elements\\endpoints.less"
+			],
+			[
+				"endpoints.le",
+				"app\\elements\\endpoints.less"
+			],
+			[
+				"setup",
+				"app\\containers\\Setup.jsx"
+			],
+			[
+				"application",
+				"powerapi\\app\\containers\\Application.jsx"
+			],
+			[
+				"server.js",
+				"powerapi\\lib\\server.js"
+			],
+			[
+				"server",
+				"powerapi\\lib\\server.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 375.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 458.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+		"_vintageous_last_buffer_search": ",",
+		"_vintageous_last_buffer_search_command": "vi_slash",
+		"_vintageous_last_char_search_command": "vi_t",
+		"_vintageous_last_character_search": ":",
+		"_vintageous_reset_during_init": true,
+		"vintage":
+		{
+			"_cmdline_cd": "C:\\Users\\cchamberlain\\AppData\\Roaming\\Sublime Text 3\\Packages"
+		}
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 365.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

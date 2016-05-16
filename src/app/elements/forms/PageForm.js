@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
-import { reduxForm } from 'redux-form'
+import { reduxForm, propTypes } from 'redux-form'
 import { Row, Col } from 'react-bootstrap'
+import { log, initialState } from 'config'
 import Input from './controls/Input'
 import contextTypes from 'app/context'
 
@@ -11,9 +12,7 @@ const validate = values => {
 
 class PageForm extends Component {
   static contextTypes = contextTypes;
-  static propTypes =  { fields: PropTypes.object.isRequired
-                      , handleSubmit: PropTypes.func.isRequired
-                      , submitting: PropTypes.bool.isRequired
+  static propTypes =  { ...propTypes
                       };
   render() {
 
@@ -120,16 +119,13 @@ class PageForm extends Component {
   }
 }
 
+
 export default reduxForm( { form: 'page'
                           , fields: ['title', 'subtitle', 'username', 'organization', 'email', 'full', 'packageName']
                           , validate
                           }
-                        , ({ visual }) => ( { initialValues:  { title: visual.text.get('title', '')
-                                                              , subtitle: visual.text.get('subtitle', '')
-                                                              , username: visual.text.get('username', '')
-                                                              , organization: visual.text.get('organization', '')
-                                                              , email: visual.text.get('email', '')
-                                                              , full: visual.text.get('full', '')
-                                                              , packageName: visual.text.get('packageName', '')
-                                                              }
-                                            } ))(PageForm)
+                        , (state, { init }) => {
+                            const initialValues = init
+                            log.info({ initialValues }, 'redux-form initialValues')
+                            return  { initialValues }
+                          })(PageForm)

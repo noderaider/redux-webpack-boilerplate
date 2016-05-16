@@ -4,7 +4,7 @@ import postcssCssnext from 'postcss-cssnext'
 import postcssBrowserReporter from 'postcss-browser-reporter'
 import postcssReporter from 'postcss-reporter'
 
-export const getPostcss = (name) => {
+export default name => {
   return webpack => ( [ postcssImport({ addDependencyTo: webpack })
                       , postcssUrl( { url: 'inline'
                                     //, basePath: '../src/app'

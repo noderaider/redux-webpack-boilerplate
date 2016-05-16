@@ -1,8 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import ReactTooltip from 'react-tooltip'
-import Clipboard from 'clipboard'
 import { connect } from 'react-redux'
-import { toggleVisibility } from 'app/redux/actions/visual'
+import { toggleVisibility } from 'lib/redux/actions/visual'
 import Label from 'app/elements/forms/controls/Label'
 
 const getLabelID = componentID => `label_${componentID}`
@@ -11,6 +10,7 @@ const getTooltipID = componentID => `tooltip_${componentID}`
 class Micro extends Component {
   componentDidMount() {
     const { componentID, actionType, tooltip } = this.props
+    const Clipboard = require('clipboard')
 
     if(actionType === 'clipboard' && typeof tooltip !== 'undefined') {
       this.clipboard = new Clipboard(`#${getLabelID(componentID)}`)
@@ -57,6 +57,7 @@ class Micro extends Component {
             }}>
           {children}
         </Label>
+
         <ReactTooltip id={tooltipID}>
           {tooltip || `componentID: ${componentID}`}
           <span ref={x => this.caption=x} style={captionStyle} />

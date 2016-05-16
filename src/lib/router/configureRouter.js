@@ -44,8 +44,6 @@ export default function configureRouter({ isSecure, paths }) {
         , STATIC_ROOT
         , ASSETS_ROOT
         , APP_ROOT
-        , LEGACY_STYLES_ROOT
-        , LEGACY_IMAGES_ROOT
         , NODE_MODULES_ROOT
         , DOC_ROOT
         } = paths

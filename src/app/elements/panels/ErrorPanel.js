@@ -8,7 +8,7 @@ import contextTypes from 'app/context'
 import CorePanel from './base/CorePanel'
 import ErrorVisual from 'app/elements/diagnostics/ErrorVisual'
 
-import { dismissError } from 'app/redux/actions/errors'
+import { dismissError } from 'lib/redux/actions/errors'
 
 class ErrorPanel extends Component {
   render() {

@@ -7,7 +7,6 @@ import  { FORGET_TOKENS
         , POST_AUTHORIZE_ADMIN
         , IDENTITY_INVALID
         , IDENTITY_EXPIRED
-        //, DISMISS_ERROR
         , AUTHORIZE_MIDDLEWARE
         } from '../constants'
 

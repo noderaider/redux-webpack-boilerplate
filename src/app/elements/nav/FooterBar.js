@@ -1,21 +1,17 @@
 import React, { Component, PropTypes } from 'react'
-import Label from 'app/elements/forms/controls/Label'
-import classNames from 'classnames'
 
 import DevMicro from 'app/elements/micro/DevMicro'
 import HotMicro from 'app/elements/micro/HotMicro'
-
-import FA from 'app/elements/visual/FA'
-
 import contextTypes from 'app/context'
-import './FooterBar.css'
+
+import { IS_DEV, IS_HOT } from 'config'
 
 const inlineStyle = { display: 'inline-block' }
 
 const AttributesBar = props => (
   <div style={inlineStyle}>
-    {__DEV__ ? <DevMicro /> : null}
-    {__HOT__ ? <HotMicro /> : null}
+    {IS_DEV ? <DevMicro /> : null}
+    {IS_HOT ? <HotMicro /> : null}
   </div>
 )
 

@@ -2,17 +2,32 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 
 import contextTypes from 'app/context'
-import PageForm from 'app/elements/forms/PageForm'
 import PrimaryGrid from 'app/elements/grids/PrimaryGrid'
 
 class Home extends Component {
   static contextTypes = contextTypes;
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
+  componentDidMount() {
+    this.setState({ PageForm: require('app/elements/forms/PageForm').default })
+  }
   render(){
     const { title, subtitle, username, organization, email, full, packageName } = this.props
     const { style } = this.context.theme
+    const pageFormInit =  { title
+                          , subtitle
+                          , username
+                          , organization
+                          , email
+                          , full
+                          , packageName
+                          }
+    const { PageForm } = this.state
     return (
       <div>
-        <PageForm />
+        {PageForm ? <PageForm init={pageFormInit} /> : null}
         <ul style={style.ul}>
           <li>Fork <a href="https://github.com/cchamberlain/redux-webpack-boilerplate">redux-webpack-boilerplate</a></li>
           <li><code>git clone https://github.com/{username}/redux-webpack-boilerplate</code></li>

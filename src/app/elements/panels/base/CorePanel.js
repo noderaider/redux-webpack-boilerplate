@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { Row, Col } from 'react-bootstrap'
 import contextTypes from 'app/context'
 import FA, { faSizeOptions } from 'app/elements/visual/FA'
-import 'styles/bootstrap-core'
+//import 'styles/bootstrap-core'
 
 export const panelPropTypes = { children: PropTypes.any.isRequired
                               , title: PropTypes.string.isRequired

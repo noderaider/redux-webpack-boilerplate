@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 //import ColorPicker from 'react-color'
 
-import { toggleVisibility, setTheme } from 'app/redux/actions/visual'
+import { toggleVisibility, setTheme } from 'lib/redux/actions/visual'
 
 import contextTypes from 'app/context'
 import  { schemeNames

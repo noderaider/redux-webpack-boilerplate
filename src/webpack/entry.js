@@ -19,18 +19,21 @@ function maybeHotEntry(name, ...entries) {
   return entries[0]
 }
 
-export function getEntry(name) {
-  if(name === 'static') {
-    return { polyfill: '../src/public/static/polyfill.js' }
-  } else if(name === 'vendor') {
-    return  { vendor: [ 'expose?React!react'
-                      , 'expose?ReactDOM!react-dom'
-                      , 'expose?ReactCSSTransitionGroup!react/lib/ReactCSSTransitionGroup'
-                      //, 'script!vendor/tinymce/tinymce.min.js'
-                      ]
-            }
+export default name => {
+  switch(name) {
+    case 'server':
+      return { routes: '../src/app/routes' }
+    case 'static':
+      return { polyfill: '../src/public/static/polyfill.js' }
+    case 'vendor':
+      return  { vendor: [ 'expose?React!react'
+                        , 'expose?ReactDOM!react-dom'
+                        , 'expose?ReactCSSTransitionGroup!react/lib/ReactCSSTransitionGroup'
+                        ]
+              }
+    default:
+      return  { app:  maybeHotEntry(name, '../src/app/entry/app')
+              }
   }
 
-  return  { app:  maybeHotEntry(name, '../src/app/entry/app')
-          }
 }

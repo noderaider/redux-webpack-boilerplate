@@ -31,10 +31,10 @@ ${renderToString(<HTML {...props} />)}`
 export default function configureUnsupportedRouter() {
   let router = Router()
   router.use((req, res, next) => {
-    const browser = detectBrowser(req.headers['user-agent'])
-    if(!browser || req.url.startsWith('/images'))
-      return next()
-
+    const userAgent = req.headers['user-agent']
+    if(!userAgent)
+      next()
+    const browser = detectBrowser(userAgent)
     const { name, title, version, emulatedVersion, platform, platformVersion } = browser
 
     if(name !== 'ie')

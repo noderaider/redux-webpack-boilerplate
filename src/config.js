@@ -17,7 +17,7 @@ export const server = IS_BROWSER ? noop() : require('./config-server.json')
 const configJSON = IS_BROWSER ? client : server
 export const packageJSON = require('./package.json')
 
-export const baseUrl = `http${client['_configuration_'] === 'debug' ? '' : 's'}://${client.hostname}`
+export const baseUrl = `http${client.environment === 'debug' ? '' : 's'}://${client.hostname}:${client.port}`
 
 const level = (configJSON.log || { level: 'debug' }).level || 'debug'
 export const log = !IS_DEV && IS_BROWSER ? ({ name: packageName, trace: noop, debug: noop, info: noop, warn: noop, error: noop, fatal: noop }) : createLogger({ name: packageName, level })
@@ -31,3 +31,15 @@ export const dependencyNames = IS_BROWSER ? noop() : Array.from(new Set([ ...Obj
                                                                         , ...Object.keys(peerDependencies)
                                                                         , ...Object.keys(optionalDependencies)
                                                                         ]))
+
+export const initialState =  { visual: { text:  { title: packageKey
+                                                , subtitle: 'UNIVERSAL HMR'
+                                                , packageName
+                                                , username: 'your.github.username'
+                                                , organization: 'your.github.organization'
+                                                , email: 'your.email@email.com'
+                                                , full: 'Your Full Name'
+                                                }
+                                        , theme: defaultTheme
+                                        }
+                              }

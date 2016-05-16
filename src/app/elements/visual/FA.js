@@ -3,7 +3,6 @@ import classNames from 'classnames'
 import contextTypes from 'app/context'
 
 export const faSizeOptions = ['lg', 'xl', '2x', '3x', '4x', '5x']
-
 const faPropTypes = { name: PropTypes.string.isRequired
                     , loadingName: PropTypes.oneOf(['same', 'spinner', 'circle-o-notch', 'refresh', 'cog', 'spinner'])
                     , spinnerName: PropTypes.oneOf(['spin', 'pulse'])
@@ -35,6 +34,12 @@ const faClassNames = (...names) => ( names && names.filter
                               )
 
 class FA extends Component {
+  static contextTypes = contextTypes;
+  static propTypes = faPropTypes;
+  static defaultProps = faDefaultProps;
+  componentDidMount() {
+    require('styles/font-awesome/less/font-awesome.less')
+  }
   render() {
     const { name
           , loadingName
@@ -54,9 +59,5 @@ class FA extends Component {
     return <i style={resolvedStyle} className={iconClassNames} />
   }
 }
-Object.assign(FA, { contextTypes
-                  , propTypes: faPropTypes
-                  , defaultProps: faDefaultProps
-                  })
 
 export default FA

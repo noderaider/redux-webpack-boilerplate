@@ -1,17 +1,21 @@
 import { createStore, applyMiddleware } from 'redux'
 import { routerMiddleware } from 'react-router-redux'
 import { combineReducers } from 'redux'
-import * as reducers from '../reducers'
 import { thunk, crashReporter } from 'redux-middleware'
 
-export default function configureStore({ history, initialState, additionalReducers = {}, additionalMiddleware = [] } = {}) {
-  const reducer = combineReducers({ ...reducers, ...additionalReducers })
+import { HYDRATE } from '../hydrateImmutable'
+import { middleware as idle, actions as idleActions } from '../modules/redux-idle-monitor'
+import * as reducers from '../reducers'
+
+export default function configureStore({ history, initialState } = {}) {
+  const reducer = combineReducers(reducers)
   const middlewares = [ thunk
                       , routerMiddleware(history)
-                      , ...additionalMiddleware
+                      , idle
                       , crashReporter
                       ]
   const enhancer = applyMiddleware(...middlewares)
-  const store = createStore(reducer, initialState, enhancer)
+  const store = createStore(reducer, reducer(initialState, { type: HYDRATE }), enhancer)
+  store.dispatch(idleActions.start())
   return store
 }
