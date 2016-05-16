@@ -1,7 +1,7 @@
 {
-  "coverage": "20.23%",
-  "expectCount": 84,
-  "actualCount": 17,
+  "coverage": "9.14%",
+  "expectCount": 175,
+  "actualCount": 16,
   "files": {
     "lib/redux/constants.js": {
       "expectCount": 49,
@@ -50,12 +50,41 @@
         58
       ]
     },
-    "lib/routes/components/App.js": {
-      "expectCount": 2,
+    "lib/errors/APIError.js": {
+      "expectCount": 10,
       "actualCount": 0,
       "undocumentLines": [
         3,
-        4
+        12,
+        11,
+        8,
+        4,
+        10,
+        9,
+        13,
+        6,
+        14
+      ]
+    },
+    "lib/errors/DOMError.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        4,
+        6
+      ]
+    },
+    "lib/errors/ExtendableError.js": {
+      "expectCount": 6,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        2,
+        6,
+        5,
+        4,
+        10
       ]
     },
     "lib/redux/hydrateImmutable.js": {
@@ -65,32 +94,62 @@
         3
       ]
     },
-    "lib/routes/components/Index.js": {
-      "expectCount": 2,
-      "actualCount": 1,
+    "lib/redux/modules/redux-idle-monitor.js": {
+      "expectCount": 13,
+      "actualCount": 0,
       "undocumentLines": [
-        18
+        11,
+        16,
+        12,
+        9,
+        10,
+        8,
+        15,
+        14,
+        13,
+        18,
+        101,
+        106,
+        75
       ]
     },
-    "lib/routes/Identity/routes/Login/components/Login.js": {
-      "expectCount": 2,
-      "actualCount": 1,
+    "lib/errors/IdentityError.js": {
+      "expectCount": 7,
+      "actualCount": 0,
       "undocumentLines": [
-        14
+        3,
+        4,
+        11,
+        8,
+        7,
+        6,
+        10
       ]
     },
-    "lib/routes/Identity/routes/Maintenance/components/Maintenance.js": {
-      "expectCount": 2,
-      "actualCount": 1,
+    "lib/errors/StateError.js": {
+      "expectCount": 4,
+      "actualCount": 0,
       "undocumentLines": [
-        15
+        5,
+        6,
+        8,
+        3
       ]
     },
-    "lib/routes/NoMatch/components/NoMatch.js": {
-      "expectCount": 2,
-      "actualCount": 1,
+    "lib/services/musical.browser.js": {
+      "expectCount": 10,
+      "actualCount": 0,
       "undocumentLines": [
-        9
+        11,
+        7,
+        14,
+        12,
+        13,
+        16,
+        29,
+        47,
+        86,
+        103
       ]
     },
     "lib/redux/reducers/api.js": {
@@ -101,11 +160,73 @@
         46
       ]
     },
+    "lib/redux/actions/api.js": {
+      "expectCount": 6,
+      "actualCount": 0,
+      "undocumentLines": [
+        263,
+        25,
+        33,
+        34,
+        294,
+        310
+      ]
+    },
+    "lib/redux/actions/identity.js": {
+      "expectCount": 9,
+      "actualCount": 2,
+      "undocumentLines": [
+        95,
+        37,
+        33,
+        35,
+        119,
+        109,
+        34
+      ]
+    },
     "lib/redux/reducers/autocomplete.js": {
       "expectCount": 1,
       "actualCount": 0,
       "undocumentLines": [
         70
+      ]
+    },
+    "lib/services/location.js": {
+      "expectCount": 12,
+      "actualCount": 0,
+      "undocumentLines": [
+        11,
+        21,
+        20,
+        12,
+        7,
+        5,
+        8,
+        6,
+        4,
+        9,
+        3,
+        10
+      ]
+    },
+    "lib/redux/actions/errors.js": {
+      "expectCount": 2,
+      "actualCount": 1,
+      "undocumentLines": [
+        10
+      ]
+    },
+    "lib/redux/actions/autocomplete.js": {
+      "expectCount": 6,
+      "actualCount": 0,
+      "undocumentLines": [
+        10,
+        11,
+        12,
+        13,
+        15,
+        9
       ]
     },
     "lib/router/configureApiRouter.js": {
@@ -117,20 +238,13 @@
       "expectCount": 1,
       "actualCount": 0,
       "undocumentLines": [
-        62
+        78
       ]
     },
     "lib/router/configureRouter.js": {
       "expectCount": 1,
       "actualCount": 1,
       "undocumentLines": []
-    },
-    "lib/routes/configureRoutes.js": {
-      "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        6
-      ]
     },
     "lib/router/configureSecureRouter.js": {
       "expectCount": 1,
@@ -143,21 +257,21 @@
       "expectCount": 1,
       "actualCount": 0,
       "undocumentLines": [
-        53
+        52
       ]
     },
     "lib/redux/store/configureStore.prod.js": {
       "expectCount": 1,
       "actualCount": 0,
       "undocumentLines": [
-        7
+        10
       ]
     },
     "lib/redux/store/configureStore.dev.js": {
       "expectCount": 1,
       "actualCount": 0,
       "undocumentLines": [
-        8
+        11
       ]
     },
     "lib/router/configureUnsupportedRouter.js": {
@@ -167,16 +281,46 @@
         31
       ]
     },
+    "lib/context/index.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        76,
+        3
+      ]
+    },
     "lib/stream.js": {
       "expectCount": 2,
       "actualCount": 2,
       "undocumentLines": []
+    },
+    "lib/redux/actions/visual.js": {
+      "expectCount": 8,
+      "actualCount": 0,
+      "undocumentLines": [
+        22,
+        21,
+        17,
+        15,
+        14,
+        13,
+        18,
+        12
+      ]
     },
     "lib/redux/reducers/errors.js": {
       "expectCount": 1,
       "actualCount": 0,
       "undocumentLines": [
         21
+      ]
+    },
+    "lib/services/claims.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        2
       ]
     },
     "lib/cors.js": {
@@ -186,18 +330,33 @@
         16
       ]
     },
-    "lib/index.js": {
+    "lib/context/theme.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        220,
+        213
+      ]
+    },
+    "lib/context/palette.js": {
       "expectCount": 1,
       "actualCount": 0,
       "undocumentLines": [
-        6
+        1
       ]
     },
     "lib/redux/reducers/identity.js": {
       "expectCount": 1,
       "actualCount": 0,
       "undocumentLines": [
-        321
+        320
+      ]
+    },
+    "lib/services/promise.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
       ]
     },
     "lib/proxy.js": {
@@ -213,13 +372,6 @@
       "undocumentLines": [
         8,
         19
-      ]
-    },
-    "lib/redux/reducers/validation.js": {
-      "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        24
       ]
     },
     "lib/redux/reducers/visual.js": {
