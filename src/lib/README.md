@@ -13,6 +13,6 @@ Everything in this directory is Universal JavaScript. It will run fine in a node
 #### Structure
 
 * errors - Subclassed custom errors that can be used from client or server.
-* redux - Redux store, reducers, actions, middleware and constants all go here.
+* redux - Redux store, reducers, actions, middleware, modules ([ducks](https://github.com/erikras/ducks-modular-redux)) and constants all go here.
 * router - Server side routing is configured here.
 * services - Services for retrieving repeated information go here.

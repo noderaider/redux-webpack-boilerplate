@@ -67,7 +67,7 @@ const initialState =  { value: value()
                       , isLoading: isLoading()
                       }
 
-export function autocomplete(state = initialState, action) {
+export default function autocomplete(state = initialState, action) {
   const { type, payload, error } = action
   switch (type) {
     case UPDATE_INPUT_VALUE:

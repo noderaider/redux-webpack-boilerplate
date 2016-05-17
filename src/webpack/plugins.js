@@ -30,7 +30,8 @@ export default name => {
     plugins.push(new IgnorePlugin(/dtrace-provider/i))
 
   plugins.push(getDefinePlugin(name))
-  plugins.push(new DedupePlugin())
+  if(!IS_HOT)
+    plugins.push(new DedupePlugin())
   plugins.push(new OccurenceOrderPlugin())
 
 

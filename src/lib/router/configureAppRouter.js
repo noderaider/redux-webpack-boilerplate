@@ -78,9 +78,6 @@ ${renderToString(<HTML {...props} />)}`
 export default function configureAppRouter({ cors, paths }) {
   const { SRC_ROOT, APP_ROOT, LIB_ROOT, STATIC_ROOT, ASSETS_ROOT } = paths
   let router = Router()
-
-
-
   //logging().then(({ logFile }) => {
     //let fileNumber = 0
     router.use((req, res, next) => {

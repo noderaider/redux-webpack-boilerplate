@@ -25,9 +25,8 @@ const createBrowserStore = ({ history = browserHistory, initialState = getInitia
   const store = configureStore({ history, initialState, additionalEnhancers })
   const syncedHistory = syncHistoryWithStore(browserHistory, store)
   const unsubscribe = initBrowserStore(store)
-  const browserStore = { ...store, unsubscribe }
-  saveStore(browserStore, syncedHistory)
-  return [browserStore, syncedHistory]
+  saveStore(store, syncedHistory)
+  return [store, syncedHistory]
 }
 
 export default function configureBrowserStore(...opts) {

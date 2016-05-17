@@ -47,7 +47,8 @@ export const initialState = { entities: entities()
                             , isFetching: isFetching()
                             }
 
-export function api(state = initialState, action) {
+export default function api(state = initialState, action) {
+  console.warn('API REDUCER => ', state)
   const { type, payload, error } = action
   switch(type) {
     case FETCH_DATA:

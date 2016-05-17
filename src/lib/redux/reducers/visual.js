@@ -99,7 +99,7 @@ function theme(state = initialTheme, action = {}) {
 
 const initialState = { visibility: visibility(), theme: theme(), expanders: expanders(), tooltip: tooltip(), text: text() }
 
-export function visual(state = initialState, action) {
+export default function visual(state = initialState, action) {
   const { type, payload, error } = action
   switch(type) {
     case HYDRATE:

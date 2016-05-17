@@ -317,7 +317,7 @@ const initialState =  { isFetching: isFetching()
                       }
 
 
-export function identity(state = initialState, action) {
+export default function identity(state = initialState, action) {
   const { type, payload, error } = action
   switch(type) {
     case FETCH_IDENTITY:

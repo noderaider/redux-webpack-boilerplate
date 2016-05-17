@@ -11,7 +11,7 @@ If code must be built to a browser bundle or requires loaders, use this director
 * entry - Entry points for webpack browser bundles.
 * fonts
 * images
-* redux - Browser specific redux functionality and modules ([ducks](https://github.com/erikras/ducks-modular-redux)).
+* redux - Browser specific redux functionality.
 * routes - All of the routes and their components are hierarchically structured here. This is also bundled for server side rendering.
 * styles
 * vendor - Third party libraries that require custom functionality or shimming.
