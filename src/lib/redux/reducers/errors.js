@@ -1,5 +1,4 @@
 import Immutable from 'immutable'
-import hydrateImmutable, { HYDRATE } from '../hydrateImmutable'
 import  { CLEAR_ERRORS
         , DISMISS_ERROR
         , FETCH_DATA
@@ -18,8 +17,7 @@ import  { CLEAR_ERRORS
         , IDENTITY_EXPIRED
         } from '../constants'
 
-export default function errors(s = Immutable.fromJS({ api: [], identity: [] }), action = {}) {
-  const state = action.type === HYDRATE ? Immutable.fromJS({ api: [], identity: [] }) : s
+export default function errors(state = Immutable.fromJS({ api: [], identity: [] }), action = {}) {
   const { type, payload, error } = action
 
   // HANDLE NON ERRORS

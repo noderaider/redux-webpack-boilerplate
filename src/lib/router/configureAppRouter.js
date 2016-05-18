@@ -9,11 +9,12 @@ import { renderToString } from 'react-dom/server'
 import { createMemoryHistory, match, RouterContext } from 'react-router'
 import { Provider } from 'react-redux'
 import { syncHistoryWithStore } from 'react-router-redux'
-import serialize from 'serialize-javascript'
+
+import { serialize } from 'fire-hydrant'
 import minify from '../services/minify'
 
 import getTheme from '../context/theme'
-import { packageName, packageKey, defaultTheme, faviconUrl, log, IS_HOT, IS_DEV, noop, resolveRoot, initialState } from '../../config'
+import { packageName, packageKey, defaultTheme, faviconUrl, log, IS_HOT, IS_DEV, noop, resolveRoot } from '../../config'
 import logging from '../services/logging'
 import configureStore from '../redux/store/configureStore.js'
 import routes from '../app/routes'
@@ -42,9 +43,11 @@ const BodyInit = ({ theme }) => {
 }
 
 const InitialState = ({ globalKey, state }) => {
-  const __html = serializeGlobalSetter({ globalKey, key: '__initialState__', value: serialize(state)})
+  const serialized = serialize(state)
+  const __html = serializeGlobalSetter({ globalKey, key: '__initialState__', value: serialized })
   return <script dangerouslySetInnerHTML={{ __html }} />
 }
+
 
 const HTML = ({ content, store }) => {
   const state = store.getState()
@@ -83,7 +86,7 @@ export default function configureAppRouter({ cors, paths }) {
     router.use((req, res, next) => {
       //cors.handle(req, res)
       const memoryHistory = createMemoryHistory(req.path)
-      let store = configureStore({ history: memoryHistory, initialState })
+      let store = configureStore(memoryHistory)
       const history = syncHistoryWithStore(memoryHistory, store)
 
 

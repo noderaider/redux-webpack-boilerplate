@@ -12,17 +12,9 @@ const getDebugSessionKey = () => {
     return matches[1]
 }
 
-
-const getDevToolsEnhancer = () => typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : f => f
-
-const createBrowserStore = ({ history = browserHistory, initialState = getInitialState() } = {}) => {
+const createBrowserStore = (history = browserHistory, initialState = getInitialState()) => {
   const configureStore = importConfigureStore()
-
-  const additionalEnhancers = [ getDevToolsEnhancer()
-                              //, persistState(getDebugSessionKey())
-                              ]
-
-  const store = configureStore({ history, initialState, additionalEnhancers })
+  const store = configureStore(history, initialState)
   const syncedHistory = syncHistoryWithStore(browserHistory, store)
   const unsubscribe = initBrowserStore(store)
   saveStore(store, syncedHistory)

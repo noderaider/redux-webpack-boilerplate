@@ -1,39 +1,12 @@
 webpackJsonp([5,1],{
 
-/***/ 584:
+/***/ 422:
+/*!**********************************************************************!*\
+  !*** ../src/app/routes/routes/Test/routes/Forms/components/Forms.js ***!
+  \**********************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = function (_ref) {
-	  var children = _ref.children;
-	  var params = _ref.params;
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    _react2.default.createElement(
-	      'h2',
-	      null,
-	      'Form Tests'
-	    ),
-	    params.id ? _react2.default.createElement(
-	      'span',
-	      null,
-	      params.id
-	    ) : null,
-	    children
-	  );
-	};
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ 1);\n\nvar _react2 = _interopRequireDefault(_react);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = function (_ref) {\n  var children = _ref.children;\n  var params = _ref.params;\n  return _react2.default.createElement(\n    'div',\n    null,\n    _react2.default.createElement(\n      'h2',\n      null,\n      'Form Tests'\n    ),\n    params.id ? _react2.default.createElement(\n      'span',\n      null,\n      params.id\n    ) : null,\n    children\n  );\n};\n\n/*****************\n ** WEBPACK FOOTER\n ** ../src/app/routes/routes/Test/routes/Forms/components/Forms.js\n ** module id = 422\n ** module chunks = 5\n **/\n//# sourceURL=webpack:///../src/app/routes/routes/Test/routes/Forms/components/Forms.js?");
 
 /***/ }
 

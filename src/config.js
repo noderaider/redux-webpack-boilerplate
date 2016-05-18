@@ -31,15 +31,3 @@ export const dependencyNames = IS_BROWSER ? noop() : Array.from(new Set([ ...Obj
                                                                         , ...Object.keys(peerDependencies)
                                                                         , ...Object.keys(optionalDependencies)
                                                                         ]))
-
-export const initialState =  { visual: { text:  { title: packageKey
-                                                , subtitle: 'UNIVERSAL HMR'
-                                                , packageName
-                                                , username: 'your.github.username'
-                                                , organization: 'your.github.organization'
-                                                , email: 'your.email@email.com'
-                                                , full: 'Your Full Name'
-                                                }
-                                        , theme: defaultTheme
-                                        }
-                              }

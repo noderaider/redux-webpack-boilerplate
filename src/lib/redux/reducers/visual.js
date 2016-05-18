@@ -1,6 +1,5 @@
 import Immutable from 'immutable'
 import { defaultTheme } from '../../../config'
-import hydrateImmutable, { HYDRATE } from '../hydrateImmutable'
 import  { TOGGLE_VISIBILITY
         , SET_VISIBILITY
         , SET_THEME
@@ -102,12 +101,6 @@ const initialState = { visibility: visibility(), theme: theme(), expanders: expa
 export default function visual(state = initialState, action) {
   const { type, payload, error } = action
   switch(type) {
-    case HYDRATE:
-      return Object.assign({}, state, { visibility: visibility(...hydrateImmutable(state.visibility, action))
-                                      , expanders: expanders(...hydrateImmutable(state.expanders, action))
-                                      , tooltip: tooltip(...hydrateImmutable(state.tooltip, action))
-                                      , text: text(...hydrateImmutable(state.text, action))
-                                      })
     case TOGGLE_VISIBILITY:
     case SET_VISIBILITY:
       return Object.assign({}, state, { visibility: visibility(state.visibility, action) })

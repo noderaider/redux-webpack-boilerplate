@@ -1,6 +1,7 @@
 import Promise from 'bluebird'
 import { assert } from 'chai'
 import { packageKey } from 'config'
+import { fromHydrant } from 'fire-hydrant'
 
 const createGlobalAccessor = globalKey => {
   window[globalKey] = window[globalKey] || {}
@@ -45,4 +46,10 @@ export const resolveStore = (pollFrequencyMS = 100) => {
 }
 
 export const setInitialState = initialState => accessor.set(INITIAL_STATE_KEY, initialState)
-export const getInitialState = () => accessor.get(INITIAL_STATE_KEY)
+export const getInitialState = () => {
+  const initialState = accessor.get(INITIAL_STATE_KEY)
+  if(initialState)
+    return fromHydrant(initialState)
+  return {}
+}
+
