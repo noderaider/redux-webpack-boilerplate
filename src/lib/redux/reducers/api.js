@@ -1,5 +1,4 @@
 import Immutable from 'immutable'
-import hydrateImmutable, { HYDRATE } from '../hydrateImmutable'
 import  { CLEAR_DATA
         , FETCH_DATA
         , RECEIVE_DATA
@@ -53,12 +52,11 @@ export default function api(state = initialState, action) {
   switch(type) {
     case FETCH_DATA:
       return Object.assign({}, state, { isFetching: isFetching(state.isFetching, action) })
-    case HYDRATE:
     case RECEIVE_DATA:
     case KEYED_DATA:
     case CLEAR_DATA:
-      return Object.assign({}, state, { entities: entities(...hydrateImmutable(state.entities, action))
-                                      , isFetching: isFetching(...hydrateImmutable(state.isFetching, action))
+      return Object.assign({}, state, { entities: entities(state.entities, action)
+                                      , isFetching: isFetching(state.isFetching, action)
                                       })
   }
   return state

@@ -2,7 +2,7 @@ import configure  from 'redux-idle-monitor'
 import { push } from 'react-router-redux'
 import * as themes from 'redux-devtools-themes'
 
-import { packageName, IS_BROWSER, initialState } from '../../../config'
+import { packageName, IS_BROWSER } from '../../../config'
 import { setText } from '../actions/visual'
 
 export const IDLESTATUS_NOT_VERY_ACTIVE = 'NOT_VERY_ACTIVE'
@@ -99,7 +99,7 @@ export const idleStatusDelay = idleStatus => (dispatch, getState) => {
 
 
 export const activeStatusAction = (dispatch, getState) =>  {
-  dispatch(setText({ subtitle: initialState.visual.text.subtitle }))
+  dispatch(setText({ subtitle: 'UNIVERSAL HMR'}))
   setColor(solarized.background[0])
 }
 

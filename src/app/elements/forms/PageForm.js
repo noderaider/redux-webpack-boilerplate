@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { reduxForm, propTypes } from 'redux-form'
 import { Row, Col } from 'react-bootstrap'
-import { log, initialState } from 'config'
+import { log } from 'config'
 import Input from './controls/Input'
 import contextTypes from 'app/context'
 

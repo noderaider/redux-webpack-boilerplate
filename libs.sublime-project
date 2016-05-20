@@ -87,6 +87,11 @@
       "path": "../browser-detective"
     },
     {
+      "name": "fire-hydrant",
+      "follow_symlinks": true,
+      "path": "../fire-hydrant"
+    },
+    {
       "name": "isoconfig",
       "follow_symlinks": true,
       "path": "../isoconfig"
