@@ -7,6 +7,16 @@
       "path": "."
     },
     {
+      "name": "contextual",
+      "follow_symlinks": true,
+      "path": "../contextual"
+    },
+    {
+      "name": "kerbal",
+      "follow_symlinks": true,
+      "path": "../kerbal"
+    },
+    {
       "name": "print",
       "follow_symlinks": true,
       "path": "../print"

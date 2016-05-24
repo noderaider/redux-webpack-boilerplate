@@ -4,10 +4,6 @@
 		"selected_items":
 		[
 			[
-				"LOCAL",
-				"LOCAL_STORAGE_KEY"
-			],
-			[
 				"ACTIVIT",
 				"activityDetectionAction"
 			],
@@ -32,101 +28,109 @@
 	"buffers":
 	[
 		{
-			"file": "/C/Users/ColeChamberlain/cchamberlain/redux-idle-monitor/src/lib/index.js",
+			"file": "/C/Users/cchamberlain/cchamberlain/kerbal/src/app/routes/components/App.js",
 			"settings":
 			{
-				"buffer_size": 603,
+				"buffer_size": 2336,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/app/redux/store/initBrowserStore.js",
+			"file": "/C/Users/cchamberlain/cchamberlain/kerbal/src/app/routes/components/Home.js",
 			"settings":
 			{
-				"buffer_size": 264,
+				"buffer_size": 1286,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/app/redux/store/subscribeStore.js",
+			"file": "/C/Users/cchamberlain/cchamberlain/kerbal/src/app/routes/components/Frames.js",
 			"settings":
 			{
-				"buffer_size": 1496,
+				"buffer_size": 853,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/app/elements/grids/PrimaryGrid.js",
+			"contents": "Searching 471 files for \"LAST IDLE\" (case sensitive)\n\n0 matches\n\nSearching 6 files for \"LAST IDLE\" (case sensitive)\n\n0 matches\n\nSearching 10 files for \"LAST IDLE\" (case sensitive)\n\nC:\\Users\\cchamberlain\\cchamberlain\\redux-idle-monitor\\src\\lib\\middleware.js:\n  111  \n  112        if(type === LAST_IDLE_STATUS) {\n  113:         console.warn('LAST IDLE STATUS TRIGGERED')\n  114          clearTimeout(nextTimeoutID)\n  115          //dispatch(lastIdleStatusAction(IDLESTATUS_LAST))\n\n1 match in 1 file\n\n\nSearching 10 files for \"dispatch(lastIdle\" (case sensitive)\n\nC:\\Users\\cchamberlain\\cchamberlain\\redux-idle-monitor\\src\\lib\\actions.js:\n   60      let currLastActive = getLocalActive()\n   61      if(currLastActive == 'IDLE') {\n   62:       dispatch(lastIdleStatus())\n   63      } else if(currLastActive != prevLastActive) {\n   64        log.debug(`local activity detected, prev=[${prevLastActive}], curr=[${currLastActive}], ${typeof currLastActive}`)\n\nC:\\Users\\cchamberlain\\cchamberlain\\redux-idle-monitor\\src\\lib\\middleware.js:\n  112        if(type === LAST_IDLE_STATUS) {\n  113          clearTimeout(nextTimeoutID)\n  114:         //dispatch(lastIdleStatusAction(IDLESTATUS_LAST))\n  115          dispatch(idleStatusAction(IDLESTATUS_LAST))\n  116  \n\n2 matches across 2 files\n",
 			"settings":
 			{
-				"buffer_size": 232,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/app/elements/forms/LoginForm.js",
-			"settings":
-			{
-				"buffer_size": 2498,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/lib/cors.js",
-			"settings":
-			{
-				"buffer_size": 2819,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/Users/ColeChamberlain/cchamberlain/redux-idle-monitor/src/lib/blueprints.js",
-			"settings":
-			{
-				"buffer_size": 1515,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/Users/ColeChamberlain/cchamberlain/redux-idle-monitor/src/lib/constants.js",
-			"settings":
-			{
-				"buffer_size": 763,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/Users/ColeChamberlain/cchamberlain/redux-idle-monitor/src/lib/reducer.js",
-			"settings":
-			{
-				"buffer_size": 2961,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/Users/ColeChamberlain/cchamberlain/redux-idle-monitor/src/lib/middleware.js",
-			"settings":
-			{
-				"buffer_size": 5610,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/Users/ColeChamberlain/cchamberlain/redux-idle-monitor/src/lib/multiplexer.js",
-			"settings":
-			{
-				"buffer_size": 1208,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "Searching 12 files for \"getLocal\" (case sensitive)\n\nC:\\Users\\ColeChamberlain\\cchamberlain\\redux-idle-monitor\\src\\lib\\detection.js:\n   42    return now\n   43  }\n   44: export const getLocalActive = () => localStorage[LOCAL_STORAGE_KEY]\n   45  \n   46  const configureStartLocalPolling = ({ log, thresholds, activity, lastIdleStatus, getIsTransition }) => (dispatch, getState) => {\n   47:   let prevLastActive = getLocalActive()\n   48    let localIntervalID = setInterval(() => {\n   49:     let currLastActive = getLocalActive()\n   50      if(currLastActive != 'IDLE') {\n   51        log.info(`local activity detected, prev=[${prevLastActive}], curr=[${currLastActive}], ${typeof currLastActive}`)\n\n3 matches in 1 file\n",
-			"settings":
-			{
-				"buffer_size": 716,
+				"buffer_size": 1273,
 				"line_ending": "Windows",
 				"name": "Find Results",
 				"scratch": true
+			}
+		},
+		{
+			"file": "/C/Users/cchamberlain/cchamberlain/redux-idle-monitor/src/lib/actions.js",
+			"settings":
+			{
+				"buffer_size": 4291,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/cchamberlain/cchamberlain/redux-idle-monitor/src/lib/middleware.js",
+			"settings":
+			{
+				"buffer_size": 5776,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/cchamberlain/cchamberlain/kerbal/src/lib/redux/modules/redux-idle-monitor.js",
+			"settings":
+			{
+				"buffer_size": 868,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/cchamberlain/cchamberlain/kerbal/src/lib/redux/store/configureStore.dev.js",
+			"settings":
+			{
+				"buffer_size": 1324,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/cchamberlain/cchamberlain/kerbal/src/lib/redux/store/subscribeStore.js",
+			"settings":
+			{
+				"buffer_size": 1484,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/cchamberlain/cchamberlain/contextual/src/lib/theme/index.js",
+			"settings":
+			{
+				"buffer_size": 9123,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/cchamberlain/cchamberlain/kerbal/src/app/redux/store/configureBrowserStore.prod.js",
+			"settings":
+			{
+				"buffer_size": 523,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/cchamberlain/cchamberlain/kerbal/src/app/redux/store/configureBrowserStore.dev.js",
+			"settings":
+			{
+				"buffer_size": 1109,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/cchamberlain/cchamberlain/kerbal/src/lib/redux/store/configureStore.prod.js",
+			"settings":
+			{
+				"buffer_size": 838,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -137,10 +141,70 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 313.0,
-		"last_filter": "reind",
+		"height": 163.0,
+		"last_filter": "prettify",
 		"selected_items":
 		[
+			[
+				"prettify",
+				"HTMLPrettify"
+			],
+			[
+				"h",
+				"HTMLPrettify"
+			],
+			[
+				"htmlp",
+				"HTMLPrettify"
+			],
+			[
+				"html",
+				"HTMLPrettify"
+			],
+			[
+				"ht",
+				"HTMLPrettify"
+			],
+			[
+				"pretti",
+				"HTMLPrettify"
+			],
+			[
+				"compare",
+				"Compare with..."
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"prettif",
+				"HTMLPrettify"
+			],
+			[
+				"install package",
+				"Package Control: Install Package"
+			],
+			[
+				"remove ",
+				"Package Control: Remove Package"
+			],
+			[
+				"inden",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"vintageous",
+				"Vintageous: Open .vintageousrc"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"vin",
+				"Vintageous: Open .vintageousrc"
+			],
 			[
 				"reind",
 				"Indentation: Reindent Lines"
@@ -172,10 +236,6 @@
 			[
 				"set syntax html asp",
 				"Set Syntax: HTML (ASP)"
-			],
-			[
-				"install",
-				"Package Control: Install Package"
 			],
 			[
 				"indent",
@@ -363,139 +423,167 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/ColeChamberlain/cchamberlain/redux-idle-monitor/src",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-idle-monitor/src/lib"
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/lib",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/lib/context",
+		"/C/Users/cchamberlain/cchamberlain/contextual/public/images",
+		"/C/Users/cchamberlain/cchamberlain/contextual/src",
+		"/C/Users/cchamberlain/cchamberlain/contextual/src/lib",
+		"/C/Users/cchamberlain/cchamberlain/contextual/src/lib/theme",
+		"/C/Users/cchamberlain/cchamberlain/contextual/src/spec",
+		"/C/Users/cchamberlain/cchamberlain/contextual/src/spec/tests",
+		"/C/Users/cchamberlain/cchamberlain/kerbal",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/etc",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/etc/config",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/app",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/app/elements",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/app/elements/nav",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/app/elements/panels",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/app/elements/visual",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/app/redux",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/app/routes",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/app/routes/components",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/app/routes/routes",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/app/routes/routes/Frames",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/app/routes/routes/Frames/components",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/lib/redux",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/lib/redux/modules",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/lib/redux/reducers",
+		"/C/Users/cchamberlain/cchamberlain/fire-hydrant",
+		"/C/Users/cchamberlain/cchamberlain/fire-hydrant/src",
+		"/C/Users/cchamberlain/cchamberlain/fire-hydrant/src/spec"
 	],
 	"file_history":
 	[
-		"/C/Users/ColeChamberlain/cchamberlain/redux-idle-monitor/src/lib/detection.js",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-webpack-boilerplate/libs.sublime-project",
-		"/C/Users/ColeChamberlain/cchamberlain/react-pin/src/lib/index.js",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-webpack-boilerplate/src/webpack/alias.js",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-webpack-boilerplate/src/app/elements/nav/FooterBar.js",
-		"/C/Users/ColeChamberlain/cchamberlain/react-hatch/src/webpack/target.js",
-		"/C/Users/ColeChamberlain/cchamberlain/react-hatch/package.json",
-		"/C/Users/ColeChamberlain/cchamberlain/react-hatch/src/lib/index.js",
-		"/C/Users/ColeChamberlain/cchamberlain/react-hatch/src/lib/style/Hatch.less",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-webpack-boilerplate/etc/conemu/libs-numbered.task",
-		"/C/Users/ColeChamberlain/cchamberlain/react-hatch/src/webpack/output.js",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-webpack-boilerplate/etc/conemu/libs.task",
-		"/C/Users/ColeChamberlain/cchamberlain/react-hatch/src/webpack/make.js",
-		"/C/Users/ColeChamberlain/cchamberlain/browser-detective/CNAME",
-		"/C/Users/ColeChamberlain/cchamberlain/browser-detective/.babelrc",
-		"/C/Users/ColeChamberlain/cchamberlain/react-hatch/esdoc.json",
-		"/C/Users/ColeChamberlain/cchamberlain/react-hatch/CNAME",
-		"/C/Users/ColeChamberlain/cchamberlain/browser-detective/README.md",
-		"/C/Users/ColeChamberlain/cchamberlain/react-hatch/src/webpack/entry.js",
-		"/C/Users/ColeChamberlain/cchamberlain/react-hatch/src/webpack/alias.js",
-		"/C/Users/ColeChamberlain/cchamberlain/react-hatch/src/webpack.config.js",
-		"/C/Users/ColeChamberlain/cchamberlain/react-hatch/src/config.js",
-		"/C/Users/ColeChamberlain/cchamberlain/browser-detective/src/lib/index.js",
-		"/C/Users/ColeChamberlain/cchamberlain/react-redux-idle-monitor/src/lib/style.js",
-		"/C/Users/ColeChamberlain/cchamberlain/react-redux-idle-monitor/README.md",
-		"/C/Users/ColeChamberlain/cchamberlain/react-redux-idle-monitor/src/lib/index.js",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-idle-monitor/src/lib/middleware.js",
-		"/C/Users/ColeChamberlain/cchamberlain/react-hatch/README.md",
-		"/C/Users/ColeChamberlain/cchamberlain/react-hatch/src/lib/style/index.js",
-		"/C/Users/ColeChamberlain/cchamberlain/react-hatch/src/webpack/loaders.js",
-		"/C/Users/ColeChamberlain/cchamberlain/react-hatch/src/webpack/externals.js",
-		"/C/Users/ColeChamberlain/cchamberlain/react-hatch/lib/index.js",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-webpack-boilerplate/src/webpack.static.config.js",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-webpack-boilerplate/src/webpack.config.js",
-		"/C/Users/ColeChamberlain/cchamberlain/react-hatch/src/webpack/postcss.js",
-		"/C/Users/ColeChamberlain/cchamberlain/react-hatch/src/webpack/plugins.js",
-		"/C/Users/ColeChamberlain/cchamberlain/react-hatch/src/lib/styles/index.js",
-		"/C/Users/ColeChamberlain/cchamberlain/browser-detective/package.json",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-webpack-boilerplate/src/app/containers/App.jsx",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-webpack-boilerplate/src/webpack/resolve.js",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-webpack-boilerplate/src/webpack/plugins.js",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-webpack-boilerplate/src/webpack/output.js",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-webpack-boilerplate/src/webpack/loaders.js",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-webpack-boilerplate/src/webpack/entry.js",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-webpack-boilerplate/src/webpack/devtool.js",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-webpack-boilerplate/src/lib/server.js",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-webpack-boilerplate/src/lib/route/index.js",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-webpack-boilerplate/src/lib/route/api.js",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-webpack-boilerplate/src/lib/proxy.js",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-webpack-boilerplate/src/lib/index.js",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-webpack-boilerplate/src/lib/cors.js",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-webpack-boilerplate/src/bin/run.js",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-webpack-boilerplate/src/package/scripts.js",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-idle-monitor/README.md",
-		"/C/Users/ColeChamberlain/tixinc/js/src/lib/routes/configureRoutes.js",
-		"/C/Users/ColeChamberlain/cchamberlain/react-load/package.json",
-		"/C/Users/ColeChamberlain/cchamberlain/react-load/src/lib/index.js",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-idle-monitor/src/lib/reducer.js",
-		"/C/Users/ColeChamberlain/tixinc/js/src/lib/router/configureAppRouter.js",
-		"/C/Users/ColeChamberlain/tixinc/js/src/lib/routes/Identity/routes/Login/index.js",
-		"/C/Users/ColeChamberlain/cchamberlain/react-load/.gitignore",
-		"/C/Users/ColeChamberlain/cchamberlain/react-load/src/lib/components/Spinner.js",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-webpack-boilerplate/etc/conemu/apps.task",
-		"/C/Users/ColeChamberlain/tixinc/js/src/lib/routes/components/Index.js",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-load/README.md",
-		"/C/Users/ColeChamberlain/tixinc/js/src/app/controls/Spinner.obsolete-js",
-		"/C/Users/ColeChamberlain/cchamberlain/react-load/CNAME",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-load/CNAME",
-		"/C/Users/ColeChamberlain/cchamberlain/react-load/esdoc.json",
-		"/C/Users/ColeChamberlain/cchamberlain/save-as/package.json",
-		"/C/Users/ColeChamberlain/cchamberlain/react-load/README.md",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-load/src/lib/index.js",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-load/package.json",
-		"/C/Users/ColeChamberlain/tixinc/js/js.sublime-project",
-		"/C/Users/ColeChamberlain/tixinc/js/src/lib/routes/components/Spinner.js",
-		"/C/Users/ColeChamberlain/tixinc/js/src/lib/server.js",
-		"/C/Users/ColeChamberlain/tixinc/js/src/lib/router/configureRouter.js",
-		"/C/Users/ColeChamberlain/tixinc/js/src/lib/routes/Identity/index.js",
-		"/C/Users/ColeChamberlain/tixinc/js/src/app/routes/index.js",
-		"/C/Users/ColeChamberlain/tixinc/js/src/app/state/store/configureBrowserStore.dev.js",
-		"/C/Users/ColeChamberlain/tixinc/js/src/app/entry/app.js",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-idle-monitor/package.json",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-webpack-boilerplate/package.json",
-		"/C/Users/ColeChamberlain/cchamberlain/repackage/package.json",
-		"/C/Users/ColeChamberlain/cchamberlain/repackage/src/package/scripts.js",
-		"/C/Users/ColeChamberlain/tixinc/js/src/lib/router/configureSecureRouter.js",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-grid-view/package.json",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-grid/package.json",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-blueprint/package.json",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-mux/package.json",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-middleware/package.json",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-addons/package.json",
-		"/C/Users/ColeChamberlain/tixinc/js/src/app/entry/timeout.js",
-		"/C/Users/ColeChamberlain/tixinc/js/src/app/entry/loading.js",
-		"/C/Users/ColeChamberlain/tixinc/js/src/app/entry/dom/elements.js",
-		"/C/Users/ColeChamberlain/cchamberlain/react-redux-idle-monitor/package.json",
-		"/C/Users/ColeChamberlain/tixinc/js/src/app/entry/global/performance.js",
-		"/C/Users/ColeChamberlain/tixinc/js/src/app/containers/DevTools.js",
-		"/C/Users/ColeChamberlain/tixinc/js/src/app/routes/Identity/index.js",
-		"/C/Users/ColeChamberlain/tixinc/js/src/app/entry/dom/RootElement.js",
-		"/C/Users/ColeChamberlain/tixinc/js/package.json",
-		"/C/Users/ColeChamberlain/tixinc/js/src/app/routes/components/App.jsx",
-		"/C/Users/ColeChamberlain/tixinc/js/src/webpack/loaders.js",
-		"/C/Users/ColeChamberlain/tixinc/js/src/app/AppProvider.js",
-		"/C/Users/ColeChamberlain/tixinc/js/src/lib/route/index.js",
-		"/C/Users/ColeChamberlain/tixinc/js/src/app/state/store/globalStore.js",
-		"/C/Users/ColeChamberlain/tixinc/js/src/app/containers/showDevTools.js",
-		"/C/Users/ColeChamberlain/tixinc/js/src/webpack/plugins.js",
-		"/C/Users/ColeChamberlain/tixinc/js/src/webpack/output.js",
-		"/C/Users/ColeChamberlain/tixinc/js/src/webpack/entry.js",
-		"/C/Users/ColeChamberlain/tixinc/js/webpack.lib.config.js",
-		"/C/Users/ColeChamberlain/tixinc/js/src/webpack/target.js",
-		"/C/Users/ColeChamberlain/tixinc/js/src/lib/routers/configureApiRouter.js",
-		"/C/Users/ColeChamberlain/tixinc/js/src/lib/routers/configureLegacyRouter.js",
-		"/C/Users/ColeChamberlain/tixinc/js/src/lib/routers/configureAppRouter.js",
-		"/C/Users/ColeChamberlain/tixinc/js/src/lib/routers/configureSecureRouter.js",
-		"/C/Users/ColeChamberlain/tixinc/js/src/lib/routers/configureRouter.js",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-webpack-boilerplate/src/app/elements/nav/TopBar.jsx",
-		"/C/Users/ColeChamberlain/cchamberlain/redux-webpack-boilerplate/src/app/elements/nav/TopBar.css",
-		"/C/Users/ColeChamberlain/tixinc/js/src/app/routes/components/App.js",
-		"/C/Users/ColeChamberlain/tixinc/js/src/app/state/store/configureStore.prod.js",
-		"/C/Users/ColeChamberlain/tixinc/js/src/app/state/store/configureStore.dev.js",
-		"/C/Users/ColeChamberlain/tixinc/js/src/app/entry/loading.jsx",
-		"/C/Users/ColeChamberlain/tixinc/js/src/app/routes/Identity/routes/Maintenance/index.js",
-		"/C/Users/ColeChamberlain/tixinc/js/src/app/routes/Identity/routes/Maintenance/components/Maintenance.jsx",
-		"/C/Users/ColeChamberlain/tixinc/js/src/app/elements/panels/MaintenancePanel.jsx",
-		"/C/Users/ColeChamberlain/tixinc/js/src/app/AppProvider.jsx",
-		"/C/Users/ColeChamberlain/tixinc/js/src/app/elements/panels/IdentityPanel.jsx"
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/webpack/resolve/alias.js",
+		"/C/Users/cchamberlain/cchamberlain/contextual/src/lib/index.js",
+		"/C/Users/cchamberlain/cchamberlain/contextual/src/lib/theme/index.js",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/app/redux/store/globalStore.js",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/app/elements/nav/TopBar.js",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/lib/router/configureAppRouter.js",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/lib/redux/reducers/visual.js",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/lib/context.js",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/app/elements/nav/FooterBar.js",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/lib/redux/modules/redux-idle-monitor.js",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/lib/redux/reducers/api.js",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/app/routes/components/App.js",
+		"/C/Users/cchamberlain/cchamberlain/contextual/src/spec/tests/contextualSpec.js",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/config.js",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/app/routes/components/Home.js",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/app/elements/visual/PageStyle.js",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/app/elements/visual/FA.js",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/app/elements/panels/ThemePanel.js",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/app/elements/panels/ErrorPanel.js",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/app/elements/panels/base/CorePanel.js",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/app/elements/forms/PageForm.js",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/app/elements/forms/LoginForm.js",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/app/elements/forms/controls/Label.js",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/app/elements/forms/controls/Input.js",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/app/elements/diagnostics/ErrorVisual.js",
+		"/C/Users/cchamberlain/cchamberlain/contextual/src/lib/theme/palettes/index.js",
+		"/C/Users/cchamberlain/cchamberlain/contextual/src/lib/theme/palettes/invert.js",
+		"/C/Users/cchamberlain/cchamberlain/contextual/src/lib/theme/overrides/touchscreen.css",
+		"/C/Users/cchamberlain/cchamberlain/contextual/src/lib/theme/overrides/index.js",
+		"/C/Users/cchamberlain/cchamberlain/contextual/src/lib/createContextTypes.js",
+		"/C/Users/cchamberlain/cchamberlain/contextual/src/lib/theme/scheme.js",
+		"/C/Users/cchamberlain/cchamberlain/contextual/src/lib/theme/scheme/index.js",
+		"/C/Users/cchamberlain/cchamberlain/contextual/package.json",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/package.json",
+		"/C/Users/cchamberlain/cchamberlain/contextual/src/lib/theme/palettes/invertPalette",
+		"/C/Users/cchamberlain/cchamberlain/contextual/src/lib/theme/palettes/gold.js",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/README.md",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/config-server.json",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/etc/config/config-client.json",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/etc/config/config-server.json",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/config-server.json",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/lib/index.js",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/bin/run.js",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/lib/context/theme/palette.js",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/lib/context/theme/index.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/libs.sublime-project",
+		"/C/Users/cchamberlain/cchamberlain/contextual/README.md",
+		"/C/Users/cchamberlain/cchamberlain/contextual/CNAME",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/config-client.json",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/package/name.js",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/package.json",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/package/description.js",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/src/package/keywords.json",
+		"/C/Users/cchamberlain/cchamberlain/fire-hydrant/src/lib/index.js",
+		"/C/Users/cchamberlain/cchamberlain/fire-hydrant/README.md",
+		"/C/Users/cchamberlain/cchamberlain/react-redux-idle-monitor/src/lib/index.js",
+		"/C/Users/cchamberlain/cchamberlain/react-hatch/src/lib/index.js",
+		"/C/Users/cchamberlain/cchamberlain/react-hatch/src/webpack/plugins.js",
+		"/C/Users/cchamberlain/cchamberlain/fire-hydrant/package.json",
+		"/C/Users/cchamberlain/cchamberlain/react-hatch/src/webpack/loaders.js",
+		"/C/Users/cchamberlain/cchamberlain/react-hatch/src/webpack.config.js",
+		"/C/Users/cchamberlain/cchamberlain/kerbal/esdoc.json",
+		"/C/Users/cchamberlain/cchamberlain/react-redux-idle-monitor/README.md",
+		"/C/Users/cchamberlain/cchamberlain/react-hatch/src/webpack/output.js",
+		"/C/Users/cchamberlain/cchamberlain/react-hatch/src/webpack/alias.js",
+		"/C/Users/cchamberlain/cchamberlain/fire-hydrant/src/spec/tests/fireHydrantSpec.js",
+		"/C/Users/cchamberlain/cchamberlain/fire-hydrant/lib/index.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/package/scripts.js",
+		"/C/Users/cchamberlain/cchamberlain/fire-hydrant/spec/jasmine_examples/PlayerSpecExample.js",
+		"/C/Users/cchamberlain/cchamberlain/fire-hydrant/spec/helpers/jasmine_examples/SpecHelper.js",
+		"/C/Users/cchamberlain/cchamberlain/print/src/config.js",
+		"/C/Users/cchamberlain/cchamberlain/print/src/app/routes/components/Home.js",
+		"/C/Users/cchamberlain/cchamberlain/print/src/package/scripts.js",
+		"/C/Users/cchamberlain/cchamberlain/print/src/app/elements/forms/SignupForm.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/public/index.html",
+		"/C/Users/cchamberlain/cchamberlain/fire-hydrant/CNAME",
+		"/C/Users/cchamberlain/cchamberlain/fire-hydrant/spec/tests/fireHydrantSpec.js",
+		"/C/Users/cchamberlain/cchamberlain/fire-hydrant/esdoc.json",
+		"/C/Users/cchamberlain/cchamberlain/print/config.js",
+		"/C/Users/cchamberlain/cchamberlain/print/src/lib/redux/modules/redux-idle-monitor.js",
+		"/C/Users/cchamberlain/cchamberlain/print/src/lib/context/theme.js",
+		"/C/Users/cchamberlain/cchamberlain/print/src/app/routes/components/App.js",
+		"/C/Users/cchamberlain/cchamberlain/print/src/app/elements/visual/PageStyle.js",
+		"/C/Users/cchamberlain/cchamberlain/print/src/app/elements/visual/FA.js",
+		"/C/Users/cchamberlain/cchamberlain/print/src/app/elements/panels/ThemePanel.js",
+		"/C/Users/cchamberlain/cchamberlain/print/src/app/elements/panels/ErrorPanel.js",
+		"/C/Users/cchamberlain/cchamberlain/print/src/app/elements/panels/base/CorePanel.js",
+		"/C/Users/cchamberlain/cchamberlain/print/src/app/elements/nav/TopBar.js",
+		"/C/Users/cchamberlain/cchamberlain/print/src/app/elements/nav/FooterBar.js",
+		"/C/Users/cchamberlain/cchamberlain/print/src/app/elements/forms/PageForm.js",
+		"/C/Users/cchamberlain/cchamberlain/print/src/app/elements/forms/LoginForm.js",
+		"/C/Users/cchamberlain/cchamberlain/print/src/app/elements/forms/controls/Label.js",
+		"/C/Users/cchamberlain/cchamberlain/print/src/app/elements/forms/controls/Input.js",
+		"/C/Users/cchamberlain/cchamberlain/print/src/app/theme.js",
+		"/C/Users/cchamberlain/cchamberlain/print/src/app/elements/diagnostics/ErrorVisual.js",
+		"/C/Users/cchamberlain/cchamberlain/print/package.json",
+		"/C/Users/cchamberlain/cchamberlain/print/src/package.json",
+		"/C/Users/cchamberlain/cchamberlain/print/src/package/author.js",
+		"/C/Users/cchamberlain/cchamberlain/print/src/package/name.js",
+		"/C/Users/cchamberlain/cchamberlain/print/src/package/description.js",
+		"/C/Users/cchamberlain/cchamberlain/print/src/package/homepage.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/package/homepage.js",
+		"/C/Users/cchamberlain/cchamberlain/print/src/package/keywords.json",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/lib/router/configureAppRouter.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/redux/store/initBrowserStore.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/lib/redux/store/configureStore.dev.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-idle-monitor/src/lib/detection.js",
+		"/C/Users/cchamberlain/cchamberlain/print/etc/config/config-client.json",
+		"/C/Users/cchamberlain/cchamberlain/print/src/app/styles/topcoat/demo/fonts/sourcesanspro-semibold-webfont.svg",
+		"/C/Users/cchamberlain/cchamberlain/print/src/config-client.json",
+		"/C/Users/cchamberlain/cchamberlain/print/src/config-server.json",
+		"/C/Users/cchamberlain/cchamberlain/redux-addons/src/lib/store.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-idle-monitor/lib/detection.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-idle-monitor/src/lib/multiplexer.js",
+		"/C/Users/cchamberlain/cchamberlain/print/etc/config/config-server.json",
+		"/C/Users/cchamberlain/cchamberlain/print/src/app/styles/topcoat/NOTICE",
+		"/C/Users/cchamberlain/cchamberlain/print/src/app/styles/topcoat/LICENSE",
+		"/C/Users/cchamberlain/cchamberlain/print/src/app/styles/bootstrap/less/print.less",
+		"/C/Users/cchamberlain/cchamberlain/print/src/app/styles/bootstrap/less/navs.less",
+		"/C/Users/cchamberlain/cchamberlain/print/src/app/styles/bootstrap/less/mixins/hide-text.less",
+		"/C/Users/cchamberlain/cchamberlain/print/src/public/static/html/hot.html",
+		"/C/Users/cchamberlain/cchamberlain/print/src/public/index.html",
+		"/C/Users/cchamberlain/cchamberlain/print/src/public/CNAME",
+		"/C/Users/cchamberlain/cchamberlain/redux-idle-monitor/src/lib/actions.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/app/redux/store/configureBrowserStore.dev.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/lib/redux/store/configureStore.prod.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/lib/services/minify.js",
+		"/C/Users/cchamberlain/cchamberlain/redux-webpack-boilerplate/src/lib/services/uglify.js"
 	],
 	"find":
 	{
@@ -506,10 +594,14 @@
 		"height": 92.0,
 		"where_history":
 		[
-			"C:\\Users\\ColeChamberlain\\cchamberlain\\redux-idle-monitor\\src",
-			"C:\\Users\\ColeChamberlain\\cchamberlain\\redux-webpack-boilerplate\\src",
-			"C:\\Users\\ColeChamberlain\\cchamberlain\\react-hatch\\src",
-			"C:\\Users\\ColeChamberlain\\cchamberlain\\react-hatch",
+			"C:\\Users\\cchamberlain\\cchamberlain\\redux-idle-monitor\\src",
+			"C:\\Users\\cchamberlain\\cchamberlain\\react-redux-idle-monitor\\src",
+			"C:\\Users\\cchamberlain\\cchamberlain\\kerbal\\src",
+			"C:\\Users\\cchamberlain\\cchamberlain\\print\\src",
+			"C:\\Users\\cchamberlain\\cchamberlain\\print",
+			"C:\\Users\\cchamberlain\\cchamberlain\\print\\src\\",
+			"C:\\Users\\cchamberlain\\cchamberlain\\redux-webpack-boilerplate\\src\\",
+			"C:\\Users\\ColeChamberlain\\cchamberlain\\redux-webpack-boilerplate\\src\\",
 			"C:\\Users\\ColeChamberlain\\cchamberlain\\redux-webpack-boilerplate\\src",
 			"C:\\Users\\ColeChamberlain\\tixinc\\js\\src",
 			"C:\\Users\\ColeChamberlain\\cchamberlain\\griddle-overhaul-connector\\src,C:\\Users\\ColeChamberlain\\cchamberlain\\griddle-overhaul-core\\src,C:\\Users\\ColeChamberlain\\cchamberlain\\griddle-overhaul-render\\src",
@@ -569,18 +661,76 @@
 		"case_sensitive": true,
 		"find_history":
 		[
-			"getLocal",
-			"getIdleStatus",
-			"activity detection starting",
-			"setLocalActive",
-			"337ab7;",
-			"'controls",
-			"index",
-			"style/index",
-			"createClientLogger",
-			"createServerLogger",
-			"config.server",
-			"config.client",
+			"dispatch(lastIdle",
+			"LAST IDLE",
+			"CONTEXT",
+			"GETTHEME",
+			"API REDUCER",
+			"UNIVERSAL HMR",
+			"defaultTheme",
+			"getTheme",
+			"../context/theme",
+			"contextTypes",
+			"getTheme",
+			"context",
+			"'style'",
+			"prerender",
+			"PageForm",
+			"solarized",
+			"app/context",
+			"/context",
+			"1337",
+			"boilerplate",
+			"redux-webpack-boilerplate",
+			"1337",
+			"ACTIVE",
+			"'ACTIVE'",
+			"AppProvider",
+			"Router ",
+			"GTM Blocked",
+			"PageForm",
+			"placeholder=\"title",
+			"name=\"title",
+			"modules/redux-idle-monitor",
+			"../../app/r",
+			"./config-client.json",
+			"services/state",
+			"msie ",
+			"browser-detective",
+			"window.navigator.userAgent",
+			"services/state",
+			"services/musical",
+			"services/location",
+			"services/promise",
+			"services/token",
+			"hydrateStore",
+			"/routes",
+			"actions/",
+			"errors/",
+			"validation",
+			"clearValidated",
+			"setValidated",
+			"errors/",
+			"IdentityError",
+			"hot.html",
+			"idleActions.start",
+			"redux-webpack-boilerplate",
+			"REDUX_FORM_CHANGE",
+			"updateText",
+			"setText",
+			"updateText",
+			"setText",
+			"updateText",
+			"setText",
+			"tix-light",
+			"\n        ",
+			"AuthorizePanel",
+			"AuthorizedPanel",
+			"'app/state/",
+			"'state/",
+			"'elements/",
+			"'services/",
+			"NoAuto",
 			"timings =>",
 			"THISSSS WORKS",
 			"initializeGrid",
@@ -638,65 +788,7 @@
 			".replace('$', '_'",
 			"Microsoft.Web.Infrastructure",
 			"classic",
-			"7000",
-			"renderTooltip",
-			"renderToDOM",
-			"liSearch",
-			"bg-row-1",
-			"mega-menu",
-			"mega-menu-right",
-			"7px;",
-			"btnSearch",
-			"header-bar-right",
-			"ManagementSearch.aspx",
-			"bg_white.png",
-			"stylemanagement.css",
-			"TixNavTemp",
-			"selectByIDSuffix",
-			"TixNavTemp",
-			".mega-menu",
-			"AppHead.asp",
-			"AppBody.asp",
-			"AppHead",
-			"TimeoutNoHead",
-			"TimeoutHead.asp",
-			"TimeoutNoHead.asp",
-			"TimeoutBody.asp",
-			"loading.js",
-			"legacy.js",
-			"AppHead.asp",
-			"PageTopInclude.asp",
-			"strBody",
-			"PrivateLabelInclude",
-			"strBody =",
-			"strBody",
-			"TopNavInclude.asp",
-			"Banner.asp",
-			"TopNavInclude.asp",
-			"BannerManagement.asp",
-			"UA-63226316-1",
-			"eventTooltip",
-			"renderTooltip",
-			"apiAction",
-			"EventTooltip",
-			"TixTooltip",
-			"selectTarget",
-			"selectDOM",
-			"ReactTooltip",
-			"navbar-brand",
-			"/spinner",
-			"colors.less",
-			"Privacy Policy",
-			"', 'value']",
-			"theme-panel",
-			"options.get",
-			"ADD_TOGGLE",
-			"migrate'",
-			"maintenance_",
-			"maintenance",
-			"reset_update_migrate",
-			"reset-update-migrate",
-			"reset-update_password"
+			"7000"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -704,6 +796,12 @@
 		"regex": false,
 		"replace_history":
 		[
+			"print",
+			"3333",
+			"'app/redux/",
+			"'app/state/",
+			"'app/elements/",
+			"'app/services/",
 			"initialValue",
 			"fragmentType",
 			"domElement",
@@ -738,123 +836,236 @@
 			[
 				{
 					"buffer": 0,
-					"file": "/C/Users/ColeChamberlain/cchamberlain/redux-idle-monitor/src/lib/index.js",
-					"semi_transient": true,
+					"file": "/C/Users/cchamberlain/cchamberlain/kerbal/src/app/routes/components/App.js",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 603,
+						"buffer_size": 2336,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								603,
-								603
+								1675,
+								1675
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tabs_extra_last_activated": 1463418638.5,
+							"tabs_extra_last_activated": 1463986511.04,
 							"tabs_extra_last_activated_sheet_index": 0,
 							"tabs_extra_spawned": true,
 							"vintage":
 							{
+								"_vintageous_glue_until_normal_mode": false,
 								"action": null,
 								"action_count": "",
 								"mode": "mode_normal",
 								"motion": null,
 								"motion_count": "",
 								"must_capture_register_name": false,
+								"normal_insert_count": "1",
 								"partial_sequence": "",
 								"register": "\"",
 								"sequence": "",
-								"xpos": 0
+								"xpos": 10
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 237.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/C/Users/cchamberlain/cchamberlain/kerbal/src/app/routes/components/Home.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1286,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								815,
+								815
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tabs_extra_last_activated": 1463985074.33,
+							"tabs_extra_last_activated_sheet_index": 1,
+							"tabs_extra_spawned": true,
+							"vintage":
+							{
+								"_vintageous_glue_until_normal_mode": false,
+								"action": null,
+								"action_count": "",
+								"mode": "mode_normal",
+								"motion": null,
+								"motion_count": "",
+								"must_capture_register_name": false,
+								"normal_insert_count": "1",
+								"partial_sequence": "",
+								"register": "\"",
+								"sequence": "",
+								"xpos": 27
 							}
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 7,
-			"sheets":
-			[
+				},
 				{
-					"buffer": 1,
-					"file": "src/app/redux/store/initBrowserStore.js",
+					"buffer": 2,
+					"file": "/C/Users/cchamberlain/cchamberlain/kerbal/src/app/routes/components/Frames.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 264,
+						"buffer_size": 853,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								228,
-								228
+								793,
+								793
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tabs_extra_last_activated": 1462827478.67,
-							"tabs_extra_last_activated_sheet_index": 0,
+							"tabs_extra_last_activated": 1463985202.83,
+							"tabs_extra_last_activated_sheet_index": 2,
 							"tabs_extra_spawned": true,
 							"vintage":
 							{
+								"_vintageous_glue_until_normal_mode": false,
 								"action": null,
 								"action_count": "",
 								"mode": "mode_normal",
 								"motion": null,
 								"motion_count": "",
 								"must_capture_register_name": false,
+								"normal_insert_count": "1",
 								"partial_sequence": "",
 								"register": "\"",
 								"sequence": "",
-								"xpos": 0
+								"xpos": 11
 							}
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1273,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										340,
+										349
+									],
+									[
+										737,
+										754
+									],
+									[
+										1132,
+										1149
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								744,
+								745
+							]
+						],
+						"settings":
+						{
+							"default_dir": "C:\\Users\\cchamberlain\\cchamberlain\\redux-webpack-boilerplate",
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 4,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ 	].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage",
+							"tabs_extra_last_activated": 1463880975.14,
+							"tabs_extra_last_activated_sheet_index": 1,
+							"translate_tabs_to_spaces": false,
+							"vintage":
+							{
+								"action": null,
+								"action_count": "",
+								"mode": "mode_visual",
+								"motion": null,
+								"motion_count": "",
+								"must_capture_register_name": false,
+								"partial_sequence": "",
+								"register": "\"",
+								"sequence": "",
+								"xpos": 20
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 323.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "src/app/redux/store/subscribeStore.js",
+					"buffer": 4,
+					"file": "/C/Users/cchamberlain/cchamberlain/redux-idle-monitor/src/lib/actions.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1496,
+						"buffer_size": 4291,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1008,
-								1008
+								2221,
+								2221
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"tabs_extra_last_activated": 1462827560.53,
-							"tabs_extra_last_activated_sheet_index": 1,
+							"tabs_extra_last_activated": 1463881049.19,
+							"tabs_extra_last_activated_sheet_index": 2,
 							"tabs_extra_spawned": true,
-							"translate_tabs_to_spaces": true,
 							"vintage":
 							{
 								"action": null,
@@ -866,38 +1077,84 @@
 								"partial_sequence": "",
 								"register": "\"",
 								"sequence": "",
-								"xpos": 24
+								"xpos": 0
 							}
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 143.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "src/app/elements/grids/PrimaryGrid.js",
+					"buffer": 5,
+					"file": "/C/Users/cchamberlain/cchamberlain/redux-idle-monitor/src/lib/middleware.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 232,
+						"buffer_size": 5776,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								4789,
+								4789
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tabs_extra_last_activated": 1462827905.3,
+							"tabs_extra_last_activated": 1463880791.28,
 							"tabs_extra_last_activated_sheet_index": 2,
+							"tabs_extra_spawned": true,
+							"vintage":
+							{
+								"_vintageous_glue_until_normal_mode": false,
+								"action": null,
+								"action_count": "",
+								"mode": "mode_normal",
+								"motion": null,
+								"motion_count": "",
+								"must_capture_register_name": false,
+								"normal_insert_count": "1",
+								"partial_sequence": "",
+								"register": "\"",
+								"sequence": "",
+								"xpos": 6
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 679.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/C/Users/cchamberlain/cchamberlain/kerbal/src/lib/redux/modules/redux-idle-monitor.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 868,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								868,
+								868
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tabs_extra_last_activated": 1463881049.19,
+							"tabs_extra_last_activated_sheet_index": 4,
 							"tabs_extra_spawned": true,
 							"vintage":
 							{
@@ -923,36 +1180,34 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "src/app/elements/forms/LoginForm.js",
+					"buffer": 7,
+					"file": "/C/Users/cchamberlain/cchamberlain/kerbal/src/lib/redux/store/configureStore.dev.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2498,
+						"buffer_size": 1324,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2162,
-								2162
+								1274,
+								1274
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"tabs_extra_last_activated": 1462832628.96,
-							"tabs_extra_last_activated_sheet_index": 3,
+							"tabs_extra_last_activated": 1463881303.24,
+							"tabs_extra_last_activated_sheet_index": 5,
 							"tabs_extra_spawned": true,
-							"translate_tabs_to_spaces": true,
 							"vintage":
 							{
-								"_vintageous_glue_until_normal_mode": true,
+								"_vintageous_glue_until_normal_mode": false,
 								"action": null,
 								"action_count": "",
-								"mode": "mode_insert",
+								"mode": "mode_normal",
 								"motion": null,
 								"motion_count": "",
 								"must_capture_register_name": false,
@@ -960,41 +1215,39 @@
 								"partial_sequence": "",
 								"register": "\"",
 								"sequence": "",
-								"xpos": 10
+								"xpos": 38
 							}
 						},
 						"translation.x": 0.0,
-						"translation.y": 594.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "src/lib/cors.js",
+					"buffer": 8,
+					"file": "/C/Users/cchamberlain/cchamberlain/kerbal/src/lib/redux/store/subscribeStore.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2819,
+						"buffer_size": 1484,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								180,
+								180
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"tabs_extra_last_activated": 1462921353.62,
-							"tabs_extra_last_activated_sheet_index": 4,
+							"tabs_extra_last_activated": 1463881188.93,
+							"tabs_extra_last_activated_sheet_index": 6,
 							"tabs_extra_spawned": true,
-							"translate_tabs_to_spaces": true,
 							"vintage":
 							{
 								"_vintageous_glue_until_normal_mode": false,
@@ -1012,34 +1265,34 @@
 							}
 						},
 						"translation.x": 0.0,
-						"translation.y": 30.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "/C/Users/ColeChamberlain/cchamberlain/redux-idle-monitor/src/lib/blueprints.js",
+					"buffer": 9,
+					"file": "/C/Users/cchamberlain/cchamberlain/contextual/src/lib/theme/index.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1515,
+						"buffer_size": 9123,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								726,
-								726
+								8958,
+								8958
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tabs_extra_last_activated": 1463091776.59,
-							"tabs_extra_last_activated_sheet_index": 5,
+							"tabs_extra_last_activated": 1463882839.44,
+							"tabs_extra_last_activated_sheet_index": 7,
 							"tabs_extra_spawned": true,
 							"vintage":
 							{
@@ -1054,7 +1307,7 @@
 								"partial_sequence": "",
 								"register": "\"",
 								"sequence": "",
-								"xpos": 110
+								"xpos": 29
 							}
 						},
 						"translation.x": 0.0,
@@ -1065,27 +1318,27 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "/C/Users/ColeChamberlain/cchamberlain/redux-idle-monitor/src/lib/constants.js",
+					"buffer": 10,
+					"file": "/C/Users/cchamberlain/cchamberlain/kerbal/src/app/redux/store/configureBrowserStore.prod.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 763,
+						"buffer_size": 523,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								358,
-								358
+								523,
+								523
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tabs_extra_last_activated": 1463091992.43,
-							"tabs_extra_last_activated_sheet_index": 6,
+							"tabs_extra_last_activated": 1463882999.16,
+							"tabs_extra_last_activated_sheet_index": 10,
 							"tabs_extra_spawned": true,
 							"vintage":
 							{
@@ -1111,219 +1364,93 @@
 					"type": "text"
 				},
 				{
-					"buffer": 8,
-					"file": "/C/Users/ColeChamberlain/cchamberlain/redux-idle-monitor/src/lib/reducer.js",
+					"buffer": 11,
+					"file": "/C/Users/cchamberlain/cchamberlain/kerbal/src/app/redux/store/configureBrowserStore.dev.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2961,
+						"buffer_size": 1109,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2119,
-								2119
+								441,
+								441
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"tabs_extra_last_activated": 1463186784.55,
-							"tabs_extra_last_activated_sheet_index": 7,
+							"tabs_extra_last_activated": 1463982752.1,
+							"tabs_extra_last_activated_sheet_index": 11,
 							"tabs_extra_spawned": true,
-							"translate_tabs_to_spaces": true,
 							"vintage":
 							{
-								"_vintageous_glue_until_normal_mode": false,
 								"action": null,
 								"action_count": "",
 								"mode": "mode_normal",
 								"motion": null,
 								"motion_count": "",
 								"must_capture_register_name": false,
-								"normal_insert_count": "1",
 								"partial_sequence": "",
 								"register": "\"",
 								"sequence": "",
-								"xpos": 76
+								"xpos": 0
 							}
 						},
 						"translation.x": 0.0,
-						"translation.y": 398.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "/C/Users/ColeChamberlain/cchamberlain/redux-idle-monitor/src/lib/middleware.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5610,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2253,
-								2253
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"tabs_extra_last_activated": 1463092007.97,
-							"tabs_extra_last_activated_sheet_index": 9,
-							"tabs_extra_spawned": true,
-							"translate_tabs_to_spaces": true,
-							"vintage":
-							{
-								"_vintageous_glue_until_normal_mode": false,
-								"_vintageous_non_interactive": false,
-								"_vintageous_processing_notation": false,
-								"action": null,
-								"action_count": "",
-								"mode": "mode_normal",
-								"motion": null,
-								"motion_count": "",
-								"must_capture_register_name": false,
-								"normal_insert_count": "1",
-								"partial_sequence": "",
-								"register": "\"",
-								"sequence": "",
-								"xpos": 10
-							}
-						},
-						"translation.x": 0.0,
-						"translation.y": 1644.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
-					"file": "/C/Users/ColeChamberlain/cchamberlain/redux-idle-monitor/src/lib/multiplexer.js",
+					"buffer": 12,
+					"file": "/C/Users/cchamberlain/cchamberlain/kerbal/src/lib/redux/store/configureStore.prod.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1208,
+						"buffer_size": 838,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								868,
-								868
+								308,
+								308
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"tabs_extra_last_activated": 1463092014.74,
-							"tabs_extra_last_activated_sheet_index": 9,
-							"tabs_extra_spawned": true,
-							"translate_tabs_to_spaces": true,
-							"vintage":
-							{
-								"action": null,
-								"action_count": "",
-								"mode": "mode_normal",
-								"motion": null,
-								"motion_count": "",
-								"must_capture_register_name": false,
-								"partial_sequence": "",
-								"register": "\"",
-								"sequence": "",
-								"xpos": 0
-							}
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 716,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										180,
-										188
-									],
-									[
-										409,
-										417
-									],
-									[
-										509,
-										517
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								493,
-								493
-							]
-						],
-						"settings":
-						{
-							"default_dir": "C:\\Users\\ColeChamberlain\\cchamberlain\\redux-webpack-boilerplate",
-							"detect_indentation": false,
-							"line_numbers": false,
-							"output_tag": 1,
-							"result_base_dir": "",
-							"result_file_regex": "^([^ 	].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage",
-							"tabs_extra_last_activated": 1462925405.91,
+							"tabs_extra_last_activated": 1463881298.6,
 							"tabs_extra_last_activated_sheet_index": 10,
 							"tabs_extra_spawned": true,
-							"translate_tabs_to_spaces": false,
 							"vintage":
 							{
+								"_vintageous_glue_until_normal_mode": false,
 								"action": null,
 								"action_count": "",
 								"mode": "mode_normal",
 								"motion": null,
 								"motion_count": "",
 								"must_capture_register_name": false,
+								"normal_insert_count": "1",
 								"partial_sequence": "",
 								"register": "\"",
 								"sequence": "",
-								"xpos": 0
+								"xpos": 28
 							}
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 8,
 					"type": "text"
 				}
 			]
@@ -1331,7 +1458,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 24.0
+		"height": 25.0
 	},
 	"input":
 	{
@@ -1346,12 +1473,6 @@
 				0,
 				1,
 				1
-			],
-			[
-				0,
-				1,
-				1,
-				2
 			]
 		],
 		"cols":
@@ -1362,7 +1483,6 @@
 		"rows":
 		[
 			0.0,
-			0.406193039783,
 			1.0
 		]
 	},
@@ -1375,7 +1495,7 @@
 	"project": "libs.sublime-project",
 	"replace":
 	{
-		"height": 44.0
+		"height": 46.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1920,21 +2040,21 @@
 	"selected_group": 0,
 	"settings":
 	{
-		"_vintageous_last_buffer_search": "refreshToken",
+		"_vintageous_last_buffer_search": "dispatch\\(start",
 		"_vintageous_last_buffer_search_command": "vi_slash",
 		"_vintageous_last_char_search_command": "vi_f",
-		"_vintageous_last_character_search": "2",
+		"_vintageous_last_character_search": "e",
 		"_vintageous_reset_during_init": true,
 		"vintage":
 		{
-			"_cmdline_cd": "C:\\Users\\ColeChamberlain\\cchamberlain\\redux-idle-monitor\\src\\lib"
+			"_cmdline_cd": "C:\\Users\\cchamberlain\\cchamberlain\\redux-webpack-boilerplate\\src\\app\\routes"
 		}
 	},
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 198.0,
+	"side_bar_width": 275.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
