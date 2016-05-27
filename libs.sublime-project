@@ -12,6 +12,26 @@
       "path": "../contextual"
     },
     {
+      "name": "process-mux",
+      "follow_symlinks": true,
+      "path": "../process-mux"
+    },
+    {
+      "name": "bunyan-fork",
+      "follow_symlinks": true,
+      "path": "../bunyan-fork"
+    },
+    {
+      "name": "bunyan-pmx",
+      "follow_symlinks": true,
+      "path": "../bunyan-pmx"
+    },
+    {
+      "name": "bunyan-serializer",
+      "follow_symlinks": true,
+      "path": "../bunyan-serializer"
+    },
+    {
       "name": "kerbal",
       "follow_symlinks": true,
       "path": "../kerbal"
