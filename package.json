@@ -136,7 +136,7 @@
     "router": "^1.1.4",
     "safe-json-stringify": "^1.0.3",
     "script-loader": "^0.7.0",
-    "serialize-javascript": "^1.2.0",
+    "serialize-javascript": "^4.0.0",
     "serve-favicon": "^2.3.0",
     "serve-file": "^0.1.4",
     "style-loader": "^0.13.1",
